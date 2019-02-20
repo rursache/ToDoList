@@ -6,6 +6,9 @@
 build/
 DerivedData/
 
+## Pods
+Pods
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
