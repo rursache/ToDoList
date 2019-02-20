@@ -8,6 +8,6 @@
 
 import UIKit
 
-class Config: NSObject {
+class Utils: NSObject {
 
 }
