@@ -8,15 +8,25 @@
 
 import UIKit
 import Firebase
+import IceCream
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var syncEngine: SyncEngine?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        self.syncEngine = SyncEngine(objects: [
+            SyncObject<TaskModel>(),
+            SyncObject<CommentModel>()
+            ])
+        
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -32,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.syncEngine?.pull()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -43,6 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let dict = userInfo as! [String: NSObject]
+        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
+        
+        if (notification.subscriptionID == IceCreamConstant.cloudKitSubscriptionID) {
+            NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
+        }
+        completionHandler(.newData)
+        
+    }
 }
 
