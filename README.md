@@ -1,5 +1,5 @@
 # RSToDoList
-A simple To-do list app written in Swift 4.2
+A simple To-do list app build for iOS 11+ in Swift 4.2 
 
 ## Main features
 - [ ] Basic to do list features
@@ -15,6 +15,18 @@ A simple To-do list app written in Swift 4.2
 - [ ] Push notifications for reminders
 	- [ ] Synced push notifications between devices
 - [ ] Optional lockdown with FaceID/TouchID or passcode
+
+## How to run
+
+1. Clone the repo
+2. Run ```pod install``` in terminal to install required pods (make sure you have (CocoaPods)[https://guides.cocoapods.org/using/getting-started.html] installed)
+3. Turn on your iCloud in Capabilities and choose CloudKit. Turn on Background Modes and check Background fetch and Remote notification
+4. ???
+5. Profit!
+
+## Live demo
+
+Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) on your device and use [this](http://l0ng.in/todolist) link to get the latest build.
 
 ## To do
 
