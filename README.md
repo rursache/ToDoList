@@ -1,4 +1,9 @@
 # RSToDoList
+
+<p align="center">
+  <img width="150" height="150" src="https://github.com/iPhoNewsRO/ToDoList/blob/master/Resources/icon.png" />
+</p>
+
 A simple To-do list app build for iOS 11+ in Swift 4.2 
 
 ## Main features
@@ -19,16 +24,14 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 ## How to run
 
 1. Clone the repo
-2. Run ```pod install``` in terminal to install required pods (make sure you have (CocoaPods)[https://guides.cocoapods.org/using/getting-started.html] installed)
-3. Turn on your iCloud in Capabilities and choose CloudKit. Turn on Background Modes and check Background fetch and Remote notification
-4. ???
-5. Profit!
+2. Run ```pod install``` in terminal to install required pods. Make sure you have (CocoaPods)[https://guides.cocoapods.org/using/getting-started.html] installed.
+3. Turn on iCloud option in ```Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` and ```Remote notification```.
 
 ## Live demo
 
 Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) on your device and use [this](http://l0ng.in/todolist) link to get the latest build.
 
-## To do
+# To do
 
 ### v1.0
 - [ ] Home page
