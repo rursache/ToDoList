@@ -11,7 +11,7 @@ target 'ToDoList' do
   # pod 'SwiftTheme' # v1.1 feature
   # pod 'BulletinBoard' # v1.1 feature (onboarding tutorial)
   # pod 'Alamofire'
-  pod 'Firebase/Core'
+  # pod 'Firebase/Core'
   pod 'IceCream', :git => 'https://github.com/iPhoNewsRO/IceCream.git'
   pod 'UnderKeyboard'
   pod 'ActiveLabel'
