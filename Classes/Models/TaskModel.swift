@@ -19,13 +19,13 @@ class TaskModel: Object {
     @objc dynamic var priority = 10
     @objc dynamic var isDeleted = false
     @objc dynamic var isCompleted = false
-    let comments = List<CommentModel>()
+    let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
     
     override class func primaryKey() -> String? {
         return "id"
     }
     
-    convenience init(title: String, date: Date?, priority: Int?, comments: List<CommentModel>) {
+    convenience init(title: String, date: Date?, priority: Int?) {
         self.init()
         
         self.content = title
@@ -33,9 +33,9 @@ class TaskModel: Object {
         if let priority = priority {
             self.priority = priority
         }
-        for comment in comments {
-            self.comments.append(comment)
-        }
+//        for comment in comments {
+//            self.comments.append(comment)
+//        }
     }
 }
 

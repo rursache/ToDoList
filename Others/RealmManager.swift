@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import IceCream
 
 class RealmManager {
     static let sharedInstance = RealmManager()
@@ -15,7 +16,7 @@ class RealmManager {
     private var realm: Realm
     
     private init() {
-        let config = Realm.Configuration(schemaVersion: 6, migrationBlock: { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 7, migrationBlock: { migration, oldSchemaVersion in
             
         })
     
@@ -45,67 +46,71 @@ class RealmManager {
         return self.getTasks().filter("date BETWEEN %@", [Date().startOfDay, Date.nextWeek.endOfDay])
     }
     
-    func addTask(object: TaskModel) {
-        self.addObject(object: object, update: false)
+    func addTask(task: TaskModel) {
+        self.addObject(object: task, update: false)
     }
     
-    func updateTask(object: TaskModel) {
-        self.addObject(object: object, update: true)
+    func updateTask(task: TaskModel) {
+        self.addObject(object: task, update: true)
     }
     
-    func changeTaskContent(object: TaskModel, content: String) {
+    func changeTaskContent(task: TaskModel, content: String) {
         do {
             try realm.write {
-                object.content = content
+                task.content = content
             }
         }
         catch {
-            print("Realm error: Cannot write: \(object)")
+            print("Realm error: Cannot write: \(task)")
         }
     }
     
-    func changeTaskPriority(object: TaskModel, priority: Int) {
+    func changeTaskPriority(task: TaskModel, priority: Int) {
         do {
             try realm.write {
-                object.priority = priority
+                task.priority = priority
             }
         }
         catch {
-            print("Realm error: Cannot write: \(object)")
+            print("Realm error: Cannot write: \(task)")
         }
     }
     
-    func completeTask(object: TaskModel) {
+    func changeTaskDate(task: TaskModel, date: Date) {
         do {
             try realm.write {
-                object.isCompleted = true
+                task.date = date
             }
         }
         catch {
-            print("Realm error: Cannot write: \(object)")
+            print("Realm error: Cannot write: \(task)")
         }
     }
     
-    func deleteTask(object: TaskModel, soft: Bool = true) {
+    func completeTask(task: TaskModel) {
+        do {
+            try realm.write {
+                task.isCompleted = true
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(task)")
+        }
+    }
+    
+    func deleteTask(task: TaskModel, soft: Bool = true) {
         if soft {
-            self.softDeleteObject(object: object)
+            self.softDeleteObject(object: task)
         } else {
-            self.deleteObject(object: object)
+            self.deleteObject(object: task)
         }
     }
     
-    func updateComments(object: TaskModel, commentsToAdd: [CommentModel]) {
-        do {
-            try realm.write {
-                for comment in commentsToAdd {
-                    object.comments.append(comment)
-                }
-                realm.add(object, update: true)
-            }
-        }
-        catch {
-            print("Realm error: Cannot write: \(object)")
-        }
+    // comments
+    
+    func getAllComments() -> Results<CommentModel> {
+        let results: Results<CommentModel> = realm.objects(CommentModel.self)
+        return results.filter("isDeleted == false")
     }
     
     // generic funcs

@@ -21,9 +21,8 @@ class CommentsViewController: BaseViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     let keyboardObserver = UnderKeyboardObserver()
-    var commentsDataSource = List<CommentModel>()
     
-    var onCompletion: ((List<CommentModel>) -> Void)?
+    var onCompletion: (() -> Void)?//((List<CommentModel>) -> Void)?
     
     var currentTask = TaskModel()
     var showKeyboardAtLoad = false
@@ -68,7 +67,7 @@ class CommentsViewController: BaseViewController {
     override func setupBindings() {
         super.setupBindings()
         
-        self.commentsDataSource = self.currentTask.comments
+//        self.commentsDataSource = self.currentTask.comments
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -84,7 +83,8 @@ class CommentsViewController: BaseViewController {
     }
     
     @objc func closeAction() {
-        self.onCompletion?(self.commentsDataSource)
+//        self.onCompletion?(self.commentsDataSource)
+        self.onCompletion?()
         
         self.textView.resignFirstResponder()
         
@@ -94,13 +94,16 @@ class CommentsViewController: BaseViewController {
     @objc func addCommentAction() {
         let newComment = CommentModel(title: self.textView.text, date: Date())
         
-        if self.isNewTask {
-            self.commentsDataSource.append(newComment)
-        } else {
-            RealmManager.sharedInstance.updateComments(object: self.currentTask, commentsToAdd: [newComment])
-        }
+//        if self.isNewTask {
+//            self.currentTask.comments.append(newComment)
+//        } else {
+//            RealmManager.sharedInstance.updateComments(object: self.currentTask, commentsToAdd: [newComment])
+            newComment.task = self.currentTask
+            
+            RealmManager.sharedInstance.addObject(object: newComment, update: true)
+//        }
         
-        Utils().getSyncEngine()?.pushAll()
+//        Utils().getSyncEngine()?.pushAll()
         
         self.tableView.reloadData()
         
@@ -129,13 +132,13 @@ class CommentsViewController: BaseViewController {
 
 extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.commentsDataSource.count
+        return self.currentTask.comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.getIdentifier(), for: indexPath) as! CommentTableViewCell
         
-        let currentItem = self.commentsDataSource[indexPath.row]
+        let currentItem = self.currentTask.comments[indexPath.row]
         
         cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
         cell.contentLabel.text = currentItem.content

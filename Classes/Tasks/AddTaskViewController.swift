@@ -30,6 +30,8 @@ class AddTaskViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        RealmManager.sharedInstance.addTask(task: self.tempTask)
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -96,7 +98,9 @@ class AddTaskViewController: BaseViewController {
     
     @objc func taskDateButtonAction() {
         let datePicker = ActionSheetDatePicker(title: "Select date".localized(), datePickerMode: .date, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
-            self.tempTask.date = selectedDate as? Date
+            guard let selectedDate = selectedDate as? Date else { return }
+            
+            RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: selectedDate)
             
             self.updateDateButtonTitle()
         }, cancel: { (actionSheet) in
@@ -145,15 +149,16 @@ class AddTaskViewController: BaseViewController {
         commentsVC.isNewTask = true
         commentsVC.currentTask = self.tempTask
         commentsVC.showKeyboardAtLoad = true
-        commentsVC.onCompletion = { comments in
-            
-        }
+//        commentsVC.onCompletion = { comments in
+//            
+//        }
         
         self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
     }
     
     func setTaskPriority(priority: Int, title: String?) {
-        self.tempTask.priority = priority
+        RealmManager.sharedInstance.changeTaskPriority(task: self.tempTask, priority: priority)
+        
         self.priorityButton.setTitle(title, for: .normal)
         
         if priority != 10 {
@@ -164,6 +169,8 @@ class AddTaskViewController: BaseViewController {
     }
 
     @objc func cancelAction() {
+        RealmManager.sharedInstance.deleteTask(task: self.tempTask, soft: true)
+        
         self.close()
     }
 
@@ -176,9 +183,7 @@ class AddTaskViewController: BaseViewController {
             return
         }
         
-        self.tempTask.content = taskName
-        
-        RealmManager.sharedInstance.addTask(object: self.tempTask)
+        RealmManager.sharedInstance.changeTaskContent(task: self.tempTask, content: taskName)
         
         self.close()
     }

@@ -16,6 +16,7 @@ class CommentModel: Object {
     @objc dynamic var content = ""
     @objc dynamic var date = NSDate.init()
     @objc dynamic var isDeleted = false
+    @objc dynamic var task: TaskModel?
     
     override class func primaryKey() -> String? {
         return "id"

@@ -160,7 +160,7 @@ class TasksViewController: BaseViewController {
     }
     
     func changeTaskPriority(task: TaskModel, priority: Int) {
-        RealmManager.sharedDelegate().changeTaskPriority(object: task, priority: priority)
+        RealmManager.sharedDelegate().changeTaskPriority(task: task, priority: priority)
         
         self.loadData()
         
@@ -168,7 +168,7 @@ class TasksViewController: BaseViewController {
     }
     
     func completeTask(task: TaskModel) {
-        RealmManager.sharedDelegate().completeTask(object: task)
+        RealmManager.sharedDelegate().completeTask(task: task)
         
         self.loadData()
         
@@ -176,7 +176,7 @@ class TasksViewController: BaseViewController {
     }
     
     func deleteTask(task: TaskModel) {
-        RealmManager.sharedDelegate().deleteTask(object: task, soft: true)
+        RealmManager.sharedDelegate().deleteTask(task: task, soft: true)
         
         self.loadData()
     }
@@ -251,7 +251,7 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
             commentsVC.isNewTask = false
             commentsVC.currentTask = currentItem
             commentsVC.showKeyboardAtLoad = false
-            commentsVC.onCompletion = { comments in
+            commentsVC.onCompletion = { //comments in
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             
