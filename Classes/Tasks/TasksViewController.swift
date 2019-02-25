@@ -78,7 +78,15 @@ class TasksViewController: BaseViewController {
     }
     
     @objc func addTaskButtonAction() {
-        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addTaskVC") as! AddTaskViewController
+        self.addTaskAction(editMode: false, task: nil)
+    }
+    
+    func addTaskAction(editMode: Bool = false, task: TaskModel?) {
+        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
+        addTaskVC.editMode = editMode
+        if editMode {
+            addTaskVC.tempTask = task!
+        }
         addTaskVC.onCompletion = {
             self.loadData()
         }
@@ -112,7 +120,7 @@ class TasksViewController: BaseViewController {
             }
         }
         
-        sortSheet.addAction("Cancel", style: .destructive)
+        sortSheet.addAction("Cancel".localized(), style: .destructive)
         
         sortSheet.presentIn(self)
         sortSheet.show()
@@ -130,41 +138,33 @@ class TasksViewController: BaseViewController {
         }
     }
     
-    func showTaskPrioritySheet(task: TaskModel) {
-        let prioritySheet = ActionSheet(title: "Task priority", message: nil)
+    func showTaskOptions(task: TaskModel, indexPath: IndexPath) {
+        let taskOptionsSheet = ActionSheet(title: "Task options".localized(), message: nil)
         
-        prioritySheet.addAction(Config.General.priorityTitles[0], style: .default) { (action) in
-            self.changeTaskPriority(task: task, priority: 1)
+        taskOptionsSheet.addAction("Complete".localized(), style: .default) { (action) in
+            self.completeTask(task: task)
         }
         
-        prioritySheet.addAction(Config.General.priorityTitles[1], style: .default) { (action) in
-            self.changeTaskPriority(task: task, priority: 2)
+        taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
+            self.addTaskAction(editMode: true, task: task)
         }
         
-        prioritySheet.addAction(Config.General.priorityTitles[2], style: .default) { (action) in
-            self.changeTaskPriority(task: task, priority: 3)
+        taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
+            let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
+            
+            commentsVC.currentTask = task
+            commentsVC.showKeyboardAtLoad = false
+            commentsVC.onCompletion = {
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            
+            self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
         }
         
-        prioritySheet.addAction(Config.General.priorityTitles[3], style: .default) { (action) in
-            self.changeTaskPriority(task: task, priority: 4)
-        }
+        taskOptionsSheet.addAction("Cancel".localized(), style: .destructive)
         
-        prioritySheet.addAction(Config.General.priorityTitles[4], style: .default) { (action) in
-            self.changeTaskPriority(task: task, priority: 10)
-        }
-        
-        prioritySheet.addAction("Cancel".localized(), style: .destructive)
-        
-        prioritySheet.presentIn(self)
-        prioritySheet.show()
-    }
-    
-    func changeTaskPriority(task: TaskModel, priority: Int) {
-        RealmManager.sharedDelegate().changeTaskPriority(task: task, priority: priority)
-        
-        self.loadData()
-        
-        Utils().showSuccessToast(message: "Task priority updated!".localized())
+        taskOptionsSheet.presentIn(self)
+        taskOptionsSheet.show()
     }
     
     func completeTask(task: TaskModel) {
@@ -190,32 +190,32 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.getIdentifier(), for: indexPath) as! TaskTableViewCell
         
-        let currentItem = self.tasksDataSource[indexPath.row]
+        let currentTask = self.tasksDataSource[indexPath.row]
         
-        cell.taskNameLabel.text = currentItem.content
+        cell.taskNameLabel.text = currentTask.content
         
         cell.checkBoxButton.addAction {
             // test with multiple tasks, after cellForRowAt was called multiple times
-            self.completeTask(task: currentItem)
+            self.completeTask(task: currentTask)
         }
         
-        if let taskDate = currentItem.date {
+        if let taskDate = currentTask.date {
             cell.taskDateLabel.text = Config.General.dateFormatter().string(from: taskDate)
             cell.taskDateLabel.isHidden = false
         } else {
             cell.taskDateLabel.isHidden = true
         }
         
-        if currentItem.priority != 10 && Config.Features.enablePriority {
-            cell.priorityButton.setTitle(Config.General.priorityTitles[currentItem.priority - 1], for: .normal)
-            cell.priorityButton.setTitleColor(Config.General.priorityColors[currentItem.priority - 1], for: .normal)
+        if currentTask.priority != 10 && Config.Features.enablePriority {
+            cell.priorityButton.setTitle(Config.General.priorityTitles[currentTask.priority - 1], for: .normal)
+            cell.priorityButton.setTitleColor(Config.General.priorityColors[currentTask.priority - 1], for: .normal)
             cell.priorityButton.isHidden = false
         } else {
             cell.priorityButton.isHidden = true
         }
         
-        if currentItem.comments.count > 0, Config.Features.enableComments {
-            cell.commentsButton.setTitle("\(currentItem.comments.count)", for: .normal)
+        if currentTask.availableComments().count > 0, Config.Features.enableComments {
+            cell.commentsButton.setTitle("\(currentTask.availableComments().count)", for: .normal)
             cell.commentsButton.isHidden = false
         } else {
             cell.commentsButton.isHidden = true
@@ -229,47 +229,14 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let currentItem = self.tasksDataSource[indexPath.row]
-        
-        let taskOptionsSheet = ActionSheet(title: "Task options".localized(), message: nil)
-        
-        taskOptionsSheet.addAction("Complete".localized(), style: .default) { (action) in
-            self.completeTask(task: currentItem)
-        }
-        
-        taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
-            // to do
-        }
-        
-        taskOptionsSheet.addAction("Change Priority".localized(), style: .default) { (action) in
-            self.showTaskPrioritySheet(task: currentItem)
-        }
-        
-        taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
-            let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
-            
-            commentsVC.isNewTask = false
-            commentsVC.currentTask = currentItem
-            commentsVC.showKeyboardAtLoad = false
-            commentsVC.onCompletion = { //comments in
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-            
-            self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
-        }
-        
-        taskOptionsSheet.addAction("Cancel".localized(), style: .destructive)
-        
-        taskOptionsSheet.presentIn(self)
-        taskOptionsSheet.show()
+        self.showTaskOptions(task: self.tasksDataSource[indexPath.row], indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
             guard indexPath.row < self.tasksDataSource.count else { return }
-            let task = self.tasksDataSource[indexPath.row]
             
-            self.deleteTask(task: task)
+            self.deleteTask(task: self.tasksDataSource[indexPath.row])
         }
         return [deleteAction]
     }

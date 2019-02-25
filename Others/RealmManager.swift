@@ -16,7 +16,7 @@ class RealmManager {
     private var realm: Realm
     
     private init() {
-        let config = Realm.Configuration(schemaVersion: 7, migrationBlock: { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 8, migrationBlock: { migration, oldSchemaVersion in
             
         })
     
@@ -76,7 +76,7 @@ class RealmManager {
         }
     }
     
-    func changeTaskDate(task: TaskModel, date: Date) {
+    func changeTaskDate(task: TaskModel, date: Date?) {
         do {
             try realm.write {
                 task.date = date
@@ -100,9 +100,20 @@ class RealmManager {
     
     func deleteTask(task: TaskModel, soft: Bool = true) {
         if soft {
-            self.softDeleteObject(object: task)
+            self.softDeleteTask(task: task)
         } else {
             self.deleteObject(object: task)
+        }
+    }
+    
+    func softDeleteTask(task: TaskModel) {
+        do {
+            try realm.write {
+                task.isDeleted = true
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(task)")
         }
     }
     
@@ -111,6 +122,36 @@ class RealmManager {
     func getAllComments() -> Results<CommentModel> {
         let results: Results<CommentModel> = realm.objects(CommentModel.self)
         return results.filter("isDeleted == false")
+    }
+    
+    func changeCommentContent(comment: CommentModel, content: String) {
+        do {
+            try realm.write {
+                comment.content = content
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(comment)")
+        }
+    }
+    
+    func deleteComment(comment: CommentModel, soft: Bool = true) {
+        if soft {
+            self.softDeleteComment(comment: comment)
+        } else {
+            self.deleteObject(object: comment)
+        }
+    }
+    
+    func softDeleteComment(comment: CommentModel) {
+        do {
+            try realm.write {
+                comment.isDeleted = true
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(comment)")
+        }
     }
     
     // generic funcs
@@ -130,17 +171,6 @@ class RealmManager {
         do {
             try realm.write {
                 realm.delete(object)
-            }
-        }
-        catch {
-            print("Realm error: Cannot write: \(object)")
-        }
-    }
-    
-    func softDeleteObject(object: TaskModel) {
-        do {
-            try realm.write {
-                object.isDeleted = true
             }
         }
         catch {

@@ -16,6 +16,8 @@ class Config: NSObject {
     }
     
     class General: NSObject {
+        static let appName = "ToDoList"
+        
         static let addTaskMaxNumberOfLines: Int = 6
         static let dateFormatter = { () -> DateFormatter in
             let formatter = DateFormatter()
@@ -37,5 +39,6 @@ class Config: NSObject {
     
     class UserDefaults: NSObject {
         static let neverSyncedBefore = "neverSyncedBefore"
+        static let userFullName = "userFullName"
     }
 }

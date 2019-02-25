@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (1.8)
   - ActionSheetPicker-3.0 (2.3.0)
   - ActiveLabel (1.0.1)
   - CFNotify (1.0.2)
@@ -10,10 +11,11 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
-  - RSTextViewMaster (2.1.1)
+  - RSTextViewMaster (2.1.2)
   - UnderKeyboard (12.0.0)
 
 DEPENDENCIES:
+  - AcknowList
   - ActionSheetPicker-3.0
   - ActiveLabel
   - CFNotify
@@ -26,6 +28,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AcknowList
     - ActionSheetPicker-3.0
     - ActiveLabel
     - CFNotify
@@ -45,6 +48,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/iPhoNewsRO/IceCream.git
 
 SPEC CHECKSUMS:
+  AcknowList: 5b8820004d019d0a8d6a091ea2392dcb54bd3ad2
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   CFNotify: e32996ad9034b4d64b30d685e456ea4b83fecb49
@@ -52,9 +56,9 @@ SPEC CHECKSUMS:
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
-  RSTextViewMaster: e5a12b8a11451c9f3bad37eaa1ea1697beaed10e
+  RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 6a3705d67d43447594c279f7a844fd1df92d54dd
 
-PODFILE CHECKSUM: 1618c3dcff724c5c5bbddef4edf8345084abb83e
+PODFILE CHECKSUM: c9cef7ae75089cfb34d5eff33ebb9e2a427617e6
 
 COCOAPODS: 1.6.1

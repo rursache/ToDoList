@@ -7,10 +7,10 @@
 A simple To-do list app build for iOS 11+ in Swift 4.2 
 
 ## Main features
-- [ ] Basic to do list features
+- [x] Basic to do list features
 	- [x] Persistent lists using Realm
 	- [x] Add/delete items
-	- [ ] Edit task properties
+	- [x] Edit task properties
 	- [x] Complete items
 	- [x] Date/Time for items
 	- [x] Sort options
@@ -20,6 +20,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 - [ ] Push notifications for reminders
 	- [ ] Synced push notifications between devices
 - [ ] Optional lockdown with FaceID/TouchID or passcode
+- [ ] Widget for Today tasks
 
 ## How to run
 
@@ -34,27 +35,27 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 # To do
 
 ### v1.0
-- [ ] Home page
+- [x] Home page
 	- [x] Tableview with All, Today, Tomorrow, Next 7 Days
 	- [ ] Search bar
-- [ ] Tasks view
+- [x] Tasks view page
 	- [x] Custom cell
-	- [x] Add item UI
+	- [x] Add item UI/page
 	- [x] Sort
 	- [x] Delete
-	- [ ] Edit task
+	- [x] Edit task
 	- [ ] Search bar
 - [x] Add task view
 	- [x] Date picker
 	- [x] Priority selector
-	- [x] Comment viewer/editor
+	- [x] Comment viewer/editor (delete/edit current comments)
 	- [x] Animations
-- [ ] Settings page
+- [x] Settings page
 	- [ ] Select start page
-	- [ ] Manual iCloud Sync
+	- [x] Manual iCloud Sync
 	- [ ] Multi-Language support
 	- [ ] Themes 
-- [ ] Basic features
+- [x] Basic features
 - [x] iCloud sync
 - [ ] Push notifications
 
@@ -67,16 +68,19 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
+- [ ] Widget for Today tasks
  
 ### Improvements
 - [ ] Better hashtag integration in comments
-- [ ] Delete comments
-- [ ] Edit comments
 
 ### Known bugs
-- [ ] IceCream lib won't sync task comments to cloudkit (https://github.com/caiyue1993/IceCream/issues/119)
+- [x] IceCream lib won't sync task comments to cloudkit (https://github.com/caiyue1993/IceCream/issues/119)
 
-## Frameworks used
+## Acknowledgements & Frameworks used
+
+An extensive list of acknowledgements for each external framework used is also available in app by accessing the settings screen.
+
+ToDoList is currently using:
 
  - LKAlertController
  - ActionSheetPicker-3.0
@@ -87,9 +91,8 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
  - CFNotify
 
-## Extra credits
+All icons used in ToDoList are designed by Icons8.com and available (here)[http://icons8.com]
 
-Icons by Icons8.com
 
 ## License
 

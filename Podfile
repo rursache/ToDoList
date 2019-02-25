@@ -20,6 +20,7 @@ target 'ToDoList' do
   # pod 'Reveal-SDK', '20', :configurations => ['Debug']
   pod 'RSTextViewMaster'
   pod 'CFNotify'
+  pod 'AcknowList'
 
 
 post_install do |installer|

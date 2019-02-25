@@ -19,7 +19,7 @@ class TaskModel: Object {
     @objc dynamic var priority = 10
     @objc dynamic var isDeleted = false
     @objc dynamic var isCompleted = false
-    let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
+    private let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
     
     override class func primaryKey() -> String? {
         return "id"
@@ -36,6 +36,10 @@ class TaskModel: Object {
 //        for comment in comments {
 //            self.comments.append(comment)
 //        }
+    }
+    
+    func availableComments() -> Results<CommentModel> {
+        return self.comments.filter("isDeleted == false")
     }
 }
 

@@ -32,7 +32,7 @@ class Utils: NSObject {
         return FileManager.default.ubiquityIdentityToken != nil
     }
     
-    func showToast(error: Bool, title: String, message: String) {
+    private func showToast(error: Bool, title: String, message: String) {
         let classicView = CFNotifyView.classicWith(title: title, body: message, theme: error ? .fail(.light) : .success(.light))
         var classicViewConfig = CFNotify.Config()
         classicViewConfig.initPosition = .bottom(.random) //the view is born at the top randomly out of the boundary of screen
@@ -111,12 +111,12 @@ extension LKAlertController {
 }
 
 extension UIViewController {
-    func showOK(title: String, message: String?) {
+    func showOK(title: String = Config.General.appName, message: String?) {
         Alert(title: title, message: message).showOK()
     }
     
     func showError(message: String) {
-        Alert(title: "Error", message: message).showOK()
+        Alert(title: "Error".localized(), message: message).showOK()
     }
 }
 
@@ -154,5 +154,14 @@ extension UITextView {
             text = String(text.dropLast())
             layoutIfNeeded()
         }
+    }
+}
+
+extension Bundle {
+    var releaseVersionNumber: String {
+        return "\(infoDictionary?["CFBundleShortVersionString"] as? String ?? "")"
+    }
+    var buildVersionNumber: String {
+        return "\(infoDictionary?["CFBundleVersion"] as? String ?? "")"
     }
 }

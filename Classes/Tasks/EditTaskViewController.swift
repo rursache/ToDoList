@@ -1,5 +1,5 @@
 //
-//  AddTaskViewController.swift
+//  EditTaskViewController.swift
 //  ToDoList
 //
 //  Created by Radu Ursache on 21/02/2019.
@@ -14,7 +14,7 @@ import UnderKeyboard
 import LKAlertController
 import RSTextViewMaster
 
-class AddTaskViewController: BaseViewController {
+class EditTaskViewController: BaseViewController {
 
     @IBOutlet weak var addTaskView: UIView!
     @IBOutlet weak var taskTitleTextView: RSTextViewMaster!
@@ -27,11 +27,16 @@ class AddTaskViewController: BaseViewController {
     let keyboardObserver = UnderKeyboardObserver()
     var tempTask = TaskModel()
     var onCompletion: (() -> Void)?
+    var editMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        RealmManager.sharedInstance.addTask(task: self.tempTask)
+        if !self.editMode {
+            RealmManager.sharedInstance.addTask(task: self.tempTask)
+        } else {
+            self.loadExistingTaskData()
+        }
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -49,17 +54,25 @@ class AddTaskViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
+        if self.editMode {
+            self.title = "Edit task".localized()
+        } else {
+            self.title = "Add task".localized()
+        }
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel".localized(), style: .done, target: self, action: #selector(self.cancelAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .done, target: self, action: #selector(self.saveAction))
         
         self.taskTitleTextView.text = ""
         self.taskTitleTextView.delegate = self
-        self.taskTitleTextView.placeHolder = "Add a task".localized()
+        self.taskTitleTextView.placeHolder = "Task content".localized()
         self.taskTitleTextView.isAnimate = true
         self.taskTitleTextView.maxHeight = self.taskTitleTextView.frame.height * 6
         
         self.priorityButton.isHidden = !Config.Features.enablePriority
-        self.commentButton.isHidden = !Config.Features.enableComments
+        if !Config.Features.enableComments || self.editMode {
+            self.commentButton.isHidden = true
+        }
         
         self.updateDateButtonTitle()
     }
@@ -82,6 +95,17 @@ class AddTaskViewController: BaseViewController {
         }
     }
     
+    func loadExistingTaskData() {
+        self.taskTitleTextView.text = self.tempTask.content
+        self.taskTitleTextView.layoutIfNeeded()
+        
+        let currentPriority = self.tempTask.priority
+        self.setTaskPriority(priority: currentPriority, title: currentPriority != 10 ? Config.General.priorityTitles[currentPriority-1] : "Priority".localized())
+        
+        self.updateDateButtonTitle()
+        self.updateCommentsButton()
+    }
+    
     func updateDateButtonTitle() {
         var buttonText = "Date".localized()
         var fontSize: CGFloat = 14
@@ -96,6 +120,16 @@ class AddTaskViewController: BaseViewController {
         self.dateButton.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
     }
     
+    func updateCommentsButton() {
+        let commentsCount = self.tempTask.availableComments().count
+        
+        if commentsCount == 0 {
+            self.commentButton.setTitle("Comments".localized(), for: .normal)
+        } else {
+            self.commentButton.setTitle("\(commentsCount)", for: .normal)
+        }
+    }
+    
     @objc func taskDateButtonAction() {
         let datePicker = ActionSheetDatePicker(title: "Select date".localized(), datePickerMode: .date, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
             guard let selectedDate = selectedDate as? Date else { return }
@@ -104,18 +138,19 @@ class AddTaskViewController: BaseViewController {
             
             self.updateDateButtonTitle()
         }, cancel: { (actionSheet) in
-            self.tempTask.date = nil
+            RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: nil)
+            
             self.updateDateButtonTitle()
         }, origin: self.dateButton)
         
-        datePicker?.setDoneButton(UIBarButtonItem(title: "Save", style: .done, target: self, action: nil))
-        datePicker?.setCancelButton(UIBarButtonItem(title: "No date", style: .done, target: self, action: nil))
+        datePicker?.setDoneButton(UIBarButtonItem(title: "Save".localized(), style: .done, target: self, action: nil))
+        datePicker?.setCancelButton(UIBarButtonItem(title: "No date".localized(), style: .done, target: self, action: nil))
         
         datePicker?.show()
     }
     
     @objc func priorityButtonAction() {
-        let prioritySheet = ActionSheet(title: "Task priority", message: nil)
+        let prioritySheet = ActionSheet(title: "Task priority".localized(), message: nil)
         
         prioritySheet.addAction(Config.General.priorityTitles[0], style: .default) { (action) in
             self.setTaskPriority(priority: 1, title: action?.title)
@@ -134,7 +169,7 @@ class AddTaskViewController: BaseViewController {
         }
         
         prioritySheet.addAction(Config.General.priorityTitles[4], style: .default) { (action) in
-            self.setTaskPriority(priority: 10, title: "Priority")
+            self.setTaskPriority(priority: 10, title: "Priority".localized())
         }
         
         prioritySheet.addAction("Cancel".localized(), style: .destructive)
@@ -146,12 +181,11 @@ class AddTaskViewController: BaseViewController {
     @objc func commentButtonAction() {
         let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
         
-        commentsVC.isNewTask = true
         commentsVC.currentTask = self.tempTask
         commentsVC.showKeyboardAtLoad = true
-//        commentsVC.onCompletion = { comments in
-//            
-//        }
+        commentsVC.onCompletion = {
+            self.updateCommentsButton()
+        }
         
         self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
     }
@@ -169,7 +203,9 @@ class AddTaskViewController: BaseViewController {
     }
 
     @objc func cancelAction() {
-        RealmManager.sharedInstance.deleteTask(task: self.tempTask, soft: true)
+        if !self.editMode {
+            RealmManager.sharedInstance.deleteTask(task: self.tempTask, soft: true)
+        }
         
         self.close()
     }
@@ -201,7 +237,7 @@ class AddTaskViewController: BaseViewController {
     }
 }
 
-extension AddTaskViewController: RSTextViewMasterDelegate, UITextViewDelegate {
+extension EditTaskViewController: RSTextViewMasterDelegate, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // to do
         // limit to 10 rows

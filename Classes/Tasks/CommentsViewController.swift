@@ -22,11 +22,12 @@ class CommentsViewController: BaseViewController {
     
     let keyboardObserver = UnderKeyboardObserver()
     
-    var onCompletion: (() -> Void)?//((List<CommentModel>) -> Void)?
+    var onCompletion: (() -> Void)?
     
     var currentTask = TaskModel()
     var showKeyboardAtLoad = false
-    var isNewTask = false
+    var currentEditingComment = CommentModel()
+    var editMode = false
     var keyboardVisible = false
     
     override func viewDidLoad() {
@@ -67,8 +68,6 @@ class CommentsViewController: BaseViewController {
     override func setupBindings() {
         super.setupBindings()
         
-//        self.commentsDataSource = self.currentTask.comments
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -83,7 +82,6 @@ class CommentsViewController: BaseViewController {
     }
     
     @objc func closeAction() {
-//        self.onCompletion?(self.commentsDataSource)
         self.onCompletion?()
         
         self.textView.resignFirstResponder()
@@ -92,22 +90,38 @@ class CommentsViewController: BaseViewController {
     }
     
     @objc func addCommentAction() {
-        let newComment = CommentModel(title: self.textView.text, date: Date())
-        
-//        if self.isNewTask {
-//            self.currentTask.comments.append(newComment)
-//        } else {
-//            RealmManager.sharedInstance.updateComments(object: self.currentTask, commentsToAdd: [newComment])
+        if self.editMode {
+            self.editMode = false
+            
+            self.addButton.setTitle("Add", for: .normal)
+            
+            RealmManager.sharedInstance.changeCommentContent(comment: self.currentEditingComment, content: self.textView.text)
+        } else {
+            let newComment = CommentModel(title: self.textView.text, date: Date())
             newComment.task = self.currentTask
             
             RealmManager.sharedInstance.addObject(object: newComment, update: true)
-//        }
-        
-//        Utils().getSyncEngine()?.pushAll()
+        }
         
         self.tableView.reloadData()
         
         self.textView.text = ""
+    }
+    
+    func startEditMode() {
+        self.editMode = true
+        
+        self.textView.setText(text: self.currentEditingComment.content)
+        self.textView.layoutIfNeeded()
+        self.textView.becomeFirstResponder()
+        
+        self.addButton.setTitle("Update", for: .normal)
+    }
+    
+    func deleteComment(comment: CommentModel) {
+        RealmManager.sharedInstance.deleteComment(comment: comment, soft: true)
+        
+        self.tableView.reloadData()
     }
     
     func openURL(url: URL) {
@@ -132,13 +146,13 @@ class CommentsViewController: BaseViewController {
 
 extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.currentTask.comments.count
+        return self.currentTask.availableComments().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.getIdentifier(), for: indexPath) as! CommentTableViewCell
         
-        let currentItem = self.currentTask.comments[indexPath.row]
+        let currentItem = self.currentTask.availableComments()[indexPath.row]
         
         cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
         cell.contentLabel.text = currentItem.content
@@ -154,7 +168,23 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.currentEditingComment = self.currentTask.availableComments()[indexPath.row]
+        
+        self.startEditMode()
+    }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
+            guard indexPath.row < self.currentTask.availableComments().count else { return }
+            let comment = self.currentTask.availableComments()[indexPath.row]
+            
+            self.deleteComment(comment: comment)
+        }
+        return [deleteAction]
+    }
 }
 
 extension CommentsViewController: RSTextViewMasterDelegate, UITextViewDelegate {

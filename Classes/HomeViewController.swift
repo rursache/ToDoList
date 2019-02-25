@@ -8,6 +8,7 @@
 
 import UIKit
 import IceCream
+import CloudKit
 
 class HomeViewController: BaseViewController {
 
@@ -22,6 +23,8 @@ class HomeViewController: BaseViewController {
         
         if !Utils().userIsLoggedIniCloud() {
             Utils().showErrorToast(message: "You are not logged in iCloud. Your tasks won't be synced!".localized())
+        } else {
+            self.getUserFullName()
         }
     }
     
@@ -34,7 +37,7 @@ class HomeViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "ToDoList", style: .done, target: self, action: #selector(self.titleButtonAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Config.General.appName, style: .done, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "settingsIcon")!, target: self, action: #selector(self.settingsButtonAction))
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
@@ -53,12 +56,9 @@ class HomeViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
     }
     
-    @objc func titleButtonAction() {
-        self.showOK(title: "ToDoList", message: "A simple ToDoList written in Swift 4.2\n\nRanduSoft 2019")
-    }
-    
     @objc func settingsButtonAction() {
-        self.loadData()
+        let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        self.present(UINavigationController(rootViewController: settingsVC), animated: true, completion: nil)
     }
     
     func loadData() {
@@ -68,10 +68,10 @@ class HomeViewController: BaseViewController {
         let weekCount = RealmManager.sharedInstance.getWeekTasks().count
         
         self.homeDataSource = [
-            HomeItemModel(title: "All Tasks", icon: "menu_all", listType: .All, count: allCount),
-            HomeItemModel(title: "Today", icon: "menu_today", listType: .Today, count: todayCount),
-            HomeItemModel(title: "Tomorrow", icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
-            HomeItemModel(title: "Next 7 Days", icon: "menu_week", listType: .Week, count: weekCount)
+            HomeItemModel(title: "All Tasks".localized(), icon: "menu_all", listType: .All, count: allCount),
+            HomeItemModel(title: "Today".localized(), icon: "menu_today", listType: .Today, count: todayCount),
+            HomeItemModel(title: "Tomorrow".localized(), icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
+            HomeItemModel(title: "Next 7 Days".localized(), icon: "menu_week", listType: .Week, count: weekCount)
                                 ]
         
         self.tableView.reloadData()
@@ -100,7 +100,7 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func addTaskButtonAction() {
-        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addTaskVC") as! AddTaskViewController
+        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
         addTaskVC.onCompletion = {
             self.loadData()
         }
@@ -109,6 +109,17 @@ class HomeViewController: BaseViewController {
         navigationController.modalPresentationStyle = .custom
         
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func getUserFullName() {
+        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
+            CKContainer.default().fetchUserRecordID { (record, error) in
+                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
+                    let fullName = (userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!
+                    UserDefaults.standard.set(fullName, forKey: Config.UserDefaults.userFullName)
+                })
+            }
+        }
     }
 }
 
