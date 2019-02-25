@@ -66,6 +66,7 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Synced push notifications between devices
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
+- [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
  
 ### Improvements
 - [ ] Better hashtag integration in comments
