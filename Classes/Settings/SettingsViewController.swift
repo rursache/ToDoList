@@ -9,6 +9,7 @@
 import UIKit
 import AcknowList
 import MessageUI
+import LKAlertController
 
 class SettingsViewController: BaseViewController {
 
@@ -19,7 +20,7 @@ class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setDataSource()
+        self.loadCurrentData()
     }
     
     override func setupUI() {
@@ -50,12 +51,19 @@ class SettingsViewController: BaseViewController {
         self.tableView.dataSource = self
     }
     
-    func setDataSource() {
+    func loadCurrentData() {
+        let userDefaults = UserDefaults.standard
+        
+        let startPageOption = Config.General.startPageTitles[userDefaults.integer(forKey: Config.UserDefaults.startPage)]
+        let themeOption = Config.General.themes[userDefaults.integer(forKey: Config.UserDefaults.theme)].name
+        let languageOption = Config.General.languages[userDefaults.integer(forKey: Config.UserDefaults.language)].name
+        let openLinksOption = Config.General.linksOptions[userDefaults.integer(forKey: Config.UserDefaults.openLinks)]
+        
         let mainSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Start page", icon: "settings_start_page", subtitle: nil, rightTitle: "Overview"),
-            SettingsItemModel(title: "Theme", icon: "settings_theme", subtitle: nil, rightTitle: "Red"),
-            SettingsItemModel(title: "Language", icon: "settings_language", subtitle: nil, rightTitle: "English"),
-            SettingsItemModel(title: "Open Web Links", icon: "settings_openurl", subtitle: nil, rightTitle: "In App")
+            SettingsItemModel(title: "Start page", icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
+            SettingsItemModel(title: "Theme", icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
+            SettingsItemModel(title: "Language", icon: "settings_language", subtitle: nil, rightTitle: languageOption),
+            SettingsItemModel(title: "Open Web Links", icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
                                                         ])
         
         let aboutSection = SettingsItemSection(items: [
@@ -77,7 +85,9 @@ class SettingsViewController: BaseViewController {
         
         // section 1
         
-        // to do
+        if section == 1 {
+           self.createActionSheet(row: row)
+        }
         
         // section 2
         
@@ -115,6 +125,76 @@ class SettingsViewController: BaseViewController {
             // about
             self.showOK(message: "A simple To-do list app written in Swift 4.2\nRadu Ursache - RanduSoft\n\nVersion \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
         }
+    }
+    
+    func createActionSheet(row: Int) {
+        let currentItem = self.dataSource.first?.items[row - 1]
+        let actionSheet = ActionSheet(title: currentItem?.title, message: nil)
+        
+        if row == 1 {
+            // start page
+            var startPageTitles = Config.General.startPageTitles; startPageTitles.removeLast(1)
+            
+            for option in startPageTitles {
+                actionSheet.addAction(option, style: .default) { (action) in
+                    UserDefaults.standard.set(Config.General.startPageTitles.index(of: option), forKey: Config.UserDefaults.startPage)
+                    
+                    Utils().showSuccessToast(message: "Start page updated!".localized())
+                    self.loadCurrentData()
+                }
+            }
+        } else if row == 2 {
+            // themes
+            
+            for theme in Config.General.themes {
+                actionSheet.addAction(theme.name, style: .default) { (action) in
+                    UserDefaults.standard.set(Config.General.themes.index(of: theme), forKey: Config.UserDefaults.theme)
+                    
+                    NotificationCenter.default.post(name: Config.Notifications.themeUpdated, object: nil)
+                    self.setupUI()
+                    
+                    UIApplication.shared.setAlternateIconName(theme.appIcon) { error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            Utils().showErrorToast(message: error.localizedDescription)
+                        } else {
+                            Utils().showSuccessToast(message: "Theme updated!".localized())
+                        }
+                    }
+                    
+                    self.loadCurrentData()
+                }
+            }
+        } else if row == 3 {
+            // languages
+            
+            for language in Config.General.languages {
+                actionSheet.addAction(language.name, style: .default) { (action) in
+                    UserDefaults.standard.set(Config.General.languages.index(of: language), forKey: Config.UserDefaults.language)
+                    
+                    UserDefaults.standard.set([language.code], forKey: "AppleLanguages")
+                    
+                    Utils().showSuccessToast(message: "Language updated. Please restart the app!".localized())
+                    self.loadCurrentData()
+                }
+            }
+        } else if row == 4 {
+            // open links
+            
+            for option in Config.General.linksOptions {
+                actionSheet.addAction(option, style: .default) { (action) in
+                    UserDefaults.standard.set(Config.General.linksOptions.index(of: option), forKey: Config.UserDefaults.openLinks)
+                    
+                    Utils().showSuccessToast(message: "Links will now open \(option)!".localized())
+                    self.loadCurrentData()
+                }
+            }
+        }
+        
+        actionSheet.addAction("Cancel".localized(), style: .cancel)
+        
+        actionSheet.presentIn(self)
+        actionSheet.show()
     }
     
     @objc func closeButtonAction() {

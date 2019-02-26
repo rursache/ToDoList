@@ -17,14 +17,22 @@ class BaseViewController: UIViewController {
         self.setupBindings()
     }
     
-    func setupUI() {
-        self.navigationController?.navigationBar.barStyle = .black;
-        self.navigationController?.navigationBar.barTintColor = Config.Colors.red
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.isTranslucent = false
+    @objc func setupUI() {
+        self.setupNavigationBar()
     }
 
     func setupBindings() {
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setupUI), name: Config.Notifications.themeUpdated, object: nil)
+    }
+    
+    func setupNavigationBar() {
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.barStyle = .black;
+            self.navigationController?.navigationBar.barTintColor = Config.General.themes[UserDefaults.standard.integer(forKey: Config.UserDefaults.theme)].color
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.isTranslucent = false
+            
+            self.navigationController?.navigationBar.layoutIfNeeded()
+        }
     }
 }

@@ -107,8 +107,8 @@ class EditTaskViewController: BaseViewController {
     }
     
     func updateDateButtonTitle() {
-        var buttonText = "Date".localized()
-        var fontSize: CGFloat = 14
+        var buttonText = "Date & Time".localized()
+        var fontSize: CGFloat = 13
         
         if let taskDate = self.tempTask.date {
             buttonText = Config.General.dateFormatter().string(from: taskDate)
@@ -131,7 +131,7 @@ class EditTaskViewController: BaseViewController {
     }
     
     @objc func taskDateButtonAction() {
-        let datePicker = ActionSheetDatePicker(title: "Select date".localized(), datePickerMode: .date, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
+        let datePicker = ActionSheetDatePicker(title: "Select date and time".localized(), datePickerMode: .dateAndTime, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
             guard let selectedDate = selectedDate as? Date else { return }
             
             RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: selectedDate)
@@ -172,7 +172,7 @@ class EditTaskViewController: BaseViewController {
             self.setTaskPriority(priority: 10, title: "Priority".localized())
         }
         
-        prioritySheet.addAction("Cancel".localized(), style: .destructive)
+        prioritySheet.addAction("Cancel".localized(), style: .cancel)
         
         prioritySheet.presentIn(self)
         prioritySheet.show()

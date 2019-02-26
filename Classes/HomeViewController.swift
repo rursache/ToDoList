@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
     
     var homeDataSource = [HomeItemModel]()
     var selectedItem = HomeItemModel()
+    var shouldRedirectToPage = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,15 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.loadData()
+        
+        self.redirectToPageIfNeeded()
     }
 
     override func setupUI() {
@@ -68,13 +77,32 @@ class HomeViewController: BaseViewController {
         let weekCount = RealmManager.sharedInstance.getWeekTasks().count
         
         self.homeDataSource = [
-            HomeItemModel(title: "All Tasks".localized(), icon: "menu_all", listType: .All, count: allCount),
-            HomeItemModel(title: "Today".localized(), icon: "menu_today", listType: .Today, count: todayCount),
-            HomeItemModel(title: "Tomorrow".localized(), icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
-            HomeItemModel(title: "Next 7 Days".localized(), icon: "menu_week", listType: .Week, count: weekCount)
+            HomeItemModel(title: Config.General.startPageTitles[1], icon: "menu_all", listType: .All, count: allCount),
+            HomeItemModel(title: Config.General.startPageTitles[2].localized(), icon: "menu_today", listType: .Today, count: todayCount),
+            HomeItemModel(title: Config.General.startPageTitles[3].localized(), icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
+            HomeItemModel(title: Config.General.startPageTitles[4].localized(), icon: "menu_week", listType: .Week, count: weekCount),
+            HomeItemModel(title: Config.General.startPageTitles[5], icon: "menu_custom", listType: .Custom, count: -1)
                                 ]
         
         self.tableView.reloadData()
+    }
+    
+    func redirectToPageIfNeeded() {
+        if !self.shouldRedirectToPage {
+            return
+        }
+        
+        self.shouldRedirectToPage = false
+        
+        let preference = UserDefaults.standard.integer(forKey: Config.UserDefaults.startPage)
+        
+        if preference == 0 {
+            return // home page
+        } else {
+            self.selectedItem = self.homeDataSource[preference - 1]
+        }
+        
+        self.performSegue(withIdentifier: "goToTasksVC", sender: self)
     }
     
     @objc func newCloudDataReceived() {
@@ -111,6 +139,10 @@ class HomeViewController: BaseViewController {
         self.present(navigationController, animated: true, completion: nil)
     }
     
+    func prepareCustomTaskList() {
+        
+    }
+    
     func getUserFullName() {
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
             CKContainer.default().fetchUserRecordID { (record, error) in
@@ -135,7 +167,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.itemImageView.image = UIImage(named: currentItem.icon)
         cell.itemTitle.text = currentItem.title
+        
         cell.itemCountLabel.text = String(currentItem.count)
+        cell.itemCountLabel.isHidden = currentItem.count == -1
         
         return cell
     }
@@ -145,7 +179,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.selectedItem = self.homeDataSource[indexPath.row]
         
-        self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+        if self.selectedItem.count == -1 {
+            self.prepareCustomTaskList()
+        } else {
+            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

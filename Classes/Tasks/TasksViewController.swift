@@ -120,7 +120,7 @@ class TasksViewController: BaseViewController {
             }
         }
         
-        sortSheet.addAction("Cancel".localized(), style: .destructive)
+        sortSheet.addAction("Cancel".localized(), style: .cancel)
         
         sortSheet.presentIn(self)
         sortSheet.show()
@@ -161,10 +161,14 @@ class TasksViewController: BaseViewController {
             self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
         }
         
-        taskOptionsSheet.addAction("Cancel".localized(), style: .destructive)
+        taskOptionsSheet.addAction("Cancel".localized(), style: .cancel)
         
         taskOptionsSheet.presentIn(self)
         taskOptionsSheet.show()
+    }
+    
+    @objc func completeTaskSelector(sender: UIButton) {
+        self.completeTask(task: self.tasksDataSource[sender.tag])
     }
     
     func completeTask(task: TaskModel) {
@@ -194,10 +198,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.taskNameLabel.text = currentTask.content
         
-        cell.checkBoxButton.addAction {
-            // test with multiple tasks, after cellForRowAt was called multiple times
-            self.completeTask(task: currentTask)
-        }
+        cell.checkBoxButton.tag = indexPath.row
+        cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
         
         if let taskDate = currentTask.date {
             cell.taskDateLabel.text = Config.General.dateFormatter().string(from: taskDate)

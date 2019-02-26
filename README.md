@@ -14,7 +14,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 	- [x] Complete items
 	- [x] Date/Time for items
 	- [x] Sort options
-- [ ] Theme support
+- [x] Theme support with custom App Icons
 - [ ] Tutorial/Onboarding
 - [x] iCloud Kit support for syncing
 - [ ] Push notifications for reminders
@@ -51,30 +51,33 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 	- [x] Comment viewer/editor (delete/edit current comments)
 	- [x] Animations
 - [x] Settings page
-	- [ ] Select start page
+	- [x] Select start page
 	- [x] Manual iCloud Sync
-	- [ ] Multi-Language support
-	- [ ] Themes 
+	- [x] Themes 
+	- [x] Feedback via email
+	- [x] Option to open links in app or in safari
 - [x] Basic features
 - [x] iCloud sync
 - [ ] Push notifications
 
-### v1.1
+### v1.0.1
+- [ ] Custom intervals page for tasks
 - [ ] Tutorial/Onboarding
-- [ ] Theming 
+- [x] Theming 
 - [ ] Multi-Language support
-- [ ] Custom app icons
-- [ ] Synced push notifications between devices
+- [x] Custom app icons
+- [ ] Sync push notifications between devices
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
 - [ ] Widget for Today tasks
  
 ### Improvements
+- [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
 
 ### Known bugs
-- [x] IceCream lib won't sync task comments to cloudkit (https://github.com/caiyue1993/IceCream/issues/119)
+- [x] IceCream won't sync task comments to cloudkit (https://github.com/caiyue1993/IceCream/issues/119)
 
 ## Acknowledgements & Frameworks used
 
@@ -82,17 +85,16 @@ An extensive list of acknowledgements for each external framework used is also a
 
 ToDoList is currently using:
 
- - LKAlertController
- - ActionSheetPicker-3.0
- - IceCream
- - UnderKeyboard
- - ActiveLabel
- - Realm & RealmSwift
+ - [LKAlertController](https://github.com/lightningkite/LKAlertController)
+ - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
+ - [IceCream (own fork)](https://github.com/iPhoNewsRO/IceCream)
+ - [UnderKeyboard](https://github.com/evgenyneu/UnderKeyboard)
+ - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
+ - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
- - CFNotify
+ - [CFNotify](https://github.com/hallelujahbaby/CFNotify)
 
-All icons used in ToDoList are designed by Icons8.com and available (here)[http://icons8.com]
-
+All icons used in ToDoList are designed by Icons8.com and available [here](http://icons8.com)
 
 ## License
 

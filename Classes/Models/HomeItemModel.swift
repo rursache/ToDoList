@@ -19,6 +19,7 @@ class HomeItemModel: NSObject {
         case Today = "today"
         case Tomorrow = "tomorrow"
         case Week = "week"
+        case Custom = "custom"
     }
     
     override init() {

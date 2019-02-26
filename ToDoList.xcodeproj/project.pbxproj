@@ -15,6 +15,22 @@
 		172CCD8622241A3600240725 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CCD8522241A3600240725 /* SettingsTableViewCell.swift */; };
 		172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CCD8722241AAD00240725 /* SettingsItemModel.swift */; };
 		172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */; };
+		172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8D22253CC700240725 /* IconGreen@2x.png */; };
+		172CCD9A22253CC800240725 /* IconBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8E22253CC700240725 /* IconBlue@3x.png */; };
+		172CCD9B22253CC800240725 /* IconGreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8F22253CC700240725 /* IconGreen@3x.png */; };
+		172CCD9C22253CC800240725 /* IconRed(Alt)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9022253CC700240725 /* IconRed(Alt)@2x.png */; };
+		172CCD9D22253CC800240725 /* IconYellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9122253CC700240725 /* IconYellow@3x.png */; };
+		172CCD9E22253CC800240725 /* IconOrange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9222253CC700240725 /* IconOrange@2x.png */; };
+		172CCD9F22253CC800240725 /* IconBlack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9322253CC700240725 /* IconBlack@3x.png */; };
+		172CCDA022253CC800240725 /* IconYellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9422253CC800240725 /* IconYellow@2x.png */; };
+		172CCDA122253CC800240725 /* IconBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9522253CC800240725 /* IconBlack@2x.png */; };
+		172CCDA222253CC800240725 /* IconOrange@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9622253CC800240725 /* IconOrange@3x.png */; };
+		172CCDA322253CC800240725 /* IconBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9722253CC800240725 /* IconBlue@2x.png */; };
+		172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD9822253CC800240725 /* IconRed(Alt)@3x.png */; };
+		172CCDA722253FB700240725 /* IconPink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA522253FB700240725 /* IconPink@2x.png */; };
+		172CCDA822253FB700240725 /* IconPink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA622253FB700240725 /* IconPink@3x.png */; };
+		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
+		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
 		174F9ECF221D8E5200D9C139 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */; };
 		17D18D3F221D56C4005C647B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D3E221D56C4005C647B /* AppDelegate.swift */; };
 		17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D40221D56C4005C647B /* HomeViewController.swift */; };
@@ -23,6 +39,8 @@
 		17D18D49221D56C5005C647B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D18D47221D56C5005C647B /* LaunchScreen.storyboard */; };
 		17D18D53221D5F01005C647B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D52221D5F01005C647B /* Config.swift */; };
 		17D18D55221D5F0D005C647B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D54221D5F0D005C647B /* Utils.swift */; };
+		17D62B6022247C390085D628 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B5F22247C390085D628 /* ThemeModel.swift */; };
+		17D62B622224813A0085D628 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B612224813A0085D628 /* LanguageModel.swift */; };
 		17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE583221EB370005A9253 /* BaseViewController.swift */; };
 		17EBE587221EC954005A9253 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE586221EC954005A9253 /* TaskModel.swift */; };
 		17EBE589221EC963005A9253 /* HomeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE588221EC963005A9253 /* HomeItemModel.swift */; };
@@ -43,6 +61,22 @@
 		172CCD8522241A3600240725 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		172CCD8722241AAD00240725 /* SettingsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemModel.swift; sourceTree = "<group>"; };
 		172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-ToDoList-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		172CCD8D22253CC700240725 /* IconGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconGreen@2x.png"; sourceTree = "<group>"; };
+		172CCD8E22253CC700240725 /* IconBlue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBlue@3x.png"; sourceTree = "<group>"; };
+		172CCD8F22253CC700240725 /* IconGreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconGreen@3x.png"; sourceTree = "<group>"; };
+		172CCD9022253CC700240725 /* IconRed(Alt)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconRed(Alt)@2x.png"; sourceTree = "<group>"; };
+		172CCD9122253CC700240725 /* IconYellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconYellow@3x.png"; sourceTree = "<group>"; };
+		172CCD9222253CC700240725 /* IconOrange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconOrange@2x.png"; sourceTree = "<group>"; };
+		172CCD9322253CC700240725 /* IconBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBlack@3x.png"; sourceTree = "<group>"; };
+		172CCD9422253CC800240725 /* IconYellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconYellow@2x.png"; sourceTree = "<group>"; };
+		172CCD9522253CC800240725 /* IconBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBlack@2x.png"; sourceTree = "<group>"; };
+		172CCD9622253CC800240725 /* IconOrange@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconOrange@3x.png"; sourceTree = "<group>"; };
+		172CCD9722253CC800240725 /* IconBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBlue@2x.png"; sourceTree = "<group>"; };
+		172CCD9822253CC800240725 /* IconRed(Alt)@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconRed(Alt)@3x.png"; sourceTree = "<group>"; };
+		172CCDA522253FB700240725 /* IconPink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPink@2x.png"; sourceTree = "<group>"; };
+		172CCDA622253FB700240725 /* IconPink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPink@3x.png"; sourceTree = "<group>"; };
+		172CCDA9222542AF00240725 /* IconNight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@2x.png"; sourceTree = "<group>"; };
+		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
 		174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
 		17D18D3B221D56C4005C647B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +88,8 @@
 		17D18D4A221D56C5005C647B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D18D52221D5F01005C647B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		17D18D54221D5F0D005C647B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		17D62B5F22247C390085D628 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		17D62B612224813A0085D628 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		17EBE583221EB370005A9253 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		17EBE586221EC954005A9253 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		17EBE588221EC963005A9253 /* HomeItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemModel.swift; sourceTree = "<group>"; };
@@ -86,6 +122,29 @@
 				172CCD822224189200240725 /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		172CCD8C22253B5F00240725 /* AltAppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				172CCDA9222542AF00240725 /* IconNight@2x.png */,
+				172CCDAA222542AF00240725 /* IconNight@3x.png */,
+				172CCDA522253FB700240725 /* IconPink@2x.png */,
+				172CCDA622253FB700240725 /* IconPink@3x.png */,
+				172CCD9522253CC800240725 /* IconBlack@2x.png */,
+				172CCD9322253CC700240725 /* IconBlack@3x.png */,
+				172CCD9722253CC800240725 /* IconBlue@2x.png */,
+				172CCD8E22253CC700240725 /* IconBlue@3x.png */,
+				172CCD8D22253CC700240725 /* IconGreen@2x.png */,
+				172CCD8F22253CC700240725 /* IconGreen@3x.png */,
+				172CCD9222253CC700240725 /* IconOrange@2x.png */,
+				172CCD9622253CC800240725 /* IconOrange@3x.png */,
+				172CCD9022253CC700240725 /* IconRed(Alt)@2x.png */,
+				172CCD9822253CC800240725 /* IconRed(Alt)@3x.png */,
+				172CCD9422253CC800240725 /* IconYellow@2x.png */,
+				172CCD9122253CC700240725 /* IconYellow@3x.png */,
+			);
+			path = AltAppIcons;
 			sourceTree = "<group>";
 		};
 		174F9ED1221D8E7F00D9C139 /* Frameworks */ = {
@@ -145,6 +204,7 @@
 		17D18D51221D56EF005C647B /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				172CCD8C22253B5F00240725 /* AltAppIcons */,
 				17D18D52221D5F01005C647B /* Config.swift */,
 				17D18D54221D5F0D005C647B /* Utils.swift */,
 				17EBE58F221ED8B1005A9253 /* RealmManager.swift */,
@@ -162,6 +222,8 @@
 				172CCD8722241AAD00240725 /* SettingsItemModel.swift */,
 				17EBE586221EC954005A9253 /* TaskModel.swift */,
 				17EBE58A221EC9F2005A9253 /* CommentModel.swift */,
+				17D62B612224813A0085D628 /* LanguageModel.swift */,
+				17D62B5F22247C390085D628 /* ThemeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,11 +329,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				172CCDA822253FB700240725 /* IconPink@3x.png in Resources */,
+				172CCDA222253CC800240725 /* IconOrange@3x.png in Resources */,
+				172CCD9B22253CC800240725 /* IconGreen@3x.png in Resources */,
+				172CCD9C22253CC800240725 /* IconRed(Alt)@2x.png in Resources */,
+				172CCD9A22253CC800240725 /* IconBlue@3x.png in Resources */,
 				17D18D49221D56C5005C647B /* LaunchScreen.storyboard in Resources */,
+				172CCD9F22253CC800240725 /* IconBlack@3x.png in Resources */,
+				172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */,
+				172CCDA122253CC800240725 /* IconBlack@2x.png in Resources */,
+				172CCDA022253CC800240725 /* IconYellow@2x.png in Resources */,
+				172CCD9D22253CC800240725 /* IconYellow@3x.png in Resources */,
+				172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */,
 				172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */,
+				172CCDA722253FB700240725 /* IconPink@2x.png in Resources */,
 				174F9ECF221D8E5200D9C139 /* GoogleService-Info.plist in Resources */,
 				17D18D46221D56C5005C647B /* Assets.xcassets in Resources */,
+				172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */,
+				172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */,
+				172CCDA322253CC800240725 /* IconBlue@2x.png in Resources */,
 				17D18D44221D56C4005C647B /* Main.storyboard in Resources */,
+				172CCD9E22253CC800240725 /* IconOrange@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +428,7 @@
 				172CCD7F2221776700240725 /* TaskTableViewCell.swift in Sources */,
 				17EBE58B221EC9F2005A9253 /* CommentModel.swift in Sources */,
 				17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */,
+				17D62B6022247C390085D628 /* ThemeModel.swift in Sources */,
 				172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */,
 				17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */,
 				17D18D55221D5F0D005C647B /* Utils.swift in Sources */,
@@ -363,6 +442,7 @@
 				172CCD7D2220947000240725 /* CommentTableViewCell.swift in Sources */,
 				17EBE595221EE588005A9253 /* EditTaskViewController.swift in Sources */,
 				17D18D53221D5F01005C647B /* Config.swift in Sources */,
+				17D62B622224813A0085D628 /* LanguageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

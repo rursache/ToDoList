@@ -93,7 +93,7 @@ class CommentsViewController: BaseViewController {
         if self.editMode {
             self.editMode = false
             
-            self.addButton.setTitle("Add", for: .normal)
+            self.addButton.setTitle("Add".localized(), for: .normal)
             
             RealmManager.sharedInstance.changeCommentContent(comment: self.currentEditingComment, content: self.textView.text)
         } else {
@@ -115,7 +115,7 @@ class CommentsViewController: BaseViewController {
         self.textView.layoutIfNeeded()
         self.textView.becomeFirstResponder()
         
-        self.addButton.setTitle("Update", for: .normal)
+        self.addButton.setTitle("Update".localized(), for: .normal)
     }
     
     func deleteComment(comment: CommentModel) {
@@ -125,12 +125,17 @@ class CommentsViewController: BaseViewController {
     }
     
     func openURL(url: URL) {
-        let safariVC = SFSafariViewController(url: url)
-        self.present(safariVC, animated: true, completion: nil)
+        let currentOption = UserDefaults.standard.integer(forKey: Config.UserDefaults.openLinks)
+        if currentOption == 0 {
+            let safariVC = SFSafariViewController(url: url)
+            self.present(safariVC, animated: true, completion: nil)
+        } else if currentOption == 1 {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
     
     func openHashtag(hashtag: String) {
-        self.showOK(title: "Hashtag", message: hashtag)
+        self.showOK(title: "Hashtag".localized(), message: hashtag)
     }
     
     @objc func keyboardButtonAction() {
