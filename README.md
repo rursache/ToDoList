@@ -1,6 +1,6 @@
 # RSToDoList
 
-<p align="center">
+<p align="left">
   <img width="150" height="150" src="https://github.com/iPhoNewsRO/ToDoList/blob/master/Resources/icon.png" />
 </p>
 
@@ -25,7 +25,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 ## How to run
 
 1. Clone the repo
-2. Run ```pod install``` in terminal to install required pods. Make sure you have (CocoaPods)[https://guides.cocoapods.org/using/getting-started.html] installed.
+2. Run ```pod install``` in terminal to install required pods. Make sure you have [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) installed.
 3. Turn on iCloud option in ```Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` and ```Remote notification```.
 
 ## Live demo
@@ -77,7 +77,8 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Better hashtag integration in comments
 
 ### Known bugs
-- [x] IceCream won't sync task comments to cloudkit (https://github.com/caiyue1993/IceCream/issues/119)
+
+None yet. Make sure you open a [issue](https://github.com/iPhoNewsRO/ToDoList/issues) if you find any!
 
 ## Acknowledgements & Frameworks used
 
