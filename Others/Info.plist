@@ -2,12 +2,92 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>ToDoList</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>IconBlack</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconBlack</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconBlue</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconBlue</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconGreen</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconGreen</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconNight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconNight</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconOrange</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconOrange</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconPink</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconPink</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IconYellow</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconYellow</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>IconRed(Alt)</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -19,7 +99,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -48,83 +128,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>CFBundleIcons</key>
-    <dict>
-        <key>CFBundlePrimaryIcon</key>
-        <dict>
-            <key>CFBundleIconFiles</key>
-            <array>
-                <string>IconRed(Alt)</string>
-            </array>
-            <key>UIPrerenderedIcon</key>
-            <false/>
-        </dict>
-        <key>CFBundleAlternateIcons</key>
-        <dict>
-            <key>IconBlack</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconBlack</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconBlue</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconBlue</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconGreen</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconGreen</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconOrange</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconOrange</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconYellow</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconYellow</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconPink</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconPink</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconNight</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>IconNight</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-        </dict>
-    </dict>
 </dict>
 </plist>

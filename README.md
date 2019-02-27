@@ -92,7 +92,8 @@ ToDoList is currently using:
  - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
- - [CFNotify](https://github.com/hallelujahbaby/CFNotify)
+ - [BiometricAuthentication](https://github.com/iPhoNewsRO/BiometricAuthentication)
+ - [ImpressiveNotifications](https://github.com/iPhoNewsRO/ImpressiveNotifications)
 
 All icons used in ToDoList are designed by Icons8.com and available [here](http://icons8.com)
 

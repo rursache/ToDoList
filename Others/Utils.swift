@@ -8,7 +8,7 @@
 
 import UIKit
 import LKAlertController
-import CFNotify
+import ImpressiveNotifications
 import IceCream
 
 class Utils: NSObject {
@@ -32,46 +32,16 @@ class Utils: NSObject {
         return FileManager.default.ubiquityIdentityToken != nil
     }
     
-    private func showToast(error: Bool, title: String, message: String) {
-        let classicView = CFNotifyView.classicWith(title: title, body: message, theme: error ? .fail(.light) : .success(.light))
-        var classicViewConfig = CFNotify.Config()
-        classicViewConfig.initPosition = .bottom(.random) //the view is born at the top randomly out of the boundary of screen
-        classicViewConfig.appearPosition = .bottom //the view will appear at the top of screen
-        classicViewConfig.hideTime = .custom(seconds: 3)
-        CFNotify.hideAll()
-        CFNotify.present(config: classicViewConfig, view: classicView)
-    }
-    
     func showErrorToast(title: String = "Error".localized(), message: String) {
-        self.showToast(error: true, title: title, message: message)
+        INNotifications.show(type: .danger, data: INNotificationData(title: title, description: message), position: .bottom)
     }
     
     func showSuccessToast(title: String = "Success".localized(), message: String) {
-        self.showToast(error: false, title: title, message: message)
+        INNotifications.show(type: .success, data: INNotificationData(title: title, description: message), position: .bottom)
     }
     
     func getSyncEngine() -> SyncEngine? {
         return (UIApplication.shared.delegate as! AppDelegate).syncEngine
-    }
-}
-
-class ClosureSleeve {
-    let closure: () -> ()
-    
-    init(attachTo: AnyObject, closure: @escaping () -> ()) {
-        self.closure = closure
-        objc_setAssociatedObject(attachTo, "[\(arc4random())]", self, .OBJC_ASSOCIATION_RETAIN)
-    }
-    
-    @objc func invoke() {
-        self.closure()
-    }
-}
-
-extension UIControl {
-    func addAction(for controlEvents: UIControl.Event = .primaryActionTriggered, action: @escaping () -> ()) {
-        let sleeve = ClosureSleeve(attachTo: self, closure: action)
-        self.addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)
     }
 }
 
