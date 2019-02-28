@@ -37,48 +37,19 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 
 Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) on your device and use [this](http://l0ng.in/todolist) link to get the latest build.
 
-# To do
+## To do
 
-### v1.0
-- [x] Home page
-	- [x] Tableview with All, Today, Tomorrow, Next 7 Days
-	- [ ] Search bar
-- [x] Tasks view page
-	- [x] Custom cell
-	- [x] Add item UI/page
-	- [x] Sort
-	- [x] Delete
-	- [x] Edit task
-	- [ ] Search bar
-- [x] Add task view
-	- [x] Date picker
-	- [x] Priority selector
-	- [x] Comment viewer/editor (delete/edit current comments)
-	- [ ] Reminders viewer/editor (delete/edit current notifications)
-	- [x] Animations
-- [x] Settings page
-	- [x] Select start page
-	- [x] Manual iCloud Sync
-	- [x] Themes 
-	- [x] Feedback via email
-	- [x] Option to open links in app or in safari
-- [x] Basic features
-- [x] iCloud sync
-- [x] Push notifications
-
-### v1.0.1
+- [ ] Search bar in home and tasks view
+- [ ] Reminders viewer/editor (delete/edit current notifications)
 - [ ] Custom intervals page for tasks
 - [ ] Tutorial/Onboarding
-- [x] Theming 
 - [ ] Multi-Language support
-- [x] Custom app icons
-- [x] Sync push notifications between devices
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
 - [ ] Widget for Today tasks
  
-### Improvements
+## Improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
