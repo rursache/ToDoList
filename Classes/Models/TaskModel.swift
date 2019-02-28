@@ -20,6 +20,7 @@ class TaskModel: Object {
     @objc dynamic var isDeleted = false
     @objc dynamic var isCompleted = false
     let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
+    let notifications = LinkingObjects(fromType: NotificationModel.self, property: "task")
     
     override class func primaryKey() -> String? {
         return "id"
@@ -37,6 +38,10 @@ class TaskModel: Object {
     
     func availableComments() -> Results<CommentModel> {
         return self.comments.filter("isDeleted == false")
+    }
+    
+    func availableNotifications() -> Results<NotificationModel> {
+        return self.notifications.filter("isDeleted == false")
     }
 }
 

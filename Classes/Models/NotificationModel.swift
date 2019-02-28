@@ -1,8 +1,8 @@
 //
-//  CommentModel.swift
+//  NotificationModel.swift
 //  ToDoList
 //
-//  Created by Radu Ursache on 21/02/2019.
+//  Created by Radu Ursache on 28/02/2019.
 //  Copyright © 2019 Radu Ursache. All rights reserved.
 //
 
@@ -10,22 +10,22 @@ import UIKit
 import RealmSwift
 import IceCream
 
-class CommentModel: Object {
-    @objc dynamic var id = NSUUID().uuidString
-    @objc dynamic var content = ""
+class NotificationModel: Object {
+    @objc dynamic var identifier = NSUUID().uuidString
+    @objc dynamic var text = ""
     @objc dynamic var date = NSDate.init()
     @objc dynamic var isDeleted = false
     @objc dynamic var task: TaskModel?
     @objc dynamic var taskId = ""
     
     override class func primaryKey() -> String? {
-        return "id"
+        return "identifier"
     }
     
-    convenience init(title: String, date: Date) {
+    convenience init(text: String, date: Date) {
         self.init()
         
-        self.content = title
+        self.text = text
         self.date = date as NSDate
     }
     
@@ -35,10 +35,10 @@ class CommentModel: Object {
     }
 }
 
-extension CommentModel: CKRecordConvertible {
+extension NotificationModel: CKRecordConvertible {
     
 }
 
-extension CommentModel: CKRecordRecoverable {
+extension NotificationModel: CKRecordRecoverable {
     
 }

@@ -98,9 +98,9 @@ class CommentsViewController: BaseViewController {
             RealmManager.sharedInstance.changeCommentContent(comment: self.currentEditingComment, content: self.textView.text)
         } else {
             let newComment = CommentModel(title: self.textView.text, date: Date())
-            newComment.task = self.currentTask
+            newComment.setTask(task: self.currentTask)
             
-            RealmManager.sharedInstance.addObject(object: newComment, update: true)
+            RealmManager.sharedInstance.addComment(comment: newComment)
         }
         
         self.tableView.reloadData()

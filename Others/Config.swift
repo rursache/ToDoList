@@ -13,6 +13,7 @@ class Config: NSObject {
         static let useSmallAddTask = true
         static let enablePriority = true
         static let enableComments = true
+        static let showTodayTasksAsBadgeNumber = true
     }
     
     class General: NSObject {
@@ -24,6 +25,8 @@ class Config: NSObject {
             formatter.dateFormat = "d MMM, HH:mm"
             return formatter
         }
+        
+        static let notificationDefaultDelayForNotifications = 30 // minutes
         
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),
                              ThemeModel(name: "Vanadyl Blue", color: Colors.blue, appIcon: "IconBlue"),
@@ -66,5 +69,6 @@ class Config: NSObject {
     
     class Notifications: NSObject {
         static let themeUpdated = NSNotification.Name("themeUpdated")
+        static let shouldReloadData = NSNotification.Name("shouldReloadData")
     }
 }

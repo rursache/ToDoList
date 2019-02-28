@@ -11,7 +11,6 @@ target 'ToDoList' do
   # pod 'PKHUD'
   # pod 'BulletinBoard' # v1.1 feature (onboarding tutorial)
   # pod 'Alamofire'
-  # pod 'Firebase/Core'
   # pod 'Reveal-SDK', '20', :configurations => ['Debug']
   #
 
@@ -26,5 +25,6 @@ target 'ToDoList' do
   pod 'AcknowList'
   pod 'BiometricAuthentication', :git => 'https://github.com/iPhoNewsRO/BiometricAuthentication'
   pod 'ImpressiveNotifications', :git => 'https://github.com/iPhoNewsRO/ImpressiveNotifications'
+  pod 'Robin'
 
 end

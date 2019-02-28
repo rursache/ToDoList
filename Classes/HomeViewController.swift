@@ -62,7 +62,7 @@ class HomeViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitNewData.name, object: nil)
     }
     
     @objc func settingsButtonAction() {
@@ -85,6 +85,8 @@ class HomeViewController: BaseViewController {
                                 ]
         
         self.tableView.reloadData()
+        
+        Utils().setBadgeNumber(badgeNumber: Config.Features.showTodayTasksAsBadgeNumber ? todayCount : 0)
     }
     
     func redirectToPageIfNeeded() {
@@ -105,16 +107,31 @@ class HomeViewController: BaseViewController {
         self.performSegue(withIdentifier: "goToTasksVC", sender: self)
     }
     
-    @objc func newCloudDataReceived() {
+    @objc func newCloudDataReceived(_ notification: NSNotification) {
         print("New iCloud data received")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !UserDefaults.standard.bool(forKey: Config.UserDefaults.neverSyncedBefore) {
                 UserDefaults.standard.set(true, forKey: Config.UserDefaults.neverSyncedBefore)
+                
                 Utils().showSuccessToast(message: "iCloud data synced succesfully!".localized())
             }
             
-            self.loadData()
+            guard let recordZone = notification.userInfo?["zoneId"] as? CKRecordZone.ID else {
+                return
+            }
+            
+            if recordZone.zoneName == "CommentModelsZone" || recordZone.zoneName == "NotificationModelsZone" {
+                Utils().checkTasksForNilObjects()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.loadData()
+                
+                if recordZone.zoneName == "NotificationModelsZone" {
+                    Utils().addAllExistingNotifications()
+                }
+            }
         }
     }
     

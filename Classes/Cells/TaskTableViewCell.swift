@@ -15,6 +15,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var priorityButton: LeftAlignedIconButton!
     @IBOutlet weak var commentsButton: LeftAlignedIconButton!
+    @IBOutlet weak var remindersButton: LeftAlignedIconButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

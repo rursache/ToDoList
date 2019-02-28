@@ -12,6 +12,7 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
+  - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
   - UnderKeyboard (12.0.0)
 
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - LKAlertController
   - Realm
   - RealmSwift
+  - Robin
   - RSTextViewMaster
   - UnderKeyboard
 
@@ -36,6 +38,7 @@ SPEC REPOS:
     - LKAlertController
     - Realm
     - RealmSwift
+    - Robin
     - RSTextViewMaster
     - UnderKeyboard
 
@@ -68,9 +71,10 @@ SPEC CHECKSUMS:
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 6a3705d67d43447594c279f7a844fd1df92d54dd
 
-PODFILE CHECKSUM: 5983f42c19ccef6da8713d6e7eed9944d0e9c85d
+PODFILE CHECKSUM: ffdc549363e15494e33f0687eaba6db5b66eeb55
 
 COCOAPODS: 1.6.1

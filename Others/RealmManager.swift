@@ -16,7 +16,7 @@ class RealmManager {
     private var realm: Realm
     
     private init() {
-        let config = Realm.Configuration(schemaVersion: 8, migrationBlock: { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 12, migrationBlock: { migration, oldSchemaVersion in
             
         })
     
@@ -52,6 +52,15 @@ class RealmManager {
     
     func updateTask(task: TaskModel) {
         self.addObject(object: task, update: true)
+    }
+    
+    func getTaskById(id: String) -> TaskModel? {
+        let results = self.getTasks().filter("id == '\(id)'")
+        if results.count == 1 {
+            return results.first
+        } else {
+            return nil
+        }
     }
     
     func changeTaskContent(task: TaskModel, content: String) {
@@ -124,6 +133,21 @@ class RealmManager {
         return results.filter("isDeleted == false")
     }
     
+    func addComment(comment: CommentModel) {
+        self.addObject(object: comment, update: true)
+    }
+    
+    func setCommentTask(comment: CommentModel, task: TaskModel) {
+        do {
+            try realm.write {
+                comment.task = task
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(comment)")
+        }
+    }
+    
     func changeCommentContent(comment: CommentModel, content: String) {
         do {
             try realm.write {
@@ -154,9 +178,59 @@ class RealmManager {
         }
     }
     
-    // generic funcs
+    // notifications
     
-    func addObject(object: Object, update: Bool) {
+    func getAllNotifications() -> Results<NotificationModel> {
+        let results: Results<NotificationModel> = realm.objects(NotificationModel.self)
+        return results.filter("isDeleted == false")
+    }
+    
+    func addNotification(notification: NotificationModel) {
+        self.addObject(object: notification, update: false)
+    }
+    
+    func getNotificationWithId(identifier: String) -> NotificationModel? {
+        let results: Results<NotificationModel> = realm.objects(NotificationModel.self).filter("identifier == '\(identifier)'")
+        if results.count == 1 {
+            return results.first
+        } else {
+            return nil
+        }
+    }
+    
+    func setNotificationTask(notification: NotificationModel, task: TaskModel) {
+        do {
+            try realm.write {
+                notification.task = task
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(notification)")
+        }
+    }
+    
+    func deleteNotification(notification: NotificationModel, soft: Bool = true) {
+        if soft {
+            self.softDeleteNotification(notification: notification)
+        } else {
+            self.deleteObject(object: notification)
+        }
+    }
+    
+    func softDeleteNotification(notification: NotificationModel) {
+        do {
+            try realm.write {
+                notification.isDeleted = true
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(notification)")
+        }
+    }
+    
+    // generic private funcs
+    
+    private func addObject(object: Object, update: Bool) {
         do {
             try realm.write {
                 realm.add(object, update: update)
@@ -167,7 +241,7 @@ class RealmManager {
         }
     }
     
-    func deleteObject(object: Object) {
+    private func deleteObject(object: Object) {
         do {
             try realm.write {
                 realm.delete(object)
@@ -175,26 +249,6 @@ class RealmManager {
         }
         catch {
             print("Realm error: Cannot write: \(object)")
-        }
-    }
-    
-    func compressImageData(imageData: NSData) -> NSData {
-        if imageData.length > 16500000 {
-            let image = UIImage(data: imageData as Data, scale: 0.7)
-            
-            let firstTry = image!.jpegData(compressionQuality: 0.7)! as NSData
-            
-            if firstTry.length > 16500000 {
-                let image = UIImage(data: firstTry as Data, scale: 0.5)
-                
-                let secondTry = image!.jpegData(compressionQuality: 0.5)! as NSData
-                
-                return secondTry
-            } else {
-                return firstTry
-            }
-        } else {
-            return imageData
         }
     }
 }
