@@ -49,7 +49,7 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
 - [ ] Widget for Today tasks
  
-## Improvements
+### Improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
