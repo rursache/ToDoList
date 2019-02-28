@@ -85,6 +85,8 @@ class HomeViewController: BaseViewController {
                                 ]
         
         self.tableView.reloadData()
+        
+        Utils().setBadgeNumber(badgeNumber: Config.Features.showTodayTasksAsBadgeNumber ? todayCount : 0)
     }
     
     func redirectToPageIfNeeded() {
@@ -115,10 +117,20 @@ class HomeViewController: BaseViewController {
                 Utils().showSuccessToast(message: "iCloud data synced succesfully!".localized())
             }
             
-            self.loadData()
+            guard let recordZone = notification.userInfo?["zoneId"] as? CKRecordZone.ID else {
+                return
+            }
             
-            if let recordZone = notification.userInfo?["zoneId"] as? CKRecordZone.ID, recordZone.zoneName == "NotificationModelsZone" {
-                Utils().addAllExistingNotifications()
+            if recordZone.zoneName == "CommentModelsZone" || recordZone.zoneName == "NotificationModelsZone" {
+                Utils().checkTasksForNilObjects()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.loadData()
+                
+                if recordZone.zoneName == "NotificationModelsZone" {
+                    Utils().addAllExistingNotifications()
+                }
             }
         }
     }

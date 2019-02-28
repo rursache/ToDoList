@@ -45,9 +45,9 @@ class Utils: NSObject {
         return (UIApplication.shared.delegate as! AppDelegate).syncEngine
     }
     
-    func addNotification(task: TaskModel, date: Date, text: String?) {
+    func addNotification(task: TaskModel, date: Date, text: String?, saveInRealm: Bool = true) {
         let realmNotification = NotificationModel(text: text ?? task.content, date: date)
-        realmNotification.task = task
+        realmNotification.setTask(task: task)
         
         let notification = RobinNotification(identifier: realmNotification.identifier, body: realmNotification.text, date: date)
         notification.badge = 1
@@ -55,7 +55,9 @@ class Utils: NSObject {
         notification.setUserInfo(value: task.id, forKey: "taskId")
         
         if let _ = Robin.shared.schedule(notification: notification) {
-            RealmManager.sharedInstance.addNotification(notification: realmNotification)
+            if saveInRealm {
+                RealmManager.sharedInstance.addNotification(notification: realmNotification)
+            }
             
             print("notification added")
         } else {
@@ -95,10 +97,47 @@ class Utils: NSObject {
         for task in allTasks {
             for _ in task.availableNotifications() {
                 if let taskDate = task.date {
-                    self.addNotification(task: task, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil)
+                    self.addNotification(task: task, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil, saveInRealm: false)
                 }
             }
         }
+    }
+    
+    func checkTasksForNilObjects() {
+        // https://github.com/caiyue1993/IceCream/issues/95#issuecomment-466779513
+        
+        print("iCloud Sync: Started recovery process")
+        print("iCloud Sync: Found \(RealmManager.sharedInstance.getAllComments().count) comments")
+        print("iCloud Sync: Found \(RealmManager.sharedInstance.getAllNotifications().count) notifications")
+        
+        var itemsRecovered = 0
+        
+        for comment in RealmManager.sharedInstance.getAllComments() {
+            if comment.task == nil {
+                if let recoveredTask = RealmManager.sharedInstance.getTaskById(id: comment.taskId) {
+                    print("iCloud Sync: Recovered task-less comment (Text: \(comment.content), Recovered task ID: \(comment.taskId))")
+                    
+                    RealmManager.sharedInstance.setCommentTask(comment: comment, task: recoveredTask)
+                    itemsRecovered += 1
+                } else {
+                    print("iCloud Sync: Failed to recover comment \(comment.id)")
+                }
+            }
+        }
+        for notification in RealmManager.sharedInstance.getAllNotifications() {
+            if notification.task == nil {
+                if let recoveredTask = RealmManager.sharedInstance.getTaskById(id: notification.taskId) {
+                    print("iCloud Sync: Recovered task-less notification (Text: \(notification.text), Recovered task ID: \(notification.taskId))")
+                    
+                    RealmManager.sharedInstance.setNotificationTask(notification: notification, task: recoveredTask)
+                    itemsRecovered += 1
+                } else {
+                    print("iCloud Sync: Failed to recover notification \(notification.identifier)")
+                }
+            }
+        }
+        
+        print("iCloud Sync: Recovery done, \(itemsRecovered) items restored")
     }
     
     func setBadgeNumber(badgeNumber: Int) {

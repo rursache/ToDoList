@@ -19,8 +19,8 @@ class TaskModel: Object {
     @objc dynamic var priority = 10
     @objc dynamic var isDeleted = false
     @objc dynamic var isCompleted = false
-    private let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
-    private let notifications = LinkingObjects(fromType: NotificationModel.self, property: "task")
+    let comments = LinkingObjects(fromType: CommentModel.self, property: "task")
+    let notifications = LinkingObjects(fromType: NotificationModel.self, property: "task")
     
     override class func primaryKey() -> String? {
         return "id"

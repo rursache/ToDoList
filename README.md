@@ -17,8 +17,8 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 - [x] Theme support with custom App Icons
 - [ ] Tutorial/Onboarding
 - [x] iCloud Kit support for syncing
-- [ ] Push notifications for reminders
-	- [ ] Synced push notifications between devices
+- [x] Push notifications for reminders
+	- [x] Synced push notifications between devices
 - [ ] Optional lockdown with FaceID/TouchID or passcode
 - [ ] Widget for Today tasks
 
@@ -54,6 +54,7 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 	- [x] Date picker
 	- [x] Priority selector
 	- [x] Comment viewer/editor (delete/edit current comments)
+	- [ ] Reminders viewer/editor (delete/edit current notifications)
 	- [x] Animations
 - [x] Settings page
 	- [x] Select start page
@@ -63,7 +64,7 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 	- [x] Option to open links in app or in safari
 - [x] Basic features
 - [x] iCloud sync
-- [ ] Push notifications
+- [x] Push notifications
 
 ### v1.0.1
 - [ ] Custom intervals page for tasks
@@ -71,13 +72,14 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [x] Theming 
 - [ ] Multi-Language support
 - [x] Custom app icons
-- [ ] Sync push notifications between devices
+- [x] Sync push notifications between devices
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
 - [ ] Widget for Today tasks
  
 ### Improvements
+- [ ] Reload notifications after user gave push permissions
 - [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
 

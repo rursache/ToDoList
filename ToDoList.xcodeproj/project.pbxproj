@@ -31,7 +31,6 @@
 		172CCDA822253FB700240725 /* IconPink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA622253FB700240725 /* IconPink@3x.png */; };
 		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
-		174F9ECF221D8E5200D9C139 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17D18D3F221D56C4005C647B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D3E221D56C4005C647B /* AppDelegate.swift */; };
 		17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D40221D56C4005C647B /* HomeViewController.swift */; };
@@ -78,7 +77,6 @@
 		172CCDA622253FB700240725 /* IconPink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPink@3x.png"; sourceTree = "<group>"; };
 		172CCDA9222542AF00240725 /* IconNight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@2x.png"; sourceTree = "<group>"; };
 		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
-		174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
 		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		17D18D3B221D56C4005C647B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,7 +209,6 @@
 				17D18D54221D5F0D005C647B /* Utils.swift */,
 				17EBE58F221ED8B1005A9253 /* RealmManager.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
-				174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
 			);
 			path = Others;
@@ -346,7 +343,6 @@
 				172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */,
 				172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */,
 				172CCDA722253FB700240725 /* IconPink@2x.png in Resources */,
-				174F9ECF221D8E5200D9C139 /* GoogleService-Info.plist in Resources */,
 				17D18D46221D56C5005C647B /* Assets.xcassets in Resources */,
 				172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */,
 				172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */,

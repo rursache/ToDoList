@@ -16,7 +16,7 @@ class RealmManager {
     private var realm: Realm
     
     private init() {
-        let config = Realm.Configuration(schemaVersion: 10, migrationBlock: { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 12, migrationBlock: { migration, oldSchemaVersion in
             
         })
     
@@ -52,6 +52,15 @@ class RealmManager {
     
     func updateTask(task: TaskModel) {
         self.addObject(object: task, update: true)
+    }
+    
+    func getTaskById(id: String) -> TaskModel? {
+        let results = self.getTasks().filter("id == '\(id)'")
+        if results.count == 1 {
+            return results.first
+        } else {
+            return nil
+        }
     }
     
     func changeTaskContent(task: TaskModel, content: String) {
@@ -128,6 +137,17 @@ class RealmManager {
         self.addObject(object: comment, update: true)
     }
     
+    func setCommentTask(comment: CommentModel, task: TaskModel) {
+        do {
+            try realm.write {
+                comment.task = task
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(comment)")
+        }
+    }
+    
     func changeCommentContent(comment: CommentModel, content: String) {
         do {
             try realm.write {
@@ -160,6 +180,11 @@ class RealmManager {
     
     // notifications
     
+    func getAllNotifications() -> Results<NotificationModel> {
+        let results: Results<NotificationModel> = realm.objects(NotificationModel.self)
+        return results.filter("isDeleted == false")
+    }
+    
     func addNotification(notification: NotificationModel) {
         self.addObject(object: notification, update: false)
     }
@@ -170,6 +195,17 @@ class RealmManager {
             return results.first
         } else {
             return nil
+        }
+    }
+    
+    func setNotificationTask(notification: NotificationModel, task: TaskModel) {
+        do {
+            try realm.write {
+                notification.task = task
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(notification)")
         }
     }
     

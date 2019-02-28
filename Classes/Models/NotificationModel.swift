@@ -16,6 +16,7 @@ class NotificationModel: Object {
     @objc dynamic var date = NSDate.init()
     @objc dynamic var isDeleted = false
     @objc dynamic var task: TaskModel?
+    @objc dynamic var taskId = ""
     
     override class func primaryKey() -> String? {
         return "identifier"
@@ -26,6 +27,11 @@ class NotificationModel: Object {
         
         self.text = text
         self.date = date as NSDate
+    }
+    
+    func setTask(task: TaskModel) {
+        self.task = task
+        self.taskId = task.id
     }
 }
 
