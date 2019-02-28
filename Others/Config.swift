@@ -25,6 +25,8 @@ class Config: NSObject {
             return formatter
         }
         
+        static let notificationDefaultDelayForNotifications = 1 // minutes
+        
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),
                              ThemeModel(name: "Vanadyl Blue", color: Colors.blue, appIcon: "IconBlue"),
                              ThemeModel(name: "Skirret Green", color: Colors.green, appIcon: "IconGreen"),
@@ -66,5 +68,6 @@ class Config: NSObject {
     
     class Notifications: NSObject {
         static let themeUpdated = NSNotification.Name("themeUpdated")
+        static let shouldReloadData = NSNotification.Name("shouldReloadData")
     }
 }

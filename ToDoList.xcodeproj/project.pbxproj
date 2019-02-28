@@ -32,6 +32,7 @@
 		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
 		174F9ECF221D8E5200D9C139 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */; };
+		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17D18D3F221D56C4005C647B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D3E221D56C4005C647B /* AppDelegate.swift */; };
 		17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D40221D56C4005C647B /* HomeViewController.swift */; };
 		17D18D44221D56C4005C647B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D18D42221D56C4005C647B /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
 		174F9ECE221D8E5200D9C139 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
+		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		17D18D3B221D56C4005C647B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D18D3E221D56C4005C647B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D18D40221D56C4005C647B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				172CCD8722241AAD00240725 /* SettingsItemModel.swift */,
 				17EBE586221EC954005A9253 /* TaskModel.swift */,
 				17EBE58A221EC9F2005A9253 /* CommentModel.swift */,
+				17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */,
 				17D62B612224813A0085D628 /* LanguageModel.swift */,
 				17D62B5F22247C390085D628 /* ThemeModel.swift */,
 			);
@@ -396,6 +399,7 @@
 				"${BUILT_PRODUCTS_DIR}/RSTextViewMaster/RSTextViewMaster.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Robin/Robin.framework",
 				"${BUILT_PRODUCTS_DIR}/UnderKeyboard/UnderKeyboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -411,6 +415,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSTextViewMaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Robin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnderKeyboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +435,7 @@
 				172CCD7F2221776700240725 /* TaskTableViewCell.swift in Sources */,
 				17EBE58B221EC9F2005A9253 /* CommentModel.swift in Sources */,
 				17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */,
+				17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */,
 				17D62B6022247C390085D628 /* ThemeModel.swift in Sources */,
 				172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */,
 				17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */,

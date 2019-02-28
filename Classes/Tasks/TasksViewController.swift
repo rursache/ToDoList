@@ -25,6 +25,7 @@ class TasksViewController: BaseViewController {
     @IBOutlet weak var addTaskButton: UIButton!
     
     var currentSortType: SortType = .Date
+    var currentSortAscending = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class TasksViewController: BaseViewController {
             self.tasksDataSource = RealmManager.sharedInstance.getWeekTasks()
         }
         
-        self.sortDataSource(ascending: true)
+        self.sortDataSource()
     }
 
     override func setupUI() {
@@ -68,7 +69,14 @@ class TasksViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
+    }
+    
+    @objc func shouldReloadDataNotification() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.loadData()
+        }
     }
 
     @objc func newCloudDataReceived() {
@@ -97,8 +105,8 @@ class TasksViewController: BaseViewController {
         self.present(navigationController, animated: true, completion: nil)
     }
     
-    func sortDataSource(ascending: Bool) {
-        self.tasksDataSource = self.tasksDataSource.sorted(byKeyPath: self.currentSortType.rawValue, ascending: ascending)
+    func sortDataSource() {
+        self.tasksDataSource = self.tasksDataSource.sorted(byKeyPath: self.currentSortType.rawValue, ascending: self.currentSortAscending)
         
         self.tableView.reloadData()
     }
@@ -116,7 +124,9 @@ class TasksViewController: BaseViewController {
                     self.currentSortType = .Priority
                 }
                 
-                self.sortDataSource(ascending: (itemIndex % 2 == 0))
+                self.currentSortAscending = itemIndex % 2 == 0
+                
+                self.sortDataSource()
             }
         }
         
@@ -124,6 +134,22 @@ class TasksViewController: BaseViewController {
         
         sortSheet.presentIn(self)
         sortSheet.show()
+    }
+    
+    func commentsButtonAction(task: TaskModel, indexPath: IndexPath) {
+        let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
+        
+        commentsVC.currentTask = task
+        commentsVC.showKeyboardAtLoad = false
+        commentsVC.onCompletion = {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
+    }
+    
+    func remindersButtonAction(task: TaskModel, indexPath: IndexPath) {
+        // to do
     }
     
     func setDefaultSorting() {
@@ -149,16 +175,12 @@ class TasksViewController: BaseViewController {
             self.addTaskAction(editMode: true, task: task)
         }
         
+        taskOptionsSheet.addAction("Reminders".localized(), style: .default) { (action) in
+            self.remindersButtonAction(task: task, indexPath: indexPath)
+        }
+        
         taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
-            let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
-            
-            commentsVC.currentTask = task
-            commentsVC.showKeyboardAtLoad = false
-            commentsVC.onCompletion = {
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-            
-            self.present(UINavigationController(rootViewController: commentsVC), animated: true, completion: nil)
+            self.commentsButtonAction(task: task, indexPath: indexPath)
         }
         
         taskOptionsSheet.addAction("Cancel".localized(), style: .cancel)
@@ -221,6 +243,13 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
             cell.commentsButton.isHidden = false
         } else {
             cell.commentsButton.isHidden = true
+        }
+        
+        if currentTask.availableNotifications().count > 0 {
+            cell.remindersButton.setTitle("\(currentTask.availableNotifications().count)", for: .normal)
+            cell.remindersButton.isHidden = false
+        } else {
+            cell.remindersButton.isHidden = true
         }
         
         cell.layoutIfNeeded()

@@ -22,6 +22,11 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 - [ ] Optional lockdown with FaceID/TouchID or passcode
 - [ ] Widget for Today tasks
 
+## Requirements
+ - iOS 11.0+
+ - Xcode 9.0+
+ - Swift 4.2+
+
 ## How to run
 
 1. Clone the repo
@@ -76,9 +81,10 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
 
-### Known bugs
-
-None yet. Make sure you open a [issue](https://github.com/iPhoNewsRO/ToDoList/issues) if you find any!
+## Communication
+- If you **found a bug**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
+- If you **have a feature request**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
+- If you **want to contribute**, submit a [pull request]().
 
 ## Acknowledgements & Frameworks used
 
@@ -93,8 +99,8 @@ ToDoList is currently using:
  - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
- - [BiometricAuthentication](https://github.com/iPhoNewsRO/BiometricAuthentication)
- - [ImpressiveNotifications](https://github.com/iPhoNewsRO/ImpressiveNotifications)
+ - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
+ - [ImpressiveNotifications (own fork)](https://github.com/iPhoNewsRO/ImpressiveNotifications)
 
 All icons used in ToDoList are designed by Icons8.com and available [here](http://icons8.com)
 

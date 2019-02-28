@@ -221,6 +221,13 @@ class EditTaskViewController: BaseViewController {
         
         RealmManager.sharedInstance.changeTaskContent(task: self.tempTask, content: taskName)
         
+        // add the default notification for a new task
+        if !self.editMode {
+            if let taskDate = self.tempTask.date {
+                Utils().addNotification(task: self.tempTask, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil)
+            }
+        }
+        
         self.close()
     }
     

@@ -10,9 +10,12 @@ import UIKit
 //import Firebase
 import IceCream
 import CloudKit
+import Robin
+import UserNotifications
+import LKAlertController
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var syncEngine: SyncEngine?
@@ -23,8 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.syncEngine = SyncEngine(objects: [
             SyncObject<TaskModel>(),
-            SyncObject<CommentModel>()
+            SyncObject<CommentModel>(),
+            SyncObject<NotificationModel>()
             ])
+        
+        Robin.shared.requestAuthorization()
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
         
         application.registerForRemoteNotifications()
         
@@ -47,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -63,6 +73,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         completionHandler(.newData)
         
+    }
+    
+    func handlePushNotification(userInfo: [AnyHashable : Any]) {
+        guard let taskId = userInfo["taskId"] as? String,
+            let taskName = userInfo["taskName"] as? String,
+            let pushId = userInfo["RobinNotificationIdentifierKey"] as? String,
+            let pushDate = userInfo["RobinNotificationDateKey"] as? Date else {
+                
+                print("push data invalid")
+                return
+        }
+        
+        print(taskId, taskName, pushId, pushDate)
+        
+        // show alert if in foreground
+        if (UIApplication.shared.applicationState == .active) {
+            Alert(title: "Notification".localized(), message: taskName).showOK()
+        }
+        
+        // remove this notificaton from realm
+        Utils().removeNotificationWithId(identifier: pushId)
+        
+        // ask tasksviewcontroller to reload data
+        NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("push willPresent")
+        
+        // called in foreground
+        
+        self.handlePushNotification(userInfo: notification.request.content.userInfo)
+        
+        completionHandler(.badge)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+       
+        print("push didReceive")
+        
+        // called on push tap
+        
+        self.handlePushNotification(userInfo: response.notification.request.content.userInfo)
+        
+        completionHandler()
     }
 }
 

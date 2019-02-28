@@ -26,5 +26,6 @@ target 'ToDoList' do
   pod 'AcknowList'
   pod 'BiometricAuthentication', :git => 'https://github.com/iPhoNewsRO/BiometricAuthentication'
   pod 'ImpressiveNotifications', :git => 'https://github.com/iPhoNewsRO/ImpressiveNotifications'
+  pod 'Robin'
 
 end

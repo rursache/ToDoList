@@ -10,6 +10,7 @@ import UIKit
 import LKAlertController
 import ImpressiveNotifications
 import IceCream
+import Robin
 
 class Utils: NSObject {
     func themeView(view: UIView, setBackgroundColor: Bool = true) {
@@ -42,6 +43,66 @@ class Utils: NSObject {
     
     func getSyncEngine() -> SyncEngine? {
         return (UIApplication.shared.delegate as! AppDelegate).syncEngine
+    }
+    
+    func addNotification(task: TaskModel, date: Date, text: String?) {
+        let realmNotification = NotificationModel(text: text ?? task.content, date: date)
+        realmNotification.task = task
+        
+        let notification = RobinNotification(identifier: realmNotification.identifier, body: realmNotification.text, date: date)
+        notification.badge = 1
+        notification.setUserInfo(value: task.content, forKey: "taskName")
+        notification.setUserInfo(value: task.id, forKey: "taskId")
+        
+        if let _ = Robin.shared.schedule(notification: notification) {
+            RealmManager.sharedInstance.addNotification(notification: realmNotification)
+            
+            print("notification added")
+        } else {
+            print("failed to add notification")
+            Robin.shared.printScheduled()
+            print(Robin.shared.scheduledCount())
+        }
+    }
+    
+    func removeNotificationWithId(identifier: String) {
+        if let notification = RealmManager.sharedInstance.getNotificationWithId(identifier: identifier) {
+            self.removeNotification(notification: notification)
+        } else {
+            print("cannot remove notification with id \(identifier)")
+        }
+    }
+    
+    func removeNotification(notification: NotificationModel) {
+        Robin.shared.cancel(withIdentifier: notification.identifier)
+        RealmManager.sharedInstance.deleteNotification(notification: notification)
+    }
+    
+    private func removeAllNotifications() {
+        Robin.shared.cancelAll()
+    }
+    
+    func removeAllNotificationsForTask(task: TaskModel) {
+        for notification in task.availableNotifications() {
+            self.removeNotificationWithId(identifier: notification.identifier)
+        }
+    }
+    
+    func addAllExistingNotifications() {
+        self.removeAllNotifications()
+        
+        let allTasks = RealmManager.sharedInstance.getTasks()
+        for task in allTasks {
+            for _ in task.availableNotifications() {
+                if let taskDate = task.date {
+                    self.addNotification(task: task, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil)
+                }
+            }
+        }
+    }
+    
+    func setBadgeNumber(badgeNumber: Int) {
+        UIApplication.shared.applicationIconBadgeNumber = badgeNumber
     }
 }
 

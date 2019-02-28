@@ -100,7 +100,7 @@ class CommentsViewController: BaseViewController {
             let newComment = CommentModel(title: self.textView.text, date: Date())
             newComment.task = self.currentTask
             
-            RealmManager.sharedInstance.addObject(object: newComment, update: true)
+            RealmManager.sharedInstance.addComment(comment: newComment)
         }
         
         self.tableView.reloadData()
