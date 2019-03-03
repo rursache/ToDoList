@@ -53,6 +53,10 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Reload notifications after user gave push permissions
 - [ ] Themes view controller with previews
 - [ ] Better hashtag integration in comments
+- [ ] Integrate Fabric & Crashlytics for a better understanding of crashes
+
+### Bugs
+- [ ] App will crash if no internet connection is available
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
@@ -61,9 +65,9 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 
 ## Acknowledgements & Frameworks used
 
-An extensive list of acknowledgements for each external framework used is also available in app by accessing the settings screen.
+An extensive list of acknowledgements for each external framework used for RSToDoList is also available in app by accessing the settings screen.
 
-ToDoList is currently using:
+RSToDoList is currently using:
 
  - [LKAlertController](https://github.com/lightningkite/LKAlertController)
  - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
@@ -75,7 +79,7 @@ ToDoList is currently using:
  - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
  - [ImpressiveNotifications (own fork)](https://github.com/iPhoNewsRO/ImpressiveNotifications)
 
-All icons used in ToDoList are designed by Icons8.com and available [here](http://icons8.com)
+All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com)
 
 ## License
 
