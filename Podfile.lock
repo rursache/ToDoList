@@ -1,6 +1,6 @@
 PODS:
   - AcknowList (1.8)
-  - ActionSheetPicker-3.0 (2.3.0)
+  - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.0.1)
   - BiometricAuthentication (2.2.1)
   - IceCream (1.8.2):
@@ -18,7 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - AcknowList
-  - ActionSheetPicker-3.0
+  - ActionSheetPicker-3.0 (from `https://github.com/iPhoNewsRO/ActionSheetPicker-3.0`)
   - ActiveLabel
   - BiometricAuthentication (from `https://github.com/iPhoNewsRO/BiometricAuthentication`)
   - IceCream (from `https://github.com/iPhoNewsRO/IceCream.git`)
@@ -33,7 +33,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AcknowList
-    - ActionSheetPicker-3.0
     - ActiveLabel
     - LKAlertController
     - Realm
@@ -43,6 +42,8 @@ SPEC REPOS:
     - UnderKeyboard
 
 EXTERNAL SOURCES:
+  ActionSheetPicker-3.0:
+    :git: https://github.com/iPhoNewsRO/ActionSheetPicker-3.0
   BiometricAuthentication:
     :git: https://github.com/iPhoNewsRO/BiometricAuthentication
   IceCream:
@@ -51,6 +52,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/iPhoNewsRO/ImpressiveNotifications
 
 CHECKOUT OPTIONS:
+  ActionSheetPicker-3.0:
+    :commit: 6b3aef31a4880d48b162c2afefe2910a9d8dd38e
+    :git: https://github.com/iPhoNewsRO/ActionSheetPicker-3.0
   BiometricAuthentication:
     :commit: 57b7e915f9b25ded3879af4b131ff78265442d9a
     :git: https://github.com/iPhoNewsRO/BiometricAuthentication
@@ -63,7 +67,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AcknowList: 5b8820004d019d0a8d6a091ea2392dcb54bd3ad2
-  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
+  ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   BiometricAuthentication: 985cd6eeb87e933dc648c8e23220af067db3458d
   IceCream: 72fb76cb53d274d9a1938f4f095e6171e0a78a5a
@@ -75,6 +79,6 @@ SPEC CHECKSUMS:
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 6a3705d67d43447594c279f7a844fd1df92d54dd
 
-PODFILE CHECKSUM: 628c4619b72535b8cc1ff1b78b742e9a9efaf807
+PODFILE CHECKSUM: 59d2223883e3e7582af5a3137450ec92fcba06db
 
 COCOAPODS: 1.6.1

@@ -32,6 +32,7 @@
 		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
+		17C1776B222D6BA300B2E84F /* ActionSheetDateTimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */; };
 		17D18D3F221D56C4005C647B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D3E221D56C4005C647B /* AppDelegate.swift */; };
 		17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D40221D56C4005C647B /* HomeViewController.swift */; };
 		17D18D44221D56C4005C647B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D18D42221D56C4005C647B /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
 		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDateTimeRangePicker.swift; sourceTree = "<group>"; };
 		17D18D3B221D56C4005C647B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D18D3E221D56C4005C647B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D18D40221D56C4005C647B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				17D18D52221D5F01005C647B /* Config.swift */,
 				17D18D54221D5F0D005C647B /* Utils.swift */,
 				17EBE58F221ED8B1005A9253 /* RealmManager.swift */,
+				17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
 			);
@@ -438,6 +441,7 @@
 				17D18D55221D5F0D005C647B /* Utils.swift in Sources */,
 				172CCD832224189200240725 /* SettingsViewController.swift in Sources */,
 				17EBE589221EC963005A9253 /* HomeItemModel.swift in Sources */,
+				17C1776B222D6BA300B2E84F /* ActionSheetDateTimeRangePicker.swift in Sources */,
 				17EBE593221EE584005A9253 /* TasksViewController.swift in Sources */,
 				17EBE58E221ECC0A005A9253 /* HomeTableViewCell.swift in Sources */,
 				172CCD8622241A3600240725 /* SettingsTableViewCell.swift in Sources */,

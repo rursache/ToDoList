@@ -26,7 +26,7 @@ class Config: NSObject {
             return formatter
         }
         
-        static let notificationDefaultDelayForNotifications = 30 // minutes
+        static let notificationDefaultDelayForNotifications = -30 // minutes
         
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),
                              ThemeModel(name: "Vanadyl Blue", color: Colors.blue, appIcon: "IconBlue"),

@@ -15,7 +15,7 @@ target 'ToDoList' do
   #
 
   pod 'LKAlertController'
-  pod 'ActionSheetPicker-3.0'
+  pod 'ActionSheetPicker-3.0', :git => 'https://github.com/iPhoNewsRO/ActionSheetPicker-3.0'
   pod 'IceCream', :git => 'https://github.com/iPhoNewsRO/IceCream.git'
   pod 'UnderKeyboard'
   pod 'ActiveLabel'

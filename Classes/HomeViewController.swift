@@ -9,6 +9,7 @@
 import UIKit
 import IceCream
 import CloudKit
+import ActionSheetPicker_3_0
 
 class HomeViewController: BaseViewController {
 
@@ -18,6 +19,7 @@ class HomeViewController: BaseViewController {
     var homeDataSource = [HomeItemModel]()
     var selectedItem = HomeItemModel()
     var shouldRedirectToPage = true
+    var customIntervalDate: ActionSheetDateTimeRangePicker.DateRange?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,6 +143,7 @@ class HomeViewController: BaseViewController {
 
             tasksVC.title = self.selectedItem.title
             tasksVC.selectedType = self.selectedItem.listType
+            tasksVC.customIntervalDate = self.customIntervalDate
         }
     }
     
@@ -157,7 +160,27 @@ class HomeViewController: BaseViewController {
     }
     
     func prepareCustomTaskList() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM YY"
         
+        let picker = ActionSheetDateTimeRangePicker(
+            title: "Select Date Interval".localized(),
+            minimumDate: Date().next(days: -365),
+            maximumDate: Date().next(days: 365),
+            selectedRange: ActionSheetDateTimeRangePicker.DateRange(start: Date(), end: Date().next(hours: 24)),
+            didSelectHandler: { (dateRange) in
+                self.customIntervalDate = dateRange
+                
+                self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+            },
+            didCancelHandler: nil,
+            origin: self.view,
+            minutesInterval: 60 * 24,
+            minimumMultipleOfMinutesIntervalForRangeDuration: 1)
+        
+        picker.dateFormatter = formatter
+        
+        picker.show()
     }
     
     func getUserFullName() {

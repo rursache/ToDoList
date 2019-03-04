@@ -46,6 +46,10 @@ class RealmManager {
         return self.getTasks().filter("date BETWEEN %@", [Date().startOfDay, Date.nextWeek.endOfDay])
     }
     
+    func getCustomIntervalTasks(startDate: Date, endDate: Date) -> Results<TaskModel> {
+        return self.getTasks().filter("date BETWEEN %@", [startDate.startOfDay, endDate.endOfDay])
+    }
+    
     func addTask(task: TaskModel) {
         self.addObject(object: task, update: false)
     }

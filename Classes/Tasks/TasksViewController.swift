@@ -24,6 +24,8 @@ class TasksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     
+    var customIntervalDate: ActionSheetDateTimeRangePicker.DateRange?
+    
     var currentSortType: SortType = .Date
     var currentSortAscending = true
     
@@ -43,6 +45,14 @@ class TasksViewController: BaseViewController {
             self.tasksDataSource = RealmManager.sharedInstance.getTomorrowTasks()
         } else if selectedType == .Week {
             self.tasksDataSource = RealmManager.sharedInstance.getWeekTasks()
+        } else if selectedType == .Custom {
+            guard let interval = self.customIntervalDate else {
+                print("custom interval date nil")
+                
+                return
+            }
+            
+            self.tasksDataSource = RealmManager.sharedInstance.getCustomIntervalTasks(startDate: interval.start, endDate: interval.end)
         }
         
         self.sortDataSource()
