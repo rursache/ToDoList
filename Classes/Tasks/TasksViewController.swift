@@ -234,7 +234,14 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
         
         if let taskDate = currentTask.date {
-            cell.taskDateLabel.text = Config.General.dateFormatter().string(from: taskDate)
+            if Calendar.current.isDateInToday(taskDate) {
+                cell.taskDateLabel.text = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+            } else if Calendar.current.isDateInTomorrow(taskDate) {
+                cell.taskDateLabel.text = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+            } else {
+                cell.taskDateLabel.text = Config.General.dateFormatter().string(from: taskDate)
+            }
+            
             cell.taskDateLabel.isHidden = false
         } else {
             cell.taskDateLabel.isHidden = true

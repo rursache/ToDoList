@@ -26,6 +26,12 @@ class Config: NSObject {
             return formatter
         }
         
+        static let timeFormatter = { () -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            return formatter
+        }
+        
         static let notificationDefaultDelayForNotifications = -30 // minutes
         
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),
