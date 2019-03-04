@@ -164,8 +164,14 @@ class HomeViewController: BaseViewController {
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
             CKContainer.default().fetchUserRecordID { (record, error) in
                 CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
-                    let fullName = (userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!
-                    UserDefaults.standard.set(fullName, forKey: Config.UserDefaults.userFullName)
+                    guard let firstName = userID?.nameComponents?.givenName,
+                            let lastName = userID?.nameComponents?.familyName else {
+                            UserDefaults.standard.removeObject(forKey: Config.UserDefaults.userFullName)
+                                
+                            return
+                    }
+                    
+                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: Config.UserDefaults.userFullName)
                 })
             }
         }
