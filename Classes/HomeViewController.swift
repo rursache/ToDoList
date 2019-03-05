@@ -65,6 +65,7 @@ class HomeViewController: BaseViewController {
         self.tableView.dataSource = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitNewData.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.threeDTouchShortcutAction(_:)), name: Config.Notifications.threeDTouchShortcut, object: nil)
     }
     
     @objc func settingsButtonAction() {
@@ -107,6 +108,29 @@ class HomeViewController: BaseViewController {
         }
         
         self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+    }
+    
+    @objc func threeDTouchShortcutAction(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo, let option = userInfo["option"] as? Int else {
+            return
+        }
+        
+        self.navigationController?.popToViewController(self, animated: true)
+        
+        switch option {
+        case 0:
+            self.addTaskButtonAction()
+            
+            break
+        case 1, 2, 3:
+            self.selectedItem = self.homeDataSource[option - 1]
+        default:
+            break
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+        }
     }
     
     @objc func newCloudDataReceived(_ notification: NSNotification) {

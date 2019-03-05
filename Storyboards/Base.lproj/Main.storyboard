@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="64" width="400" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="73" id="BjH-bG-qdv" customClass="TaskTableViewCell" customModule="ToDoList" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="73" id="BjH-bG-qdv" customClass="TaskTableViewCell" customModule="ToDoList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="400" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BjH-bG-qdv" id="GFB-0W-yyF">
@@ -135,7 +135,7 @@
                                                     </state>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U8q-8G-jSt">
-                                                    <rect key="frame" x="60" y="44" width="348" height="18"/>
+                                                    <rect key="frame" x="60" y="44" width="325" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-Ot-B69">
                                                             <rect key="frame" x="0.0" y="2" width="60" height="14.5"/>
@@ -159,7 +159,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL1-I9-qtY" customClass="LeftAlignedIconButton" customModule="ToDoList" customModuleProvider="target">
-                                                            <rect key="frame" x="186" y="0.0" width="76" height="18"/>
+                                                            <rect key="frame" x="186" y="0.0" width="53" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="cQz-bl-iPj"/>
                                                             </constraints>
@@ -171,7 +171,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lar-Db-uCR" customClass="LeftAlignedIconButton" customModule="ToDoList" customModuleProvider="target">
-                                                            <rect key="frame" x="272" y="0.0" width="76" height="18"/>
+                                                            <rect key="frame" x="249" y="0.0" width="76" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="OBH-h5-jSP"/>
                                                             </constraints>
@@ -191,7 +191,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAh-oy-6sS">
-                                                    <rect key="frame" x="60" y="15" width="335" height="21"/>
+                                                    <rect key="frame" x="60" y="15" width="310" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -561,7 +561,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAL-l7-1qV">
-                                                            <rect key="frame" x="199.5" y="0.0" width="124.5" height="38.5"/>
+                                                            <rect key="frame" x="199.5" y="0.0" width="50.5" height="38.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="ac4-kT-Eir"/>
                                                             </constraints>
@@ -569,6 +569,23 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCE-eN-Qhi">
+                                                            <rect key="frame" x="260" y="0.0" width="64" height="38.5"/>
+                                                            <subviews>
+                                                                <switch opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rsC-vB-O3u">
+                                                                    <rect key="frame" x="10" y="4" width="56" height="31"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="54" id="4lU-HC-cYm"/>
+                                                                    </constraints>
+                                                                </switch>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="rsC-vB-O3u" firstAttribute="centerY" secondItem="vCE-eN-Qhi" secondAttribute="centerY" id="OQT-Nt-vh2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rsC-vB-O3u" secondAttribute="trailing" id="Q45-4J-59u"/>
+                                                                <constraint firstItem="rsC-vB-O3u" firstAttribute="leading" secondItem="vCE-eN-Qhi" secondAttribute="leading" constant="10" id="rez-d5-xoy"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -582,6 +599,7 @@
                                         <connections>
                                             <outlet property="iconImageView" destination="mdU-k7-FRS" id="ksP-eF-fNO"/>
                                             <outlet property="rightLabel" destination="vAL-l7-1qV" id="TTo-NV-KUw"/>
+                                            <outlet property="rightSwitch" destination="rsC-vB-O3u" id="XPH-FL-tgt"/>
                                             <outlet property="subtitleLabel" destination="K4V-j0-mi3" id="DC8-Oi-bBo"/>
                                             <outlet property="titleLabel" destination="8VG-D6-iSb" id="sFg-ce-N5O"/>
                                         </connections>

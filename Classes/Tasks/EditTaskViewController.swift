@@ -111,7 +111,13 @@ class EditTaskViewController: BaseViewController {
         var fontSize: CGFloat = 13
         
         if let taskDate = self.tempTask.date {
-            buttonText = Config.General.dateFormatter().string(from: taskDate)
+            if Calendar.current.isDateInToday(taskDate) {
+                buttonText = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+            } else if Calendar.current.isDateInTomorrow(taskDate) {
+                buttonText = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+            } else {
+                buttonText = Config.General.dateFormatter().string(from: taskDate)
+            }
             
             fontSize = 11.5
         }
@@ -222,7 +228,7 @@ class EditTaskViewController: BaseViewController {
         RealmManager.sharedInstance.changeTaskContent(task: self.tempTask, content: taskName)
         
         // add the default notification for a new task
-        if !self.editMode {
+        if !self.editMode && !UserDefaults.standard.bool(forKey: Config.UserDefaults.disableAutoReminders) {
             if let taskDate = self.tempTask.date {
                 Utils().addNotification(task: self.tempTask, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil)
             }

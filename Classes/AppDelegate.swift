@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     var syncEngine: SyncEngine?
+    var launchedShortcutItem: UIApplicationShortcutItem?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -33,7 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         application.registerForRemoteNotifications()
         
+        // check for 3d touch shortcuts
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            self.launchedShortcutItem = shortcutItem
+            
+            return false
+        }
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        self.handleShortcuts(shortcutItem: shortcutItem)
+        
+        completionHandler(true)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -51,11 +66,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // handle 3d touch shortcuts
+        if let shortcut = self.launchedShortcutItem {
+            self.handleShortcuts(shortcutItem: shortcut)
+            self.launchedShortcutItem = nil
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func handleShortcuts(shortcutItem: UIApplicationShortcutItem) {
+        var option = 0
+        
+        if shortcutItem.type.contains("alltasks") {
+            option = 1
+        } else if shortcutItem.type.contains("today") {
+            option = 2
+        } else if shortcutItem.type.contains("tomorrow") {
+            option = 3
+        } else if shortcutItem.type.contains("newtask") {
+            option = 0
+        }
+        
+        NotificationCenter.default.post(name: Config.Notifications.threeDTouchShortcut, object: nil, userInfo: ["option": option])
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

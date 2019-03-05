@@ -71,10 +71,12 @@ class Config: NSObject {
         static let theme = "theme"
         static let language = "language"
         static let openLinks = "openLinksOption"
+        static let disableAutoReminders = "disableAutoReminders"
     }
     
     class Notifications: NSObject {
         static let themeUpdated = NSNotification.Name("themeUpdated")
         static let shouldReloadData = NSNotification.Name("shouldReloadData")
+        static let threeDTouchShortcut = NSNotification.Name("3DTouchShortcut")
     }
 }

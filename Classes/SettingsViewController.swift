@@ -36,7 +36,7 @@ class SettingsViewController: BaseViewController {
         version.textAlignment = .center
         
         if let fullName = UserDefaults.standard.string(forKey: Config.UserDefaults.userFullName), Utils().userIsLoggedIniCloud() {
-            version.text = "Logged in as: \(fullName)"
+            version.text = "Logged in as: ".localized() + "\(fullName)"
             tableViewFooter.addSubview(version)
             self.tableView.tableFooterView  = tableViewFooter
         }
@@ -58,22 +58,27 @@ class SettingsViewController: BaseViewController {
         let themeOption = Config.General.themes[userDefaults.integer(forKey: Config.UserDefaults.theme)].name
         let languageOption = Config.General.languages[userDefaults.integer(forKey: Config.UserDefaults.language)].name
         let openLinksOption = Config.General.linksOptions[userDefaults.integer(forKey: Config.UserDefaults.openLinks)]
+        let disableAutoReminders = userDefaults.bool(forKey: Config.UserDefaults.disableAutoReminders)
         
         let mainSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Start page", icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
-            SettingsItemModel(title: "Theme", icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
-            SettingsItemModel(title: "Language", icon: "settings_language", subtitle: nil, rightTitle: languageOption),
-            SettingsItemModel(title: "Open Web Links", icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
+            SettingsItemModel(title: "Start page".localized(), icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
+            SettingsItemModel(title: "Theme".localized(), icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
+            SettingsItemModel(title: "Language".localized(), icon: "settings_language", subtitle: nil, rightTitle: languageOption),
+            SettingsItemModel(title: "Open Web Links".localized(), icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
+                                                        ])
+        
+        let togglesSection = SettingsItemSection(items: [
+            SettingsItemModel(title: "Automatic Reminders".localized(), icon: "settings_auto_reminders", subtitle: "Get a reminder 30m before task's due".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders)
                                                         ])
         
         let aboutSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Manual iCloud Sync", icon: "settings_sync", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "Feedback", icon: "settings_feedback", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "Acknowledgments", icon: "settings_acknowledgments", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "About", icon: "settings_about", subtitle: nil, rightTitle: nil)
+            SettingsItemModel(title: "Manual iCloud Sync".localized(), icon: "settings_sync", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "Feedback".localized(), icon: "settings_feedback", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "Acknowledgments".localized(), icon: "settings_acknowledgments", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "About".localized(), icon: "settings_about", subtitle: nil, rightTitle: nil)
                                                         ])
         
-        self.dataSource = [mainSection, aboutSection]
+        self.dataSource = [mainSection, togglesSection, aboutSection]
         
         self.tableView.reloadData()
     }
@@ -83,47 +88,50 @@ class SettingsViewController: BaseViewController {
         let row = indexPath.row + 1
         let section = indexPath.section + 1
         
-        // section 1
         
         if section == 1 {
            self.createActionSheet(row: row)
         }
         
-        // section 2
-        
-        if section == 2 && row == 1 {
-            // sync
-            Utils().showSuccessToast(message: "Sync started, please wait...".localized())
-            self.navigationItem.rightBarButtonItem = nil
+        if section == 2 {
             
-            Utils().getSyncEngine()?.pull()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                Utils().getSyncEngine()?.pushAll()
+        }
+        
+        if section == 3 {
+            if row == 1 {
+                // sync
+                Utils().showSuccessToast(message: "Sync started, please wait...".localized())
+                self.navigationItem.rightBarButtonItem = nil
                 
+                Utils().getSyncEngine()?.pull()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    self.addRightDoneButton()
-                    Utils().showSuccessToast(message: "Sync done".localized())
+                    Utils().getSyncEngine()?.pushAll()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                        self.addRightDoneButton()
+                        Utils().showSuccessToast(message: "Sync done".localized())
+                    })
                 })
-            })
-        
-        } else if section == 2 && row == 2 {
-            // feedback
-            if MFMailComposeViewController.canSendMail() {
-                let mail = MFMailComposeViewController()
-                mail.mailComposeDelegate = self
-                mail.setToRecipients(["contact@randusoft.ro"])
-                self.present(mail, animated: true)
-            } else {
-                Utils().showErrorToast(message: "No email account setup on your device".localized())
+                
+            } else if row == 2 {
+                // feedback
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+                    mail.setToRecipients(["contact@randusoft.ro"])
+                    self.present(mail, animated: true)
+                } else {
+                    Utils().showErrorToast(message: "No email account setup on your device".localized())
+                }
+                
+            } else if row == 3 {
+                // acknowledgments
+                self.navigationController?.pushViewController(AcknowListViewController(), animated: true)
+                
+            } else if row == 4 {
+                // about
+                self.showOK(message: "A simple To-do list app written in Swift 4.2\nRadu Ursache - RanduSoft\n\nVersion \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
             }
-        
-        } else if section == 2 && row == 3 {
-            // acknowledgments
-            self.navigationController?.pushViewController(AcknowListViewController(), animated: true)
-        
-        } else if section == 2 && row == 4 {
-            // about
-            self.showOK(message: "A simple To-do list app written in Swift 4.2\nRadu Ursache - RanduSoft\n\nVersion \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
         }
     }
     
@@ -197,6 +205,14 @@ class SettingsViewController: BaseViewController {
         actionSheet.show()
     }
     
+    @objc func cellSwitchAction(_ uiswitch: UISwitch) {
+        let switchTag = uiswitch.tag // section row (10 = section 1, row 0)
+        
+        if switchTag == 10 {
+            UserDefaults.standard.set(uiswitch.isOn, forKey: Config.UserDefaults.disableAutoReminders)
+        }
+    }
+    
     @objc func closeButtonAction() {
         self.close()
     }
@@ -238,6 +254,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.rightLabel.isHidden = true
         }
         
+        cell.rightSwitch.superview?.isHidden = !currentItem.showSwitch
+        
+        if currentItem.showSwitch {
+            cell.accessoryType = .none
+            
+            cell.rightSwitch.addTarget(self, action: #selector(self.cellSwitchAction(_:)), for: .valueChanged)
+            cell.rightSwitch.tag = Int("\(indexPath.section)\(indexPath.row)")!
+            cell.rightSwitch.setOn(currentItem.switchIsOn, animated: true)
+        }
+        
+        cell.updateUI()
+        
         cell.layoutIfNeeded()
         
         return cell
@@ -247,6 +275,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         self.cellAction(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let currentItem = self.dataSource[indexPath.section].items[indexPath.row]
+        
+        if currentItem.showSwitch {
+            return nil
+        }
+        
+        return indexPath
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

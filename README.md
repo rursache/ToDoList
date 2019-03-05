@@ -22,7 +22,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 	- [x] Synced push notifications between devices
 - [ ] Optional lockdown with FaceID/TouchID or passcode
 - [ ] Widget for Today tasks
-- [ ] 3D Touch shortcuts
+- [x] 3D Touch shortcuts
 
 ## Requirements
  - iOS 11.0+
@@ -49,7 +49,6 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
 - [ ] Widget for Today tasks
-- [ ] 3D Touch shortcuts
  
 ### Improvements
 - [ ] Reload notifications after user gave push permissions
@@ -81,7 +80,8 @@ RSToDoList is currently using:
  - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
  - [ImpressiveNotifications (own fork)](https://github.com/iPhoNewsRO/ImpressiveNotifications)
 
-All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com)
+All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com).
+Colors for themes and app icon are picked from [FlatUIColors.com](https://flatuicolors.com).
 
 ## License
 

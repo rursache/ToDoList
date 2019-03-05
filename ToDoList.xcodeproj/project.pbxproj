@@ -33,6 +33,7 @@
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17C1776B222D6BA300B2E84F /* ActionSheetDateTimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */; };
+		17C1776E222EB2FE00B2E84F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1776D222EB2FE00B2E84F /* Extensions.swift */; };
 		17D18D3F221D56C4005C647B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D3E221D56C4005C647B /* AppDelegate.swift */; };
 		17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D40221D56C4005C647B /* HomeViewController.swift */; };
 		17D18D44221D56C4005C647B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D18D42221D56C4005C647B /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
 		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDateTimeRangePicker.swift; sourceTree = "<group>"; };
+		17C1776D222EB2FE00B2E84F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		17D18D3B221D56C4005C647B /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D18D3E221D56C4005C647B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D18D40221D56C4005C647B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +123,6 @@
 		172CCD8922241DD800240725 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				172CCD822224189200240725 /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -186,6 +187,7 @@
 				17D18D3E221D56C4005C647B /* AppDelegate.swift */,
 				17EBE583221EB370005A9253 /* BaseViewController.swift */,
 				17D18D40221D56C4005C647B /* HomeViewController.swift */,
+				172CCD822224189200240725 /* SettingsViewController.swift */,
 				172CCD8922241DD800240725 /* Settings */,
 				17EBE591221EE56B005A9253 /* Tasks */,
 				17EBE58C221ECBB7005A9253 /* Cells */,
@@ -211,6 +213,7 @@
 				17D18D54221D5F0D005C647B /* Utils.swift */,
 				17EBE58F221ED8B1005A9253 /* RealmManager.swift */,
 				17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */,
+				17C1776D222EB2FE00B2E84F /* Extensions.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
 			);
@@ -429,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C1776E222EB2FE00B2E84F /* Extensions.swift in Sources */,
 				17EBE587221EC954005A9253 /* TaskModel.swift in Sources */,
 				172CCD7B2220916700240725 /* CommentsViewController.swift in Sources */,
 				172CCD7F2221776700240725 /* TaskTableViewCell.swift in Sources */,

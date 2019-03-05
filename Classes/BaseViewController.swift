@@ -28,7 +28,7 @@ class BaseViewController: UIViewController {
     func setupNavigationBar() {
         DispatchQueue.main.async {
             self.navigationController?.navigationBar.barStyle = .black;
-            self.navigationController?.navigationBar.barTintColor = Config.General.themes[UserDefaults.standard.integer(forKey: Config.UserDefaults.theme)].color
+            self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.isTranslucent = false
             
