@@ -18,7 +18,9 @@ class BaseViewController: UIViewController {
     }
     
     @objc func setupUI() {
-        self.setupNavigationBar()
+        DispatchQueue.main.async {
+            self.setupNavigationBar()
+        }
     }
 
     func setupBindings() {
@@ -26,13 +28,11 @@ class BaseViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.barStyle = .black;
-            self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
-            self.navigationController?.navigationBar.tintColor = UIColor.white
-            self.navigationController?.navigationBar.isTranslucent = false
-            
-            self.navigationController?.navigationBar.layoutIfNeeded()
-        }
+        self.navigationController?.navigationBar.barStyle = .black;
+        self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+//        self.navigationController?.navigationBar.layoutIfNeeded()
     }
 }

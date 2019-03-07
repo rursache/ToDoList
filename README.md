@@ -34,10 +34,12 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 1. Clone the repo
 2. Run ```pod install``` in terminal to install required pods. Make sure you have [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) installed.
 3. Turn on iCloud option in ```Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` and ```Remote notification```.
+4. (Optional) You might want to update or remove [Fabric](https://fabric.io/home) script located ```Build Phases```.
 
 ## Live demo
 
-Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) on your device and use [this](http://l0ng.in/todolist) link to get the latest build.
+1. [AppStore]()
+2. [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) - Use this [invitation link](http://l0ng.in/todolist).
 
 ## To do
 
@@ -58,6 +60,7 @@ Download [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=
 
 ### Bugs
 - [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
+- [ ] Comments are not showing up while adding a task
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
@@ -79,6 +82,8 @@ RSToDoList is currently using:
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
  - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
  - [ImpressiveNotifications (own fork)](https://github.com/iPhoNewsRO/ImpressiveNotifications)
+ - [Robin](https://github.com/ahmedabadie/Robin)
+ - [Fabric & Crashlytics](https://fabric.io/home)
 
 All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com).
 Colors for themes and app icon are picked from [FlatUIColors.com](https://flatuicolors.com).

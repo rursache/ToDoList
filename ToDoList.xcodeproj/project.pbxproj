@@ -31,6 +31,8 @@
 		172CCDA822253FB700240725 /* IconPink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA622253FB700240725 /* IconPink@3x.png */; };
 		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
+		1745401D222EBFAC00B2CA7B /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745401C222EBFAC00B2CA7B /* RemindersViewController.swift */; };
+		1745401F222ECB2A00B2CA7B /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17C1776B222D6BA300B2E84F /* ActionSheetDateTimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */; };
 		17C1776E222EB2FE00B2E84F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1776D222EB2FE00B2E84F /* Extensions.swift */; };
@@ -79,6 +81,8 @@
 		172CCDA622253FB700240725 /* IconPink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPink@3x.png"; sourceTree = "<group>"; };
 		172CCDA9222542AF00240725 /* IconNight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@2x.png"; sourceTree = "<group>"; };
 		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
+		1745401C222EBFAC00B2CA7B /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
 		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDateTimeRangePicker.swift; sourceTree = "<group>"; };
@@ -120,13 +124,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		172CCD8922241DD800240725 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		172CCD8C22253B5F00240725 /* AltAppIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +185,6 @@
 				17EBE583221EB370005A9253 /* BaseViewController.swift */,
 				17D18D40221D56C4005C647B /* HomeViewController.swift */,
 				172CCD822224189200240725 /* SettingsViewController.swift */,
-				172CCD8922241DD800240725 /* Settings */,
 				17EBE591221EE56B005A9253 /* Tasks */,
 				17EBE58C221ECBB7005A9253 /* Cells */,
 				17EBE585221EC93B005A9253 /* Models */,
@@ -241,6 +237,7 @@
 				172CCD8522241A3600240725 /* SettingsTableViewCell.swift */,
 				172CCD7E2221776700240725 /* TaskTableViewCell.swift */,
 				172CCD7C2220947000240725 /* CommentTableViewCell.swift */,
+				1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -251,6 +248,7 @@
 				17EBE592221EE584005A9253 /* TasksViewController.swift */,
 				17EBE594221EE588005A9253 /* EditTaskViewController.swift */,
 				172CCD7A2220916700240725 /* CommentsViewController.swift */,
+				1745401C222EBFAC00B2CA7B /* RemindersViewController.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -276,6 +274,7 @@
 				17D18D38221D56C4005C647B /* Frameworks */,
 				17D18D39221D56C4005C647B /* Resources */,
 				8A01BEFB3ADECC2B23A4998C /* [CP] Embed Pods Frameworks */,
+				1745401B222EB8BE00B2CA7B /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -361,6 +360,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1745401B222EB8BE00B2CA7B /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 06ceb8f70becb136dc0e3a334f040b5244b60c38 6cb1a5193d48da23c32baf638d367554d79acdfd3ea0bcf2b9fa801a14bd3b00\n";
+		};
 		8A01BEFB3ADECC2B23A4998C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,7 +457,9 @@
 				17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */,
 				17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */,
 				17D62B6022247C390085D628 /* ThemeModel.swift in Sources */,
+				1745401D222EBFAC00B2CA7B /* RemindersViewController.swift in Sources */,
 				172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */,
+				1745401F222ECB2A00B2CA7B /* ReminderTableViewCell.swift in Sources */,
 				17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */,
 				17D18D55221D5F0D005C647B /* Utils.swift in Sources */,
 				172CCD832224189200240725 /* SettingsViewController.swift in Sources */,
@@ -603,6 +622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -624,6 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

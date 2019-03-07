@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import RSTextViewMaster
 import UnderKeyboard
 import SafariServices
@@ -46,6 +45,8 @@ class CommentsViewController: BaseViewController {
     
     override func setupUI() {
         super.setupUI()
+        
+        self.title = "Comments".localized()
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close".localized(), style: .done, target: self, action: #selector(self.closeAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "keyboardIcon")!, target: self, action: #selector(self.keyboardButtonAction))

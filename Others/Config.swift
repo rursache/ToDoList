@@ -14,6 +14,7 @@ class Config: NSObject {
         static let enablePriority = true
         static let enableComments = true
         static let showTodayTasksAsBadgeNumber = true
+        static let showCompleteButtonInTaskOptions = false
     }
     
     class General: NSObject {

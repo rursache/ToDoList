@@ -159,7 +159,13 @@ class TasksViewController: BaseViewController {
     }
     
     func remindersButtonAction(task: TaskModel, indexPath: IndexPath) {
-        // to do
+        let remindersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "remindersVC") as! RemindersViewController
+        remindersVC.currentTask = task
+        remindersVC.onCompletion = {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        self.present(UINavigationController(rootViewController: remindersVC), animated: true, completion: nil)
     }
     
     func setDefaultSorting() {
@@ -177,20 +183,22 @@ class TasksViewController: BaseViewController {
     func showTaskOptions(task: TaskModel, indexPath: IndexPath) {
         let taskOptionsSheet = ActionSheet(title: "Task options".localized(), message: nil)
         
-        taskOptionsSheet.addAction("Complete".localized(), style: .default) { (action) in
-            self.completeTask(task: task)
+        if Config.Features.showCompleteButtonInTaskOptions {
+            taskOptionsSheet.addAction("Complete".localized(), style: .default) { (action) in
+                self.completeTask(task: task)
+            }
         }
         
         taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
             self.addTaskAction(editMode: true, task: task)
         }
         
-        taskOptionsSheet.addAction("Reminders".localized(), style: .default) { (action) in
-            self.remindersButtonAction(task: task, indexPath: indexPath)
-        }
-        
         taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
             self.commentsButtonAction(task: task, indexPath: indexPath)
+        }
+        
+        taskOptionsSheet.addAction("Reminders".localized(), style: .default) { (action) in
+            self.remindersButtonAction(task: task, indexPath: indexPath)
         }
         
         taskOptionsSheet.addAction("Cancel".localized(), style: .cancel)

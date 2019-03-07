@@ -3,6 +3,9 @@ PODS:
   - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.0.1)
   - BiometricAuthentication (2.2.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
   - IceCream (1.8.2):
     - RealmSwift
   - ImpressiveNotifications (0.5.0)
@@ -21,6 +24,8 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0 (from `https://github.com/iPhoNewsRO/ActionSheetPicker-3.0`)
   - ActiveLabel
   - BiometricAuthentication (from `https://github.com/iPhoNewsRO/BiometricAuthentication`)
+  - Crashlytics
+  - Fabric
   - IceCream (from `https://github.com/iPhoNewsRO/IceCream.git`)
   - ImpressiveNotifications (from `https://github.com/iPhoNewsRO/ImpressiveNotifications`)
   - LKAlertController
@@ -34,6 +39,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AcknowList
     - ActiveLabel
+    - Crashlytics
+    - Fabric
     - LKAlertController
     - Realm
     - RealmSwift
@@ -70,6 +77,8 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   BiometricAuthentication: 985cd6eeb87e933dc648c8e23220af067db3458d
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   IceCream: 72fb76cb53d274d9a1938f4f095e6171e0a78a5a
   ImpressiveNotifications: 9a3921276e916e244abb7e4b2a6661133479a17c
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
@@ -79,6 +88,6 @@ SPEC CHECKSUMS:
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 6a3705d67d43447594c279f7a844fd1df92d54dd
 
-PODFILE CHECKSUM: 59d2223883e3e7582af5a3137450ec92fcba06db
+PODFILE CHECKSUM: 86f9e02e3fae7255146ca8d98e9f8117fac99d3b
 
 COCOAPODS: 1.6.1

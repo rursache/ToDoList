@@ -107,7 +107,9 @@ class HomeViewController: BaseViewController {
             self.selectedItem = self.homeDataSource[preference - 1]
         }
         
-        self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+        }
     }
     
     @objc func threeDTouchShortcutAction(_ notification: NSNotification) {

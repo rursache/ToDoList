@@ -12,6 +12,8 @@ import CloudKit
 import Robin
 import UserNotifications
 import LKAlertController
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var launchedShortcutItem: UIApplicationShortcutItem?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
         
         self.syncEngine = SyncEngine(objects: [
             SyncObject<TaskModel>(),
@@ -126,7 +130,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Utils().removeNotificationWithId(identifier: pushId)
         
         // ask tasksviewcontroller to reload data
-        NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+//        NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+        
+        // also open all tasks view
+        NotificationCenter.default.post(name: Config.Notifications.threeDTouchShortcut, object: nil, userInfo: ["option": 1])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -137,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         self.handlePushNotification(userInfo: notification.request.content.userInfo)
         
-        completionHandler(.badge)
+        completionHandler(.sound)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

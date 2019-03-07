@@ -21,6 +21,7 @@ class EditTaskViewController: BaseViewController {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var priorityButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var remindersButton: UIButton!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -74,7 +75,11 @@ class EditTaskViewController: BaseViewController {
             self.commentButton.isHidden = true
         }
         
+        self.remindersButton.isHidden = self.editMode
+        
         self.updateDateButtonTitle()
+        self.updateCommentsButton()
+        self.updateRemindersButton()
     }
     
     override func setupBindings() {
@@ -104,6 +109,7 @@ class EditTaskViewController: BaseViewController {
         
         self.updateDateButtonTitle()
         self.updateCommentsButton()
+        self.updateRemindersButton()
     }
     
     func updateDateButtonTitle() {
@@ -114,7 +120,7 @@ class EditTaskViewController: BaseViewController {
             if Calendar.current.isDateInToday(taskDate) {
                 buttonText = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else if Calendar.current.isDateInTomorrow(taskDate) {
-                buttonText = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+                buttonText = "Tom.".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else {
                 buttonText = Config.General.dateFormatter().string(from: taskDate)
             }
@@ -127,13 +133,11 @@ class EditTaskViewController: BaseViewController {
     }
     
     func updateCommentsButton() {
-        let commentsCount = self.tempTask.availableComments().count
-        
-        if commentsCount == 0 {
-            self.commentButton.setTitle("Comments".localized(), for: .normal)
-        } else {
-            self.commentButton.setTitle("\(commentsCount)", for: .normal)
-        }
+        self.commentButton.setTitle("\(self.tempTask.availableComments().count)", for: .normal)
+    }
+    
+    func updateRemindersButton() {
+        self.remindersButton.setTitle("\(self.tempTask.availableNotifications().count)", for: .normal)
     }
     
     @objc func taskDateButtonAction() {
@@ -182,6 +186,16 @@ class EditTaskViewController: BaseViewController {
         
         prioritySheet.presentIn(self)
         prioritySheet.show()
+    }
+    
+    @objc func remindersButtonAction() {
+        let remindersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "remindersVC") as! RemindersViewController
+        remindersVC.currentTask = self.tempTask
+        remindersVC.onCompletion = {
+            self.updateRemindersButton()
+        }
+        
+        self.present(UINavigationController(rootViewController: remindersVC), animated: true, completion: nil)
     }
     
     @objc func commentButtonAction() {
