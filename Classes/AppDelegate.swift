@@ -24,6 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        self.setupDefaults()
+        
+        self.setupSDKs(application: application)
+        
+        // check for 3d touch shortcuts
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            self.launchedShortcutItem = shortcutItem
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    func setupSDKs(application: UIApplication) {
         Fabric.with([Crashlytics.self])
         
         self.syncEngine = SyncEngine(objects: [
@@ -37,15 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         center.delegate = self
         
         application.registerForRemoteNotifications()
+    }
+    
+    func setupDefaults() {
+        let userDefaults = UserDefaults.standard
         
-        // check for 3d touch shortcuts
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            self.launchedShortcutItem = shortcutItem
+        if !userDefaults.bool(forKey: Config.UserDefaults.launchedBefore) {
+            userDefaults.set(true, forKey: Config.UserDefaults.launchedBefore)
             
-            return false
+            userDefaults.set(true, forKey: Config.UserDefaults.helpPrompts)
         }
-        
-        return true
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {

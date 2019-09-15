@@ -8,7 +8,7 @@
 
 import UIKit
 import LKAlertController
-import ImpressiveNotifications
+import Loaf
 import IceCream
 import Robin
 
@@ -54,12 +54,21 @@ class Utils: NSObject {
     
     // toast
     
-    func showErrorToast(title: String = "Error".localized(), message: String) {
-        INNotifications.show(type: .danger, data: INNotificationData(title: title, description: message), position: .bottom)
+    func showErrorToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+        self.showToast(viewController: viewController, message: message, state: .error)
     }
     
-    func showSuccessToast(title: String = "Success".localized(), message: String) {
-        INNotifications.show(type: .success, data: INNotificationData(title: title, description: message), position: .bottom)
+    func showSuccessToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+        self.showToast(viewController: viewController, message: message, state: .success)
+    }
+    
+    func showInfoToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+        self.showToast(viewController: viewController, message: message, state: .info)
+    }
+    
+    func showToast(viewController: UIViewController, message: String, state: Loaf.State) {
+        Loaf.dismiss(sender: viewController)
+        Loaf(message, state: state, sender: viewController).show()
     }
     
     // notifications

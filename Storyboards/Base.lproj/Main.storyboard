@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i8x-Da-XPT">
-                                <rect key="frame" x="0.0" y="64" width="400" height="603"/>
+                                <rect key="frame" x="0.0" y="63" width="400" height="604"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="73" id="BjH-bG-qdv" customClass="TaskTableViewCell" customModule="ToDoList" customModuleProvider="target">
@@ -236,7 +236,7 @@
                             <constraint firstItem="76y-Ua-4WS" firstAttribute="centerX" secondItem="icA-bh-0JS" secondAttribute="centerX" id="VFf-vN-SCw"/>
                             <constraint firstItem="IHD-Wi-qfK" firstAttribute="trailing" secondItem="i8x-Da-XPT" secondAttribute="trailing" id="ciu-GP-bgG"/>
                             <constraint firstItem="i8x-Da-XPT" firstAttribute="leading" secondItem="IHD-Wi-qfK" secondAttribute="leading" id="p9L-zj-PGD"/>
-                            <constraint firstItem="i8x-Da-XPT" firstAttribute="top" secondItem="IHD-Wi-qfK" secondAttribute="top" id="rUR-f3-aBh"/>
+                            <constraint firstItem="i8x-Da-XPT" firstAttribute="top" secondItem="IHD-Wi-qfK" secondAttribute="top" constant="-1" id="rUR-f3-aBh"/>
                             <constraint firstItem="i8x-Da-XPT" firstAttribute="bottom" secondItem="icA-bh-0JS" secondAttribute="bottom" id="s1E-Dj-DjK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IHD-Wi-qfK"/>

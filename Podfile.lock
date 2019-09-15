@@ -8,8 +8,8 @@ PODS:
   - Fabric (1.10.2)
   - IceCream (1.11.0):
     - RealmSwift
-  - ImpressiveNotifications (0.5.0)
   - LKAlertController (1.12.2)
+  - Loaf (0.5.0)
   - Realm (3.18.0):
     - Realm/Headers (= 3.18.0)
   - Realm/Headers (3.18.0)
@@ -27,8 +27,8 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - IceCream (from `https://github.com/iPhoNewsRO/IceCream.git`)
-  - ImpressiveNotifications (from `https://github.com/iPhoNewsRO/ImpressiveNotifications`)
   - LKAlertController
+  - Loaf
   - Realm
   - RealmSwift
   - Robin
@@ -42,6 +42,7 @@ SPEC REPOS:
     - Crashlytics
     - Fabric
     - LKAlertController
+    - Loaf
     - Realm
     - RealmSwift
     - Robin
@@ -55,8 +56,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/iPhoNewsRO/BiometricAuthentication
   IceCream:
     :git: https://github.com/iPhoNewsRO/IceCream.git
-  ImpressiveNotifications:
-    :git: https://github.com/iPhoNewsRO/ImpressiveNotifications
 
 CHECKOUT OPTIONS:
   ActionSheetPicker-3.0:
@@ -66,11 +65,8 @@ CHECKOUT OPTIONS:
     :commit: 57b7e915f9b25ded3879af4b131ff78265442d9a
     :git: https://github.com/iPhoNewsRO/BiometricAuthentication
   IceCream:
-    :commit: 56f4ac5ec207711322c0e854adc283e2be6987e3
+    :commit: dc2bbb19ac4f96d48d9adae8a3063d1f7038da5d
     :git: https://github.com/iPhoNewsRO/IceCream.git
-  ImpressiveNotifications:
-    :commit: 16bb169f0e6f0be15d967da5062fb0e3d672b20c
-    :git: https://github.com/iPhoNewsRO/ImpressiveNotifications
 
 SPEC CHECKSUMS:
   AcknowList: 06fde3319971dfd517ea1b1c194d78eb8cd774a2
@@ -80,14 +76,14 @@ SPEC CHECKSUMS:
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IceCream: 43e8b76f937b1074752f2e33bb26c935400a63d5
-  ImpressiveNotifications: 9a3921276e916e244abb7e4b2a6661133479a17c
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
+  Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 34910becff192fcbdc1bfb85a12696225613343a
+PODFILE CHECKSUM: 3d830501fe273bd9bf14d3b367efabd999bd9165
 
 COCOAPODS: 1.7.4

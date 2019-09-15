@@ -24,7 +24,7 @@ target 'ToDoList' do
   pod 'RSTextViewMaster'
   pod 'AcknowList'
   pod 'BiometricAuthentication', :git => 'https://github.com/iPhoNewsRO/BiometricAuthentication'
-  pod 'ImpressiveNotifications', :git => 'https://github.com/iPhoNewsRO/ImpressiveNotifications'
+  pod 'Loaf'
   pod 'Robin'
   pod 'Fabric'
   pod 'Crashlytics'
@@ -33,7 +33,7 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if ['AcknowList', 'UnderKeyboard'].include? target.name
+    if ['AcknowList', 'UnderKeyboard', 'ImpressiveNotifications'].include? target.name
       target.build_configurations.each do |config|
         config.build_settings['SWIFT_VERSION'] = '4.2'
       end

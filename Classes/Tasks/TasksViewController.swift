@@ -48,7 +48,6 @@ class TasksViewController: BaseViewController {
         
         self.searchController.searchBar.tintColor = UIColor.white
         self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
-//        self.searchController.dimsBackgroundDuringPresentation = false
         self.definesPresentationContext = true
         
         self.tableView.estimatedRowHeight = 60
@@ -112,11 +111,15 @@ class TasksViewController: BaseViewController {
     func addTaskAction(editMode: Bool = false, task: TaskModel?) {
         let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
         addTaskVC.editMode = editMode
+        addTaskVC.parentType = self.selectedType
         if editMode {
             addTaskVC.tempTask = task!
         }
         addTaskVC.onCompletion = {
             self.loadData()
+        }
+        addTaskVC.mustShowAlert = { (alertText) in
+            Alert(title: "Success", message: alertText).showOK()
         }
         
         let navigationController = UINavigationController(rootViewController: addTaskVC)
@@ -226,7 +229,7 @@ class TasksViewController: BaseViewController {
         
         self.loadData()
         
-        Utils().showSuccessToast(message: "Task completed!".localized())
+        Utils().showSuccessToast(viewController: self, message: "Task completed!".localized())
     }
     
     func deleteTask(task: TaskModel) {

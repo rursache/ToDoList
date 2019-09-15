@@ -54,6 +54,22 @@ extension UIViewController {
     func showError(message: String) {
         Alert(title: "Error".localized(), message: message).showOK()
     }
+    
+    func topMostViewController() -> UIViewController {
+        if let presented = self.presentedViewController {
+            return presented.topMostViewController()
+        }
+        
+        if let navigation = self as? UINavigationController {
+            return navigation.visibleViewController?.topMostViewController() ?? navigation
+        }
+        
+        if let tab = self as? UITabBarController {
+            return tab.selectedViewController?.topMostViewController() ?? tab
+        }
+        
+        return self
+    }
 }
 
 extension UIBarButtonItem {
@@ -119,5 +135,11 @@ extension Bundle {
     }
     var buildVersionNumber: String {
         return "\(infoDictionary?["CFBundleVersion"] as? String ?? "")"
+    }
+}
+
+extension UIApplication {
+    func topMostViewController() -> UIViewController {
+        return (self.keyWindow?.rootViewController?.topMostViewController())!
     }
 }

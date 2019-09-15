@@ -142,7 +142,7 @@ class HomeViewController: BaseViewController {
             if !UserDefaults.standard.bool(forKey: Config.UserDefaults.neverSyncedBefore) {
                 UserDefaults.standard.set(true, forKey: Config.UserDefaults.neverSyncedBefore)
                 
-                Utils().showSuccessToast(message: "iCloud data synced succesfully!".localized())
+                Utils().showSuccessToast(viewController: self, message: "iCloud data synced succesfully!".localized())
             }
             
             guard let recordZone = notification.userInfo?["zoneId"] as? CKRecordZone.ID else {

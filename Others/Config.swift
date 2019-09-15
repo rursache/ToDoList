@@ -66,6 +66,7 @@ class Config: NSObject {
     }
     
     class UserDefaults: NSObject {
+        static let launchedBefore = "launchedBefore"
         static let neverSyncedBefore = "neverSyncedBefore"
         static let userFullName = "userFullName"
         static let startPage = "startPage"
@@ -73,6 +74,7 @@ class Config: NSObject {
         static let language = "language"
         static let openLinks = "openLinksOption"
         static let disableAutoReminders = "disableAutoReminders"
+        static let helpPrompts = "helpPrompts"
     }
     
     class Notifications: NSObject {

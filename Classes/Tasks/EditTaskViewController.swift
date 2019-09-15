@@ -16,6 +16,7 @@ import RSTextViewMaster
 
 class EditTaskViewController: BaseViewController {
 
+    var parentType: HomeItemModel.ListType = .All
     @IBOutlet weak var addTaskView: UIView!
     @IBOutlet weak var taskTitleTextView: RSTextViewMaster!
     @IBOutlet weak var dateButton: UIButton!
@@ -28,6 +29,7 @@ class EditTaskViewController: BaseViewController {
     let keyboardObserver = UnderKeyboardObserver()
     var tempTask = TaskModel()
     var onCompletion: (() -> Void)?
+    var mustShowAlert: ((String) -> ())?
     var editMode: Bool = false
     
     override func viewDidLoad() {
@@ -234,7 +236,7 @@ class EditTaskViewController: BaseViewController {
         let taskName = self.taskTitleTextView.text!
         
         if taskName.count == 0 {
-            self.showError(message: "You must input a task to save it".localized())
+            self.showError(message: "You must name your task to save it".localized())
             
             return
         }
@@ -252,15 +254,20 @@ class EditTaskViewController: BaseViewController {
             RealmManager.sharedInstance.softUnDeleteTask(task: self.tempTask)
         }
         
-        self.close()
+        self.close {
+            // check if a helpful prompt must be shown or not
+            if self.parentType != .All && self.tempTask.date == nil && UserDefaults.standard.bool(forKey: Config.UserDefaults.helpPrompts) {
+                self.mustShowAlert?("Your task was \(self.editMode ? "updated" : "addded") but you're currently in a date based tasklist screen. To see your task, go back and select 'All Tasks' or add a date to this task")
+            }
+        }
     }
     
-    func close() {
+    func close(completion: (() -> Void)? = nil) {
         self.closeKeyboard()
         
         self.onCompletion?()
         
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: completion)
     }
     
     func closeKeyboard() {

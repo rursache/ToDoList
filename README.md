@@ -78,7 +78,7 @@ RSToDoList is currently using:
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
  - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
- - [ImpressiveNotifications (own fork)](https://github.com/iPhoNewsRO/ImpressiveNotifications)
+ - [Loaf)](https://github.com/schmidyy/Loaf)
  - [Robin](https://github.com/ahmedabadie/Robin)
  - [Fabric & Crashlytics](https://fabric.io/home)
 

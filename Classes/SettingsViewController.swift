@@ -59,6 +59,7 @@ class SettingsViewController: BaseViewController {
         let languageOption = Config.General.languages[userDefaults.integer(forKey: Config.UserDefaults.language)].name
         let openLinksOption = Config.General.linksOptions[userDefaults.integer(forKey: Config.UserDefaults.openLinks)]
         let disableAutoReminders = userDefaults.bool(forKey: Config.UserDefaults.disableAutoReminders)
+        let helpPrompts = userDefaults.bool(forKey: Config.UserDefaults.helpPrompts)
         
         let mainSection = SettingsItemSection(items: [
             SettingsItemModel(title: "Start page".localized(), icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
@@ -68,7 +69,8 @@ class SettingsViewController: BaseViewController {
                                                         ])
         
         let togglesSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Automatic Reminders".localized(), icon: "settings_auto_reminders", subtitle: "Get a reminder 30m before task's due".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders)
+            SettingsItemModel(title: "Automatic Reminders".localized(), icon: "settings_auto_reminders", subtitle: "Get a reminder 30m before task's due".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders),
+            SettingsItemModel(title: "Helpful Prompts".localized(), icon: "settings_help", subtitle: "We'll help you get used with the app".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
                                                         ])
         
         let aboutSection = SettingsItemSection(items: [
@@ -100,7 +102,7 @@ class SettingsViewController: BaseViewController {
         if section == 3 {
             if row == 1 {
                 // sync
-                Utils().showSuccessToast(message: "Sync started, please wait...".localized())
+                Utils().showSuccessToast(viewController: self, message: "Sync started, please wait...".localized())
                 self.navigationItem.rightBarButtonItem = nil
                 
                 Utils().getSyncEngine()?.pull()
@@ -109,7 +111,7 @@ class SettingsViewController: BaseViewController {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                         self.addRightDoneButton()
-                        Utils().showSuccessToast(message: "Sync done".localized())
+                        Utils().showSuccessToast(viewController: self, message: "Sync done".localized())
                     })
                 })
                 
@@ -147,7 +149,7 @@ class SettingsViewController: BaseViewController {
                 actionSheet.addAction(option, style: .default) { (action) in
                     UserDefaults.standard.set(Config.General.startPageTitles.index(of: option), forKey: Config.UserDefaults.startPage)
                     
-                    Utils().showSuccessToast(message: "Start page updated!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "Start page updated!".localized())
                     self.loadCurrentData()
                 }
             }
@@ -166,7 +168,7 @@ class SettingsViewController: BaseViewController {
                             print(error.localizedDescription)
                             Utils().showErrorToast(message: error.localizedDescription)
                         } else {
-                            Utils().showSuccessToast(message: "Theme updated!".localized())
+                            Utils().showSuccessToast(viewController: self, message: "Theme updated!".localized())
                         }
                     }
                     
@@ -182,7 +184,7 @@ class SettingsViewController: BaseViewController {
                     
                     UserDefaults.standard.set([language.code], forKey: "AppleLanguages")
                     
-                    Utils().showSuccessToast(message: "Language updated. Please restart the app!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "Language updated. Please restart the app!".localized())
                     self.loadCurrentData()
                 }
             }
@@ -193,7 +195,7 @@ class SettingsViewController: BaseViewController {
                 actionSheet.addAction(option, style: .default) { (action) in
                     UserDefaults.standard.set(Config.General.linksOptions.index(of: option), forKey: Config.UserDefaults.openLinks)
                     
-                    Utils().showSuccessToast(message: "Links will now open \(option)!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "Links will now open \(option)!".localized())
                     self.loadCurrentData()
                 }
             }
@@ -210,6 +212,9 @@ class SettingsViewController: BaseViewController {
         
         if switchTag == 10 {
             UserDefaults.standard.set(uiswitch.isOn, forKey: Config.UserDefaults.disableAutoReminders)
+        }
+        if switchTag == 11 {
+            UserDefaults.standard.set(uiswitch.isOn, forKey: Config.UserDefaults.helpPrompts)
         }
     }
     
