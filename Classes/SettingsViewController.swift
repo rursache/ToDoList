@@ -37,9 +37,11 @@ class SettingsViewController: BaseViewController {
         
         if let fullName = UserDefaults.standard.string(forKey: Config.UserDefaults.userFullName), Utils().userIsLoggedIniCloud() {
             version.text = "Logged in as: ".localized() + "\(fullName)"
-            tableViewFooter.addSubview(version)
-            self.tableView.tableFooterView  = tableViewFooter
+        } else {
+            version.text = "You're not logged into iCloud, tasks aren't syncing!"
         }
+        tableViewFooter.addSubview(version)
+        self.tableView.tableFooterView  = tableViewFooter
     }
     
     func addRightDoneButton() {
