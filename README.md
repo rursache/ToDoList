@@ -43,8 +43,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 
 ## To do
 
-- [ ] Search bar in home and tasks view
-- [ ] Reminders viewer/editor (delete/edit current notifications)
+- [ ] Add images as comments attachaments
 - [ ] Tutorial/Onboarding
 - [ ] Multi-Language support
 - [ ] Lockdown with FaceID/TouchID or passcode
@@ -55,12 +54,10 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 ### Improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Themes view controller with previews
-- [ ] Better hashtag integration in comments
-- [ ] Integrate Fabric & Crashlytics for a better understanding of crashes
 
 ### Bugs
 - [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
-- [ ] Comments are not showing up while adding a task
+- [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).

@@ -34,6 +34,7 @@ class EditTaskViewController: BaseViewController {
         super.viewDidLoad()
         
         if !self.editMode {
+            self.tempTask.isDeleted = true
             RealmManager.sharedInstance.addTask(task: self.tempTask)
         } else {
             self.loadExistingTaskData()
@@ -86,10 +87,9 @@ class EditTaskViewController: BaseViewController {
         super.setupBindings()
         
         self.dateButton.addTarget(self, action: #selector(self.taskDateButtonAction), for: .touchUpInside)
-        
         self.priorityButton.addTarget(self, action: #selector(self.priorityButtonAction), for: .touchUpInside)
-        
         self.commentButton.addTarget(self, action: #selector(self.commentButtonAction), for: .touchUpInside)
+        self.remindersButton.addTarget(self, action: #selector(self.remindersButtonAction), for: .touchUpInside)
         
         self.keyboardObserver.start()
         self.keyboardObserver.willAnimateKeyboard = { height in
@@ -246,6 +246,10 @@ class EditTaskViewController: BaseViewController {
             if let taskDate = self.tempTask.date {
                 Utils().addNotification(task: self.tempTask, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil)
             }
+        }
+        
+        if !self.editMode {
+            RealmManager.sharedInstance.softUnDeleteTask(task: self.tempTask)
         }
         
         self.close()

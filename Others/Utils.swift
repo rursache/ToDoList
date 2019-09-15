@@ -65,6 +65,10 @@ class Utils: NSObject {
     // notifications
     
     func addNotification(task: TaskModel, date: Date, text: String?, saveInRealm: Bool = true) {
+        if Calendar.current.date(byAdding: .hour, value: 1, to: date)! < Date() {
+            return
+        }
+        
         let realmNotification = NotificationModel(text: text ?? task.content, date: date)
         realmNotification.setTask(task: task)
         
@@ -78,7 +82,7 @@ class Utils: NSObject {
                 RealmManager.sharedInstance.addNotification(notification: realmNotification)
             }
             
-            print("notification added")
+            print("notification added - \(realmNotification.identifier)")
         } else {
             print("failed to add notification")
             Robin.shared.printScheduled()
@@ -97,6 +101,7 @@ class Utils: NSObject {
     func removeNotification(notification: NotificationModel) {
         Robin.shared.cancel(withIdentifier: notification.identifier)
         RealmManager.sharedInstance.deleteNotification(notification: notification)
+        print("notification removed - \(notification.identifier)")
     }
     
     private func removeAllNotifications() {
@@ -120,44 +125,5 @@ class Utils: NSObject {
                 }
             }
         }
-    }
-    
-    // realm
-    
-    func checkTasksForNilObjects() {
-        // https://github.com/caiyue1993/IceCream/issues/95#issuecomment-466779513
-        
-        print("iCloud Sync: Started recovery process")
-        print("iCloud Sync: Found \(RealmManager.sharedInstance.getAllComments().count) comments")
-        print("iCloud Sync: Found \(RealmManager.sharedInstance.getAllNotifications().count) notifications")
-        
-        var itemsRecovered = 0
-        
-        for comment in RealmManager.sharedInstance.getAllComments() {
-            if comment.task == nil {
-                if let recoveredTask = RealmManager.sharedInstance.getTaskById(id: comment.taskId) {
-                    print("iCloud Sync: Recovered task-less comment (Text: \(comment.content), Recovered task ID: \(comment.taskId))")
-                    
-                    RealmManager.sharedInstance.setCommentTask(comment: comment, task: recoveredTask)
-                    itemsRecovered += 1
-                } else {
-                    print("iCloud Sync: Failed to recover comment \(comment.id)")
-                }
-            }
-        }
-        for notification in RealmManager.sharedInstance.getAllNotifications() {
-            if notification.task == nil {
-                if let recoveredTask = RealmManager.sharedInstance.getTaskById(id: notification.taskId) {
-                    print("iCloud Sync: Recovered task-less notification (Text: \(notification.text), Recovered task ID: \(notification.taskId))")
-                    
-                    RealmManager.sharedInstance.setNotificationTask(notification: notification, task: recoveredTask)
-                    itemsRecovered += 1
-                } else {
-                    print("iCloud Sync: Failed to recover notification \(notification.identifier)")
-                }
-            }
-        }
-        
-        print("iCloud Sync: Recovery done, \(itemsRecovered) items restored")
     }
 }

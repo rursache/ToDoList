@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-        
         self.handleShortcuts(shortcutItem: shortcutItem)
         
         completionHandler(true)
@@ -102,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let dict = userInfo as! [String: NSObject]
         let notification = CKNotification(fromRemoteNotificationDictionary: dict)
         
-        if (notification.subscriptionID == IceCreamConstant.cloudKitSubscriptionID) {
+        if (notification.subscriptionID == IceCreamSubscription.cloudKitPublicDatabaseSubscriptionID.rawValue) {
             NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
         }
         completionHandler(.newData)

@@ -18,25 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N2S-iO-sh2">
-                                <rect key="frame" x="138" y="318" width="99" height="31.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) RanduSoft 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="om1-mg-2a2">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) RanduSoft 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="om1-mg-2a2">
                                 <rect key="frame" x="8" y="640" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_only" translatesAutoresizingMaskIntoConstraints="NO" id="uoq-Uz-w7e">
+                                <rect key="frame" x="80" y="226" width="215" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uoq-Uz-w7e" secondAttribute="height" id="GdK-Ar-FGB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="N2S-iO-sh2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="80C-vu-iOg"/>
+                            <constraint firstItem="uoq-Uz-w7e" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="9sA-mX-BSb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="om1-mg-2a2" secondAttribute="bottom" constant="6" id="HYp-8P-inl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="om1-mg-2a2" secondAttribute="trailing" constant="8" id="JfJ-am-l6h"/>
-                            <constraint firstItem="N2S-iO-sh2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="btg-Y2-tWW"/>
+                            <constraint firstAttribute="trailing" secondItem="uoq-Uz-w7e" secondAttribute="trailing" constant="80" id="JkB-Tu-4i0"/>
+                            <constraint firstItem="uoq-Uz-w7e" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MmO-Dh-eU2"/>
+                            <constraint firstItem="uoq-Uz-w7e" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="80" id="Zbi-gj-RVe"/>
                             <constraint firstItem="om1-mg-2a2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ojD-3T-mo1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -47,4 +49,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark_only" width="1024" height="1024"/>
+    </resources>
 </document>

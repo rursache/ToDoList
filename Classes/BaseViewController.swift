@@ -32,7 +32,8 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
-//        self.navigationController?.navigationBar.layoutIfNeeded()
+        UISearchBar.appearance().backgroundColor = Utils().getCurrentThemeColor()
     }
 }

@@ -130,11 +130,26 @@ class RealmManager {
         }
     }
     
+    func softUnDeleteTask(task: TaskModel) {
+        do {
+            try realm.write {
+                task.isDeleted = false
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(task)")
+        }
+    }
+    
     // comments
     
     func getAllComments() -> Results<CommentModel> {
         let results: Results<CommentModel> = realm.objects(CommentModel.self)
         return results.filter("isDeleted == false")
+    }
+    
+    func getCommentsForTaskId(taskId: String) -> Results<CommentModel> {
+        return realm.objects(CommentModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
     }
     
     func addComment(comment: CommentModel) {
@@ -202,15 +217,8 @@ class RealmManager {
         }
     }
     
-    func setNotificationTask(notification: NotificationModel, task: TaskModel) {
-        do {
-            try realm.write {
-                notification.task = task
-            }
-        }
-        catch {
-            print("Realm error: Cannot write: \(notification)")
-        }
+    func getNotificationsForTaskId(taskId: String) -> Results<NotificationModel> {
+        return realm.objects(NotificationModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
     }
     
     func deleteNotification(notification: NotificationModel, soft: Bool = true) {
@@ -237,7 +245,7 @@ class RealmManager {
     private func addObject(object: Object, update: Bool) {
         do {
             try realm.write {
-                realm.add(object, update: update)
+                realm.add(object, update: update ? .all : .modified)
             }
         }
         catch {

@@ -105,6 +105,7 @@ class CommentsViewController: BaseViewController {
         }
         
         self.tableView.reloadData()
+        self.scrollToBottom()
         
         self.textView.text = ""
     }
@@ -136,7 +137,7 @@ class CommentsViewController: BaseViewController {
     }
     
     func openHashtag(hashtag: String) {
-        self.showOK(title: "Hashtag".localized(), message: hashtag)
+//        self.showOK(title: "Hashtag".localized(), message: hashtag)
     }
     
     @objc func keyboardButtonAction() {
@@ -144,9 +145,16 @@ class CommentsViewController: BaseViewController {
             self.keyboardVisible = false
             self.textView.resignFirstResponder()
             self.bottomConstraint.constant = 0
+            
         } else {
             self.textView.becomeFirstResponder()
         }
+        
+        self.scrollToBottom()
+    }
+    
+    func scrollToBottom() {
+        self.tableView.scrollToRow(at: IndexPath(row: self.currentTask.availableComments().count-1, section: 0), at: .bottom, animated: true)
     }
 }
 
@@ -200,5 +208,11 @@ extension CommentsViewController: RSTextViewMasterDelegate, UITextViewDelegate {
     
     func growingTextView(growingTextView: RSTextViewMaster, didChangeHeight height: CGFloat) {
         
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.scrollToBottom()
+        }
     }
 }

@@ -18,14 +18,15 @@ enum SortType: String {
 
 class TasksViewController: BaseViewController {
     
-    var selectedType: HomeItemModel.ListType = .All
-    var tasksDataSource: Results<TaskModel>!
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     
-    var customIntervalDate: ActionSheetDateTimeRangePicker.DateRange?
+    let searchController = UISearchController(searchResultsController: nil)
     
+    var selectedType: HomeItemModel.ListType = .All
+    var tasksDataSource: Results<TaskModel>!
+    var tasksFilteredDataSource: Results<TaskModel>!
+    var customIntervalDate: ActionSheetDateTimeRangePicker.DateRange?
     var currentSortType: SortType = .Date
     var currentSortAscending = true
     
@@ -34,6 +35,40 @@ class TasksViewController: BaseViewController {
 
         self.setDefaultSorting()
         self.loadData()
+    }
+
+    @objc override func setupUI() {
+        super.setupUI()
+        
+        self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "sortIcon")!, target: self, action: #selector(self.sortButtonAction))
+        
+        Utils().themeView(view: self.addTaskButton)
+        
+        self.searchController.searchBar.tintColor = UIColor.white
+        self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
+//        self.searchController.dimsBackgroundDuringPresentation = false
+        self.definesPresentationContext = true
+        
+        self.tableView.estimatedRowHeight = 60
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
+    }
+    
+    override func setupBindings() {
+        super.setupBindings()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.searchController.searchResultsUpdater = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
     }
     
     func loadData() {
@@ -56,31 +91,6 @@ class TasksViewController: BaseViewController {
         }
         
         self.sortDataSource()
-    }
-
-    override func setupUI() {
-        super.setupUI()
-        
-        self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "sortIcon")!, target: self, action: #selector(self.sortButtonAction))
-        
-        Utils().themeView(view: self.addTaskButton)
-        
-        self.tableView.estimatedRowHeight = 60
-        self.tableView.rowHeight = UITableView.automaticDimension
-        
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
-    }
-    
-    override func setupBindings() {
-        super.setupBindings()
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
     }
     
     @objc func shouldReloadDataNotification() {
@@ -224,17 +234,32 @@ class TasksViewController: BaseViewController {
         
         self.loadData()
     }
+    
+    func filterDataSource(keyword: String) {
+        self.tasksFilteredDataSource = self.tasksDataSource.filter("content CONTAINS '\(keyword)'")
+        self.tableView.reloadData()
+    }
+    
+    func isSearching() -> Bool {
+        return searchController.isActive && searchController.searchBar.text != ""
+    }
+}
+
+extension TasksViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterDataSource(keyword: searchController.searchBar.text ?? "")
+    }
 }
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tasksDataSource.count
+        return self.isSearching() ? self.tasksFilteredDataSource.count : self.tasksDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.getIdentifier(), for: indexPath) as! TaskTableViewCell
         
-        let currentTask = self.tasksDataSource[indexPath.row]
+        let currentTask = (self.isSearching() ? self.tasksFilteredDataSource : self.tasksDataSource)[indexPath.row]
         
         cell.taskNameLabel.text = currentTask.content
         
@@ -285,15 +310,21 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        self.showTaskOptions(task: self.tasksDataSource[indexPath.row], indexPath: indexPath)
+        self.showTaskOptions(task: (self.isSearching() ? self.tasksFilteredDataSource : self.tasksDataSource)[indexPath.row], indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
-            guard indexPath.row < self.tasksDataSource.count else { return }
-            
-            self.deleteTask(task: self.tasksDataSource[indexPath.row])
+            self.deleteTask(task: (self.isSearching() ? self.tasksFilteredDataSource : self.tasksDataSource)[indexPath.row])
         }
         return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let emptyView = UIView() ; emptyView.backgroundColor = .clear ; return emptyView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return self.addTaskButton.frame.size.height + 30
     }
 }

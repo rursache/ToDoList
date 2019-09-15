@@ -44,7 +44,24 @@ class RemindersViewController: BaseViewController {
     }
     
     func showDateTimePicker(edit: Bool) {
+        let datePicker = ActionSheetDatePicker(title: "Select date and time".localized(), datePickerMode: .dateAndTime, selectedDate: edit ? self.currentEditingReminder.date as Date : Date(), doneBlock: { (actionSheet, selectedDate, origin) in
+            guard let selectedDate = selectedDate as? Date else { return }
+            
+            if edit {
+                Utils().removeNotification(notification: self.currentEditingReminder)
+            }
+            
+            Utils().addNotification(task: self.currentTask, date: selectedDate, text: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.tableView.reloadData()
+            }
+        }, cancel: { (actionSheet) in }, origin: self.view)
         
+        datePicker?.setDoneButton(UIBarButtonItem(title: "Add".localized(), style: .done, target: self, action: nil))
+        datePicker?.setCancelButton(UIBarButtonItem(title: "Cancel".localized(), style: .done, target: self, action: nil))
+        
+        datePicker?.show()
     }
     
     @objc func addReminderAction() {
@@ -68,7 +85,15 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
         
         let currentItem = self.currentTask.availableNotifications()[indexPath.row]
         
-        cell.contentLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
+        let reminderDate = currentItem.date as Date
+        
+        if Calendar.current.isDateInToday(reminderDate) {
+            cell.contentLabel.text = "Today".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
+        } else if Calendar.current.isDateInTomorrow(reminderDate) {
+            cell.contentLabel.text = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
+        } else {
+            cell.contentLabel.text = Config.General.dateFormatter().string(from: reminderDate)
+        }
 
         return cell
     }
@@ -87,6 +112,10 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
             let reminder = self.currentTask.availableNotifications()[indexPath.row]
             
             Utils().removeNotification(notification: reminder)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.tableView.reloadData()
+            }
         }
         return [deleteAction]
     }

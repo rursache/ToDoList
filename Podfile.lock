@@ -1,23 +1,23 @@
 PODS:
-  - AcknowList (1.8)
+  - AcknowList (1.9)
   - ActionSheetPicker-3.0 (2.3.1)
-  - ActiveLabel (1.0.1)
+  - ActiveLabel (1.1.0)
   - BiometricAuthentication (2.2.1)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
-  - IceCream (1.8.2):
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - IceCream (1.11.0):
     - RealmSwift
   - ImpressiveNotifications (0.5.0)
   - LKAlertController (1.12.2)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
   - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
-  - UnderKeyboard (12.0.0)
+  - UnderKeyboard (13.0.2)
 
 DEPENDENCIES:
   - AcknowList
@@ -66,28 +66,28 @@ CHECKOUT OPTIONS:
     :commit: 57b7e915f9b25ded3879af4b131ff78265442d9a
     :git: https://github.com/iPhoNewsRO/BiometricAuthentication
   IceCream:
-    :commit: 6369e39e27544746133a14b58dd35a448b318566
+    :commit: 56f4ac5ec207711322c0e854adc283e2be6987e3
     :git: https://github.com/iPhoNewsRO/IceCream.git
   ImpressiveNotifications:
     :commit: 16bb169f0e6f0be15d967da5062fb0e3d672b20c
     :git: https://github.com/iPhoNewsRO/ImpressiveNotifications
 
 SPEC CHECKSUMS:
-  AcknowList: 5b8820004d019d0a8d6a091ea2392dcb54bd3ad2
+  AcknowList: 06fde3319971dfd517ea1b1c194d78eb8cd774a2
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
-  ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   BiometricAuthentication: 985cd6eeb87e933dc648c8e23220af067db3458d
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  IceCream: 72fb76cb53d274d9a1938f4f095e6171e0a78a5a
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  IceCream: 43e8b76f937b1074752f2e33bb26c935400a63d5
   ImpressiveNotifications: 9a3921276e916e244abb7e4b2a6661133479a17c
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
-  UnderKeyboard: 6a3705d67d43447594c279f7a844fd1df92d54dd
+  UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 86f9e02e3fae7255146ca8d98e9f8117fac99d3b
+PODFILE CHECKSUM: 34910becff192fcbdc1bfb85a12696225613343a
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.4
