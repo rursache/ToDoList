@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func setupSDKs(application: UIApplication) {
         Fabric.with([Crashlytics.self])
         
+        _ = RealmManager.init()
+        
         self.syncEngine = SyncEngine(objects: [
             SyncObject<TaskModel>(),
             SyncObject<CommentModel>(),

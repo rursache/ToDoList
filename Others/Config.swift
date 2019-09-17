@@ -48,7 +48,7 @@ class Config: NSObject {
         static let languages = [LanguageModel(name: "English", code: "en_US"), LanguageModel(name: "Romanian", code: "ro_RO")]
         
         static let linksOptions = ["In App", "Safari"]
-        static let startPageTitles = ["Overview", "All Tasks", "Today", "Tomorrow", "Next 7 Days", "Custom Interval"]
+        static let startPageTitles = ["Overview", "All Tasks", "Today", "Tomorrow", "Next 7 Days", "Custom Interval", "Completed"]
         static let priorityColors = [Config.Colors.red, Config.Colors.orange, Config.Colors.yellow, Config.Colors.green]
         static let priorityTitles = ["Highest", "High", "Normal", "Low", "None"]
         static let sortTitles = ["Date (Asc)", "Date (Desc)", "Priority (Asc)", "Priority (Desc)"] // also update in TasksViewController

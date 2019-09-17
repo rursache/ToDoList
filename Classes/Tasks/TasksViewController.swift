@@ -53,8 +53,6 @@ class TasksViewController: BaseViewController {
         self.tableView.estimatedRowHeight = 60
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableHeaderView = self.searchController.searchBar
-        
-        
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
     }
     
@@ -82,11 +80,16 @@ class TasksViewController: BaseViewController {
         } else if selectedType == .Custom {
             guard let interval = self.customIntervalDate else {
                 print("custom interval date nil")
-                
                 return
             }
             
             self.tasksDataSource = RealmManager.sharedInstance.getCustomIntervalTasks(startDate: interval.start, endDate: interval.end)
+        } else if selectedType == .Completed {
+            self.tasksDataSource = RealmManager.sharedInstance.getCompletedTasks().sorted(byKeyPath: "completedDate", ascending: false)
+            self.navigationItem.rightBarButtonItem = nil
+            self.tableView.reloadData()
+            
+            return
         }
         
         self.sortDataSource()
@@ -202,8 +205,14 @@ class TasksViewController: BaseViewController {
             }
         }
         
-        taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
-            self.addTaskAction(editMode: true, task: task)
+        if self.selectedType != .Completed {
+            taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
+                self.addTaskAction(editMode: true, task: task)
+            }
+        } else {
+            taskOptionsSheet.addAction("Move to inbox".localized(), style: .default) { (action) in
+                self.unDoneTask(task: task)
+            }
         }
         
         taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
@@ -238,6 +247,12 @@ class TasksViewController: BaseViewController {
         self.loadData()
     }
     
+    func unDoneTask(task: TaskModel) {
+        RealmManager.sharedDelegate().unDoneTask(task: task)
+        
+        self.loadData()
+    }
+    
     func filterDataSource(keyword: String) {
         self.tasksFilteredDataSource = self.tasksDataSource.filter("content CONTAINS '\(keyword)'")
         self.tableView.reloadData()
@@ -266,10 +281,21 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.taskNameLabel.text = currentTask.content
         
+        cell.checkBoxButton.superview?.isHidden = self.selectedType == .Completed
+        
         cell.checkBoxButton.tag = indexPath.row
         cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
         
-        if let taskDate = currentTask.date {
+        if let completedDate = currentTask.completedDate, self.selectedType == .Completed {
+            let prefix = "Completed "
+            if Calendar.current.isDateInToday(completedDate) {
+                cell.taskDateLabel.text = prefix + "today".localized() + ", " + Config.General.timeFormatter().string(from: completedDate)
+            } else {
+                cell.taskDateLabel.text = prefix + "on " + Config.General.dateFormatter().string(from: completedDate)
+            }
+            
+            cell.taskDateLabel.isHidden = false
+        } else if let taskDate = currentTask.date {
             if Calendar.current.isDateInToday(taskDate) {
                 cell.taskDateLabel.text = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else if Calendar.current.isDateInTomorrow(taskDate) {

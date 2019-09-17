@@ -16,6 +16,7 @@ class TaskModel: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var content = ""
     @objc dynamic var date: Date?
+    @objc dynamic var completedDate: Date?
     @objc dynamic var priority = 10
     @objc dynamic var isDeleted = false
     @objc dynamic var isCompleted = false

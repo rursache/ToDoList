@@ -84,7 +84,8 @@ class HomeViewController: BaseViewController {
             HomeItemModel(title: Config.General.startPageTitles[2].localized(), icon: "menu_today", listType: .Today, count: todayCount),
             HomeItemModel(title: Config.General.startPageTitles[3].localized(), icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
             HomeItemModel(title: Config.General.startPageTitles[4].localized(), icon: "menu_week", listType: .Week, count: weekCount),
-            HomeItemModel(title: Config.General.startPageTitles[5], icon: "menu_custom", listType: .Custom, count: -1)
+            HomeItemModel(title: Config.General.startPageTitles[5], icon: "menu_custom", listType: .Custom, count: -1),
+            HomeItemModel(title: Config.General.startPageTitles[6], icon: "menu_completed", listType: .Completed, count: -1)
                                 ]
         
         self.tableView.reloadData()
@@ -251,7 +252,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.selectedItem = self.homeDataSource[indexPath.row]
         
-        if self.selectedItem.count == -1 {
+        if self.selectedItem.listType == .Custom {
             self.prepareCustomTaskList()
         } else {
             self.performSegue(withIdentifier: "goToTasksVC", sender: self)

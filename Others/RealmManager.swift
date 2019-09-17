@@ -6,6 +6,12 @@
 //  Copyright © 2019 Radu Ursache. All rights reserved.
 //
 
+/*
+ 
+ https://realm.io/docs/swift/latest
+ 
+*/
+
 import UIKit
 import RealmSwift
 import IceCream
@@ -15,9 +21,13 @@ class RealmManager {
     
     private var realm: Realm
     
-    private init() {
-        let config = Realm.Configuration(schemaVersion: 12, migrationBlock: { migration, oldSchemaVersion in
-            
+    init() {
+        let config = Realm.Configuration(schemaVersion: 13, migrationBlock: { migration, oldSchemaVersion in
+            if oldSchemaVersion < 13 {
+                migration.enumerateObjects(ofType: TaskModel.className()) { oldObject, newObject in
+                    newObject!["completedDate"] = Date()
+                }
+            }
         })
     
         self.realm = try! Realm(configuration: config)
@@ -48,6 +58,10 @@ class RealmManager {
     
     func getCustomIntervalTasks(startDate: Date, endDate: Date) -> Results<TaskModel> {
         return self.getTasks().filter("date BETWEEN %@", [startDate.startOfDay, endDate.endOfDay])
+    }
+    
+    func getCompletedTasks() -> Results<TaskModel> {
+        return realm.objects(TaskModel.self).filter("isDeleted == false").filter("isCompleted == true")
     }
     
     func addTask(task: TaskModel) {
@@ -104,6 +118,19 @@ class RealmManager {
         do {
             try realm.write {
                 task.isCompleted = true
+                task.completedDate = Date()
+            }
+        }
+        catch {
+            print("Realm error: Cannot write: \(task)")
+        }
+    }
+    
+    func unDoneTask(task: TaskModel) {
+        do {
+            try realm.write {
+                task.isCompleted = false
+                task.completedDate = nil
             }
         }
         catch {
