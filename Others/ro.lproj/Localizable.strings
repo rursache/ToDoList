@@ -1,0 +1,105 @@
+/*
+  Localizable.strings
+  ToDoList
+
+  Creat de Radu Ursache la 24/10/2019.
+  Copyright © 2019 Radu Ursache. Toate drepturile rezervate.
+*/
+
+// config
+"CONFIG_LINK_PREF1" = "În aplicație";
+"CONFIG_LINK_PREF2" = "Safari";
+"CONFIG_PRIORITY_PREF1" = "Cel mai urgent";
+"CONFIG_PRIORITY_PREF2" = "Urgent";
+"CONFIG_PRIORITY_PREF3" = "Normal";
+"CONFIG_PRIORITY_PREF4" = "Neimportant";
+"CONFIG_PRIORITY_PREF5" = "Nimic";
+"CONFIG_SORT_PREF1" = "Dată (cresc.)";
+"CONFIG_SORT_PREF2" = "Dată (descresc.)";
+"CONFIG_SORT_PREF3" = "Prioritate (cresc.)";
+"CONFIG_SORT_PREF4" = "Prioritate (descresc.)";
+"CONFIG_OPTIONS_PREF1" = "Prezentare generală";
+"CONFIG_OPTIONS_PREF2" = "Toate sarcinile";
+"CONFIG_OPTIONS_PREF3" = "Astăzi";
+"CONFIG_OPTIONS_PREF4" = "Mâine";
+"CONFIG_OPTIONS_PREF5" = "Următoarele 7 zile";
+"CONFIG_OPTIONS_PREF6" = "Interval personalizat";
+"CONFIG_OPTIONS_PREF7" = "Completat";
+
+// Acasă
+"HOME_SYNC_NOT_AVAILABLE" = "Nu sunteți autentificat în iCloud. Sarcinile dvs. nu vor fi sincronizate!";
+"HOME_SYNC_SUCCESS" = "Datele iCloud s-au sincronizat cu succes!";
+"HOME_SELECT_TIME_INTERVAL" = "Selectați intervalul de date";
+
+// setări
+"SETTINGS_LOGGED_IN_AS" = "Logat ca: ";
+"SETTINGS_NOT_LOGGED_IN" = "Nu ești conectat la iCloud, sarcinile nu se sincronizează!";
+"SETTINGS_ITEM_ENTRY_START_PAGE" = "Pagină de pornire";
+"SETTINGS_ITEM_ENTRY_THEME" = "Temă";
+"SETTINGS_ITEM_ENTRY_LANGUAGE" = "Limbă";
+"SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS" = "Deschideți legături Web";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Memento-uri automate";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Obțineți un memento cu 30 de minute înainte de scadența sarcinii";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS" = "Indicații utile";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Te vom ajuta să te obișnuiești cu aplicația";
+"SETTINGS_ITEM_ENTRY_MANUAL_SYNC" = "Sincronizare manuală iCloud";
+"SETTINGS_ITEM_ENTRY_FEEDBACK" = "Feedback";
+"SETTINGS_ITEM_ENTRY_ACKNOW" = "Mulțumiri";
+"SETTINGS_ITEM_ENTRY_ABOUT" = "Despre";
+"SETTINGS_SYNC_START" = "A început sincronizarea, vă rugăm să așteptați ...";
+"SETTINGS_SYNC_END" = "Sincronizare făcută";
+"SETTINGS_NO_EMAIL_FAILED" = "Nicio configurare a contului de e-mail pe dispozitiv";
+"SETTINGS_ABOUT_TEXT" = "O simplă aplicație de listă de activități open source scrisă în Swift. Bazată pe Todoist UI/UX\nRadu Ursache - RanduSoft\n\n";
+"SETTINGS_CONFIRMATION_START_PAGE" = "Pagina de pornire actualizată!";
+"SETTINGS_CONFIRMATION_THEME" = "Tema actualizată!";
+"SETTINGS_CONFIRMATION_LANGUAGE" = "Limba actualizată. Vă rugăm să reporniți aplicația!";
+"SETTINGS_CONFIRMATION_LINKS" = "Acum se vor deschide legături {replace}!";
+
+// sarcini
+"TASKS_SORT_TASKS" = "Sortare sarcini";
+"TASKS_TASK_OPTIONS" = "Opțiuni de activități";
+"TASKS_COMPLETE" = "Complet";
+"TASKS_MOVE_TO_INBOX" = "Mutați în inbox";
+"TASKS_CONFIRMATION_TASK_COMPLETE" = "Sarcină finalizată!";
+"TASKS_COMPLETED" = "Completat";
+"TASKS_DATE_LABEL_TODAY" = "astăzi";
+"TASKS_DATE_LABEL_ON" = "pe ";
+
+// editarea sarcinilor
+"EDIT_TASKS_EDIT_TASK" = "Editare sarcină";
+"EDIT_TASKS_ADD_TASK" = "Adăugați sarcina";
+"EDIT_TASKS_TASK_CONTENT" = "Conținutul activității";
+"EDIT_TASKS_DATE_TIME" = "Data și ora";
+"EDIT_TASKS_NO_DATE" = "Fără dată";
+"EDIT_TASKS_TASK_PRIORITY" = "Prioritatea activității";
+"EDIT_TASKS_PRIORITY" = "Prioritate";
+"EDIT_TASKS_NO_TASK_NAME_ERROR" = "Trebuie să numiți sarcina dvs. pentru a o salva";
+"EDIT_TASKS_UPDATED" = "actualizat";
+"EDIT_TASKS_ADDED" = "adăugat";
+"EDIT_TASKS_CHANGED_ERROR" = "Sarcina dvs. a fost {replace}, dar sunteți în prezent într-un ecran de tasklist bazat pe date. Pentru a vă vedea sarcina, mergeți înapoi și selectați 'Toate sarcinile' sau adăugați o dată acestei sarcini";
+
+// comentarii
+"COMMENTS_TITLE" = "Comentarii";
+"COMMENTS_ADD_COMMENT" = "Adăugați un comentariu";
+
+// memento-uri
+"REMINDERS_TITLE" = "Memento-uri";
+"REMINDERS_SELECT_DATE_TIME" = "Selectați data și ora";
+
+// alții
+"OK" = "OK";
+"NOTIFICATION" = "Notificare";
+"AVERTISMENT" = "Avertisment";
+"ERROR" = "Eroare";
+"DONE" = "Done";
+"CANCEL" = "Anulează";
+"CLOSE" = "Închidere";
+"ADD" = "Adăugare";
+"UPDATE" = "Actualizare";
+"DELETE" = "Șterge";
+"TODAY" = "Astăzi";
+"TOMORROW" = "Mâine";
+"TOMORROW_SHORT" = "Mâine";
+"SUCCESS" = "Succes";
+"EDIT" = "Editare";
+"SAVE" = "Salvați";

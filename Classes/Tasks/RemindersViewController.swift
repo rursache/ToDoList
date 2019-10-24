@@ -28,9 +28,9 @@ class RemindersViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        self.title = "Reminders".localized()
+        self.title = "REMINDERS_TITLE".localized()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close".localized(), style: .done, target: self, action: #selector(self.closeAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CLOSE".localized(), style: .done, target: self, action: #selector(self.closeAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addReminderAction))
         
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
@@ -44,7 +44,7 @@ class RemindersViewController: BaseViewController {
     }
     
     func showDateTimePicker(edit: Bool) {
-        let datePicker = ActionSheetDatePicker(title: "Select date and time".localized(), datePickerMode: .dateAndTime, selectedDate: edit ? self.currentEditingReminder.date as Date : Date(), doneBlock: { (actionSheet, selectedDate, origin) in
+        let datePicker = ActionSheetDatePicker(title: "REMINDERS_SELECT_DATE_TIME".localized(), datePickerMode: .dateAndTime, selectedDate: edit ? self.currentEditingReminder.date as Date : Date(), doneBlock: { (actionSheet, selectedDate, origin) in
             guard let selectedDate = selectedDate as? Date else { return }
             
             if edit {
@@ -58,8 +58,8 @@ class RemindersViewController: BaseViewController {
             }
         }, cancel: { (actionSheet) in }, origin: self.view)
         
-        datePicker?.setDoneButton(UIBarButtonItem(title: "Add".localized(), style: .done, target: self, action: nil))
-        datePicker?.setCancelButton(UIBarButtonItem(title: "Cancel".localized(), style: .done, target: self, action: nil))
+        datePicker?.setDoneButton(UIBarButtonItem(title: "ADD".localized(), style: .done, target: self, action: nil))
+        datePicker?.setCancelButton(UIBarButtonItem(title: "CANCEL".localized(), style: .done, target: self, action: nil))
         
         datePicker?.show()
     }
@@ -88,9 +88,9 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
         let reminderDate = currentItem.date as Date
         
         if Calendar.current.isDateInToday(reminderDate) {
-            cell.contentLabel.text = "Today".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
+            cell.contentLabel.text = "TODAY".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
         } else if Calendar.current.isDateInTomorrow(reminderDate) {
-            cell.contentLabel.text = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
+            cell.contentLabel.text = "TOMORROW".localized() + ", " + Config.General.timeFormatter().string(from: reminderDate)
         } else {
             cell.contentLabel.text = Config.General.dateFormatter().string(from: reminderDate)
         }
@@ -107,7 +107,7 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE".localized()) { (_, indexPath) in
             guard indexPath.row < self.currentTask.availableNotifications().count else { return }
             let reminder = self.currentTask.availableNotifications()[indexPath.row]
             

@@ -16,18 +16,19 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 	- [x] Sort options
 	- [x] Task filters
 - [x] Theme support with custom App Icons
-- [ ] Tutorial/Onboarding
+- [x] Multi-Language support
 - [x] iCloud Kit support for syncing
 - [x] Push notifications for reminders
 	- [x] Synced push notifications between devices
 - [ ] Optional lockdown with FaceID/TouchID or passcode
 - [ ] Widget for Today tasks
+- [ ] Tutorial/Onboarding
 - [x] 3D Touch shortcuts
 
 ## Requirements
  - iOS 11.0+
- - Xcode 9.0+
- - Swift 4.2+
+ - Xcode 11.0+
+ - Swift 5.0+
 
 ## How to run
 
@@ -45,7 +46,6 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 
 - [ ] Add images as comments attachaments
 - [ ] Tutorial/Onboarding
-- [ ] Multi-Language support
 - [ ] Lockdown with FaceID/TouchID or passcode
 - [ ] Rearrange tasks manually
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
@@ -56,6 +56,7 @@ A simple To-do list app build for iOS 11+ in Swift 4.2
 - [ ] Themes view controller with previews
 
 ### Bugs
+- [x] Changing a theme won't change settings nav controller until close/reopen screen
 - [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
 - [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
 

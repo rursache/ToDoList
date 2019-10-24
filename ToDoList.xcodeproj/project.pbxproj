@@ -31,6 +31,7 @@
 		172CCDA822253FB700240725 /* IconPink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA622253FB700240725 /* IconPink@3x.png */; };
 		172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDA9222542AF00240725 /* IconNight@2x.png */; };
 		172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCDAA222542AF00240725 /* IconNight@3x.png */; };
+		172F55792361A04D00B2B8BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		1745401D222EBFAC00B2CA7B /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745401C222EBFAC00B2CA7B /* RemindersViewController.swift */; };
 		1745401F222ECB2A00B2CA7B /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
@@ -81,6 +82,8 @@
 		172CCDA622253FB700240725 /* IconPink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPink@3x.png"; sourceTree = "<group>"; };
 		172CCDA9222542AF00240725 /* IconNight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@2x.png"; sourceTree = "<group>"; };
 		172CCDAA222542AF00240725 /* IconNight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNight@3x.png"; sourceTree = "<group>"; };
+		172F557A2361A04D00B2B8BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		172F557C2361A7E300B2B8BB /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1745401C222EBFAC00B2CA7B /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoList.entitlements; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 				17C1776D222EB2FE00B2E84F /* Extensions.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
+				172F557B2361A04D00B2B8BB /* Localizable.strings */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -297,6 +301,7 @@
 				TargetAttributes = {
 					17D18D3A221D56C4005C647B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -318,6 +323,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ro,
 			);
 			mainGroup = 17D18D32221D56C4005C647B;
 			productRefGroup = 17D18D3C221D56C4005C647B /* Products */;
@@ -344,6 +350,7 @@
 				172CCDAC222542AF00240725 /* IconNight@3x.png in Resources */,
 				172CCDA122253CC800240725 /* IconBlack@2x.png in Resources */,
 				172CCDA022253CC800240725 /* IconYellow@2x.png in Resources */,
+				172F55792361A04D00B2B8BB /* Localizable.strings in Resources */,
 				172CCD9D22253CC800240725 /* IconYellow@3x.png in Resources */,
 				172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */,
 				172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */,
@@ -455,6 +462,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		172F557B2361A04D00B2B8BB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				172F557A2361A04D00B2B8BB /* en */,
+				172F557C2361A7E300B2B8BB /* ro */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		17D18D42221D56C4005C647B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -478,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -539,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -597,6 +615,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
@@ -607,7 +626,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -619,6 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
@@ -629,7 +649,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

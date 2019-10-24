@@ -25,7 +25,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         if !Utils().userIsLoggedIniCloud() {
-            Utils().showErrorToast(message: "You are not logged in iCloud. Your tasks won't be synced!".localized())
+            Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
         } else {
             self.getUserFullName()
         }
@@ -143,7 +143,7 @@ class HomeViewController: BaseViewController {
             if !UserDefaults.standard.bool(forKey: Config.UserDefaults.neverSyncedBefore) {
                 UserDefaults.standard.set(true, forKey: Config.UserDefaults.neverSyncedBefore)
                 
-                Utils().showSuccessToast(viewController: self, message: "iCloud data synced succesfully!".localized())
+                Utils().showSuccessToast(viewController: self, message: "HOME_SYNC_SUCCESS".localized())
             }
             
             guard let recordZone = notification.userInfo?["zoneId"] as? CKRecordZone.ID else {
@@ -191,7 +191,7 @@ class HomeViewController: BaseViewController {
         formatter.dateFormat = "dd MMM YY"
         
         let picker = ActionSheetDateTimeRangePicker(
-            title: "Select Date Interval".localized(),
+            title: "HOME_SELECT_TIME_INTERVAL".localized(),
             minimumDate: Date().next(days: -365),
             maximumDate: Date().next(days: 365),
             selectedRange: ActionSheetDateTimeRangePicker.DateRange(start: Date(), end: Date().next(hours: 24)),

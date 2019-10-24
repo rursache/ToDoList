@@ -59,17 +59,17 @@ class EditTaskViewController: BaseViewController {
         super.setupUI()
         
         if self.editMode {
-            self.title = "Edit task".localized()
+            self.title = "EDIT_TASKS_EDIT_TASK".localized()
         } else {
-            self.title = "Add task".localized()
+            self.title = "EDIT_TASKS_ADD_TASK".localized()
         }
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel".localized(), style: .done, target: self, action: #selector(self.cancelAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .done, target: self, action: #selector(self.saveAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CANCEL".localized(), style: .done, target: self, action: #selector(self.cancelAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SAVE".localized(), style: .done, target: self, action: #selector(self.saveAction))
         
         self.taskTitleTextView.text = ""
         self.taskTitleTextView.delegate = self
-        self.taskTitleTextView.placeHolder = "Task content".localized()
+        self.taskTitleTextView.placeHolder = "EDIT_TASKS_TASK_CONTENT".localized()
         self.taskTitleTextView.isAnimate = true
         self.taskTitleTextView.maxHeight = self.taskTitleTextView.frame.height * 6
         
@@ -115,14 +115,14 @@ class EditTaskViewController: BaseViewController {
     }
     
     func updateDateButtonTitle() {
-        var buttonText = "Date & Time".localized()
+        var buttonText = "EDIT_TASKS_DATE_TIME".localized()
         var fontSize: CGFloat = 13
         
         if let taskDate = self.tempTask.date {
             if Calendar.current.isDateInToday(taskDate) {
-                buttonText = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+                buttonText = "TODAY".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else if Calendar.current.isDateInTomorrow(taskDate) {
-                buttonText = "Tom.".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+                buttonText = "TOMORROW_SHORT".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else {
                 buttonText = Config.General.dateFormatter().string(from: taskDate)
             }
@@ -143,7 +143,7 @@ class EditTaskViewController: BaseViewController {
     }
     
     @objc func taskDateButtonAction() {
-        let datePicker = ActionSheetDatePicker(title: "Select date and time".localized(), datePickerMode: .dateAndTime, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
+        let datePicker = ActionSheetDatePicker(title: "REMINDERS_SELECT_DATE_TIME".localized(), datePickerMode: .dateAndTime, selectedDate: self.tempTask.date ?? Date(), doneBlock: { (actionSheet, selectedDate, origin) in
             guard let selectedDate = selectedDate as? Date else { return }
             
             RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: selectedDate)
@@ -155,14 +155,14 @@ class EditTaskViewController: BaseViewController {
             self.updateDateButtonTitle()
         }, origin: self.dateButton)
         
-        datePicker?.setDoneButton(UIBarButtonItem(title: "Save".localized(), style: .done, target: self, action: nil))
-        datePicker?.setCancelButton(UIBarButtonItem(title: "No date".localized(), style: .done, target: self, action: nil))
+        datePicker?.setDoneButton(UIBarButtonItem(title: "SAVE".localized(), style: .done, target: self, action: nil))
+        datePicker?.setCancelButton(UIBarButtonItem(title: "EDIT_TASKS_NO_DATE".localized(), style: .done, target: self, action: nil))
         
         datePicker?.show()
     }
     
     @objc func priorityButtonAction() {
-        let prioritySheet = ActionSheet(title: "Task priority".localized(), message: nil)
+        let prioritySheet = ActionSheet(title: "EDIT_TASKS_TASK_PRIORITY".localized(), message: nil)
         
         prioritySheet.addAction(Config.General.priorityTitles[0], style: .default) { (action) in
             self.setTaskPriority(priority: 1, title: action?.title)
@@ -181,10 +181,10 @@ class EditTaskViewController: BaseViewController {
         }
         
         prioritySheet.addAction(Config.General.priorityTitles[4], style: .default) { (action) in
-            self.setTaskPriority(priority: 10, title: "Priority".localized())
+            self.setTaskPriority(priority: 10, title: "EDIT_TASKS_PRIORITY".localized())
         }
         
-        prioritySheet.addAction("Cancel".localized(), style: .cancel)
+        prioritySheet.addAction("CANCEL".localized(), style: .cancel)
         
         prioritySheet.presentIn(self)
         prioritySheet.show()
@@ -236,7 +236,7 @@ class EditTaskViewController: BaseViewController {
         let taskName = self.taskTitleTextView.text!
         
         if taskName.count == 0 {
-            self.showError(message: "You must name your task to save it".localized())
+            self.showError(message: "EDIT_TASKS_NO_TASK_NAME_ERROR".localized())
             
             return
         }
@@ -257,7 +257,7 @@ class EditTaskViewController: BaseViewController {
         self.close {
             // check if a helpful prompt must be shown or not
             if self.parentType != .All && self.tempTask.date == nil && UserDefaults.standard.bool(forKey: Config.UserDefaults.helpPrompts) {
-                self.mustShowAlert?("Your task was \(self.editMode ? "updated" : "addded") but you're currently in a date based tasklist screen. To see your task, go back and select 'All Tasks' or add a date to this task")
+                self.mustShowAlert?("EDIT_TASKS_CHANGED_ERROR".localized().replacingOccurrences(of: "{replace}", with: self.editMode ? "EDIT_TASKS_UPDATED".localized() : "EDIT_TASKS_ADDED".localized()))
             }
         }
     }

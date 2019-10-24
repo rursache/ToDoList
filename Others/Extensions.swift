@@ -52,7 +52,7 @@ extension UIViewController {
     }
     
     func showError(message: String) {
-        Alert(title: "Error".localized(), message: message).showOK()
+        Alert(title: "ERROR".localized(), message: message).showOK()
     }
     
     func topMostViewController() -> UIViewController {

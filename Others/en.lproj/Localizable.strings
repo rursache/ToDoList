@@ -1,0 +1,105 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Radu Ursache on 24/10/2019.
+  Copyright © 2019 Radu Ursache. All rights reserved.
+*/
+
+// config
+"CONFIG_LINK_PREF1" = "In App";
+"CONFIG_LINK_PREF2" = "Safari";
+"CONFIG_PRIORITY_PREF1" = "Highest";
+"CONFIG_PRIORITY_PREF2" = "High";
+"CONFIG_PRIORITY_PREF3" = "Normal";
+"CONFIG_PRIORITY_PREF4" = "Low";
+"CONFIG_PRIORITY_PREF5" = "None";
+"CONFIG_SORT_PREF1" = "Date (Asc)";
+"CONFIG_SORT_PREF2" = "Date (Desc)";
+"CONFIG_SORT_PREF3" = "Priority (Asc)";
+"CONFIG_SORT_PREF4" = "Priority (Desc)";
+"CONFIG_OPTIONS_PREF1" = "Overview";
+"CONFIG_OPTIONS_PREF2" = "All Tasks";
+"CONFIG_OPTIONS_PREF3" = "Today";
+"CONFIG_OPTIONS_PREF4" = "Tomorrow";
+"CONFIG_OPTIONS_PREF5" = "Next 7 Days";
+"CONFIG_OPTIONS_PREF6" = "Custom Interval";
+"CONFIG_OPTIONS_PREF7" = "Completed";
+
+// home
+"HOME_SYNC_NOT_AVAILABLE" = "You are not logged in iCloud. Your tasks won't be synced!";
+"HOME_SYNC_SUCCESS" = "iCloud data synced succesfully!";
+"HOME_SELECT_TIME_INTERVAL" = "Select Date Interval";
+
+// settings
+"SETTINGS_LOGGED_IN_AS" = "Logged in as: ";
+"SETTINGS_NOT_LOGGED_IN" = "You're not logged into iCloud, tasks aren't syncing!";
+"SETTINGS_ITEM_ENTRY_START_PAGE" = "Start page";
+"SETTINGS_ITEM_ENTRY_THEME" = "Theme";
+"SETTINGS_ITEM_ENTRY_LANGUAGE" = "Language";
+"SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS" = "Open Web Links";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Automatic Reminders";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Get a reminder 30m before task's due";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS" = "Helpful Prompts";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "We'll help you get used with the app";
+"SETTINGS_ITEM_ENTRY_MANUAL_SYNC" = "Manual iCloud Sync";
+"SETTINGS_ITEM_ENTRY_FEEDBACK" = "Feedback";
+"SETTINGS_ITEM_ENTRY_ACKNOW" = "Acknowledgments";
+"SETTINGS_ITEM_ENTRY_ABOUT" = "About";
+"SETTINGS_SYNC_START" = "Sync started, please wait...";
+"SETTINGS_SYNC_END" = "Sync done";
+"SETTINGS_NO_EMAIL_FAILED" = "No email account setup on your device";
+"SETTINGS_ABOUT_TEXT" = "A simple open source To-do list app written in Swift. Based on Todoist UI/UX\nRadu Ursache - RanduSoft\n\n";
+"SETTINGS_CONFIRMATION_START_PAGE" = "Start page updated!";
+"SETTINGS_CONFIRMATION_THEME" = "Theme updated!";
+"SETTINGS_CONFIRMATION_LANGUAGE" = "Language updated. Please restart the app!";
+"SETTINGS_CONFIRMATION_LINKS" = "Links will now open {replace}!";
+
+// tasks
+"TASKS_SORT_TASKS" = "Sort tasks";
+"TASKS_TASK_OPTIONS" = "Task options";
+"TASKS_COMPLETE" = "Complete";
+"TASKS_MOVE_TO_INBOX" = "Move to inbox";
+"TASKS_CONFIRMATION_TASK_COMPLETE" = "Task completed!";
+"TASKS_COMPLETED" = "Completed";
+"TASKS_DATE_LABEL_TODAY" = "today";
+"TASKS_DATE_LABEL_ON" = "on ";
+
+// edit tasks
+"EDIT_TASKS_EDIT_TASK" = "Edit task";
+"EDIT_TASKS_ADD_TASK" = "Add task";
+"EDIT_TASKS_TASK_CONTENT" = "Task content";
+"EDIT_TASKS_DATE_TIME" = "Date & Time";
+"EDIT_TASKS_NO_DATE" = "No date";
+"EDIT_TASKS_TASK_PRIORITY" = "Task priority";
+"EDIT_TASKS_PRIORITY" = "Priority";
+"EDIT_TASKS_NO_TASK_NAME_ERROR" = "You must name your task to save it";
+"EDIT_TASKS_UPDATED" = "updated";
+"EDIT_TASKS_ADDED" = "addded";
+"EDIT_TASKS_CHANGED_ERROR" = "Your task was {replace} but you're currently in a date based tasklist screen. To see your task, go back and select 'All Tasks' or add a date to this task";
+
+// comments
+"COMMENTS_TITLE" = "Comments";
+"COMMENTS_ADD_COMMENT" = "Add a comment";
+
+// reminders
+"REMINDERS_TITLE" = "Reminders";
+"REMINDERS_SELECT_DATE_TIME" = "Select date and time";
+
+// others
+"OK" = "OK";
+"NOTIFICATION" = "Notification";
+"WARNING" = "Warning";
+"ERROR" = "Error";
+"DONE" = "Done";
+"CANCEL" = "Cancel";
+"CLOSE" = "Close";
+"ADD" = "Add";
+"UPDATE" = "Update";
+"DELETE" = "Delete";
+"TODAY" = "Today";
+"TOMORROW" = "Tomorrow";
+"TOMORROW_SHORT" = "Tom.";
+"SUCCESS" = "Success";
+"EDIT" = "Edit";
+"SAVE" = "Save";

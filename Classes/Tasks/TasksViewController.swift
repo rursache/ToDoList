@@ -122,7 +122,7 @@ class TasksViewController: BaseViewController {
             self.loadData()
         }
         addTaskVC.mustShowAlert = { (alertText) in
-            Alert(title: "Success", message: alertText).showOK()
+            Alert(title: "SUCCESS".localized(), message: alertText).showOK()
         }
         
         let navigationController = UINavigationController(rootViewController: addTaskVC)
@@ -138,11 +138,11 @@ class TasksViewController: BaseViewController {
     }
     
     @objc func sortButtonAction() {
-        let sortSheet = ActionSheet(title: "Sort tasks".localized(), message: nil)
+        let sortSheet = ActionSheet(title: "TASKS_SORT_TASKS".localized(), message: nil)
         
         for sortOption in Config.General.sortTitles {
             sortSheet.addAction(sortOption, style: .default) { (action) in
-                let itemIndex = Config.General.sortTitles.index(of: sortOption)!
+                let itemIndex = Config.General.sortTitles.firstIndex(of: sortOption)!
                 
                 if itemIndex == 0 || itemIndex == 1 {
                     self.currentSortType = .Date
@@ -156,7 +156,7 @@ class TasksViewController: BaseViewController {
             }
         }
         
-        sortSheet.addAction("Cancel".localized(), style: .cancel)
+        sortSheet.addAction("CANCEL".localized(), style: .cancel)
         
         sortSheet.presentIn(self)
         sortSheet.show()
@@ -197,33 +197,33 @@ class TasksViewController: BaseViewController {
     }
     
     func showTaskOptions(task: TaskModel, indexPath: IndexPath) {
-        let taskOptionsSheet = ActionSheet(title: "Task options".localized(), message: nil)
+        let taskOptionsSheet = ActionSheet(title: "TASKS_TASK_OPTIONS".localized(), message: nil)
         
         if Config.Features.showCompleteButtonInTaskOptions {
-            taskOptionsSheet.addAction("Complete".localized(), style: .default) { (action) in
+            taskOptionsSheet.addAction("TASKS_COMPLETE".localized(), style: .default) { (action) in
                 self.completeTask(task: task)
             }
         }
         
         if self.selectedType != .Completed {
-            taskOptionsSheet.addAction("Edit".localized(), style: .default) { (action) in
+            taskOptionsSheet.addAction("EDIT".localized(), style: .default) { (action) in
                 self.addTaskAction(editMode: true, task: task)
             }
         } else {
-            taskOptionsSheet.addAction("Move to inbox".localized(), style: .default) { (action) in
+            taskOptionsSheet.addAction("TASKS_MOVE_TO_INBOX".localized(), style: .default) { (action) in
                 self.unDoneTask(task: task)
             }
         }
         
-        taskOptionsSheet.addAction("Comments".localized(), style: .default) { (action) in
+        taskOptionsSheet.addAction("COMMENTS_TITLE".localized(), style: .default) { (action) in
             self.commentsButtonAction(task: task, indexPath: indexPath)
         }
         
-        taskOptionsSheet.addAction("Reminders".localized(), style: .default) { (action) in
+        taskOptionsSheet.addAction("REMINDERS_TITLE".localized(), style: .default) { (action) in
             self.remindersButtonAction(task: task, indexPath: indexPath)
         }
         
-        taskOptionsSheet.addAction("Cancel".localized(), style: .cancel)
+        taskOptionsSheet.addAction("CANCEL".localized(), style: .cancel)
         
         taskOptionsSheet.presentIn(self)
         taskOptionsSheet.show()
@@ -238,7 +238,7 @@ class TasksViewController: BaseViewController {
         
         self.loadData()
         
-        Utils().showSuccessToast(viewController: self, message: "Task completed!".localized())
+        Utils().showSuccessToast(viewController: self, message: "TASKS_CONFIRMATION_TASK_COMPLETE".localized())
     }
     
     func deleteTask(task: TaskModel) {
@@ -287,19 +287,19 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
         
         if let completedDate = currentTask.completedDate, self.selectedType == .Completed {
-            let prefix = "Completed "
+            let prefix = "TASKS_COMPLETED".localized() + " "
             if Calendar.current.isDateInToday(completedDate) {
-                cell.taskDateLabel.text = prefix + "today".localized() + ", " + Config.General.timeFormatter().string(from: completedDate)
+                cell.taskDateLabel.text = prefix + "TASKS_DATE_LABEL_TODAY".localized() + ", " + Config.General.timeFormatter().string(from: completedDate)
             } else {
-                cell.taskDateLabel.text = prefix + "on " + Config.General.dateFormatter().string(from: completedDate)
+                cell.taskDateLabel.text = prefix + "TASKS_DATE_LABEL_ON".localized() + Config.General.dateFormatter().string(from: completedDate)
             }
             
             cell.taskDateLabel.isHidden = false
         } else if let taskDate = currentTask.date {
             if Calendar.current.isDateInToday(taskDate) {
-                cell.taskDateLabel.text = "Today".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+                cell.taskDateLabel.text = "TODAY".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else if Calendar.current.isDateInTomorrow(taskDate) {
-                cell.taskDateLabel.text = "Tomorrow".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
+                cell.taskDateLabel.text = "TOMORROW".localized() + ", " + Config.General.timeFormatter().string(from: taskDate)
             } else {
                 cell.taskDateLabel.text = Config.General.dateFormatter().string(from: taskDate)
             }
@@ -343,7 +343,7 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE".localized()) { (_, indexPath) in
             self.deleteTask(task: (self.isSearching() ? self.tasksFilteredDataSource : self.tasksDataSource)[indexPath.row])
         }
         return [deleteAction]

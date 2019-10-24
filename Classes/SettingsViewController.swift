@@ -34,18 +34,17 @@ class SettingsViewController: BaseViewController {
         version.font = UIFont.systemFont(ofSize: 12)
         version.textColor = UIColor.darkGray
         version.textAlignment = .center
-        
         if let fullName = UserDefaults.standard.string(forKey: Config.UserDefaults.userFullName), Utils().userIsLoggedIniCloud() {
-            version.text = "Logged in as: ".localized() + "\(fullName)"
+            version.text = "SETTINGS_LOGGED_IN_AS".localized() + "\(fullName)"
         } else {
-            version.text = "You're not logged into iCloud, tasks aren't syncing!"
+            version.text = "SETTINGS_NOT_LOGGED_IN"
         }
         tableViewFooter.addSubview(version)
         self.tableView.tableFooterView  = tableViewFooter
     }
     
     func addRightDoneButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
     }
     
     override func setupBindings() {
@@ -64,22 +63,22 @@ class SettingsViewController: BaseViewController {
         let helpPrompts = userDefaults.bool(forKey: Config.UserDefaults.helpPrompts)
         
         let mainSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Start page".localized(), icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
-            SettingsItemModel(title: "Theme".localized(), icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
-            SettingsItemModel(title: "Language".localized(), icon: "settings_language", subtitle: nil, rightTitle: languageOption),
-            SettingsItemModel(title: "Open Web Links".localized(), icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_START_PAGE".localized(), icon: "settings_start_page", subtitle: nil, rightTitle: startPageOption),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_THEME".localized(), icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_LANGUAGE".localized(), icon: "settings_language", subtitle: nil, rightTitle: languageOption),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS".localized(), icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
                                                         ])
         
         let togglesSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Automatic Reminders".localized(), icon: "settings_auto_reminders", subtitle: "Get a reminder 30m before task's due".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders),
-            SettingsItemModel(title: "Helpful Prompts".localized(), icon: "settings_help", subtitle: "We'll help you get used with the app".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS".localized(), icon: "settings_auto_reminders", subtitle: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS".localized(), icon: "settings_help", subtitle: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
                                                         ])
         
         let aboutSection = SettingsItemSection(items: [
-            SettingsItemModel(title: "Manual iCloud Sync".localized(), icon: "settings_sync", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "Feedback".localized(), icon: "settings_feedback", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "Acknowledgments".localized(), icon: "settings_acknowledgments", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "About".localized(), icon: "settings_about", subtitle: nil, rightTitle: nil)
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_MANUAL_SYNC".localized(), icon: "settings_sync", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_FEEDBACK".localized(), icon: "settings_feedback", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_ACKNOW".localized(), icon: "settings_acknowledgments", subtitle: nil, rightTitle: nil),
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_ABOUT".localized(), icon: "settings_about", subtitle: nil, rightTitle: nil)
                                                         ])
         
         self.dataSource = [mainSection, togglesSection, aboutSection]
@@ -104,7 +103,7 @@ class SettingsViewController: BaseViewController {
         if section == 3 {
             if row == 1 {
                 // sync
-                Utils().showSuccessToast(viewController: self, message: "Sync started, please wait...".localized())
+                Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
                 self.navigationItem.rightBarButtonItem = nil
                 
                 Utils().getSyncEngine()?.pull()
@@ -113,7 +112,7 @@ class SettingsViewController: BaseViewController {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                         self.addRightDoneButton()
-                        Utils().showSuccessToast(viewController: self, message: "Sync done".localized())
+                        Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
                     })
                 })
                 
@@ -122,10 +121,10 @@ class SettingsViewController: BaseViewController {
                 if MFMailComposeViewController.canSendMail() {
                     let mail = MFMailComposeViewController()
                     mail.mailComposeDelegate = self
-                    mail.setToRecipients(["contact@randusoft.ro"])
+                    mail.setToRecipients([Config.General.contactEmail])
                     self.present(mail, animated: true)
                 } else {
-                    Utils().showErrorToast(message: "No email account setup on your device".localized())
+                    Utils().showErrorToast(message: "SETTINGS_NO_EMAIL_FAILED".localized())
                 }
                 
             } else if row == 3 {
@@ -134,7 +133,7 @@ class SettingsViewController: BaseViewController {
                 
             } else if row == 4 {
                 // about
-                self.showOK(message: "A simple To-do list app written in Swift 4.2\nRadu Ursache - RanduSoft\n\nVersion \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+                self.showOK(message: "SETTINGS_ABOUT_TEXT".localized() + "v\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
             }
         }
     }
@@ -149,9 +148,9 @@ class SettingsViewController: BaseViewController {
             
             for option in startPageTitles {
                 actionSheet.addAction(option, style: .default) { (action) in
-                    UserDefaults.standard.set(Config.General.startPageTitles.index(of: option), forKey: Config.UserDefaults.startPage)
+                    UserDefaults.standard.set(Config.General.startPageTitles.firstIndex(of: option), forKey: Config.UserDefaults.startPage)
                     
-                    Utils().showSuccessToast(viewController: self, message: "Start page updated!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "SETTINGS_CONFIRMATION_START_PAGE".localized())
                     self.loadCurrentData()
                 }
             }
@@ -160,17 +159,17 @@ class SettingsViewController: BaseViewController {
             
             for theme in Config.General.themes {
                 actionSheet.addAction(theme.name, style: .default) { (action) in
-                    UserDefaults.standard.set(Config.General.themes.index(of: theme), forKey: Config.UserDefaults.theme)
+                    UserDefaults.standard.set(Config.General.themes.firstIndex(of: theme), forKey: Config.UserDefaults.theme)
                     
                     NotificationCenter.default.post(name: Config.Notifications.themeUpdated, object: nil)
-                    self.setupUI()
+                    self.setupUI() // this should be called to make sure nav bar color is updated. weird
                     
                     UIApplication.shared.setAlternateIconName(theme.appIcon) { error in
                         if let error = error {
                             print(error.localizedDescription)
                             Utils().showErrorToast(message: error.localizedDescription)
                         } else {
-                            Utils().showSuccessToast(viewController: self, message: "Theme updated!".localized())
+                            Utils().showSuccessToast(viewController: self, message: "SETTINGS_CONFIRMATION_THEME".localized())
                         }
                     }
                     
@@ -182,11 +181,11 @@ class SettingsViewController: BaseViewController {
             
             for language in Config.General.languages {
                 actionSheet.addAction(language.name, style: .default) { (action) in
-                    UserDefaults.standard.set(Config.General.languages.index(of: language), forKey: Config.UserDefaults.language)
+                    UserDefaults.standard.set(Config.General.languages.firstIndex(of: language), forKey: Config.UserDefaults.language)
                     
                     UserDefaults.standard.set([language.code], forKey: "AppleLanguages")
                     
-                    Utils().showSuccessToast(viewController: self, message: "Language updated. Please restart the app!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "SETTINGS_CONFIRMATION_LANGUAGE".localized())
                     self.loadCurrentData()
                 }
             }
@@ -195,15 +194,15 @@ class SettingsViewController: BaseViewController {
             
             for option in Config.General.linksOptions {
                 actionSheet.addAction(option, style: .default) { (action) in
-                    UserDefaults.standard.set(Config.General.linksOptions.index(of: option), forKey: Config.UserDefaults.openLinks)
+                    UserDefaults.standard.set(Config.General.linksOptions.firstIndex(of: option), forKey: Config.UserDefaults.openLinks)
                     
-                    Utils().showSuccessToast(viewController: self, message: "Links will now open \(option)!".localized())
+                    Utils().showSuccessToast(viewController: self, message: "SETTINGS_CONFIRMATION_LINKS".localized().replacingOccurrences(of: "{replace}", with: option))
                     self.loadCurrentData()
                 }
             }
         }
         
-        actionSheet.addAction("Cancel".localized(), style: .cancel)
+        actionSheet.addAction("CANCEL".localized(), style: .cancel)
         
         actionSheet.presentIn(self)
         actionSheet.show()

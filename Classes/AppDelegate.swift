@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
         self.setupDefaults()
         
         self.setupSDKs(application: application)
@@ -115,15 +119,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
         let dict = userInfo as! [String: NSObject]
-        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
+        guard let notification = CKNotification(fromRemoteNotificationDictionary: dict) else {
+            return
+        }
         
         if (notification.subscriptionID == IceCreamSubscription.cloudKitPublicDatabaseSubscriptionID.rawValue) {
             NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
         }
-        completionHandler(.newData)
         
+        completionHandler(.newData)
     }
     
     func handlePushNotification(userInfo: [AnyHashable : Any]) {
@@ -140,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // show alert if in foreground
         if (UIApplication.shared.applicationState == .active) {
-            Alert(title: "Notification".localized(), message: taskName).showOK()
+            Alert(title: "NOTIFICATION".localized(), message: taskName).showOK()
         }
         
         // remove this notificaton from realm

@@ -46,16 +46,16 @@ class CommentsViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        self.title = "Comments".localized()
+        self.title = "COMMENTS_TITLE".localized()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close".localized(), style: .done, target: self, action: #selector(self.closeAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CLOSE".localized(), style: .done, target: self, action: #selector(self.closeAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "keyboardIcon")!, target: self, action: #selector(self.keyboardButtonAction))
         
         self.addButton.addTarget(self, action: #selector(self.addCommentAction), for: .touchUpInside)
         
         self.textView.text = ""
         self.textView.delegate = self
-        self.textView.placeHolder = "Add a comment".localized()
+        self.textView.placeHolder = "COMMENTS_ADD_COMMENT".localized()
         self.textView.isAnimate = true
         self.textView.maxHeight = self.textView.frame.height * 3
         
@@ -94,7 +94,7 @@ class CommentsViewController: BaseViewController {
         if self.editMode {
             self.editMode = false
             
-            self.addButton.setTitle("Add".localized(), for: .normal)
+            self.addButton.setTitle("ADD".localized(), for: .normal)
             
             RealmManager.sharedInstance.changeCommentContent(comment: self.currentEditingComment, content: self.textView.text)
         } else {
@@ -117,7 +117,7 @@ class CommentsViewController: BaseViewController {
         self.textView.layoutIfNeeded()
         self.textView.becomeFirstResponder()
         
-        self.addButton.setTitle("Update".localized(), for: .normal)
+        self.addButton.setTitle("UPDATE".localized(), for: .normal)
     }
     
     func deleteComment(comment: CommentModel) {
@@ -193,7 +193,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (_, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE".localized()) { (_, indexPath) in
             guard indexPath.row < self.currentTask.availableComments().count else { return }
             let comment = self.currentTask.availableComments()[indexPath.row]
             

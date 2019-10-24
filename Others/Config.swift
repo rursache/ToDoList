@@ -33,6 +33,8 @@ class Config: NSObject {
             return formatter
         }
         
+        static let contactEmail = "contact@randusoft.ro"
+        static let toastOnScreenTime = 2.5 // seconds
         static let notificationDefaultDelayForNotifications = -30 // minutes
         
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),
@@ -42,23 +44,22 @@ class Config: NSObject {
                              ThemeModel(name: "Radiant Orange", color: Colors.orange, appIcon: "IconOrange"),
                              ThemeModel(name: "Salmon Pink", color: Colors.pink, appIcon: "IconPink"),
                              ThemeModel(name: "Midnight Black", color: Colors.black, appIcon: "IconBlack"),
-                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")
-                            ]
+                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")]
         
         static let languages = [LanguageModel(name: "English", code: "en_US"), LanguageModel(name: "Romanian", code: "ro_RO")]
         
-        static let linksOptions = ["In App", "Safari"]
-        static let startPageTitles = ["Overview", "All Tasks", "Today", "Tomorrow", "Next 7 Days", "Custom Interval", "Completed"]
+        static let linksOptions = ["CONFIG_LINK_PREF1".localized(), "CONFIG_LINK_PREF2".localized()]
+        static let startPageTitles = ["CONFIG_OPTIONS_PREF1".localized(), "CONFIG_OPTIONS_PREF2".localized(), "CONFIG_OPTIONS_PREF3".localized(), "CONFIG_OPTIONS_PREF4".localized(), "CONFIG_OPTIONS_PREF5".localized(), "CONFIG_OPTIONS_PREF6".localized(), "CONFIG_OPTIONS_PREF7".localized()]
         static let priorityColors = [Config.Colors.red, Config.Colors.orange, Config.Colors.yellow, Config.Colors.green]
-        static let priorityTitles = ["Highest", "High", "Normal", "Low", "None"]
-        static let sortTitles = ["Date (Asc)", "Date (Desc)", "Priority (Asc)", "Priority (Desc)"] // also update in TasksViewController
+        static let priorityTitles = ["CONFIG_PRIORITY_PREF1".localized(), "CONFIG_PRIORITY_PREF2".localized(), "CONFIG_PRIORITY_PREF3".localized(), "CONFIG_PRIORITY_PREF4".localized(), "CONFIG_PRIORITY_PREF5".localized()]
+        static let sortTitles = ["CONFIG_SORT_PREF1".localized(), "CONFIG_SORT_PREF2".localized(), "CONFIG_SORT_PREF3".localized(), "CONFIG_SORT_PREF4".localized()] // also update in TasksViewController
     }
     
     class Colors: NSObject {
-        static let red = UIColor(hexString: "#d63031") // UIColor(red:0.82, green:0.24, blue:0.11, alpha:1.0)
-        static let green = UIColor(hexString: "#20bf6b") // UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
-        static let yellow = UIColor(hexString: "#f1c40f") // UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)
-        static let orange = UIColor(hexString: "#f39c12") // UIColor(red:0.90, green:0.49, blue:0.13, alpha:1.0)
+        static let red = UIColor(hexString: "#d63031")
+        static let green = UIColor(hexString: "#20bf6b")
+        static let yellow = UIColor(hexString: "#f1c40f")
+        static let orange = UIColor(hexString: "#f39c12")
         static let blue = UIColor(hexString: "#0984e3")
         static let black = UIColor(hexString: "#2d3436")
         static let pink = UIColor(hexString: "#e3acac")
