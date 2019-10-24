@@ -37,7 +37,7 @@ class SettingsViewController: BaseViewController {
         if let fullName = UserDefaults.standard.string(forKey: Config.UserDefaults.userFullName), Utils().userIsLoggedIniCloud() {
             version.text = "SETTINGS_LOGGED_IN_AS".localized() + "\(fullName)"
         } else {
-            version.text = "SETTINGS_NOT_LOGGED_IN"
+            version.text = "SETTINGS_NOT_LOGGED_IN".localized()
         }
         tableViewFooter.addSubview(version)
         self.tableView.tableFooterView  = tableViewFooter

@@ -4,7 +4,7 @@
   <img width="150" height="150" src="https://github.com/iPhoNewsRO/ToDoList/blob/master/Resources/icon.png" />
 </p>
 
-A simple To-do list app build for iOS 11+ in Swift 4.2 
+A simple To-do list app build for iOS 11+ in Swift 5
 
 ## Main features
 - [x] Basic to do list features
