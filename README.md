@@ -50,9 +50,12 @@ A simple To-do list app build for iOS 11+ in Swift 5
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Widget for Today tasks
 - [ ] Rearrange tasks manually
+- [ ] iPad app
+- [ ] Marzipan support for macOS
  
 ### Improvements
 - [ ] Reload notifications after user gave push permissions
+- [ ] Better sync events and responses
 - [ ] Themes view controller with previews
 
 ### Bugs
