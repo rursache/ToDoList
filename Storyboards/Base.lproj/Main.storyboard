@@ -173,7 +173,7 @@
                                                                             </state>
                                                                         </button>
                                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL1-I9-qtY" customClass="LeftAlignedIconButton" customModule="ToDoList" customModuleProvider="target">
-                                                                            <rect key="frame" x="152.5" y="-1.5" width="42" height="18"/>
+                                                                            <rect key="frame" x="152.5" y="-1.5" width="42.5" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="cQz-bl-iPj"/>
                                                                             </constraints>
@@ -185,7 +185,7 @@
                                                                             </state>
                                                                         </button>
                                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lar-Db-uCR" customClass="LeftAlignedIconButton" customModule="ToDoList" customModuleProvider="target">
-                                                                            <rect key="frame" x="204.5" y="-1.5" width="42.5" height="18"/>
+                                                                            <rect key="frame" x="205" y="-1.5" width="42.5" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="OBH-h5-jSP"/>
                                                                             </constraints>
@@ -197,7 +197,7 @@
                                                                             </state>
                                                                         </button>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44C-bt-DNv" userLabel="spacing">
-                                                                            <rect key="frame" x="257" y="0.0" width="76" height="18"/>
+                                                                            <rect key="frame" x="257.5" y="0.0" width="75.5" height="18"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </view>
                                                                     </subviews>

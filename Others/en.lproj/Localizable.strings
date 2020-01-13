@@ -41,7 +41,7 @@
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Automatic Reminders";
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Get a reminder 30m before task's due";
 "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS" = "Helpful Prompts";
-"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "We'll help you get used with the app";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS_DESC" = "We'll help you get used with the app";
 "SETTINGS_ITEM_ENTRY_MANUAL_SYNC" = "Manual iCloud Sync";
 "SETTINGS_ITEM_ENTRY_FEEDBACK" = "Feedback";
 "SETTINGS_ITEM_ENTRY_ACKNOW" = "Acknowledgments";

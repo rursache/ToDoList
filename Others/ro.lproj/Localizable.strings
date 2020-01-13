@@ -41,7 +41,7 @@
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Memento-uri automate";
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Obțineți un memento cu 30 de minute înainte de scadența sarcinii";
 "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS" = "Indicații utile";
-"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "Te vom ajuta să te obișnuiești cu aplicația";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS_DESC" = "Te vom ajuta să te obișnuiești cu aplicația";
 "SETTINGS_ITEM_ENTRY_MANUAL_SYNC" = "Sincronizare manuală iCloud";
 "SETTINGS_ITEM_ENTRY_FEEDBACK" = "Feedback";
 "SETTINGS_ITEM_ENTRY_ACKNOW" = "Mulțumiri";

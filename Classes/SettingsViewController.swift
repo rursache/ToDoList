@@ -79,7 +79,7 @@ class SettingsViewController: BaseViewController {
         
         let togglesSection = SettingsItemSection(items: [
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS".localized(), icon: "settings_auto_reminders", subtitle: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders),
-            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS".localized(), icon: "settings_help", subtitle: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
+            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS".localized(), icon: "settings_help", subtitle: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
                                                         ])
         
         let aboutSection = SettingsItemSection(items: [
