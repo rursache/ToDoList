@@ -21,11 +21,17 @@ class Utils: NSObject {
     }
     
     func getSyncEngine() -> SyncEngine? {
-        return (UIApplication.shared.delegate as! AppDelegate).syncEngine
+		#if realApp
+			return (UIApplication.shared.delegate as! AppDelegate).syncEngine
+		#else
+			return nil
+		#endif
     }
     
     func setBadgeNumber(badgeNumber: Int) {
-        UIApplication.shared.applicationIconBadgeNumber = badgeNumber
+		#if realApp
+			UIApplication.shared.applicationIconBadgeNumber = badgeNumber
+		#endif
     }
     
     func getCurrentThemeColor() -> UIColor {
@@ -54,25 +60,33 @@ class Utils: NSObject {
     
     // toast
     
-    func showErrorToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+    func showErrorToast(viewController: UIViewController? = nil, message: String) {
         self.showToast(viewController: viewController, message: message, state: .error)
     }
     
-    func showSuccessToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+    func showSuccessToast(viewController: UIViewController? = nil, message: String) {
         self.showToast(viewController: viewController, message: message, state: .success)
     }
     
-    func showInfoToast(viewController: UIViewController = UIApplication.shared.topMostViewController(), message: String) {
+    func showInfoToast(viewController: UIViewController? = nil, message: String) {
         self.showToast(viewController: viewController, message: message, state: .info)
     }
     
-    func showToast(viewController: UIViewController, message: String, state: Loaf.State) {
-        Loaf.dismiss(sender: viewController)
+    fileprivate func showToast(viewController: UIViewController?, message: String, state: Loaf.State) {
+		var vc = UIViewController()
+		#if realApp
+			vc = UIApplication.shared.topMostViewController()
+		#endif
+		if viewController != nil {
+			vc = viewController!
+		}
+		
+        Loaf.dismiss(sender: vc)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            Loaf(message, state: state, sender: viewController).show()
+            Loaf(message, state: state, sender: vc).show()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + Config.General.toastOnScreenTime) {
-                Loaf.dismiss(sender: viewController, animated: true)
+                Loaf.dismiss(sender: vc, animated: true)
             }
         }
     }

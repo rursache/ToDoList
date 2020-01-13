@@ -13,6 +13,7 @@
 */
 
 import UIKit
+import Realm
 import RealmSwift
 import IceCream
 
@@ -22,14 +23,33 @@ class RealmManager {
     private var realm: Realm
     
     init() {
-        let config = Realm.Configuration(schemaVersion: 13, migrationBlock: { migration, oldSchemaVersion in
+        var config = Realm.Configuration(schemaVersion: 14, migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < 13 {
                 migration.enumerateObjects(ofType: TaskModel.className()) { oldObject, newObject in
                     newObject!["completedDate"] = Date()
                 }
             }
         })
-    
+		
+		let fileManager = FileManager.default
+		let realmPath = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.ro.randusoft.RSToDoList")!.path + "/db.realm"
+		
+		if let originalDefaultRealmPath = config.fileURL {
+			if fileManager.fileExists(atPath: originalDefaultRealmPath.absoluteString) {
+				do {
+					try fileManager.moveItem(atPath: originalDefaultRealmPath.absoluteString, toPath: realmPath)
+				} catch {
+					print("error at moving default realm")
+				}
+			}
+		}
+		
+		if let realmPathURL = URL(string: realmPath) {
+			config.fileURL = realmPathURL
+		} else {
+			fatalError("bad realm path?")
+		}
+		
         self.realm = try! Realm(configuration: config)
     }
     

@@ -16,8 +16,7 @@ import RSTextViewMaster
 
 class EditTaskViewController: BaseViewController {
 
-    var parentType: HomeItemModel.ListType = .All
-    @IBOutlet weak var addTaskView: UIView!
+	@IBOutlet weak var addTaskView: UIView!
     @IBOutlet weak var taskTitleTextView: RSTextViewMaster!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var priorityButton: UIButton!
@@ -26,6 +25,7 @@ class EditTaskViewController: BaseViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+	var parentType: HomeItemModel.ListType = .All
     let keyboardObserver = UnderKeyboardObserver()
     var tempTask = TaskModel()
     var onCompletion: (() -> Void)?
@@ -38,6 +38,12 @@ class EditTaskViewController: BaseViewController {
         if !self.editMode {
             self.tempTask.isDeleted = true
             RealmManager.sharedInstance.addTask(task: self.tempTask)
+			
+			// set task date and time to now if you're coming from Today screen
+			if self.parentType == .Today {
+				RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: Date().next(hours: 1))
+				self.updateDateButtonTitle()
+			}
         } else {
             self.loadExistingTaskData()
         }
@@ -227,7 +233,11 @@ class EditTaskViewController: BaseViewController {
         if priority != 10 {
             self.priorityButton.setTitleColor(Config.General.priorityColors[priority - 1], for: .normal)
         } else {
-            self.priorityButton.setTitleColor(UIColor.black, for: .normal)
+			if #available(iOS 13.0, *) {
+				self.priorityButton.setTitleColor(UIColor.label, for: .normal)
+			} else {
+				self.priorityButton.setTitleColor(UIColor.black, for: .normal)
+			}
         }
     }
 

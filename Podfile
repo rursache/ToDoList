@@ -29,6 +29,10 @@ target 'ToDoList' do
   pod 'Fabric'
   pod 'Crashlytics'
 
+  target 'ToDoListWidget' do
+        inherit! :search_paths
+    end
+
 end
 
 post_install do |installer|

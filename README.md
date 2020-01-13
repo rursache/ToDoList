@@ -20,10 +20,9 @@ A simple To-do list app build for iOS 11+ in Swift 5
 - [x] iCloud Kit support for syncing
 - [x] Push notifications for reminders
 	- [x] Synced push notifications between devices
-- [ ] Optional lockdown with FaceID/TouchID or passcode
-- [ ] Widget for Today tasks
-- [ ] Tutorial/Onboarding
+- [x] Widget for Today tasks
 - [x] 3D Touch shortcuts
+- [x] Dark mode
 
 ## Requirements
  - iOS 11.0+

@@ -32,7 +32,11 @@ class SettingsViewController: BaseViewController {
         tableViewFooter.backgroundColor = UIColor.clear
         let version = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 30))
         version.font = UIFont.systemFont(ofSize: 12)
-        version.textColor = UIColor.darkGray
+		if #available(iOS 13.0, *) {
+			version.textColor = UIColor.systemGray
+		} else {
+			version.textColor = UIColor.darkGray
+		}
         version.textAlignment = .center
         if let fullName = UserDefaults.standard.string(forKey: Config.UserDefaults.userFullName), Utils().userIsLoggedIniCloud() {
             version.text = "SETTINGS_LOGGED_IN_AS".localized() + "\(fullName)"
