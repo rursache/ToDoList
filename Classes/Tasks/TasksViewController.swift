@@ -20,7 +20,8 @@ class TasksViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
-    
+	@IBOutlet weak var noTasksLabel: UILabel!
+	
     let searchController = UISearchController(searchResultsController: nil)
     
     var selectedType: HomeItemModel.ListType = .All
@@ -36,6 +37,12 @@ class TasksViewController: BaseViewController {
         self.setDefaultSorting()
         self.loadData()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		
+	}
 
     @objc override func setupUI() {
         super.setupUI()
@@ -43,16 +50,28 @@ class TasksViewController: BaseViewController {
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "sortIcon")!, target: self, action: #selector(self.sortButtonAction))
+		
+		self.noTasksLabel.text = "TASKS_NO_TASKS_LABEL".localized()
         
         Utils().themeView(view: self.addTaskButton)
         
-        self.searchController.searchBar.tintColor = UIColor.white
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			// slight delay needed for this to render
+			if #available(iOS 13.0, *) {
+				self.searchController.searchBar.searchBarStyle = .default
+				self.searchController.searchBar.searchTextField.textColor = .systemBackground
+				self.searchController.searchBar.searchTextField.typingAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+				self.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "TASKS_SEARCH_PLACEHOLDER".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)])
+			}
+		}
+		self.searchController.searchBar.tintColor = UIColor.white
         self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
+		
         self.definesPresentationContext = true
         
         self.tableView.estimatedRowHeight = 60
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.tableHeaderView = self.searchController.searchBar
+        
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
     }
     
@@ -88,12 +107,24 @@ class TasksViewController: BaseViewController {
             self.tasksDataSource = RealmManager.sharedInstance.getCompletedTasks().sorted(byKeyPath: "completedDate", ascending: false)
             self.navigationItem.rightBarButtonItem = nil
             self.tableView.reloadData()
+			self.checkDataSource()
             
             return
         }
-        
+		
         self.sortDataSource()
     }
+	
+	func checkDataSource() {
+		// rx would be great here
+		if self.tasksDataSource.count != 0 {
+			self.noTasksLabel.isHidden = true
+			self.tableView.tableHeaderView = self.searchController.searchBar
+		} else {
+			self.noTasksLabel.isHidden = false
+			self.tableView.tableHeaderView = nil
+		}
+	}
     
     @objc func shouldReloadDataNotification() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -135,6 +166,8 @@ class TasksViewController: BaseViewController {
         self.tasksDataSource = self.tasksDataSource.sorted(byKeyPath: self.currentSortType.rawValue, ascending: self.currentSortAscending)
         
         self.tableView.reloadData()
+		
+		self.checkDataSource()
     }
     
     @objc func sortButtonAction() {

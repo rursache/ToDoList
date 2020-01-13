@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-about.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-about-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

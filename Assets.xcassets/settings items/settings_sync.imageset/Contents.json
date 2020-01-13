@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-connection_sync.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-sync.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

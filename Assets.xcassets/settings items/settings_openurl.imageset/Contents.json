@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-adventures.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-safari.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

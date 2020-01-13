@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-inbox_filled.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-inbox.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

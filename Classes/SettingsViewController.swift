@@ -30,7 +30,7 @@ class SettingsViewController: BaseViewController {
         
         let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50))
         tableViewFooter.backgroundColor = UIColor.clear
-        let version = UILabel(frame: CGRect(x: 8, y: 15, width: self.tableView.frame.width, height: 30))
+        let version = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 30))
         version.font = UIFont.systemFont(ofSize: 12)
         version.textColor = UIColor.darkGray
         version.textAlignment = .center
@@ -50,6 +50,10 @@ class SettingsViewController: BaseViewController {
     override func setupBindings() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		
+		if #available(iOS 13.0, *) {
+			self.isModalInPresentation = true
+		}
     }
     
     func loadCurrentData() {
@@ -121,7 +125,7 @@ class SettingsViewController: BaseViewController {
                 if MFMailComposeViewController.canSendMail() {
                     let mail = MFMailComposeViewController()
                     mail.mailComposeDelegate = self
-                    mail.setToRecipients([Config.General.contactEmail])
+					mail.setToRecipients([Config.General.contactEmail.replacingOccurrences(of: "[email]", with: "@")]) // not today, github bots
                     self.present(mail, animated: true)
                 } else {
                     Utils().showErrorToast(message: "SETTINGS_NO_EMAIL_FAILED".localized())
@@ -133,7 +137,7 @@ class SettingsViewController: BaseViewController {
                 
             } else if row == 4 {
                 // about
-                self.showOK(message: "SETTINGS_ABOUT_TEXT".localized() + "v\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+				Utils().showAbout()
             }
         }
     }
@@ -144,7 +148,7 @@ class SettingsViewController: BaseViewController {
         
         if row == 1 {
             // start page
-            var startPageTitles = Config.General.startPageTitles; startPageTitles.removeLast(1)
+            var startPageTitles = Config.General.startPageTitles; startPageTitles.removeLast(2)
             
             for option in startPageTitles {
                 actionSheet.addAction(option, style: .default) { (action) in
@@ -226,7 +230,6 @@ class SettingsViewController: BaseViewController {
     func close() {
         self.dismiss(animated: true, completion: nil)
     }
-
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {

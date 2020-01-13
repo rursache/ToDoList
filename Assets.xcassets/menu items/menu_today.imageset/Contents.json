@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-today_filled.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-today.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

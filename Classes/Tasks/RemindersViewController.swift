@@ -21,8 +21,8 @@ class RemindersViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.reloadData()
+		
+		self.tableView.reloadData()
     }
     
     override func setupUI() {
@@ -41,6 +41,10 @@ class RemindersViewController: BaseViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		
+		if #available(iOS 13.0, *) {
+			self.isModalInPresentation = true
+		}
     }
     
     func showDateTimePicker(edit: Bool) {
@@ -56,8 +60,14 @@ class RemindersViewController: BaseViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.tableView.reloadData()
             }
-        }, cancel: { (actionSheet) in }, origin: self.view)
+        }, cancel: { (actionSheet) in
+			
+		}, origin: self.view)
         
+		if #available(iOS 13.0, *) {
+			datePicker?.pickerBackgroundColor = .systemBackground
+			datePicker?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+		}
         datePicker?.setDoneButton(UIBarButtonItem(title: "ADD".localized(), style: .done, target: self, action: nil))
         datePicker?.setCancelButton(UIBarButtonItem(title: "CANCEL".localized(), style: .done, target: self, action: nil))
         

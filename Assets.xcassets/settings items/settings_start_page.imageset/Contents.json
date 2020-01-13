@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-christmas_star_2.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-star.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

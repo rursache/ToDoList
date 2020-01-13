@@ -1,32 +1,32 @@
 PODS:
-  - AcknowList (1.9)
+  - AcknowList (1.9.3)
   - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.1.0)
   - BiometricAuthentication (2.2.1)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
-  - IceCream (1.11.0):
+  - IceCream (1.13.0):
     - RealmSwift
   - LKAlertController (1.12.2)
   - Loaf (0.5.0)
-  - Realm (3.18.0):
-    - Realm/Headers (= 3.18.0)
-  - Realm/Headers (3.18.0)
-  - RealmSwift (3.18.0):
-    - Realm (= 3.18.0)
+  - Realm (4.3.0):
+    - Realm/Headers (= 4.3.0)
+  - Realm/Headers (4.3.0)
+  - RealmSwift (4.3.0):
+    - Realm (= 4.3.0)
   - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
   - UnderKeyboard (13.0.2)
 
 DEPENDENCIES:
   - AcknowList
-  - ActionSheetPicker-3.0 (from `https://github.com/iPhoNewsRO/ActionSheetPicker-3.0`)
+  - ActionSheetPicker-3.0 (from `https://github.com/rursache/ActionSheetPicker-3.0`)
   - ActiveLabel
-  - BiometricAuthentication (from `https://github.com/iPhoNewsRO/BiometricAuthentication`)
+  - BiometricAuthentication (from `https://github.com/rursache/BiometricAuthentication`)
   - Crashlytics
   - Fabric
-  - IceCream (from `https://github.com/iPhoNewsRO/IceCream.git`)
+  - IceCream (from `https://github.com/rursache/IceCream.git`)
   - LKAlertController
   - Loaf
   - Realm
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - UnderKeyboard
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AcknowList
     - ActiveLabel
     - Crashlytics
@@ -51,39 +51,39 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   ActionSheetPicker-3.0:
-    :git: https://github.com/iPhoNewsRO/ActionSheetPicker-3.0
+    :git: https://github.com/rursache/ActionSheetPicker-3.0
   BiometricAuthentication:
-    :git: https://github.com/iPhoNewsRO/BiometricAuthentication
+    :git: https://github.com/rursache/BiometricAuthentication
   IceCream:
-    :git: https://github.com/iPhoNewsRO/IceCream.git
+    :git: https://github.com/rursache/IceCream.git
 
 CHECKOUT OPTIONS:
   ActionSheetPicker-3.0:
     :commit: 6b3aef31a4880d48b162c2afefe2910a9d8dd38e
-    :git: https://github.com/iPhoNewsRO/ActionSheetPicker-3.0
+    :git: https://github.com/rursache/ActionSheetPicker-3.0
   BiometricAuthentication:
     :commit: 57b7e915f9b25ded3879af4b131ff78265442d9a
-    :git: https://github.com/iPhoNewsRO/BiometricAuthentication
+    :git: https://github.com/rursache/BiometricAuthentication
   IceCream:
-    :commit: dc2bbb19ac4f96d48d9adae8a3063d1f7038da5d
-    :git: https://github.com/iPhoNewsRO/IceCream.git
+    :commit: 398749b546d64c7cf6fd49ce853538a868ca6807
+    :git: https://github.com/rursache/IceCream.git
 
 SPEC CHECKSUMS:
-  AcknowList: 06fde3319971dfd517ea1b1c194d78eb8cd774a2
+  AcknowList: a3ee7cfba2c45cf9d07d1b18fe729a5bcc518366
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   BiometricAuthentication: 985cd6eeb87e933dc648c8e23220af067db3458d
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
-  IceCream: 43e8b76f937b1074752f2e33bb26c935400a63d5
+  IceCream: 1689e1952bd526922293c283a5938e8183e9e177
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
-  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
-  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  Realm: 9357c3589555793e1860a7104a7412bca4a48d99
+  RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 3d830501fe273bd9bf14d3b367efabd999bd9165
+PODFILE CHECKSUM: 53ba7f922577fb43f2d9ff2b256ceb9560100b71
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.4

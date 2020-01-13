@@ -64,6 +64,8 @@
 "TASKS_COMPLETED" = "Completed";
 "TASKS_DATE_LABEL_TODAY" = "today";
 "TASKS_DATE_LABEL_ON" = "on ";
+"TASKS_SEARCH_PLACEHOLDER" = "Search";
+"TASKS_NO_TASKS_LABEL" = "No tasks";
 
 // edit tasks
 "EDIT_TASKS_EDIT_TASK" = "Edit task";

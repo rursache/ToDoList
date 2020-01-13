@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-appointment_reminders.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-notification.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

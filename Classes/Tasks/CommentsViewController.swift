@@ -80,6 +80,10 @@ class CommentsViewController: BaseViewController {
         self.keyboardObserver.animateKeyboard = { height in
             self.inputContainerView.layoutIfNeeded()
         }
+		
+		if #available(iOS 13.0, *) {
+			self.isModalInPresentation = true
+		}
     }
     
     @objc func closeAction() {

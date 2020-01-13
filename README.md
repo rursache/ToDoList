@@ -1,7 +1,7 @@
 # RSToDoList
 
 <p align="left">
-  <img width="150" height="150" src="https://github.com/iPhoNewsRO/ToDoList/blob/master/Resources/icon.png" />
+  <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/Resources/icon.png" />
 </p>
 
 A simple To-do list app build for iOS 11+ in Swift 5
@@ -47,9 +47,9 @@ A simple To-do list app build for iOS 11+ in Swift 5
 - [ ] Add images as comments attachaments
 - [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode
-- [ ] Rearrange tasks manually
-- [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today 10:00)
+- [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Widget for Today tasks
+- [ ] Rearrange tasks manually
  
 ### Improvements
 - [ ] Reload notifications after user gave push permissions
@@ -57,12 +57,12 @@ A simple To-do list app build for iOS 11+ in Swift 5
 
 ### Bugs
 - [x] Changing a theme won't change settings nav controller until close/reopen screen
-- [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
-- [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/iPhoNewsRO/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
+- [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
+- [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
 
 ## Communication
-- If you **found a bug**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
-- If you **have a feature request**, open an [issue](https://github.com/iPhoNewsRO/ToDoList/issues).
+- If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).
+- If you **have a feature request**, open an [issue](https://github.com/rursache/ToDoList/issues).
 - If you **want to contribute**, submit a [pull request]().
 
 ## Acknowledgements & Frameworks used
@@ -73,12 +73,12 @@ RSToDoList is currently using:
 
  - [LKAlertController](https://github.com/lightningkite/LKAlertController)
  - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
- - [IceCream (own fork)](https://github.com/iPhoNewsRO/IceCream)
+ - [IceCream (own fork)](https://github.com/rursache/IceCream)
  - [UnderKeyboard](https://github.com/evgenyneu/UnderKeyboard)
  - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
- - [RSTextViewMaster](https://github.com/iPhoNewsRO/RSTextViewMaster)
- - [BiometricAuthentication (own fork)](https://github.com/iPhoNewsRO/BiometricAuthentication)
+ - [RSTextViewMaster](https://github.com/rursache/RSTextViewMaster)
+ - [BiometricAuthentication (own fork)](https://github.com/rursache/BiometricAuthentication)
  - [Loaf)](https://github.com/schmidyy/Loaf)
  - [Robin](https://github.com/ahmedabadie/Robin)
  - [Fabric & Crashlytics](https://fabric.io/home)
@@ -88,4 +88,4 @@ Colors for themes and app icon are picked from [FlatUIColors.com](https://flatui
 
 ## License
 
-RSToDoList is available under the GNU license. See the [LICENSE](https://github.com/iPhoNewsRO/ToDoList/blob/master/LICENSE) file for more info.
+RSToDoList is available under the GNU license. See the [LICENSE](https://github.com/rursache/ToDoList/blob/master/LICENSE) file for more info.

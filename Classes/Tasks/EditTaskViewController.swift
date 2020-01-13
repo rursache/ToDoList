@@ -155,6 +155,10 @@ class EditTaskViewController: BaseViewController {
             self.updateDateButtonTitle()
         }, origin: self.dateButton)
         
+		if #available(iOS 13.0, *) {
+			datePicker?.pickerBackgroundColor = .systemBackground
+			datePicker?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+		}
         datePicker?.setDoneButton(UIBarButtonItem(title: "SAVE".localized(), style: .done, target: self, action: nil))
         datePicker?.setCancelButton(UIBarButtonItem(title: "EDIT_TASKS_NO_DATE".localized(), style: .done, target: self, action: nil))
         
@@ -195,9 +199,12 @@ class EditTaskViewController: BaseViewController {
         remindersVC.currentTask = self.tempTask
         remindersVC.onCompletion = {
             self.updateRemindersButton()
+			self.taskTitleTextView.becomeFirstResponder()
         }
-        
-        self.present(UINavigationController(rootViewController: remindersVC), animated: true, completion: nil)
+		
+		self.present(UINavigationController(rootViewController: remindersVC), animated: true) {
+			self.taskTitleTextView.resignFirstResponder()
+		}
     }
     
     @objc func commentButtonAction() {

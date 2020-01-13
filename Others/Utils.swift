@@ -141,4 +141,8 @@ class Utils: NSObject {
             }
         }
     }
+	
+	func showAbout() {
+		Alert(title: Config.General.appName, message: "SETTINGS_ABOUT_TEXT".localized() + "v\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))").showOK()
+	}
 }

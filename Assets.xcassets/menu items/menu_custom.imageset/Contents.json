@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "icons8-calendar_filled.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-calendar.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

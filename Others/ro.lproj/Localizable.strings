@@ -64,6 +64,8 @@
 "TASKS_COMPLETED" = "Completat";
 "TASKS_DATE_LABEL_TODAY" = "astăzi";
 "TASKS_DATE_LABEL_ON" = "pe ";
+"TASKS_SEARCH_PLACEHOLDER" = "Caută";
+"TASKS_NO_TASKS_LABEL" = "Nu există sarcini";
 
 // editarea sarcinilor
 "EDIT_TASKS_EDIT_TASK" = "Editare sarcină";

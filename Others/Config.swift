@@ -33,7 +33,7 @@ class Config: NSObject {
             return formatter
         }
         
-        static let contactEmail = "contact@randusoft.ro"
+        static let contactEmail = "contact[email]randusoft.ro"
         static let toastOnScreenTime = 2.5 // seconds
         static let notificationDefaultDelayForNotifications = -30 // minutes
         
@@ -43,8 +43,8 @@ class Config: NSObject {
                              ThemeModel(name: "Sunflower Yellow", color: Colors.yellow, appIcon: "IconYellow"),
                              ThemeModel(name: "Radiant Orange", color: Colors.orange, appIcon: "IconOrange"),
                              ThemeModel(name: "Salmon Pink", color: Colors.pink, appIcon: "IconPink"),
-                             ThemeModel(name: "Midnight Black", color: Colors.black, appIcon: "IconBlack"),
-                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")]
+                             ThemeModel(name: "Midnight Black", color: Colors.black, appIcon: "IconBlack")]//,
+//                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")]
         
         static let languages = [LanguageModel(name: "English", code: "en_US"), LanguageModel(name: "Romanian", code: "ro_RO")]
         

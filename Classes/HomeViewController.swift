@@ -48,7 +48,7 @@ class HomeViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Config.General.appName, style: .done, target: self, action: nil)
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Config.General.appName, style: .done, target: self, action: #selector(self.titleTapAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "settingsIcon")!, target: self, action: #selector(self.settingsButtonAction))
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
@@ -209,6 +209,10 @@ class HomeViewController: BaseViewController {
         
         picker.show()
     }
+	
+	@objc func titleTapAction() {
+		Utils().showAbout()
+	}
     
     func getUserFullName() {
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
