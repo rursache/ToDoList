@@ -33,13 +33,14 @@ A simple To-do list app build for iOS 11+ in Swift 5
 
 1. Clone the repo
 2. Run ```pod install``` in terminal to install required pods. Make sure you have [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) installed.
-3. Turn on iCloud option in ```Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` and ```Remote notification```.
-4. (Optional) You might want to update or remove [Fabric](https://fabric.io/home) script located ```Build Phases```.
+3. Turn on iCloud option in ```Signing & Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` + ```Remote notification```.
+4. Make sure to update your app group config (```Signing & Capabilities```, ```App Groups```) and id string in ```RealmManager.swift```.
+5. (Optional) You might want to update or remove [Fabric](https://fabric.io/home) script located ```Build Phases```.
 
 ## Live demo
 
-1. [AppStore]()
-2. [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) - Use this [invitation link](http://l0ng.in/todolist).
+1. [AppStore](https://apps.apple.com/us/app/todolist-task-manager/id1454122524?ls=1)
+2. [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) - Use this [invitation link](http://l0ng.in/todolist) to test the latest build.
 
 ## To do
 
