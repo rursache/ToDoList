@@ -67,6 +67,7 @@ class HomeViewController: BaseViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitNewData.name, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.threeDTouchShortcutAction(_:)), name: Config.Notifications.threeDTouchShortcut, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.completeTask), name: Config.Notifications.completeTask, object: nil)
     }
     
     @objc func settingsButtonAction() {
@@ -136,6 +137,21 @@ class HomeViewController: BaseViewController {
             self.performSegue(withIdentifier: "goToTasksVC", sender: self)
         }
     }
+	
+	@objc func completeTask(_ notification: NSNotification) {
+		DispatchQueue.main.asyncAfter(deadline: .now()) {
+			if let taskId = notification.userInfo?["taskId"] as? String {
+				if let task = RealmManager.sharedInstance.getTaskById(id: taskId) {
+					RealmManager.sharedInstance.completeTask(task: task)
+					
+					NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+					print("completeTaskOnWatch: done")
+				} else {
+					print("completeTaskOnWatch: failed to get task")
+				}
+			}
+		}
+	}
     
     @objc func newCloudDataReceived(_ notification: NSNotification) {
         print("New iCloud data received")

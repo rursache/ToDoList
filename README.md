@@ -15,6 +15,7 @@ A simple To-do list app build for iOS 11+ in Swift 5
 	- [x] Date/Time for items
 	- [x] Sort options
 	- [x] Task filters
+- [x] Watch app + complications
 - [x] Theme support with custom App Icons
 - [x] Multi-Language support
 - [x] iCloud Kit support for syncing

@@ -8,7 +8,9 @@
 
 import UIKit
 import RealmSwift
+#if realApp
 import IceCream
+#endif
 
 class CommentModel: Object {
     @objc dynamic var id = NSUUID().uuidString
@@ -35,6 +37,7 @@ class CommentModel: Object {
     }
 }
 
+#if realApp
 extension CommentModel: CKRecordConvertible {
     
 }
@@ -42,3 +45,4 @@ extension CommentModel: CKRecordConvertible {
 extension CommentModel: CKRecordRecoverable {
     
 }
+#endif

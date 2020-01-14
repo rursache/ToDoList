@@ -52,12 +52,6 @@ class Utils: NSObject {
         }
     }
     
-    // dates
-    
-    func startEndDateArray(forDate: Date) -> [Date] {
-        return [forDate.startOfDay, forDate.endOfDay]
-    }
-    
     // toast
     
     func showErrorToast(viewController: UIViewController? = nil, message: String) {

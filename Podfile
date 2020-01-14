@@ -1,18 +1,9 @@
-platform :ios, '11.0'
-
 inhibit_all_warnings!
 
-target 'ToDoList' do
-  use_frameworks!
+use_frameworks!
 
-  #
-  # unused pods
-  #
-  # pod 'PKHUD'
-  # pod 'BulletinBoard' # v1.1 feature (onboarding tutorial)
-  # pod 'Alamofire'
-  # pod 'Reveal-SDK', '20', :configurations => ['Debug']
-  #
+target 'ToDoList' do
+  platform :ios, '11.0'
 
   pod 'LKAlertController'
   pod 'ActionSheetPicker-3.0', :git => 'https://github.com/rursache/ActionSheetPicker-3.0'
@@ -30,9 +21,15 @@ target 'ToDoList' do
   pod 'Crashlytics'
 
   target 'ToDoListWidget' do
-        inherit! :search_paths
-    end
+     inherit! :search_paths
+  end
 
+  target 'WatchApp Extension' do
+     platform :watchos, '6.0'
+
+     pod 'Realm'
+     pod 'RealmSwift'
+   end
 end
 
 post_install do |installer|

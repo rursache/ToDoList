@@ -9,7 +9,9 @@
 import UIKit
 import Realm
 import RealmSwift
+#if realApp
 import IceCream
+#endif
 import CloudKit
 
 class TaskModel: Object {
@@ -44,10 +46,12 @@ class TaskModel: Object {
     }
 }
 
+#if realApp
 extension TaskModel: CKRecordConvertible {
-    
+
 }
 
 extension TaskModel: CKRecordRecoverable {
-    
+
 }
+#endif

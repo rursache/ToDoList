@@ -15,15 +15,24 @@
 import UIKit
 import Realm
 import RealmSwift
+#if realApp
 import IceCream
+#endif
+import WatchConnectivity
 
-class RealmManager {
+class RealmManager: NSObject {
     static let sharedInstance = RealmManager()
     
     private var realm: Realm
+	
+	private let realmPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.ro.randusoft.RSToDoList")!.path + "/db.realm"
+	
+	private var wcSession: WCSession! = nil
+	
+	private let realmVersion: UInt64 = 14
     
-    init() {
-        var config = Realm.Configuration(schemaVersion: 14, migrationBlock: { migration, oldSchemaVersion in
+	override init() {
+		var config = Realm.Configuration(schemaVersion: self.realmVersion, migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < 13 {
                 migration.enumerateObjects(ofType: TaskModel.className()) { oldObject, newObject in
                     newObject!["completedDate"] = Date()
@@ -31,13 +40,10 @@ class RealmManager {
             }
         })
 		
-		let fileManager = FileManager.default
-		let realmPath = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.ro.randusoft.RSToDoList")!.path + "/db.realm"
-		
 		if let originalDefaultRealmPath = config.fileURL {
-			if fileManager.fileExists(atPath: originalDefaultRealmPath.absoluteString) {
+			if FileManager.default.fileExists(atPath: originalDefaultRealmPath.absoluteString) {
 				do {
-					try fileManager.moveItem(atPath: originalDefaultRealmPath.absoluteString, toPath: realmPath)
+					try FileManager.default.moveItem(atPath: originalDefaultRealmPath.absoluteString, toPath: realmPath)
 				} catch {
 					print("error at moving default realm")
 				}
@@ -51,11 +57,44 @@ class RealmManager {
 		}
 		
         self.realm = try! Realm(configuration: config)
+		
+		super.init()
+		
+		self.activateWatch()
     }
-    
+	
+	func watchInit() {
+		guard let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+			print("watchInit: failed to get doc path")
+			return
+		}
+		
+		var config = Realm.Configuration(schemaVersion: self.realmVersion, migrationBlock: { migration, oldSchemaVersion in
+            // we dont do migrations here
+        })
+		
+		config.fileURL = documentsPathURL.appendingPathComponent("db.realm")
+		
+		self.realm = try! Realm(configuration: config)
+	}
+	
     static func sharedDelegate() -> RealmManager {
         return self.sharedInstance
     }
+	
+	fileprivate func activateWatch() {
+		if !WCSession.isSupported() {
+			return
+		}
+		
+		self.wcSession = WCSession.default
+		#if realApp
+        self.wcSession.delegate = self
+		#endif
+        self.wcSession.activate()
+		
+		self.updateDbOnWatch()
+	}
     
     // tasks
     
@@ -65,11 +104,11 @@ class RealmManager {
     }
     
     func getTodayTasks() -> Results<TaskModel> {
-        return self.getTasks().filter("date BETWEEN %@", Utils().startEndDateArray(forDate: Date()))
+        return self.getTasks().filter("date BETWEEN %@", self.startEndDateArray(forDate: Date()))
     }
     
     func getTomorrowTasks() -> Results<TaskModel> {
-        return self.getTasks().filter("date BETWEEN %@", Utils().startEndDateArray(forDate: Date.tomorrow))
+        return self.getTasks().filter("date BETWEEN %@", self.startEndDateArray(forDate: Date.tomorrow))
     }
     
     func getWeekTasks() -> Results<TaskModel> {
@@ -140,6 +179,8 @@ class RealmManager {
                 task.isCompleted = true
                 task.completedDate = Date()
             }
+			
+			self.updateDbOnWatch()
         }
         catch {
             print("Realm error: Cannot write: \(task)")
@@ -294,6 +335,8 @@ class RealmManager {
             try realm.write {
                 realm.add(object, update: update ? .all : .modified)
             }
+			
+			self.updateDbOnWatch()
         }
         catch {
             print("Realm error: Cannot write: \(object)")
@@ -305,9 +348,57 @@ class RealmManager {
             try realm.write {
                 realm.delete(object)
             }
+			
+			self.updateDbOnWatch()
         }
         catch {
             print("Realm error: Cannot write: \(object)")
         }
     }
+	
+	// watch stuff
+	
+	fileprivate func updateDbOnWatch() {
+		guard let realmDBdata = try? Data(contentsOf: URL(fileURLWithPath: self.realmPath)) else {
+			print("updateDbOnWatch: failed to read file?")
+			return
+		}
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+			self.wcSession.sendMessageData(realmDBdata, replyHandler: { data in
+				print("updateDbOnWatch: done")
+			}) { error in
+				print("updateDbOnWatch:", error.localizedDescription)
+			}
+		}
+	}
+	
+	// utils
+	
+	fileprivate func startEndDateArray(forDate: Date) -> [Date] {
+        return [forDate.startOfDay, forDate.endOfDay]
+    }
 }
+
+#if realApp
+extension RealmManager: WCSessionDelegate {
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		print("iOS: watch session is \(activationState.rawValue)")
+		self.updateDbOnWatch()
+	}
+	
+	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+		if let _ = message["taskId"] as? String {
+			NotificationCenter.default.post(name: Config.Notifications.completeTask, object: nil, userInfo: message)
+		}
+	}
+	
+	func sessionDidBecomeInactive(_ session: WCSession) {
+		print("iOS: watch session inactive")
+	}
+	
+	func sessionDidDeactivate(_ session: WCSession) {
+		print("iOS: watch session did deactivate")
+	}
+}
+#endif

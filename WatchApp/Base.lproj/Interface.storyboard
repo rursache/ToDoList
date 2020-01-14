@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchApp" customModuleProvider="target">
+                    <items>
+                        <imageView width="1" height="33" alignment="center" image="watchlogo" contentMode="scaleAspectFit" id="int-fa-gHh"/>
+                        <label width="1" alignment="center" text="No tasks for today" textAlignment="center" id="FWd-Yq-H4B"/>
+                        <table alignment="left" id="tar-Gy-kEq">
+                            <items>
+                                <tableRow identifier="taskRow" id="H8q-sw-RbC" customClass="RowController" customModule="WatchApp_Extension">
+                                    <group key="rootItem" width="1" height="45" alignment="left" spacing="6" id="B9Q-Vh-vAN">
+                                        <items>
+                                            <imageView width="20" height="1" alignment="left" image="taskComplete" contentMode="scaleAspectFit" id="avB-OL-gTF"/>
+                                            <label height="1" alignment="left" text="Label" numberOfLines="2" minimumScaleFactor="0.69999999999999996" id="JBj-o1-oqJ"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="taskTitleLabel" destination="JBj-o1-oqJ" id="xnl-b3-Gtr"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <menu key="menu" id="0KT-69-zpF">
+                        <items>
+                            <menuItem title="DEBUG" icon="info" id="VCc-Af-mep">
+                                <connections>
+                                    <action selector="debugMenuAction" destination="AgC-eL-Hgc" id="b5y-vW-a3T"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="logoImageView" destination="int-fa-gHh" id="pdb-21-I9X"/>
+                        <outlet property="noTasksLabel" destination="FWd-Yq-H4B" id="WBb-4p-SJT"/>
+                        <outlet property="tableView" destination="tar-Gy-kEq" id="Xwf-Wa-hgy"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="324"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.059854300440000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchApp" customModuleProvider="target">
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.059854300440000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="WatchApp" customModuleProvider="target">
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.059854300440000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="taskComplete" width="72" height="72"/>
+        <image name="watchlogo" width="1024" height="1024"/>
+    </resources>
+</document>

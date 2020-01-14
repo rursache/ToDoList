@@ -8,7 +8,9 @@
 
 import UIKit
 import RealmSwift
+#if realApp
 import IceCream
+#endif
 
 class NotificationModel: Object {
     @objc dynamic var identifier = NSUUID().uuidString
@@ -35,6 +37,7 @@ class NotificationModel: Object {
     }
 }
 
+#if realApp
 extension NotificationModel: CKRecordConvertible {
     
 }
@@ -42,3 +45,4 @@ extension NotificationModel: CKRecordConvertible {
 extension NotificationModel: CKRecordRecoverable {
     
 }
+#endif

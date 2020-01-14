@@ -82,5 +82,6 @@ class Config: NSObject {
         static let themeUpdated = NSNotification.Name("themeUpdated")
         static let shouldReloadData = NSNotification.Name("shouldReloadData")
         static let threeDTouchShortcut = NSNotification.Name("3DTouchShortcut")
+		static let completeTask = NSNotification.Name("completeTask")
     }
 }
