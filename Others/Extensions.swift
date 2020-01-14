@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import LKAlertController
+import ImageViewer_swift
 
 extension Date {
     var startOfDay: Date {
@@ -143,3 +144,69 @@ extension UIApplication {
         return (self.keyWindow?.rootViewController?.topMostViewController())!
     }
 }
+
+class ImageViewerExt: UIImageView {
+	var customVC: UIViewController?
+}
+
+extension ImageViewerExt {
+    private class TapWithDataRecognizer: UITapGestureRecognizer {
+        var imageDatasource:ImageDataSource?
+        var initialIndex:Int = 0
+        var options:[ImageViewerOption] = []
+    }
+	
+	public func setupImageViewer(presentFrom: UIViewController) {
+		self.customVC = presentFrom
+		self.setupImageViewer()
+	}
+    
+    public func setupImageViewer(
+        options:[ImageViewerOption] = []) {
+        setup(datasource: nil, options: options)
+    }
+    
+    private func setup(
+        datasource:ImageDataSource?,
+        initialIndex:Int = 0,
+        options:[ImageViewerOption] = []) {
+        
+        var _tapRecognizer:TapWithDataRecognizer?
+        gestureRecognizers?.forEach {
+            if let _tr = $0 as? TapWithDataRecognizer {
+                // if found, just use existing
+                _tapRecognizer = _tr
+            }
+        }
+        
+        isUserInteractionEnabled = true
+        contentMode = .scaleAspectFill
+        clipsToBounds = true
+        
+        if _tapRecognizer == nil {
+            _tapRecognizer = TapWithDataRecognizer(
+                target: self, action: #selector(showImageViewer(_:)))
+            _tapRecognizer!.numberOfTouchesRequired = 1
+            _tapRecognizer!.numberOfTapsRequired = 1
+        }
+        // Pass the Data
+        _tapRecognizer!.imageDatasource = datasource
+        _tapRecognizer!.initialIndex = initialIndex
+        _tapRecognizer!.options = options
+        addGestureRecognizer(_tapRecognizer!)
+    }
+    
+    @objc
+    private func showImageViewer(_ sender:TapWithDataRecognizer) {
+        guard let sourceView = sender.view as? UIImageView else { return }
+        
+        let imageCarousel = ImageCarouselViewController.create(
+            sourceView: sourceView,
+            imageDataSource: sender.imageDatasource,
+            options: sender.options,
+            initialIndex: sender.initialIndex)
+		
+		self.customVC?.present(imageCarousel, animated: false, completion: nil)
+    }
+}
+

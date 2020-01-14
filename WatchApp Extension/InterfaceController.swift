@@ -56,6 +56,10 @@ class InterfaceController: WKInterfaceController {
 		
 		self.tableDataSource = RealmManager.sharedInstance.getTodayTasks().sorted(byKeyPath: "date", ascending: true)
 		
+		if self.tableDataSource.count != 0 {
+			self.setTitle("Today Tasks (\(self.tableDataSource.count))")
+		}
+		
 		self.noTasksLabel.setHidden(self.tableDataSource.count != 0)
 		self.logoImageView.setHidden(self.tableDataSource.count != 0)
 		
@@ -71,18 +75,24 @@ class InterfaceController: WKInterfaceController {
 	override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
 		let taskId = self.tableDataSource[rowIndex].id
 		
+		self.completeTask(taskId: taskId)
+	}
+	
+	func completeTask(taskId: String) {
+		if !self.wcSession.isReachable {
+			self.wcSession.activate()
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+				self.completeTask(taskId: taskId)
+			}
+			return
+		}
+		
 		self.wcSession.sendMessage(["taskId": taskId], replyHandler: nil) { error in
 			print("watchOS: failed to send task complete request")
 		}
 	}
-}
-
-extension InterfaceController: WCSessionDelegate {
-	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-		print("watchOS: \(activationState.rawValue)")
-	}
 	
-	func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+	func processData(messageData: Data) {
 		guard let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
 			print("watchOS: failed to get doc path")
 			return
@@ -102,6 +112,20 @@ extension InterfaceController: WCSessionDelegate {
 		} catch {
 			print("watchOS: failed to write")
 		}
+	}
+}
+
+extension InterfaceController: WCSessionDelegate {
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		print("watchOS: \(activationState.rawValue)")
+	}
+	
+	func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+		self.processData(messageData: messageData)
+	}
+	
+	func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+		self.processData(messageData: messageData)
 		
 		replyHandler(messageData)
 	}

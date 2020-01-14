@@ -34,7 +34,7 @@ class Config: NSObject {
         }
         
         static let contactEmail = "contact[email]randusoft.ro"
-        static let toastOnScreenTime = 2.5 // seconds
+		static let toastOnScreenTime = 2.0 // seconds
         static let notificationDefaultDelayForNotifications = -30 // minutes
         
         static let themes = [ThemeModel(name: "Alizarin Red", color: Colors.red, appIcon: nil),

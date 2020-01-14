@@ -83,6 +83,9 @@
 // comments
 "COMMENTS_TITLE" = "Comments";
 "COMMENTS_ADD_COMMENT" = "Add a comment";
+"COMMENTS_ADD_IMAGE_TITLE" = "Select image source";
+"COMMENTS_SOURCE_CAMERA" = "Camera";
+"COMMENTS_SOURCE_GALLERY" = "Gallery";
 
 // reminders
 "REMINDERS_TITLE" = "Reminders";

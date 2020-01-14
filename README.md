@@ -7,21 +7,23 @@
 A simple To-do list app build for iOS 11+ in Swift 5
 
 ## Main features
-- [x] Basic to do list features
+- [x] Basic 'to do list' features
 	- [x] Persistent lists using Realm
-	- [x] Add/delete items
+	- [x] Add/delete tasks
 	- [x] Edit task properties
-	- [x] Complete items
-	- [x] Date/Time for items
+	- [x] Complete tasks
+	- [x] Date/Time for task
 	- [x] Sort options
 	- [x] Task filters
-- [x] Watch app + complications
-- [x] Theme support with custom App Icons
-- [x] Multi-Language support
+	- [x] Set task priority
 - [x] iCloud Kit support for syncing
 - [x] Push notifications for reminders
 	- [x] Synced push notifications between devices
+- [x] Watch app
+- [x] Task comments (text and images)
 - [x] Widget for Today tasks
+- [x] Theme support with custom App Icons
+- [x] Multi-Language support
 - [x] 3D Touch shortcuts
 - [x] Dark mode
 
@@ -45,16 +47,15 @@ A simple To-do list app build for iOS 11+ in Swift 5
 
 ## To do
 
-- [ ] Add images as comments attachaments
 - [ ] Tutorial/Onboarding
-- [ ] Lockdown with FaceID/TouchID or passcode
+- [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
-- [ ] Widget for Today tasks
 - [ ] Rearrange tasks manually
 - [ ] iPad app
 - [ ] Marzipan support for macOS
  
 ### Improvements
+- [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Better sync events and responses
 - [ ] Themes view controller with previews
@@ -82,7 +83,6 @@ RSToDoList is currently using:
  - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/rursache/RSTextViewMaster)
- - [BiometricAuthentication (own fork)](https://github.com/rursache/BiometricAuthentication)
  - [Loaf)](https://github.com/schmidyy/Loaf)
  - [Robin](https://github.com/ahmedabadie/Robin)
  - [Fabric & Crashlytics](https://fabric.io/home)

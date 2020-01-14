@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xpc-PX-jlA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xpc-PX-jlA">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -392,8 +392,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SDD-D5-gPh">
-                                <rect key="frame" x="0.0" y="44" width="375" height="573"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SDD-D5-gPh">
+                                <rect key="frame" x="0.0" y="44" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="70" id="VAg-LU-GIa" customClass="CommentTableViewCell" customModule="ToDoList" customModuleProvider="target">
@@ -439,10 +439,48 @@
                                             <outlet property="dateLabel" destination="y9E-jB-6vy" id="BFF-gV-L6C"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentImageCell" rowHeight="150" id="3Y0-rp-N5j" customClass="CommentImageTableViewCell" customModule="ToDoList" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Y0-rp-N5j" id="arx-uQ-nHh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgF-RB-LpL">
+                                                    <rect key="frame" x="15" y="6" width="345" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="QOa-cQ-TD7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3VN-lW-ZeB" customClass="ImageViewerExt" customModule="ToDoList" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="35" width="345" height="107"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="any-L9-ygW"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CgF-RB-LpL" firstAttribute="top" secondItem="arx-uQ-nHh" secondAttribute="top" constant="6" id="6IV-CD-Q39"/>
+                                                <constraint firstAttribute="trailing" secondItem="CgF-RB-LpL" secondAttribute="trailing" constant="15" id="B5w-l9-jUX"/>
+                                                <constraint firstItem="3VN-lW-ZeB" firstAttribute="leading" secondItem="arx-uQ-nHh" secondAttribute="leading" constant="15" id="Cw9-eC-Lco"/>
+                                                <constraint firstAttribute="bottom" secondItem="3VN-lW-ZeB" secondAttribute="bottom" constant="8" id="MzY-qx-nle"/>
+                                                <constraint firstAttribute="trailing" secondItem="3VN-lW-ZeB" secondAttribute="trailing" constant="15" id="Pja-oh-WJr"/>
+                                                <constraint firstItem="CgF-RB-LpL" firstAttribute="leading" secondItem="arx-uQ-nHh" secondAttribute="leading" constant="15" id="Qe5-zu-gqd"/>
+                                                <constraint firstItem="3VN-lW-ZeB" firstAttribute="top" secondItem="CgF-RB-LpL" secondAttribute="bottom" constant="8" id="pPd-m4-u2k"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentImageView" destination="3VN-lW-ZeB" id="5ms-fl-0XM"/>
+                                            <outlet property="dateLabel" destination="CgF-RB-LpL" id="iP0-LL-wqz"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-Ej-MQr">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="616" width="375" height="51"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-0m-sm4" userLabel="separator">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -451,41 +489,50 @@
                                             <constraint firstAttribute="height" constant="1" id="f9U-N6-kjE"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F95-qv-dMt">
-                                        <rect key="frame" x="285" y="8" width="75" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="0le-3E-TuM"/>
-                                            <constraint firstAttribute="height" constant="32" id="ROs-8J-ggZ"/>
-                                        </constraints>
-                                        <state key="normal" title="Add"/>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ShK-dL-rdV" customClass="RSTextViewMaster" customModule="RSTextViewMaster">
-                                        <rect key="frame" x="15" y="10" width="262" height="30"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" placeholder="YES" id="eyg-aC-owM"/>
-                                        </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o4Q-ev-kUm">
+                                        <rect key="frame" x="10" y="11" width="357" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlG-ba-snC">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="HlG-ba-snC" secondAttribute="height" id="bAZ-M0-WiP"/>
+                                                </constraints>
+                                                <state key="normal" image="comment_image"/>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ShK-dL-rdV" customClass="RSTextViewMaster" customModule="RSTextViewMaster">
+                                                <rect key="frame" x="40" y="0.0" width="232" height="30"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" placeholder="YES" id="eyg-aC-owM"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F95-qv-dMt">
+                                                <rect key="frame" x="282" y="0.0" width="75" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="0le-3E-TuM"/>
+                                                </constraints>
+                                                <state key="normal" title="Add"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ShK-dL-rdV" secondAttribute="bottom" constant="10" id="0W5-1p-rQn"/>
-                                    <constraint firstItem="ShK-dL-rdV" firstAttribute="top" secondItem="4Hy-Ej-MQr" secondAttribute="top" constant="10" id="7vf-YL-FKe"/>
                                     <constraint firstItem="3Ss-0m-sm4" firstAttribute="leading" secondItem="4Hy-Ej-MQr" secondAttribute="leading" id="P7E-zc-phN"/>
-                                    <constraint firstItem="F95-qv-dMt" firstAttribute="bottom" secondItem="ShK-dL-rdV" secondAttribute="bottom" id="VaU-G7-bqa"/>
+                                    <constraint firstItem="o4Q-ev-kUm" firstAttribute="top" secondItem="3Ss-0m-sm4" secondAttribute="bottom" constant="10" id="Tka-vj-D0g"/>
                                     <constraint firstAttribute="trailing" secondItem="3Ss-0m-sm4" secondAttribute="trailing" id="cQ3-UY-74f"/>
-                                    <constraint firstItem="F95-qv-dMt" firstAttribute="leading" secondItem="ShK-dL-rdV" secondAttribute="trailing" constant="8" id="hAf-Gg-Yro"/>
-                                    <constraint firstItem="ShK-dL-rdV" firstAttribute="leading" secondItem="4Hy-Ej-MQr" secondAttribute="leading" constant="15" id="hKK-0y-xkn"/>
+                                    <constraint firstItem="o4Q-ev-kUm" firstAttribute="leading" secondItem="4Hy-Ej-MQr" secondAttribute="leading" constant="10" id="clg-u0-FJe"/>
                                     <constraint firstItem="3Ss-0m-sm4" firstAttribute="top" secondItem="4Hy-Ej-MQr" secondAttribute="top" id="heI-dR-jO4"/>
-                                    <constraint firstAttribute="trailing" secondItem="F95-qv-dMt" secondAttribute="trailing" constant="15" id="iLe-5e-Kua"/>
+                                    <constraint firstAttribute="trailing" secondItem="o4Q-ev-kUm" secondAttribute="trailing" constant="8" id="i56-ZX-UXi"/>
+                                    <constraint firstAttribute="bottom" secondItem="o4Q-ev-kUm" secondAttribute="bottom" constant="10" id="zOQ-Td-ry4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -505,6 +552,7 @@
                     <connections>
                         <outlet property="addButton" destination="F95-qv-dMt" id="Mf6-kS-2Ta"/>
                         <outlet property="bottomConstraint" destination="Vde-5C-JAP" id="BAb-q1-SYl"/>
+                        <outlet property="imageButton" destination="HlG-ba-snC" id="N67-li-bpw"/>
                         <outlet property="inputContainerView" destination="4Hy-Ej-MQr" id="fVC-26-kA7"/>
                         <outlet property="tableView" destination="SDD-D5-gPh" id="blu-Yt-Z0M"/>
                         <outlet property="textView" destination="ShK-dL-rdV" id="U1x-oF-u0D"/>
@@ -766,6 +814,7 @@
     <resources>
         <image name="calendar_icon" width="16.666666030883789" height="16.666666030883789"/>
         <image name="comment_icon" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="comment_image" width="100" height="100"/>
         <image name="complete_task_icon" width="24" height="24"/>
         <image name="flag_icon" width="16.666666030883789" height="16.666666030883789"/>
         <image name="reminder_icon" width="16.666666030883789" height="16.666666030883789"/>

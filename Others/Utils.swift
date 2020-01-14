@@ -77,7 +77,7 @@ class Utils: NSObject {
 		
         Loaf.dismiss(sender: vc)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            Loaf(message, state: state, sender: vc).show()
+			Loaf(message, state: state, location: .top, sender: vc).show()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + Config.General.toastOnScreenTime) {
                 Loaf.dismiss(sender: vc, animated: true)

@@ -31,7 +31,7 @@
                     </items>
                     <menu key="menu" id="0KT-69-zpF">
                         <items>
-                            <menuItem title="DEBUG" icon="info" id="VCc-Af-mep">
+                            <menuItem title="Refresh" icon="repeat" id="VCc-Af-mep">
                                 <connections>
                                     <action selector="debugMenuAction" destination="AgC-eL-Hgc" id="b5y-vW-a3T"/>
                                 </connections>

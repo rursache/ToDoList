@@ -14,11 +14,11 @@ target 'ToDoList' do
   pod 'RealmSwift'
   pod 'RSTextViewMaster'
   pod 'AcknowList'
-  pod 'BiometricAuthentication', :git => 'https://github.com/rursache/BiometricAuthentication'
   pod 'Loaf'
   pod 'Robin'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'ImageViewer.swift', '~> 3.0' # moved extension file
 
   target 'ToDoListWidget' do
      inherit! :search_paths

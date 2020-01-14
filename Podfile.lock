@@ -2,12 +2,13 @@ PODS:
   - AcknowList (1.9.3)
   - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.1.0)
-  - BiometricAuthentication (2.2.1)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
   - IceCream (1.13.0):
     - RealmSwift
+  - ImageViewer.swift (3.0.9):
+    - SDWebImage
   - LKAlertController (1.12.2)
   - Loaf (0.5.0)
   - Realm (4.3.0):
@@ -17,16 +18,19 @@ PODS:
     - Realm (= 4.3.0)
   - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
+  - SDWebImage (5.4.2):
+    - SDWebImage/Core (= 5.4.2)
+  - SDWebImage/Core (5.4.2)
   - UnderKeyboard (13.0.2)
 
 DEPENDENCIES:
   - AcknowList
   - ActionSheetPicker-3.0 (from `https://github.com/rursache/ActionSheetPicker-3.0`)
   - ActiveLabel
-  - BiometricAuthentication (from `https://github.com/rursache/BiometricAuthentication`)
   - Crashlytics
   - Fabric
   - IceCream (from `https://github.com/rursache/IceCream.git`)
+  - ImageViewer.swift (~> 3.0)
   - LKAlertController
   - Loaf
   - Realm
@@ -41,19 +45,19 @@ SPEC REPOS:
     - ActiveLabel
     - Crashlytics
     - Fabric
+    - ImageViewer.swift
     - LKAlertController
     - Loaf
     - Realm
     - RealmSwift
     - Robin
     - RSTextViewMaster
+    - SDWebImage
     - UnderKeyboard
 
 EXTERNAL SOURCES:
   ActionSheetPicker-3.0:
     :git: https://github.com/rursache/ActionSheetPicker-3.0
-  BiometricAuthentication:
-    :git: https://github.com/rursache/BiometricAuthentication
   IceCream:
     :git: https://github.com/rursache/IceCream.git
 
@@ -61,9 +65,6 @@ CHECKOUT OPTIONS:
   ActionSheetPicker-3.0:
     :commit: 6b3aef31a4880d48b162c2afefe2910a9d8dd38e
     :git: https://github.com/rursache/ActionSheetPicker-3.0
-  BiometricAuthentication:
-    :commit: 57b7e915f9b25ded3879af4b131ff78265442d9a
-    :git: https://github.com/rursache/BiometricAuthentication
   IceCream:
     :commit: 398749b546d64c7cf6fd49ce853538a868ca6807
     :git: https://github.com/rursache/IceCream.git
@@ -72,18 +73,19 @@ SPEC CHECKSUMS:
   AcknowList: a3ee7cfba2c45cf9d07d1b18fe729a5bcc518366
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
-  BiometricAuthentication: 985cd6eeb87e933dc648c8e23220af067db3458d
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IceCream: 1689e1952bd526922293c283a5938e8183e9e177
+  ImageViewer.swift: b2a83488e089fd2250406d81c783c02b21e1d424
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   Realm: 9357c3589555793e1860a7104a7412bca4a48d99
   RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
+  SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 612a6527cb3dc9b8b43f071aa5e396d5c2cfea1a
+PODFILE CHECKSUM: 4a50f0bf2a89fbfdffdb734934f18aee6af12763
 
 COCOAPODS: 1.8.4

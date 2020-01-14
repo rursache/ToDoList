@@ -167,10 +167,6 @@ class HomeViewController: BaseViewController {
                 return
             }
             
-            if recordZone.zoneName == "CommentModelsZone" || recordZone.zoneName == "NotificationModelsZone" {
-//                Utils().checkTasksForNilObjects()
-            }
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.loadData()
                 

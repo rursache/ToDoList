@@ -83,6 +83,9 @@
 // comentarii
 "COMMENTS_TITLE" = "Comentarii";
 "COMMENTS_ADD_COMMENT" = "Adăugați un comentariu";
+"COMMENTS_ADD_IMAGE_TITLE" = "Alege sursa imaginii";
+"COMMENTS_SOURCE_CAMERA" = "Camera";
+"COMMENTS_SOURCE_GALLERY" = "Galerie foto";
 
 // memento-uri
 "REMINDERS_TITLE" = "Memento-uri";
@@ -91,7 +94,7 @@
 // alții
 "OK" = "OK";
 "NOTIFICATION" = "Notificare";
-"AVERTISMENT" = "Avertisment";
+"WARNING" = "Avertisment";
 "ERROR" = "Eroare";
 "DONE" = "Done";
 "CANCEL" = "Anulează";

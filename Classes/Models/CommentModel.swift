@@ -19,6 +19,7 @@ class CommentModel: Object {
     @objc dynamic var isDeleted = false
     @objc dynamic var task: TaskModel?
     @objc dynamic var taskId = ""
+	@objc dynamic var imageData = NSData()
     
     override class func primaryKey() -> String? {
         return "id"
@@ -30,11 +31,24 @@ class CommentModel: Object {
         self.content = title
         self.date = date as NSDate
     }
+	
+	convenience init(image: UIImage, date: Date) {
+        self.init()
+        
+		if let dataImage = image.jpegData(compressionQuality: 0.7) {
+			self.imageData = dataImage as NSData
+		}
+        self.date = date as NSDate
+    }
     
     func setTask(task: TaskModel) {
         self.task = task
         self.taskId = task.id
     }
+	
+	func isImageComment() -> Bool {
+		return self.content == ""
+	}
 }
 
 #if realApp

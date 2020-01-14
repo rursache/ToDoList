@@ -67,6 +67,7 @@
 		17744BAA23CE16E100751502 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17744BAC23CE2F5400751502 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B5F22247C390085D628 /* ThemeModel.swift */; };
 		17744BAD23CE2F6200751502 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B612224813A0085D628 /* LanguageModel.swift */; };
+		17744BAF23CE3FD100751502 /* CommentImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17744BAE23CE3FD100751502 /* CommentImageTableViewCell.swift */; };
 		17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */; };
 		17C1776B222D6BA300B2E84F /* ActionSheetDateTimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */; };
 		17C1776E222EB2FE00B2E84F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1776D222EB2FE00B2E84F /* Extensions.swift */; };
@@ -204,6 +205,7 @@
 		17744BA123CE087700751502 /* WatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchApp.entitlements; sourceTree = "<group>"; };
 		17744BA223CE088800751502 /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
 		17744BA523CE0EF000751502 /* RowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowController.swift; sourceTree = "<group>"; };
+		17744BAE23CE3FD100751502 /* CommentImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentImageTableViewCell.swift; sourceTree = "<group>"; };
 		17ABEB6E2227D57C006C6C28 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDateTimeRangePicker.swift; sourceTree = "<group>"; };
 		17C1776D222EB2FE00B2E84F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1718BE4623CCBB19009D591A /* ToDoListWidget */ = {
+		1718BE4623CCBB19009D591A /* Widget */ = {
 			isa = PBXGroup;
 			children = (
 				1718BE5423CCBC55009D591A /* ToDoList.entitlements */,
@@ -283,7 +285,7 @@
 				1718BE4C23CCBB19009D591A /* Info.plist */,
 				1718BE6023CCC528009D591A /* WidgetCell.swift */,
 			);
-			path = ToDoListWidget;
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		17278CC523CE05880014B8B2 /* WatchApp */ = {
@@ -356,7 +358,7 @@
 				17D18D3D221D56C4005C647B /* Classes */,
 				17D18D50221D56DC005C647B /* Storyboards */,
 				17D18D51221D56EF005C647B /* Others */,
-				1718BE4623CCBB19009D591A /* ToDoListWidget */,
+				1718BE4623CCBB19009D591A /* Widget */,
 				17278CC523CE05880014B8B2 /* WatchApp */,
 				17278CD423CE05890014B8B2 /* WatchApp Extension */,
 				17D18D3C221D56C4005C647B /* Products */,
@@ -436,6 +438,7 @@
 				172CCD8522241A3600240725 /* SettingsTableViewCell.swift */,
 				172CCD7E2221776700240725 /* TaskTableViewCell.swift */,
 				172CCD7C2220947000240725 /* CommentTableViewCell.swift */,
+				17744BAE23CE3FD100751502 /* CommentImageTableViewCell.swift */,
 				1745401E222ECB2A00B2CA7B /* ReminderTableViewCell.swift */,
 			);
 			path = Cells;
@@ -838,6 +841,7 @@
 				1745401D222EBFAC00B2CA7B /* RemindersViewController.swift in Sources */,
 				172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */,
 				1745401F222ECB2A00B2CA7B /* ReminderTableViewCell.swift in Sources */,
+				17744BAF23CE3FD100751502 /* CommentImageTableViewCell.swift in Sources */,
 				17D18D41221D56C4005C647B /* HomeViewController.swift in Sources */,
 				17D18D55221D5F0D005C647B /* Utils.swift in Sources */,
 				172CCD832224189200240725 /* SettingsViewController.swift in Sources */,
@@ -924,11 +928,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ToDoListWidget/ToDoList.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
-				INFOPLIST_FILE = ToDoListWidget/Info.plist;
+				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -948,11 +952,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ToDoListWidget/ToDoList.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
-				INFOPLIST_FILE = ToDoListWidget/Info.plist;
+				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

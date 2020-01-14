@@ -10,12 +10,15 @@ import UIKit
 import RSTextViewMaster
 import UnderKeyboard
 import SafariServices
+import LKAlertController
+import ImageViewer_swift
 
 class CommentsViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputContainerView: UIView!
-    @IBOutlet weak var addButton: UIButton!
+	@IBOutlet weak var imageButton: UIButton!
+	@IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var textView: RSTextViewMaster!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -28,6 +31,8 @@ class CommentsViewController: BaseViewController {
     var currentEditingComment = CommentModel()
     var editMode = false
     var keyboardVisible = false
+	
+	private var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +57,7 @@ class CommentsViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "keyboardIcon")!, target: self, action: #selector(self.keyboardButtonAction))
         
         self.addButton.addTarget(self, action: #selector(self.addCommentAction), for: .touchUpInside)
+		self.imageButton.addTarget(self, action: #selector(self.addImageButton), for: .touchUpInside)
         
         self.textView.text = ""
         self.textView.delegate = self
@@ -107,12 +113,30 @@ class CommentsViewController: BaseViewController {
             
             RealmManager.sharedInstance.addComment(comment: newComment)
         }
-        
-        self.tableView.reloadData()
-        self.scrollToBottom()
-        
-        self.textView.text = ""
+		
+		self.keyboardButtonAction()
+		
+		self.reloadData()
     }
+	
+	@objc func addImageButton() {
+		let actionSheet = ActionSheet(title: "COMMENTS_ADD_IMAGE_TITLE".localized())
+		actionSheet.addAction("COMMENTS_SOURCE_CAMERA".localized(), style: .default) { _ in
+			self.showImagePicker(gallery: false)
+		}
+		actionSheet.addAction("COMMENTS_SOURCE_GALLERY".localized(), style: .default) { _ in
+			self.showImagePicker()
+		}
+		actionSheet.addAction("CANCEL".localized(), style: .destructive)
+		actionSheet.show()
+	}
+	
+	fileprivate func showImagePicker(gallery: Bool = true) {
+		self.imagePicker.delegate = self
+		self.imagePicker.sourceType = gallery ? .photoLibrary : .camera
+		self.imagePicker.allowsEditing = false
+		self.present(self.imagePicker, animated: true, completion: nil)
+	}
     
     func startEditMode() {
         self.editMode = true
@@ -162,6 +186,13 @@ class CommentsViewController: BaseViewController {
             self.tableView.scrollToRow(at: IndexPath(row: self.currentTask.availableComments().count-1, section: 0), at: .bottom, animated: true)
         }
     }
+	
+	func reloadData() {
+		self.tableView.reloadData()
+        self.scrollToBottom()
+        
+        self.textView.text = ""
+	}
 }
 
 extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -170,28 +201,44 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.getIdentifier(), for: indexPath) as! CommentTableViewCell
-        
-        let currentItem = self.currentTask.availableComments()[indexPath.row]
-        
-        cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
-        cell.contentLabel.text = currentItem.content
-        
-        cell.contentLabel.handleURLTap { (url) in
-            self.openURL(url: url)
-        }
-        
-        cell.contentLabel.handleHashtagTap { (hashtag) in
-            self.openHashtag(hashtag: hashtag)
-        }
-        
-        return cell
+		let currentItem = self.currentTask.availableComments()[indexPath.row]
+		
+		if currentItem.isImageComment() {
+			let cell = tableView.dequeueReusableCell(withIdentifier: CommentImageTableViewCell.getIdentifier(), for: indexPath) as! CommentImageTableViewCell
+			
+			cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
+			cell.commentImageView.image = UIImage(data: currentItem.imageData as Data)
+			cell.commentImageView.setupImageViewer(presentFrom: self)
+			
+			return cell
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.getIdentifier(), for: indexPath) as! CommentTableViewCell
+			
+			cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
+			cell.contentLabel.text = currentItem.content
+			
+			cell.contentLabel.handleURLTap { (url) in
+				self.openURL(url: url)
+			}
+			
+			cell.contentLabel.handleHashtagTap { (hashtag) in
+				self.openHashtag(hashtag: hashtag)
+			}
+			
+			return cell
+		}
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+		
+		let task = self.currentTask.availableComments()[indexPath.row]
+		
+		if task.isImageComment() {
+			return
+		}
         
-        self.currentEditingComment = self.currentTask.availableComments()[indexPath.row]
+        self.currentEditingComment = task
         
         self.startEditMode()
     }
@@ -221,4 +268,24 @@ extension CommentsViewController: RSTextViewMasterDelegate, UITextViewDelegate {
             self.scrollToBottom()
         }
     }
+}
+
+extension CommentsViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+		picker.dismiss(animated: true, completion: nil)
+	}
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.originalImage] as? UIImage else {
+            picker.dismiss(animated: true, completion: nil)
+			return
+        }
+		
+		let newComment = CommentModel(image: image, date: Date())
+		newComment.setTask(task: self.currentTask)
+		RealmManager.sharedInstance.addComment(comment: newComment)
+		self.reloadData()
+		
+		picker.dismiss(animated: true, completion: nil)
+	}
 }

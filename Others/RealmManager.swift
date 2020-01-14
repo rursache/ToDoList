@@ -24,23 +24,28 @@ class RealmManager: NSObject {
     static let sharedInstance = RealmManager()
     
     private var realm: Realm
-	
+	private let realmVersion: UInt64 = 15
+	private var realmConfig: Realm.Configuration
 	private let realmPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.ro.randusoft.RSToDoList")!.path + "/db.realm"
 	
 	private var wcSession: WCSession! = nil
-	
-	private let realmVersion: UInt64 = 14
     
 	override init() {
-		var config = Realm.Configuration(schemaVersion: self.realmVersion, migrationBlock: { migration, oldSchemaVersion in
+		self.realmConfig = Realm.Configuration(schemaVersion: self.realmVersion, migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < 13 {
                 migration.enumerateObjects(ofType: TaskModel.className()) { oldObject, newObject in
                     newObject!["completedDate"] = Date()
                 }
             }
+			
+			if oldSchemaVersion == 14 {
+				migration.enumerateObjects(ofType: CommentModel.className()) { oldObject, newObject in
+                    newObject!["imageData"] = NSData()
+                }
+			}
         })
 		
-		if let originalDefaultRealmPath = config.fileURL {
+		if let originalDefaultRealmPath = self.realmConfig.fileURL {
 			if FileManager.default.fileExists(atPath: originalDefaultRealmPath.absoluteString) {
 				do {
 					try FileManager.default.moveItem(atPath: originalDefaultRealmPath.absoluteString, toPath: realmPath)
@@ -51,12 +56,12 @@ class RealmManager: NSObject {
 		}
 		
 		if let realmPathURL = URL(string: realmPath) {
-			config.fileURL = realmPathURL
+			self.realmConfig.fileURL = realmPathURL
 		} else {
 			fatalError("bad realm path?")
 		}
 		
-        self.realm = try! Realm(configuration: config)
+        self.realm = try! Realm(configuration: self.realmConfig)
 		
 		super.init()
 		
@@ -357,7 +362,6 @@ class RealmManager: NSObject {
     }
 	
 	// watch stuff
-	
 	fileprivate func updateDbOnWatch() {
 		guard let realmDBdata = try? Data(contentsOf: URL(fileURLWithPath: self.realmPath)) else {
 			print("updateDbOnWatch: failed to read file?")
@@ -365,6 +369,20 @@ class RealmManager: NSObject {
 		}
 		
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+			if !self.wcSession.isReachable {
+				#if realApp
+				if !self.wcSession.isPaired || !self.wcSession.isWatchAppInstalled {
+					return
+				}
+				#endif
+				
+				self.wcSession.activate()
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+					self.updateDbOnWatch()
+				}
+				return
+			}
+			
 			self.wcSession.sendMessageData(realmDBdata, replyHandler: { data in
 				print("updateDbOnWatch: done")
 			}) { error in
@@ -373,7 +391,20 @@ class RealmManager: NSObject {
 		}
 	}
 	
+	fileprivate func processMessage(dict: [String : Any]) {
+		if let _ = dict["taskId"] as? String {
+			#if realApp
+			NotificationCenter.default.post(name: Config.Notifications.completeTask, object: nil, userInfo: dict)
+			#endif
+			self.updateDbOnWatch()
+		}
+	}
+	
 	// utils
+	
+	func getConfig() -> Realm.Configuration {
+		return self.realmConfig
+	}
 	
 	fileprivate func startEndDateArray(forDate: Date) -> [Date] {
         return [forDate.startOfDay, forDate.endOfDay]
@@ -387,10 +418,14 @@ extension RealmManager: WCSessionDelegate {
 		self.updateDbOnWatch()
 	}
 	
+	func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+		self.processMessage(dict: message)
+		
+		replyHandler(message)
+	}
+	
 	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-		if let _ = message["taskId"] as? String {
-			NotificationCenter.default.post(name: Config.Notifications.completeTask, object: nil, userInfo: message)
-		}
+		self.processMessage(dict: message)
 	}
 	
 	func sessionDidBecomeInactive(_ session: WCSession) {
