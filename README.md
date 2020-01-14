@@ -1,7 +1,7 @@
 # RSToDoList
 
 <p align="left">
-  <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/Resources/icon.png" />
+  <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/WatchApp/Assets.xcassets/watchlogo.imageset/watchlogo.png" />
 </p>
 
 A simple To-do list app build for iOS 11+ in Swift 5
@@ -45,7 +45,7 @@ A simple To-do list app build for iOS 11+ in Swift 5
 1. [AppStore](https://apps.apple.com/us/app/todolist-task-manager/id1454122524?ls=1)
 2. [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) - Use this [invitation link](http://l0ng.in/todolist) to test the latest build.
 
-## To do
+## Roadmap
 
 - [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
@@ -54,7 +54,7 @@ A simple To-do list app build for iOS 11+ in Swift 5
 - [ ] iPad app
 - [ ] Marzipan support for macOS
  
-### Improvements
+### Improvements/To Do
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Better sync events and responses
@@ -64,6 +64,7 @@ A simple To-do list app build for iOS 11+ in Swift 5
 - [x] Changing a theme won't change settings nav controller until close/reopen screen
 - [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
 - [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
+- [ ] Found something? [Let me know](https://github.com/rursache/ToDoList/issues)
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).
