@@ -363,6 +363,10 @@ class RealmManager: NSObject {
 	
 	// watch stuff
 	fileprivate func updateDbOnWatch() {
+		if !WCSession.isSupported() {
+			return
+		}
+		
 		guard let realmDBdata = try? Data(contentsOf: URL(fileURLWithPath: self.realmPath)) else {
 			print("updateDbOnWatch: failed to read file?")
 			return

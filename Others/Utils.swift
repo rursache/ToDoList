@@ -37,6 +37,10 @@ class Utils: NSObject {
     func getCurrentThemeColor() -> UIColor {
         return Config.General.themes[UserDefaults.standard.integer(forKey: Config.UserDefaults.theme)].color
     }
+	
+	func isIpad() -> Bool {
+		return UIDevice.current.userInterfaceIdiom == .pad
+	}
     
     // themes
     

@@ -46,6 +46,8 @@ class TasksViewController: BaseViewController {
 
     @objc override func setupUI() {
         super.setupUI()
+		
+		
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
         
@@ -172,7 +174,8 @@ class TasksViewController: BaseViewController {
     
     @objc func sortButtonAction() {
         let sortSheet = ActionSheet(title: "TASKS_SORT_TASKS".localized(), message: nil)
-        
+		sortSheet.setBarButtonItem(self.navigationItem.rightBarButtonItem!)
+		
         for sortOption in Config.General.sortTitles {
             sortSheet.addAction(sortOption, style: .default) { (action) in
                 let itemIndex = Config.General.sortTitles.firstIndex(of: sortOption)!
@@ -231,6 +234,7 @@ class TasksViewController: BaseViewController {
     
     func showTaskOptions(task: TaskModel, indexPath: IndexPath) {
         let taskOptionsSheet = ActionSheet(title: "TASKS_TASK_OPTIONS".localized(), message: nil)
+		taskOptionsSheet.setPresentingSource(self.tableView.cellForRow(at: indexPath)?.contentView ?? self.view)
         
         if Config.Features.showCompleteButtonInTaskOptions {
             taskOptionsSheet.addAction("TASKS_COMPLETE".localized(), style: .default) { (action) in

@@ -22,13 +22,34 @@ class SettingsViewController: BaseViewController {
 
         self.loadCurrentData()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		self.addBottomVersionLabel()
+	}
+	
+	override func setupBindings() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+		
+		if #available(iOS 13.0, *) {
+			self.isModalInPresentation = true
+		}
+    }
     
     override func setupUI() {
         super.setupUI()
         
         self.addRightDoneButton()
-        
-        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50))
+    }
+	
+	func addRightDoneButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
+    }
+	
+	func addBottomVersionLabel() {
+		let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50))
         tableViewFooter.backgroundColor = UIColor.clear
         let version = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 30))
         version.font = UIFont.systemFont(ofSize: 12)
@@ -45,20 +66,7 @@ class SettingsViewController: BaseViewController {
         }
         tableViewFooter.addSubview(version)
         self.tableView.tableFooterView  = tableViewFooter
-    }
-    
-    func addRightDoneButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
-    }
-    
-    override func setupBindings() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-		
-		if #available(iOS 13.0, *) {
-			self.isModalInPresentation = true
-		}
-    }
+	}
     
     func loadCurrentData() {
         let userDefaults = UserDefaults.standard
@@ -98,7 +106,7 @@ class SettingsViewController: BaseViewController {
         // human readable rows and sections
         let row = indexPath.row + 1
         let section = indexPath.section + 1
-        
+        // human readable rows and sections
         
         if section == 1 {
            self.createActionSheet(row: row)
@@ -149,6 +157,7 @@ class SettingsViewController: BaseViewController {
     func createActionSheet(row: Int) {
         let currentItem = self.dataSource.first?.items[row - 1]
         let actionSheet = ActionSheet(title: currentItem?.title, message: nil)
+		actionSheet.setPresentingSource(self.tableView.cellForRow(at: IndexPath(row: row-1, section: 0)) ?? self.tableView)
         
         if row == 1 {
             // start page

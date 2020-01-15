@@ -70,7 +70,6 @@ class RemindersViewController: BaseViewController {
 		}
         datePicker?.setDoneButton(UIBarButtonItem(title: "ADD".localized(), style: .done, target: self, action: nil))
         datePicker?.setCancelButton(UIBarButtonItem(title: "CANCEL".localized(), style: .done, target: self, action: nil))
-        
         datePicker?.show()
     }
     

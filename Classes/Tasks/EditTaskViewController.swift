@@ -173,6 +173,7 @@ class EditTaskViewController: BaseViewController {
     
     @objc func priorityButtonAction() {
         let prioritySheet = ActionSheet(title: "EDIT_TASKS_TASK_PRIORITY".localized(), message: nil)
+		prioritySheet.setPresentingSource(self.priorityButton)
         
         prioritySheet.addAction(Config.General.priorityTitles[0], style: .default) { (action) in
             self.setTaskPriority(priority: 1, title: action?.title)

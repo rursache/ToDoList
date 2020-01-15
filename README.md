@@ -4,23 +4,16 @@
   <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/WatchApp/Assets.xcassets/watchlogo.imageset/watchlogo.png" />
 </p>
 
-A simple To-do list app build for iOS 11+ in Swift 5
+A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 
 ## Main features
-- [x] Basic 'to do list' features
-	- [x] Persistent lists using Realm
-	- [x] Add/delete tasks
-	- [x] Edit task properties
-	- [x] Complete tasks
-	- [x] Date/Time for task
-	- [x] Sort options
-	- [x] Task filters
-	- [x] Set task priority
+- [x] Persistent task lists using Realm
 - [x] iCloud Kit support for syncing
-- [x] Push notifications for reminders
-	- [x] Synced push notifications between devices
+- [x] Push notifications for reminders (Synced between devices)
+- [x] Add/delete/edit/complete tasks
+- [x] Set task Date & Time + custom reminders and comments (images too)
+- [x] Sort/Filter/Prioritise tasks
 - [x] Watch app
-- [x] Task comments (text and images)
 - [x] Widget for Today tasks
 - [x] Theme support with custom App Icons
 - [x] Multi-Language support
@@ -49,24 +42,19 @@ A simple To-do list app build for iOS 11+ in Swift 5
 
 ### Features
 
+- [ ] iPad app
 - [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Rearrange tasks manually
-- [ ] iPad app
 - [ ] Marzipan support for macOS
  
 ### Improvements/To Do
+- [ ] Make sure Realm is always thread safe
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions
-- [ ] Better sync events and responses
+- [ ] Better CloudKit sync events and responses
 - [ ] Themes view controller with previews
-
-### Bugs
-- [x] Changing a theme won't change settings nav controller until close/reopen screen
-- [x] App will crash if no internet connection is available (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
-- [x] Comments and Reminders are not showing up while adding a task (fixed in [#955cc7d](https://github.com/rursache/ToDoList/commit/955cc7d895b92945d66aedec3fffb41be8da6c3f))
-- [ ] Found something? [Let me know](https://github.com/rursache/ToDoList/issues)
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).

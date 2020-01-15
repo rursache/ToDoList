@@ -20,9 +20,13 @@ class HomeViewController: BaseViewController {
     var selectedItem = HomeItemModel()
     var shouldRedirectToPage = true
     var customIntervalDate: ActionSheetDateTimeRangePicker.DateRange?
+	var loadedOnce = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.loadData()
+		self.setupIpad()
         
         if !Utils().userIsLoggedIniCloud() {
             Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
@@ -40,7 +44,9 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.loadData()
+		if self.loadedOnce {
+			self.loadData()
+		}
         
         self.redirectToPageIfNeeded()
     }
@@ -54,6 +60,8 @@ class HomeViewController: BaseViewController {
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
         
         Utils().themeView(view: self.addTaskButton)
+		
+		self.addTaskButton.isHidden = Utils().isIpad()
         
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
     }
@@ -93,25 +101,49 @@ class HomeViewController: BaseViewController {
         self.tableView.reloadData()
         
         Utils().setBadgeNumber(badgeNumber: Config.Features.showTodayTasksAsBadgeNumber ? todayCount : 0)
+		
+		self.loadedOnce = true
     }
+	
+	func setupIpad() {
+		if !Utils().isIpad() {
+			return
+		}
+		
+		let preference = UserDefaults.standard.integer(forKey: Config.UserDefaults.startPage)
+		if preference != 0 {
+			self.selectedItem = self.homeDataSource[preference - 1]
+		} else {
+			self.selectedItem = self.homeDataSource.first!
+		}
+		
+		self.showDetailPageForIpad()
+	}
+	
+	func showDetailPageForIpad() {
+		if let masterVC = self.navigationController?.parent as? UISplitViewController, masterVC.restorationIdentifier == "splitController" {
+			let tasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tasksVC") as! TasksViewController
+			
+			tasksVC.title = self.selectedItem.title
+			tasksVC.selectedType = self.selectedItem.listType
+			tasksVC.customIntervalDate = self.customIntervalDate
+			masterVC.showDetailViewController(UINavigationController(rootViewController: tasksVC), sender: self)
+		}
+	}
     
     func redirectToPageIfNeeded() {
-        if !self.shouldRedirectToPage {
+		if !self.shouldRedirectToPage || Utils().isIpad() {
             return
         }
-        
         self.shouldRedirectToPage = false
         
         let preference = UserDefaults.standard.integer(forKey: Config.UserDefaults.startPage)
         
-        if preference == 0 {
-            return // home page
-        } else {
+        if preference != 0 {
             self.selectedItem = self.homeDataSource[preference - 1]
-        }
-        
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+			DispatchQueue.main.async {
+				self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+			}
         }
     }
     
@@ -217,15 +249,18 @@ class HomeViewController: BaseViewController {
             didSelectHandler: { (dateRange) in
                 self.customIntervalDate = dateRange
                 
-                self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+                if Utils().isIpad() {
+					self.showDetailPageForIpad()
+				} else {
+					self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+				}
             },
             didCancelHandler: nil,
-            origin: self.view,
+            origin: self.tableView.cellForRow(at: IndexPath(row: 4, section: 0))?.contentView ?? self.view,
             minutesInterval: 60 * 24,
             minimumMultipleOfMinutesIntervalForRangeDuration: 1)
         
         picker.dateFormatter = formatter
-        
         picker.show()
     }
 	
@@ -278,7 +313,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if self.selectedItem.listType == .Custom {
             self.prepareCustomTaskList()
         } else {
-            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+			if Utils().isIpad() {
+				self.showDetailPageForIpad()
+			} else {
+				self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+			}
         }
     }
     

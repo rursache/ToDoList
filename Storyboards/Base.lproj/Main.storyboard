@@ -292,7 +292,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qnD-fZ-PkE">
             <objects>
-                <navigationController id="Xpc-PX-jlA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainRootNavVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xpc-PX-jlA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2sL-rH-igp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

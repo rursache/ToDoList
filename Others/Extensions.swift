@@ -145,6 +145,11 @@ extension UIApplication {
     }
 }
 
+//
+// must refactor this
+// context: https://github.com/michaelhenry/ImageViewer.swift/issues/87#issuecomment-574688199
+//
+
 class ImageViewerExt: UIImageView {
 	var customVC: UIViewController?
 }
@@ -210,3 +215,4 @@ extension ImageViewerExt {
     }
 }
 
+// end imageView ext refactor

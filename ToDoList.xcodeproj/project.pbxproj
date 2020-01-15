@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1710DD2923CF5C46000E64F4 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1710DD2823CF5C46000E64F4 /* Main-iPad.storyboard */; };
 		1718BE4523CCBB19009D591A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1718BE4423CCBB19009D591A /* NotificationCenter.framework */; };
 		1718BE4823CCBB19009D591A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718BE4723CCBB19009D591A /* TodayViewController.swift */; };
 		1718BE4B23CCBB19009D591A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1718BE4923CCBB19009D591A /* MainInterface.storyboard */; };
@@ -157,6 +158,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1710DD2823CF5C46000E64F4 /* Main-iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		1718BE4323CCBB19009D591A /* ToDoListWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ToDoListWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1718BE4423CCBB19009D591A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		1718BE4723CCBB19009D591A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				17D18D42221D56C4005C647B /* Main.storyboard */,
+				1710DD2823CF5C46000E64F4 /* Main-iPad.storyboard */,
 				17D18D47221D56C5005C647B /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -663,6 +666,7 @@
 				172CCDA722253FB700240725 /* IconPink@2x.png in Resources */,
 				17D18D46221D56C5005C647B /* Assets.xcassets in Resources */,
 				172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */,
+				1710DD2923CF5C46000E64F4 /* Main-iPad.storyboard in Resources */,
 				172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */,
 				172CCDA322253CC800240725 /* IconBlue@2x.png in Resources */,
 				17D18D44221D56C4005C647B /* Main.storyboard in Resources */,
@@ -1223,7 +1227,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1249,7 +1253,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
