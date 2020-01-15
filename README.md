@@ -13,6 +13,7 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 - [x] Add/delete/edit/complete tasks
 - [x] Set task Date & Time + custom reminders and comments (images too)
 - [x] Sort/Filter/Prioritise tasks
+- [x] iPad app
 - [x] Watch app
 - [x] Widget for Today tasks
 - [x] Theme support with custom App Icons
@@ -42,7 +43,6 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 
 ### Features
 
-- [ ] iPad app
 - [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)

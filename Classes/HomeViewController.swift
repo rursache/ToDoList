@@ -256,11 +256,16 @@ class HomeViewController: BaseViewController {
 				}
             },
             didCancelHandler: nil,
-            origin: self.tableView.cellForRow(at: IndexPath(row: 4, section: 0))?.contentView ?? self.view,
+			origin: self.view,
             minutesInterval: 60 * 24,
             minimumMultipleOfMinutesIntervalForRangeDuration: 1)
         
         picker.dateFormatter = formatter
+		picker.popoverDisabled = Utils().isIpad()
+		if #available(iOS 13.0, *) {
+			picker.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+			picker.pickerBackgroundColor = .systemBackground
+		}
         picker.show()
     }
 	
