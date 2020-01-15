@@ -39,8 +39,8 @@ class EditTaskViewController: BaseViewController {
             self.tempTask.isDeleted = true
             RealmManager.sharedInstance.addTask(task: self.tempTask)
 			
-			// set task date and time to now if you're coming from Today screen
-			if self.parentType == .Today {
+			// set task date and time to now if you're coming from Today screen AND the next hour will be today as well
+			if self.parentType == .Today && Calendar.current.isDateInToday(Date().next(hours: 1)) {
 				RealmManager.sharedInstance.changeTaskDate(task: self.tempTask, date: Date().next(hours: 1))
 				self.updateDateButtonTitle()
 			}

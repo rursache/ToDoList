@@ -88,6 +88,9 @@
 		17EBE590221ED8B1005A9253 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE58F221ED8B1005A9253 /* RealmManager.swift */; };
 		17EBE593221EE584005A9253 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE592221EE584005A9253 /* TasksViewController.swift */; };
 		17EBE595221EE588005A9253 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE594221EE588005A9253 /* EditTaskViewController.swift */; };
+		17F03A2423CF4ED400E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
+		17F03A2523CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
+		17F03A2623CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		62037A555E643865DCCD3F33 /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EC7B181B2DC875AF97CD49 /* Pods_ToDoList.framework */; };
 		86336197EBFD98B1AAC5CD91 /* Pods_ToDoListWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */; };
 		E5C09EA00C6E3B05D401FC83 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3044EF5F72611B448293FA7 /* Pods_WatchApp_Extension.framework */; };
@@ -615,6 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1718BE6223CCD4B8009D591A /* Assets.xcassets in Resources */,
+				17F03A2523CF4ED600E01D84 /* Localizable.strings in Resources */,
 				1718BE4B23CCBB19009D591A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17278CCA23CE05890014B8B2 /* Assets.xcassets in Resources */,
+				17F03A2623CF4ED600E01D84 /* Localizable.strings in Resources */,
 				17278CC823CE05880014B8B2 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17278CDE23CE05890014B8B2 /* Assets.xcassets in Resources */,
+				17F03A2423CF4ED400E01D84 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

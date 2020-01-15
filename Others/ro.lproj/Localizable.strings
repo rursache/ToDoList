@@ -91,6 +91,10 @@
 "REMINDERS_TITLE" = "Memento-uri";
 "REMINDERS_SELECT_DATE_TIME" = "Selectați data și ora";
 
+// watch
+"WATCH_TITLE" = "Sarcinile de azi";
+"WATCH_TITLE_COUNT" = "Sarcinile de azi ({count})";
+
 // alții
 "OK" = "OK";
 "NOTIFICATION" = "Notificare";

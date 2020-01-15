@@ -47,6 +47,8 @@ A simple To-do list app build for iOS 11+ in Swift 5
 
 ## Roadmap
 
+### Features
+
 - [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)

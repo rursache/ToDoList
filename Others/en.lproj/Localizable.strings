@@ -91,6 +91,10 @@
 "REMINDERS_TITLE" = "Reminders";
 "REMINDERS_SELECT_DATE_TIME" = "Select date and time";
 
+// watch
+"WATCH_TITLE" = "Today Tasks";
+"WATCH_TITLE_COUNT" = "Today Tasks ({count})";
+
 // others
 "OK" = "OK";
 "NOTIFICATION" = "Notification";

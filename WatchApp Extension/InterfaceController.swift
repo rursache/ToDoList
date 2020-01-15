@@ -30,7 +30,7 @@ class InterfaceController: WKInterfaceController {
 		  self.wcSession.activate()
 		}
         
-		self.setTitle("Today Tasks")
+		self.setTitle(NSLocalizedString("WATCH_TITLE", comment: ""))
 		
 		self.loadTableData()
     }
@@ -57,7 +57,7 @@ class InterfaceController: WKInterfaceController {
 		self.tableDataSource = RealmManager.sharedInstance.getTodayTasks().sorted(byKeyPath: "date", ascending: true)
 		
 		if self.tableDataSource.count != 0 {
-			self.setTitle("Today Tasks (\(self.tableDataSource.count))")
+			self.setTitle(NSLocalizedString("WATCH_TITLE", comment: "").replacingOccurrences(of: "{count}", with: "\(self.tableDataSource.count)")) 
 		}
 		
 		self.noTasksLabel.setHidden(self.tableDataSource.count != 0)
