@@ -51,8 +51,7 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
  
 ### Improvements/To Do
 - [ ] watchOS complications + sync improvements
-- [ ] Reload notifications after user gave push permissions
-- [ ] Better CloudKit sync events and responses
+- [ ] Reload notifications after user gave push permissions if initially declined 
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).

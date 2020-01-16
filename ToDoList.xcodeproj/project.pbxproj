@@ -581,7 +581,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Radu Ursache";
+				ORGANIZATIONNAME = "Radu Ursache - RanduSoft";
 				TargetAttributes = {
 					1718BE4223CCBB19009D591A = {
 						CreatedOnToolsVersion = 11.3;
@@ -611,7 +611,7 @@
 				};
 			};
 			buildConfigurationList = 17D18D36221D56C4005C647B /* Build configuration list for PBXProject "ToDoList" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

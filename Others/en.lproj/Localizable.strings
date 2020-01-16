@@ -49,6 +49,7 @@
 "SETTINGS_ITEM_ENTRY_ABOUT" = "About";
 "SETTINGS_SYNC_START" = "Sync started, please wait...";
 "SETTINGS_SYNC_END" = "Sync done";
+"SETTINGS_SYNC_FAILED" = "Sync failed, check your iCloud account or try again later";
 "SETTINGS_NO_EMAIL_FAILED" = "No email account setup on your device";
 "SETTINGS_ABOUT_TEXT" = "A simple open source To-do list app written in Swift. Based on Todoist UI/UX\nRadu Ursache - RanduSoft\n\n";
 "SETTINGS_CONFIRMATION_START_PAGE" = "Start page updated!";

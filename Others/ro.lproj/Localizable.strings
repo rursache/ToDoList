@@ -48,7 +48,8 @@
 "SETTINGS_ITEM_ENTRY_ACKNOW" = "Mulțumiri";
 "SETTINGS_ITEM_ENTRY_ABOUT" = "Despre";
 "SETTINGS_SYNC_START" = "A început sincronizarea, vă rugăm să așteptați ...";
-"SETTINGS_SYNC_END" = "Sincronizare făcută";
+"SETTINGS_SYNC_END" = "Sincronizare finalizată";
+"SETTINGS_SYNC_FAILED" = "Sincronizare eșuată";
 "SETTINGS_NO_EMAIL_FAILED" = "Nicio configurare a contului de e-mail pe dispozitiv";
 "SETTINGS_ABOUT_TEXT" = "O simplă aplicație de listă de activități open source scrisă în Swift. Bazată pe Todoist UI/UX\nRadu Ursache - RanduSoft\n\n";
 "SETTINGS_CONFIRMATION_START_PAGE" = "Pagina de pornire actualizată!";

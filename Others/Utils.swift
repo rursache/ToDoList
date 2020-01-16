@@ -85,22 +85,24 @@ class Utils: NSObject {
     }
     
     fileprivate func showToast(viewController: UIViewController?, message: String, state: Loaf.State) {
-		var vc = UIViewController()
-		#if realApp
-			vc = UIApplication.shared.topMostViewController()
-		#endif
-		if viewController != nil {
-			vc = viewController!
+		DispatchQueue.main.async {
+			var vc = UIViewController()
+			#if realApp
+				vc = UIApplication.shared.topMostViewController()
+			#endif
+			if viewController != nil {
+				vc = viewController!
+			}
+			
+			Loaf.dismiss(sender: vc)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+				Loaf(message, state: state, location: .top, sender: vc).show()
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + Config.General.toastOnScreenTime) {
+					Loaf.dismiss(sender: vc, animated: true)
+				}
+			}
 		}
-		
-        Loaf.dismiss(sender: vc)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-			Loaf(message, state: state, location: .top, sender: vc).show()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + Config.General.toastOnScreenTime) {
-                Loaf.dismiss(sender: vc, animated: true)
-            }
-        }
     }
     
     // notifications

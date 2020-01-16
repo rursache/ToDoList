@@ -45,7 +45,7 @@ class SettingsViewController: BaseViewController {
     }
 	
 	func addRightDoneButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "DONE".localized(), style: .done, target: self, action: #selector(self.closeButtonAction))
     }
 	
 	func addBottomVersionLabel() {
@@ -113,7 +113,7 @@ class SettingsViewController: BaseViewController {
         }
         
         if section == 2 {
-            
+            // nothing here, we got switches
         }
         
         if section == 3 {
@@ -122,15 +122,20 @@ class SettingsViewController: BaseViewController {
                 Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
                 self.navigationItem.rightBarButtonItem = nil
                 
-                Utils().getSyncEngine()?.pull()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    Utils().getSyncEngine()?.pushAll()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                        self.addRightDoneButton()
-                        Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
-                    })
-                })
+				Utils().getSyncEngine()?.pull(completionHandler: { error in
+					if error != nil {
+						DispatchQueue.main.async {
+							Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_FAILED".localized())
+							self.addRightDoneButton()
+						}
+					}
+					
+					DispatchQueue.main.async {
+						Utils().getSyncEngine()?.pushAll()
+						Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
+						self.addRightDoneButton()
+					}
+				})
                 
             } else if row == 2 {
                 // feedback
