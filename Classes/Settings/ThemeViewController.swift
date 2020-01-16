@@ -11,21 +11,15 @@ import UIKit
 class ThemeViewController: BaseViewController {
 
 	@IBOutlet weak var tableView: UITableView!
-	let tableDataSource = Config.General.themes
 	
+	let tableDataSource = Config.General.themes
 	var doneCallback: (()->Void)?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.checkCurrentTheme()
     }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		self.checkCurrentTheme()
-	}
 	
 	override func setupBindings() {
 		super.setupBindings()

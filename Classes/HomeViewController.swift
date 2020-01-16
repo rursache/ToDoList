@@ -10,12 +10,17 @@ import UIKit
 import IceCream
 import CloudKit
 import ActionSheetPicker_3_0
+import BLTNBoard
 
 class HomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
-    
+	
+	lazy var bulletinManager: BLTNItemManager = {
+        let introPage = OnboardingDataSource.makeIntroPage()
+        return BLTNItemManager(rootItem: introPage)
+    }()
     var homeDataSource = [HomeItemModel]()
     var selectedItem = HomeItemModel()
     var shouldRedirectToPage = true
@@ -38,7 +43,7 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+		self.showBulletinView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -270,6 +275,17 @@ class HomeViewController: BaseViewController {
 	
 	@objc func titleTapAction() {
 		Utils().showAbout()
+	}
+	
+	func showBulletinView() {
+		if UserDefaults.standard.bool(forKey: Config.UserDefaults.launchedBefore) {
+			return
+		}
+		
+		let introPage = OnboardingDataSource.makeIntroPage()
+		self.bulletinManager = BLTNItemManager(rootItem: introPage)
+		self.bulletinManager.backgroundViewStyle = .dimmed
+        self.bulletinManager.showBulletin(above: self)
 	}
     
     func getUserFullName() {

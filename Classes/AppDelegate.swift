@@ -21,12 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var syncEngine: SyncEngine?
     var launchedShortcutItem: UIApplicationShortcutItem?
+	var currentApplication: UIApplication?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+		self.currentApplication = application
+		
         self.setupDefaults()
         
-        self.setupSDKs(application: application)
+        self.setupSDKs()
         
         // check for 3d touch shortcuts
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
@@ -38,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func setupSDKs(application: UIApplication) {
+    func setupSDKs() {
         Fabric.with([Crashlytics.self])
         
 		_ = RealmManager()
@@ -48,20 +51,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             SyncObject<CommentModel>(realmConfiguration: RealmManager.sharedInstance.getConfig()),
             SyncObject<NotificationModel>(realmConfiguration: RealmManager.sharedInstance.getConfig())
             ], databaseScope: .private)
-		
-        Robin.shared.requestAuthorization()
+    }
+	
+	func requestPushNotificationsPerms() {
+		Robin.shared.requestAuthorization()
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         
-        application.registerForRemoteNotifications()
-    }
+        self.currentApplication?.registerForRemoteNotifications()
+	}
     
     func setupDefaults() {
         let userDefaults = UserDefaults.standard
         
         if !userDefaults.bool(forKey: Config.UserDefaults.launchedBefore) {
-            userDefaults.set(true, forKey: Config.UserDefaults.launchedBefore)
-            
             userDefaults.set(true, forKey: Config.UserDefaults.helpPrompts)
         }
     }

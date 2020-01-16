@@ -19,6 +19,7 @@ target 'ToDoList' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'ImageViewer.swift'
+  pod 'BulletinBoard'
 
   target 'ToDoListWidget' do
      inherit! :search_paths

@@ -27,6 +27,7 @@
 		1718BE6223CCD4B8009D591A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D18D45221D56C5005C647B /* Assets.xcassets */; };
 		171D5BDC23D0AD680051ABD9 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D5BDB23D0AD680051ABD9 /* ThemeTableViewCell.swift */; };
 		171D5BDF23D0ADD30051ABD9 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D5BDE23D0ADD30051ABD9 /* ThemeViewController.swift */; };
+		171D5BE123D0D35C0051ABD9 /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D5BE023D0D35C0051ABD9 /* OnboardingDataSource.swift */; };
 		17278CC823CE05880014B8B2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17278CC623CE05880014B8B2 /* Interface.storyboard */; };
 		17278CCA23CE05890014B8B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17278CC923CE05890014B8B2 /* Assets.xcassets */; };
 		17278CD123CE05890014B8B2 /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 17278CD023CE05890014B8B2 /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -170,6 +171,7 @@
 		1718BE6023CCC528009D591A /* WidgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCell.swift; sourceTree = "<group>"; };
 		171D5BDB23D0AD680051ABD9 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		171D5BDE23D0ADD30051ABD9 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		171D5BE023D0D35C0051ABD9 /* OnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
 		17278CC423CE05880014B8B2 /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17278CC723CE05880014B8B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		17278CC923CE05890014B8B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				17D18D54221D5F0D005C647B /* Utils.swift */,
 				17EBE58F221ED8B1005A9253 /* RealmManager.swift */,
 				17C17769222D6BA200B2E84F /* ActionSheetDateTimeRangePicker.swift */,
+				171D5BE023D0D35C0051ABD9 /* OnboardingDataSource.swift */,
 				17C1776D222EB2FE00B2E84F /* Extensions.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
@@ -861,6 +864,7 @@
 				172CCD7B2220916700240725 /* CommentsViewController.swift in Sources */,
 				172CCD7F2221776700240725 /* TaskTableViewCell.swift in Sources */,
 				17EBE58B221EC9F2005A9253 /* CommentModel.swift in Sources */,
+				171D5BE123D0D35C0051ABD9 /* OnboardingDataSource.swift in Sources */,
 				17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */,
 				17ABEB6F2227D57C006C6C28 /* NotificationModel.swift in Sources */,
 				17D62B6022247C390085D628 /* ThemeModel.swift in Sources */,
@@ -956,6 +960,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -981,6 +986,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -2,6 +2,7 @@ PODS:
   - AcknowList (1.9.3)
   - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.1.0)
+  - BulletinBoard (4.1.0)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - AcknowList
   - ActionSheetPicker-3.0 (from `https://github.com/rursache/ActionSheetPicker-3.0`)
   - ActiveLabel
+  - BulletinBoard
   - Crashlytics
   - Fabric
   - IceCream (from `https://github.com/rursache/IceCream.git`)
@@ -43,6 +45,7 @@ SPEC REPOS:
   trunk:
     - AcknowList
     - ActiveLabel
+    - BulletinBoard
     - Crashlytics
     - Fabric
     - ImageViewer.swift
@@ -73,6 +76,7 @@ SPEC CHECKSUMS:
   AcknowList: a3ee7cfba2c45cf9d07d1b18fe729a5bcc518366
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
+  BulletinBoard: c774340545b5cfd05a96a89f63b105ecc95c86f9
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IceCream: 1689e1952bd526922293c283a5938e8183e9e177
@@ -86,6 +90,6 @@ SPEC CHECKSUMS:
   SDWebImage: 86589f0d47a7de15827640c71813e23fd428965c
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 5c2665fbfcc1cee23599f928e822dd67885aee0b
+PODFILE CHECKSUM: 3bf2cf4dabac8cbd717132525efef77a1e217f2e
 
 COCOAPODS: 1.8.4

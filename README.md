@@ -20,6 +20,7 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 - [x] Multi-Language support
 - [x] 3D Touch shortcuts
 - [x] Dark mode
+- [x] Onboarding/tutorial
 
 ## Requirements
  - iOS 11.0+
@@ -41,20 +42,17 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 
 ## Roadmap
 
-### Features
+### Features0
 
-- [ ] Tutorial/Onboarding
 - [ ] Lockdown with FaceID/TouchID or passcode (using [BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Rearrange tasks manually
 - [ ] Marzipan support for macOS
  
 ### Improvements/To Do
-- [ ] Make sure Realm is always thread safe
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions
 - [ ] Better CloudKit sync events and responses
-- [ ] Themes view controller with previews
 
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).
