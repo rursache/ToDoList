@@ -12,6 +12,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>IconPinkAlt</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IconPinkAlt</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>IconBlack</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

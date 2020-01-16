@@ -42,7 +42,7 @@ class Config: NSObject {
                              ThemeModel(name: "Skirret Green", color: Colors.green, appIcon: "IconGreen"),
                              ThemeModel(name: "Sunflower Yellow", color: Colors.yellow, appIcon: "IconYellow"),
                              ThemeModel(name: "Radiant Orange", color: Colors.orange, appIcon: "IconOrange"),
-                             ThemeModel(name: "Salmon Pink", color: Colors.pink, appIcon: "IconPink"),
+                             ThemeModel(name: "Rose Pink", color: Colors.pink, appIcon: "IconPinkAlt"),
                              ThemeModel(name: "Midnight Black", color: Colors.black, appIcon: "IconBlack")]//,
 //                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")]
         
@@ -62,7 +62,7 @@ class Config: NSObject {
         static let orange = UIColor(hexString: "#f39c12")
         static let blue = UIColor(hexString: "#0984e3")
         static let black = UIColor(hexString: "#2d3436")
-        static let pink = UIColor(hexString: "#e3acac")
+        static let pink = UIColor(hexString: "#e05384")
         static let night = UIColor.black
     }
     
