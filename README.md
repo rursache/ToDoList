@@ -4,7 +4,7 @@
   <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/WatchApp/Assets.xcassets/watchlogo.imageset/watchlogo.png" />
 </p>
 
-A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
+A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 11+, watchOS 6+)
 
 ## Main features
 - [x] Persistent task lists using Realm
@@ -42,7 +42,7 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 
 ## Roadmap
 
-### Features0
+### Features
 
 - [ ] Lockdown with FaceID/TouchID or passcode (using [BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
@@ -74,6 +74,7 @@ RSToDoList is currently using:
  - [RSTextViewMaster](https://github.com/rursache/RSTextViewMaster)
  - [Loaf)](https://github.com/schmidyy/Loaf)
  - [Robin](https://github.com/ahmedabadie/Robin)
+ - [BulletinBoard](https://github.com/alexaubry/BulletinBoard)
  - [Fabric & Crashlytics](https://fabric.io/home)
 
 All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com).
