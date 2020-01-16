@@ -18,7 +18,7 @@ target 'ToDoList' do
   pod 'Robin'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'ImageViewer.swift', '~> 3.0' # moved extension file
+  pod 'ImageViewer.swift'
 
   target 'ToDoListWidget' do
      inherit! :search_paths

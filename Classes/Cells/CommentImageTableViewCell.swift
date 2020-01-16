@@ -12,7 +12,7 @@ import ImageViewer_swift
 class CommentImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
-	@IBOutlet weak var commentImageView: ImageViewerExt!
+	@IBOutlet weak var commentImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

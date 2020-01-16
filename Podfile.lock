@@ -7,7 +7,7 @@ PODS:
   - Fabric (1.10.2)
   - IceCream (1.13.0):
     - RealmSwift
-  - ImageViewer.swift (3.0.9):
+  - ImageViewer.swift (3.0.10):
     - SDWebImage
   - LKAlertController (1.12.2)
   - Loaf (0.5.0)
@@ -18,9 +18,9 @@ PODS:
     - Realm (= 4.3.0)
   - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
-  - SDWebImage (5.4.2):
-    - SDWebImage/Core (= 5.4.2)
-  - SDWebImage/Core (5.4.2)
+  - SDWebImage (5.5.0):
+    - SDWebImage/Core (= 5.5.0)
+  - SDWebImage/Core (5.5.0)
   - UnderKeyboard (13.0.2)
 
 DEPENDENCIES:
@@ -76,16 +76,16 @@ SPEC CHECKSUMS:
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IceCream: 1689e1952bd526922293c283a5938e8183e9e177
-  ImageViewer.swift: b2a83488e089fd2250406d81c783c02b21e1d424
+  ImageViewer.swift: 9bff2405a5c0a523092a8c031a7bf80c1433e7f4
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   Realm: 9357c3589555793e1860a7104a7412bca4a48d99
   RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
-  SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
+  SDWebImage: 86589f0d47a7de15827640c71813e23fd428965c
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
-PODFILE CHECKSUM: 4a50f0bf2a89fbfdffdb734934f18aee6af12763
+PODFILE CHECKSUM: 5c2665fbfcc1cee23599f928e822dd67885aee0b
 
 COCOAPODS: 1.8.4

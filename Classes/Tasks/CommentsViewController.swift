@@ -208,7 +208,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
 			
 			cell.dateLabel.text = Config.General.dateFormatter().string(from: currentItem.date as Date)
 			cell.commentImageView.image = UIImage(data: currentItem.imageData as Data)
-			cell.commentImageView.setupImageViewer(presentFrom: self)
+			cell.commentImageView.setupImageViewer(from: self)
 			
 			return cell
 		} else {
