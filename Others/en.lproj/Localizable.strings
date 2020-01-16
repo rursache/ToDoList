@@ -36,6 +36,7 @@
 "SETTINGS_NOT_LOGGED_IN" = "You're not logged into iCloud, tasks aren't syncing!";
 "SETTINGS_ITEM_ENTRY_START_PAGE" = "Start page";
 "SETTINGS_ITEM_ENTRY_THEME" = "Theme";
+"SETTINGS_ITEM_ENTRY_THEMES" = "Themes";
 "SETTINGS_ITEM_ENTRY_LANGUAGE" = "Language";
 "SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS" = "Open Web Links";
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Automatic Reminders";

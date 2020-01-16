@@ -145,7 +145,7 @@ class TasksViewController: BaseViewController {
     }
     
     func addTaskAction(editMode: Bool = false, task: TaskModel?) {
-        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
+        let addTaskVC = Utils().getViewController(viewController: .editTask) as! EditTaskViewController
         addTaskVC.editMode = editMode
         addTaskVC.parentType = self.selectedType
         if editMode {
@@ -199,7 +199,7 @@ class TasksViewController: BaseViewController {
     }
     
     func commentsButtonAction(task: TaskModel, indexPath: IndexPath) {
-        let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
+        let commentsVC = Utils().getViewController(viewController: .comments) as! CommentsViewController
         
         commentsVC.currentTask = task
         commentsVC.showKeyboardAtLoad = false
@@ -211,7 +211,7 @@ class TasksViewController: BaseViewController {
     }
     
     func remindersButtonAction(task: TaskModel, indexPath: IndexPath) {
-        let remindersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "remindersVC") as! RemindersViewController
+        let remindersVC = Utils().getViewController(viewController: .reminders) as! RemindersViewController
         remindersVC.currentTask = task
         remindersVC.onCompletion = {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)

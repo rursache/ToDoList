@@ -44,7 +44,7 @@ A simple To-do list app build for iPhone, iPad and watchOS in Swift 5 (iOS 11+)
 ### Features
 
 - [ ] Tutorial/Onboarding
-- [ ] Lockdown with FaceID/TouchID or passcode ([BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
+- [ ] Lockdown with FaceID/TouchID or passcode (using [BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Rearrange tasks manually
 - [ ] Marzipan support for macOS

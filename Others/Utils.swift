@@ -13,8 +13,22 @@ import IceCream
 import Robin
 
 class Utils: NSObject {
+	
+	enum VCs: String {
+		case home = "homeVC"
+		case tasks = "tasksVC"
+		case editTask = "editTaskVC"
+		case reminders = "remindersVC"
+		case comments = "commentsVC"
+		case settings = "settingsVC"
+		case themes = "themeVC"
+	}
     
     // generals
+	
+	func getViewController(viewController: VCs, storyBoardName: String = "Main") -> UIViewController {
+		return UIStoryboard.init(name: storyBoardName, bundle: nil).instantiateViewController(withIdentifier: viewController.rawValue)
+	}
     
     func userIsLoggedIniCloud() -> Bool {
         return FileManager.default.ubiquityIdentityToken != nil

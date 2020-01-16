@@ -30,7 +30,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - IceCream (from `https://github.com/rursache/IceCream.git`)
-  - ImageViewer.swift (~> 3.0)
+  - ImageViewer.swift
   - LKAlertController
   - Loaf
   - Realm

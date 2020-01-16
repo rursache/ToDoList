@@ -23,7 +23,6 @@ import WatchConnectivity
 class RealmManager: NSObject {
     static let sharedInstance = RealmManager()
     
-    private var realm: Realm
 	private let realmVersion: UInt64 = 15
 	private var realmConfig: Realm.Configuration
 	private let realmPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.ro.randusoft.RSToDoList")!.path + "/db.realm"
@@ -61,8 +60,6 @@ class RealmManager: NSObject {
 			fatalError("bad realm path?")
 		}
 		
-        self.realm = try! Realm(configuration: self.realmConfig)
-		
 		super.init()
 		
 		self.activateWatch()
@@ -80,12 +77,16 @@ class RealmManager: NSObject {
 		
 		config.fileURL = documentsPathURL.appendingPathComponent("db.realm")
 		
-		self.realm = try! Realm(configuration: config)
+//		self.realm = try! Realm(configuration: config)
 	}
 	
     static func sharedDelegate() -> RealmManager {
         return self.sharedInstance
     }
+	
+	private func getRealm() -> Realm {
+		return try! Realm(configuration: self.realmConfig)
+	}
 	
 	fileprivate func activateWatch() {
 		if !WCSession.isSupported() {
@@ -104,7 +105,7 @@ class RealmManager: NSObject {
     // tasks
     
     func getTasks() -> Results<TaskModel> {
-        let results: Results<TaskModel> = realm.objects(TaskModel.self)
+		let results: Results<TaskModel> = self.getRealm().objects(TaskModel.self)
         return results.filter("isDeleted == false").filter("isCompleted == false")
     }
     
@@ -125,7 +126,7 @@ class RealmManager: NSObject {
     }
     
     func getCompletedTasks() -> Results<TaskModel> {
-        return realm.objects(TaskModel.self).filter("isDeleted == false").filter("isCompleted == true")
+		return self.getRealm().objects(TaskModel.self).filter("isDeleted == false").filter("isCompleted == true")
     }
     
     func addTask(task: TaskModel) {
@@ -146,8 +147,8 @@ class RealmManager: NSObject {
     }
     
     func changeTaskContent(task: TaskModel, content: String) {
-        do {
-            try realm.write {
+		do {
+            try self.getRealm().write {
                 task.content = content
             }
         }
@@ -157,8 +158,8 @@ class RealmManager: NSObject {
     }
     
     func changeTaskPriority(task: TaskModel, priority: Int) {
-        do {
-            try realm.write {
+		do {
+            try self.getRealm().write {
                 task.priority = priority
             }
         }
@@ -168,8 +169,8 @@ class RealmManager: NSObject {
     }
     
     func changeTaskDate(task: TaskModel, date: Date?) {
-        do {
-            try realm.write {
+		do {
+            try self.getRealm().write {
                 task.date = date
             }
         }
@@ -179,8 +180,8 @@ class RealmManager: NSObject {
     }
     
     func completeTask(task: TaskModel) {
-        do {
-            try realm.write {
+		do {
+            try self.getRealm().write {
                 task.isCompleted = true
                 task.completedDate = Date()
             }
@@ -193,8 +194,8 @@ class RealmManager: NSObject {
     }
     
     func unDoneTask(task: TaskModel) {
-        do {
-            try realm.write {
+		do {
+            try self.getRealm().write {
                 task.isCompleted = false
                 task.completedDate = nil
             }
@@ -214,7 +215,7 @@ class RealmManager: NSObject {
     
     func softDeleteTask(task: TaskModel) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 task.isDeleted = true
             }
         }
@@ -225,7 +226,7 @@ class RealmManager: NSObject {
     
     func softUnDeleteTask(task: TaskModel) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 task.isDeleted = false
             }
         }
@@ -237,12 +238,12 @@ class RealmManager: NSObject {
     // comments
     
     func getAllComments() -> Results<CommentModel> {
-        let results: Results<CommentModel> = realm.objects(CommentModel.self)
+        let results: Results<CommentModel> = self.getRealm().objects(CommentModel.self)
         return results.filter("isDeleted == false")
     }
     
     func getCommentsForTaskId(taskId: String) -> Results<CommentModel> {
-        return realm.objects(CommentModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
+        return self.getRealm().objects(CommentModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
     }
     
     func addComment(comment: CommentModel) {
@@ -251,7 +252,7 @@ class RealmManager: NSObject {
     
     func setCommentTask(comment: CommentModel, task: TaskModel) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 comment.task = task
             }
         }
@@ -262,7 +263,7 @@ class RealmManager: NSObject {
     
     func changeCommentContent(comment: CommentModel, content: String) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 comment.content = content
             }
         }
@@ -281,7 +282,7 @@ class RealmManager: NSObject {
     
     func softDeleteComment(comment: CommentModel) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 comment.isDeleted = true
             }
         }
@@ -293,7 +294,7 @@ class RealmManager: NSObject {
     // notifications
     
     func getAllNotifications() -> Results<NotificationModel> {
-        let results: Results<NotificationModel> = realm.objects(NotificationModel.self)
+        let results: Results<NotificationModel> = self.getRealm().objects(NotificationModel.self)
         return results.filter("isDeleted == false")
     }
     
@@ -302,7 +303,7 @@ class RealmManager: NSObject {
     }
     
     func getNotificationWithId(identifier: String) -> NotificationModel? {
-        let results: Results<NotificationModel> = realm.objects(NotificationModel.self).filter("identifier == '\(identifier)'")
+        let results: Results<NotificationModel> = self.getRealm().objects(NotificationModel.self).filter("identifier == '\(identifier)'")
         if results.count == 1 {
             return results.first
         } else {
@@ -311,7 +312,7 @@ class RealmManager: NSObject {
     }
     
     func getNotificationsForTaskId(taskId: String) -> Results<NotificationModel> {
-        return realm.objects(NotificationModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
+        return self.getRealm().objects(NotificationModel.self).filter("taskId == '\(taskId)'").sorted(byKeyPath: "date", ascending: true)
     }
     
     func deleteNotification(notification: NotificationModel, soft: Bool = true) {
@@ -324,7 +325,7 @@ class RealmManager: NSObject {
     
     func softDeleteNotification(notification: NotificationModel) {
         do {
-            try realm.write {
+            try self.getRealm().write {
                 notification.isDeleted = true
             }
         }
@@ -336,6 +337,7 @@ class RealmManager: NSObject {
     // generic private funcs
     
     private func addObject(object: Object, update: Bool) {
+		let realm = self.getRealm()
         do {
             try realm.write {
                 realm.add(object, update: update ? .all : .modified)
@@ -349,6 +351,7 @@ class RealmManager: NSObject {
     }
     
     private func deleteObject(object: Object) {
+		let realm = self.getRealm()
         do {
             try realm.write {
                 realm.delete(object)

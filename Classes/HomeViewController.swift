@@ -79,8 +79,7 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func settingsButtonAction() {
-        let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
-        self.present(UINavigationController(rootViewController: settingsVC), animated: true, completion: nil)
+        self.present(UINavigationController(rootViewController: Utils().getViewController(viewController: .settings) as! SettingsViewController), animated: true, completion: nil)
     }
     
     func loadData() {
@@ -122,7 +121,7 @@ class HomeViewController: BaseViewController {
 	
 	func showDetailPageForIpad() {
 		if let masterVC = self.navigationController?.parent as? UISplitViewController, masterVC.restorationIdentifier == "splitController" {
-			let tasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tasksVC") as! TasksViewController
+			let tasksVC = Utils().getViewController(viewController: .tasks) as! TasksViewController
 			
 			tasksVC.title = self.selectedItem.title
 			tasksVC.selectedType = self.selectedItem.listType
@@ -226,7 +225,7 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func addTaskButtonAction() {
-        let addTaskVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editTaskVC") as! EditTaskViewController
+        let addTaskVC = Utils().getViewController(viewController: .editTask) as! EditTaskViewController
         addTaskVC.onCompletion = {
             self.loadData()
         }

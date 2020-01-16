@@ -173,26 +173,14 @@ class SettingsViewController: BaseViewController {
             }
         } else if row == 2 {
             // themes
-            
-            for theme in Config.General.themes {
-                actionSheet.addAction(theme.name, style: .default) { (action) in
-                    UserDefaults.standard.set(Config.General.themes.firstIndex(of: theme), forKey: Config.UserDefaults.theme)
-                    
-                    NotificationCenter.default.post(name: Config.Notifications.themeUpdated, object: nil)
-                    self.setupUI() // this should be called to make sure nav bar color is updated. weird
-                    
-                    UIApplication.shared.setAlternateIconName(theme.appIcon) { error in
-                        if let error = error {
-                            print(error.localizedDescription)
-                            Utils().showErrorToast(message: error.localizedDescription)
-                        } else {
-                            Utils().showSuccessToast(viewController: self, message: "SETTINGS_CONFIRMATION_THEME".localized())
-                        }
-                    }
-                    
-                    self.loadCurrentData()
-                }
-            }
+			
+			let themesVC = Utils().getViewController(viewController: .themes) as! ThemeViewController
+			themesVC.doneCallback = {
+				self.loadCurrentData()
+			}
+			self.navigationController?.pushViewController(themesVC, animated: true)
+			
+			return
         } else if row == 3 {
             // languages
             

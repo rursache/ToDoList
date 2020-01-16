@@ -202,7 +202,7 @@ class EditTaskViewController: BaseViewController {
     }
     
     @objc func remindersButtonAction() {
-        let remindersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "remindersVC") as! RemindersViewController
+        let remindersVC = Utils().getViewController(viewController: .reminders) as! RemindersViewController
         remindersVC.currentTask = self.tempTask
         remindersVC.onCompletion = {
             self.updateRemindersButton()
@@ -215,7 +215,7 @@ class EditTaskViewController: BaseViewController {
     }
     
     @objc func commentButtonAction() {
-        let commentsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "commentsVC") as! CommentsViewController
+        let commentsVC = Utils().getViewController(viewController: .comments) as! CommentsViewController
         
         commentsVC.currentTask = self.tempTask
         commentsVC.showKeyboardAtLoad = true

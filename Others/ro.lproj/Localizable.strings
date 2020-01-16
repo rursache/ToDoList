@@ -35,7 +35,8 @@
 "SETTINGS_LOGGED_IN_AS" = "Logat ca: ";
 "SETTINGS_NOT_LOGGED_IN" = "Nu ești conectat la iCloud, sarcinile nu se sincronizează!";
 "SETTINGS_ITEM_ENTRY_START_PAGE" = "Pagină de pornire";
-"SETTINGS_ITEM_ENTRY_THEME" = "Temă";
+"SETTINGS_ITEM_ENTRY_THEME" = "Temă de culoare";
+"SETTINGS_ITEM_ENTRY_THEMES" = "Teme de culoare";
 "SETTINGS_ITEM_ENTRY_LANGUAGE" = "Limbă";
 "SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS" = "Deschideți legături Web";
 "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "Memento-uri automate";
