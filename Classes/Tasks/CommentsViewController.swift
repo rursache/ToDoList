@@ -182,9 +182,7 @@ class CommentsViewController: BaseViewController {
     }
     
     func scrollToBottom() {
-        if self.currentTask.availableComments().count > 1 {
-            self.tableView.scrollToRow(at: IndexPath(row: self.currentTask.availableComments().count-1, section: 0), at: .bottom, animated: true)
-        }
+        self.tableView.scrollToBottomRow()
     }
 	
 	func reloadData() {
