@@ -980,7 +980,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.ToDoListWidget;
 				PRODUCT_NAME = ToDoListWidget;
 				SKIP_INSTALL = YES;
@@ -1006,7 +1006,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.ToDoListWidget;
 				PRODUCT_NAME = ToDoListWidget;
 				SKIP_INSTALL = YES;
@@ -1032,7 +1032,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1060,7 +1060,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1085,7 +1085,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1110,7 +1110,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1256,7 +1256,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				OTHER_SWIFT_FLAGS = "-D COCOAPODS -D realApp";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1283,7 +1283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.4;
 				OTHER_SWIFT_FLAGS = "-D COCOAPODS -D realApp";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -108,7 +108,7 @@ class Utils: NSObject {
     // notifications
     
     func addNotification(task: TaskModel, date: Date, text: String?, saveInRealm: Bool = true) {
-        if Calendar.current.date(byAdding: .hour, value: 1, to: date)! < Date() {
+        if Calendar.current.date(byAdding: .hour, value: 1, to: date)! < Date() || date < Date() {
             return
         }
         
@@ -125,7 +125,7 @@ class Utils: NSObject {
                 RealmManager.sharedInstance.addNotification(notification: realmNotification)
             }
             
-            print("notification added - \(realmNotification.identifier)")
+            print("notification added - \(realmNotification.identifier) - \(Config.General.dateFormatter().string(from: date))")
         } else {
             print("failed to add notification")
             Robin.shared.printScheduled()
@@ -160,14 +160,21 @@ class Utils: NSObject {
     func addAllExistingNotifications() {
         self.removeAllNotifications()
         
-        let allTasks = RealmManager.sharedInstance.getTasks()
-        for task in allTasks {
-            for _ in task.availableNotifications() {
-                if let taskDate = task.date {
-                    self.addNotification(task: task, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil, saveInRealm: false)
-                }
+        let allNotifications = RealmManager.sharedInstance.getAllNotifications()
+        for notification in allNotifications {
+            if let task = RealmManager.sharedInstance.getTaskById(id: notification.taskId) {
+                self.addNotification(task: task, date: notification.date as Date, text: notification.text, saveInRealm: false)
             }
         }
+//
+//        let allTasks = RealmManager.sharedInstance.getTasks()
+//        for task in allTasks {
+//            for _ in task.availableNotifications() {
+//                if let taskDate = task.date {
+//                    self.addNotification(task: task, date: taskDate.next(minutes: Config.General.notificationDefaultDelayForNotifications), text: nil, saveInRealm: false)
+//                }
+//            }
+//        }
     }
 	
 	func showAbout() {

@@ -137,7 +137,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let taskName = userInfo["taskName"] as? String,
             let pushId = userInfo["RobinNotificationIdentifierKey"] as? String,
             let pushDate = userInfo["RobinNotificationDateKey"] as? Date else {
-                
                 print("push data invalid")
                 return
         }
