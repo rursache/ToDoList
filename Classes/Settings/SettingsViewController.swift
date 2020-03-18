@@ -10,6 +10,7 @@ import UIKit
 import AcknowList
 import MessageUI
 import LKAlertController
+import CloudKit
 
 class SettingsViewController: BaseViewController {
 
@@ -119,7 +120,17 @@ class SettingsViewController: BaseViewController {
         if section == 3 {
             if row == 1 {
                 // sync
-                Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
+                // Check iCloud account status (access to the apps private database)
+                CKContainer.default().accountStatus { (accountStatus, error) in
+                    if accountStatus == .available {
+                        print("iCloud app container and private database is available")
+                        Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
+                        self.navigationItem.rightBarButtonItem = nil
+                    } else {
+                        print("iCloud not available \(String(describing: error?.localizedDescription))")
+                        Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
+                    }
+                }
                 self.navigationItem.rightBarButtonItem = nil
                 
 				Utils().getSyncEngine()?.pull(completionHandler: { error in
