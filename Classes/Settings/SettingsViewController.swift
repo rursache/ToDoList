@@ -119,24 +119,27 @@ class SettingsViewController: BaseViewController {
         if section == 3 {
             if row == 1 {
                 // sync
-                Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
-                self.navigationItem.rightBarButtonItem = nil
-                
-				Utils().getSyncEngine()?.pull(completionHandler: { error in
-					if error != nil {
-						DispatchQueue.main.async {
-							Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_FAILED".localized())
-							self.addRightDoneButton()
-						}
-					}
-					
-					DispatchQueue.main.async {
-						Utils().getSyncEngine()?.pushAll()
-						Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
-						self.addRightDoneButton()
-					}
-				})
-                
+                if !Utils().userIsLoggedIniCloud() {
+                    Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
+                } else {
+                    Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
+                    self.navigationItem.rightBarButtonItem = nil
+                    
+                    Utils().getSyncEngine()?.pull(completionHandler: { error in
+                        if error != nil {
+                            DispatchQueue.main.async {
+                                Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_FAILED".localized())
+                                self.addRightDoneButton()
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            Utils().getSyncEngine()?.pushAll()
+                            Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
+                            self.addRightDoneButton()
+                        }
+                    })
+                }
             } else if row == 2 {
                 // feedback
                 if MFMailComposeViewController.canSendMail() {
