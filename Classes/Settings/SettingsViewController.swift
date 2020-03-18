@@ -10,7 +10,6 @@ import UIKit
 import AcknowList
 import MessageUI
 import LKAlertController
-import CloudKit
 
 class SettingsViewController: BaseViewController {
 
@@ -120,34 +119,27 @@ class SettingsViewController: BaseViewController {
         if section == 3 {
             if row == 1 {
                 // sync
-                // Check iCloud account status (access to the apps private database)
-                CKContainer.default().accountStatus { (accountStatus, error) in
-                    if accountStatus == .available {
-                        print("iCloud app container and private database is available")
-                        Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
-                        self.navigationItem.rightBarButtonItem = nil
-                    } else {
-                        print("iCloud not available \(String(describing: error?.localizedDescription))")
-                        Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
-                    }
+                if !Utils().userIsLoggedIniCloud() {
+                    Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
+                } else {
+                    Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_START".localized())
+                    self.navigationItem.rightBarButtonItem = nil
+                    
+                    Utils().getSyncEngine()?.pull(completionHandler: { error in
+                        if error != nil {
+                            DispatchQueue.main.async {
+                                Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_FAILED".localized())
+                                self.addRightDoneButton()
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            Utils().getSyncEngine()?.pushAll()
+                            Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
+                            self.addRightDoneButton()
+                        }
+                    })
                 }
-                self.navigationItem.rightBarButtonItem = nil
-                
-				Utils().getSyncEngine()?.pull(completionHandler: { error in
-					if error != nil {
-						DispatchQueue.main.async {
-							Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_FAILED".localized())
-							self.addRightDoneButton()
-						}
-					}
-					
-					DispatchQueue.main.async {
-						Utils().getSyncEngine()?.pushAll()
-						Utils().showSuccessToast(viewController: self, message: "SETTINGS_SYNC_END".localized())
-						self.addRightDoneButton()
-					}
-				})
-                
             } else if row == 2 {
                 // feedback
                 if MFMailComposeViewController.canSendMail() {
