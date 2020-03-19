@@ -171,7 +171,11 @@ class HomeViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+            if Utils().isIpad() {
+                self.showDetailPageForIpad()
+            } else {
+                self.performSegue(withIdentifier: "goToTasksVC", sender: self)
+            }
         }
     }
 	
