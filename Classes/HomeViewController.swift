@@ -32,7 +32,7 @@ class HomeViewController: BaseViewController {
 		
 		self.loadData()
 		self.setupIpad()
-        
+        self.addTaskButton.layer.cornerRadius = self.addTaskButton.bounds.height / 2
         if !Utils().userIsLoggedIniCloud() {
             Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
         } else {

@@ -37,7 +37,8 @@ class CommentsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.addButton.layer.cornerRadius = self.addButton.bounds.height / 2
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,8 +158,18 @@ class CommentsViewController: BaseViewController {
     func openURL(url: URL) {
         let currentOption = UserDefaults.standard.integer(forKey: Config.UserDefaults.openLinks)
         if currentOption == 0 {
-            let safariVC = SFSafariViewController(url: url)
-            self.present(safariVC, animated: true, completion: nil)
+            
+            if url.absoluteString.hasPrefix("https://") || url.absoluteString.hasPrefix("http://"){
+                let myURL = URL(string: url.absoluteString)
+                let safariVC = SFSafariViewController(url: myURL!)
+                self.present(safariVC, animated: true, completion: nil)
+            }else {
+                let correctedURL = "http://\(url.absoluteString)"
+                let myURL = URL(string: correctedURL)
+                let safariVC = SFSafariViewController(url: myURL!)
+                self.present(safariVC, animated: true, completion: nil)
+            }
+            
         } else if currentOption == 1 {
             UIApplication.shared.open(url, options: [:])
         }
@@ -265,6 +276,10 @@ extension CommentsViewController: RSTextViewMasterDelegate, UITextViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.scrollToBottom()
         }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.keyboardButtonAction()
     }
 }
 

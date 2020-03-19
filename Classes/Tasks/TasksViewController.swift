@@ -33,6 +33,8 @@ class TasksViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addTaskButton.layer.cornerRadius = self.addTaskButton.bounds.height / 2
 
         self.setDefaultSorting()
         self.loadData()
@@ -46,8 +48,6 @@ class TasksViewController: BaseViewController {
 
     @objc override func setupUI() {
         super.setupUI()
-		
-		
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
         
