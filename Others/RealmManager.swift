@@ -30,6 +30,7 @@ class RealmManager: NSObject {
 	private var wcSession: WCSession! = nil
     
 	override init() {
+        print("realmPath --- \(realmPath)")
 		self.realmConfig = Realm.Configuration(schemaVersion: self.realmVersion, migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < 13 {
                 migration.enumerateObjects(ofType: TaskModel.className()) { oldObject, newObject in

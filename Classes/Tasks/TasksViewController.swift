@@ -33,6 +33,8 @@ class TasksViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addTaskButton.layer.cornerRadius = self.addTaskButton.bounds.height / 2
 
         self.setDefaultSorting()
         self.loadData()
@@ -46,8 +48,6 @@ class TasksViewController: BaseViewController {
 
     @objc override func setupUI() {
         super.setupUI()
-		
-		
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
         
@@ -276,18 +276,27 @@ class TasksViewController: BaseViewController {
         self.loadData()
         
         Utils().showSuccessToast(viewController: self, message: "TASKS_CONFIRMATION_TASK_COMPLETE".localized())
+        if Utils().isIpad() {
+            NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+        }
     }
     
     func deleteTask(task: TaskModel) {
         RealmManager.sharedDelegate().deleteTask(task: task, soft: true)
         
         self.loadData()
+        if Utils().isIpad() {
+            NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+        }
     }
     
     func unDoneTask(task: TaskModel) {
         RealmManager.sharedDelegate().unDoneTask(task: task)
         
         self.loadData()
+        if Utils().isIpad() {
+            NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+        }
     }
     
     func filterDataSource(keyword: String) {

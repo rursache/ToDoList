@@ -284,8 +284,10 @@ class EditTaskViewController: BaseViewController {
         self.closeKeyboard()
         
         self.onCompletion?()
-        
-        self.navigationController?.dismiss(animated: true, completion: completion)
+        if Utils().isIpad() {
+            NotificationCenter.default.post(name: Config.Notifications.shouldReloadData, object: nil)
+        }
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func closeKeyboard() {

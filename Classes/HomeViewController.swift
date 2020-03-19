@@ -32,7 +32,7 @@ class HomeViewController: BaseViewController {
 		
 		self.loadData()
 		self.setupIpad()
-        
+        self.addTaskButton.layer.cornerRadius = self.addTaskButton.bounds.height / 2
         if !Utils().userIsLoggedIniCloud() {
             Utils().showErrorToast(message: "HOME_SYNC_NOT_AVAILABLE".localized())
         } else {
@@ -92,6 +92,7 @@ class HomeViewController: BaseViewController {
         let todayCount = RealmManager.sharedInstance.getTodayTasks().count
         let tomorrowCount = RealmManager.sharedInstance.getTomorrowTasks().count
         let weekCount = RealmManager.sharedInstance.getWeekTasks().count
+        let completedCount = RealmManager.sharedInstance.getCompletedTasks().count
         
         self.homeDataSource = [
             HomeItemModel(title: Config.General.startPageTitles[1], icon: "menu_all", listType: .All, count: allCount),
@@ -99,7 +100,7 @@ class HomeViewController: BaseViewController {
             HomeItemModel(title: Config.General.startPageTitles[3].localized(), icon: "menu_tomorrow", listType: .Tomorrow, count: tomorrowCount),
             HomeItemModel(title: Config.General.startPageTitles[4].localized(), icon: "menu_week", listType: .Week, count: weekCount),
             HomeItemModel(title: Config.General.startPageTitles[5], icon: "menu_custom", listType: .Custom, count: -1),
-            HomeItemModel(title: Config.General.startPageTitles[6], icon: "menu_completed", listType: .Completed, count: -1)
+            HomeItemModel(title: Config.General.startPageTitles[6], icon: "menu_completed", listType: .Completed, count: completedCount)
                                 ]
         
         self.tableView.reloadData()
