@@ -81,6 +81,8 @@ class HomeViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitNewData.name, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.threeDTouchShortcutAction(_:)), name: Config.Notifications.threeDTouchShortcut, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(self.completeTask), name: Config.Notifications.completeTask, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
+
     }
     
     @objc func settingsButtonAction() {
