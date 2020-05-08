@@ -97,6 +97,7 @@
 		17F03A2423CF4ED400E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		17F03A2523CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		17F03A2623CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
+		386A95912461386B00EFA592 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 386A95932461386B00EFA592 /* InfoPlist.strings */; };
 		62037A555E643865DCCD3F33 /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EC7B181B2DC875AF97CD49 /* Pods_ToDoList.framework */; platformFilter = ios; };
 		86336197EBFD98B1AAC5CD91 /* Pods_ToDoListWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */; };
 		E5C09EA00C6E3B05D401FC83 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3044EF5F72611B448293FA7 /* Pods_WatchApp_Extension.framework */; };
@@ -244,6 +245,14 @@
 		17EBE592221EE584005A9253 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		17EBE594221EE588005A9253 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListWidget.debug.xcconfig"; path = "Target Support Files/Pods-ToDoListWidget/Pods-ToDoListWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		386A95882460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		386A95892460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		386A958A2460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		386A958B2460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Interface.strings"; sourceTree = "<group>"; };
+		386A958C2460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		386A95922461386B00EFA592 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		386A95942461387200EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		386A95952461387300EFA592 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B170989CA81B0562AA81630 /* Pods-WatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchApp Extension.debug.xcconfig"; path = "Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListWidget.release.xcconfig"; path = "Target Support Files/Pods-ToDoListWidget/Pods-ToDoListWidget.release.xcconfig"; sourceTree = "<group>"; };
 		A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoListWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +448,7 @@
 				171D5BE023D0D35C0051ABD9 /* OnboardingDataSource.swift */,
 				17C1776D222EB2FE00B2E84F /* Extensions.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
+				386A95932461386B00EFA592 /* InfoPlist.strings */,
 				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
 				172F557B2361A04D00B2B8BB /* Localizable.strings */,
 			);
@@ -624,6 +634,7 @@
 				en,
 				Base,
 				ro,
+				"zh-Hant",
 			);
 			mainGroup = 17D18D32221D56C4005C647B;
 			productRefGroup = 17D18D3C221D56C4005C647B /* Products */;
@@ -691,6 +702,7 @@
 				172CCDA722253FB700240725 /* IconPink@2x.png in Resources */,
 				17D18D46221D56C5005C647B /* Assets.xcassets in Resources */,
 				172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */,
+				386A95912461386B00EFA592 /* InfoPlist.strings in Resources */,
 				1710DD2923CF5C46000E64F4 /* Main-iPad.storyboard in Resources */,
 				172CCDAB222542AF00240725 /* IconNight@2x.png in Resources */,
 				172CCDA322253CC800240725 /* IconBlue@2x.png in Resources */,
@@ -924,6 +936,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1718BE4A23CCBB19009D591A /* Base */,
+				386A958A2460047F00EFA592 /* zh-Hant */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -932,6 +945,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				17278CC723CE05880014B8B2 /* Base */,
+				386A958B2460047F00EFA592 /* zh-Hant */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -941,6 +955,7 @@
 			children = (
 				172F557A2361A04D00B2B8BB /* en */,
 				172F557C2361A7E300B2B8BB /* ro */,
+				386A958C2460047F00EFA592 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -949,6 +964,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				17D18D43221D56C4005C647B /* Base */,
+				386A95882460047F00EFA592 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -957,8 +973,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				17D18D48221D56C5005C647B /* Base */,
+				386A95892460047F00EFA592 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		386A95932461386B00EFA592 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				386A95922461386B00EFA592 /* en */,
+				386A95942461387200EFA592 /* zh-Hant */,
+				386A95952461387300EFA592 /* ro */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  ToDoList
+
+  Created by jim on 2020/5/5.
+  Copyright © 2020 Radu Ursache - RanduSoft. All rights reserved.
+*/
+
+"UIAPPLICATION_SHORTCUT_ITEM_TITLE_NEW_TASK" = "New Task";
+"UIAPPLICATION_SHORTCUT_ITEM_TITLE_ALL_TASKS" = "All Tasks";
+"UIAPPLICATION_SHORTCUT_ITEM_TITLE_TODAY" = "Today";
+"UIAPPLICATION_SHORTCUT_ITEM_TITLE_TOMORROW" = "Tomorrow";

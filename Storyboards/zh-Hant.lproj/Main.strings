@@ -1,0 +1,84 @@
+
+/* Class = "UIButton"; normalTitle = "Add Task"; ObjectID = "4bh-Tf-a0O"; */
+"4bh-Tf-a0O.normalTitle" = "新增事項";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "5Dg-Ot-B69"; */
+"5Dg-Ot-B69.text" = "日期";
+
+/* Class = "UIButton"; normalTitle = "Add Task"; ObjectID = "76y-Ua-4WS"; */
+"76y-Ua-4WS.normalTitle" = "新增事項";
+
+/* Class = "UILabel"; text = "Label Label Label"; ObjectID = "8VG-D6-iSb"; */
+"8VG-D6-iSb.text" = "Label Label Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "CgF-RB-LpL"; */
+"CgF-RB-LpL.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Priority"; ObjectID = "ENZ-RC-A4D"; */
+"ENZ-RC-A4D.normalTitle" = "優先度";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Euc-Bi-ed3"; */
+"Euc-Bi-ed3.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "F95-qv-dMt"; */
+"F95-qv-dMt.normalTitle" = "新增";
+
+/* Class = "UILabel"; text = "NO TASKS LABEL"; ObjectID = "G8F-LZ-7fP"; */
+"G8F-LZ-7fP.text" = "NO TASKS LABEL";
+
+/* Class = "UIButton"; normalTitle = "Reminders"; ObjectID = "I8J-ru-OzB"; */
+"I8J-ru-OzB.normalTitle" = "Reminders";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "K4V-j0-mi3"; */
+"K4V-j0-mi3.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LAh-oy-6sS"; */
+"LAh-oy-6sS.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "10"; ObjectID = "Lar-Db-uCR"; */
+"Lar-Db-uCR.normalTitle" = "10";
+
+/* Class = "UIButton"; normalTitle = "Date"; ObjectID = "QSS-vv-9ph"; */
+"QSS-vv-9ph.normalTitle" = "日期";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "ShK-dL-rdV"; */
+"ShK-dL-rdV.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Highest"; ObjectID = "TK6-DN-bHV"; */
+"TK6-DN-bHV.normalTitle" = "最高";
+
+/* Class = "UIButton"; normalTitle = "Comment"; ObjectID = "UXB-Gk-B6J"; */
+"UXB-Gk-B6J.normalTitle" = "註解";
+
+/* Class = "UIButton"; normalTitle = "10"; ObjectID = "VL1-I9-qtY"; */
+"VL1-I9-qtY.normalTitle" = "10";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "YHC-hl-D1Q"; */
+"YHC-hl-D1Q.text" = "100";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bpo-Xc-w1c"; */
+"bpo-Xc-w1c.text" = "Label";
+
+/* Class = "UIViewController"; title = "Add Task"; ObjectID = "hc8-o6-oJW"; */
+"hc8-o6-oJW.title" = "新增事項";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hkq-WH-ZNL"; */
+"hkq-WH-ZNL.text" = "Label";
+
+/* Class = "UIViewController"; title = "Settings"; ObjectID = "i2N-XD-Q0I"; */
+"i2N-XD-Q0I.title" = "設定";
+
+/* Class = "UIViewController"; title = "Comments"; ObjectID = "i6U-yK-hhT"; */
+"i6U-yK-hhT.title" = "註定";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oJh-aP-nPb"; */
+"oJh-aP-nPb.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vAL-l7-1qV"; */
+"vAL-l7-1qV.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y9E-jB-6vy"; */
+"y9E-jB-6vy.text" = "Label";
+
+/* Class = "UITextView"; text = "task text"; ObjectID = "z5G-u0-7UY"; */
+"z5G-u0-7UY.text" = "事項描述";
