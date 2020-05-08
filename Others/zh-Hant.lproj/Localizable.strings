@@ -115,19 +115,19 @@
 "EDIT" = "編輯";
 "SAVE" = "存檔";
 
-// OnboardingDataSource
-"Welcome to\n" = "歡迎使用";
-"Let's start with a quick onboarding" = "讓我們從快速入門開始";
-"Continue" = "繼續";
-"Push Notifications" = "通知";
-"Receive push notifications for reminders" = "接收提醒的通知";
-"Activate" = "啟用";
-"Not now" = "不是現在";
-"Onboarding done" = "快速入門完成";
-"Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!" = "檢查您可以自訂app顏色主題的設定及其他相關設定。您可以現在增加事項及計畫您的一天！";
-"Get started" = "開始";
+// Onboarding
+"ONBOARDING_WELCOME" = "歡迎使用";
+"ONBOARDING_START" = "讓我們從快速入門開始";
+"ONBOARDING_CONTINUE" = "繼續";
+"ONBOARDING_PUSH_NOTIFICATIONS" = "通知";
+"ONBOARDING_RECEIVE_PUSH_NOTIFICATIONS" = "接收提醒的通知";
+"ONBOARDING_ACTIVATE" = "啟用";
+"ONBOARDING_NOT_NOW" = "不是現在";
+"ONBOARDING_DONE" = "快速入門完成";
+"ONBOARDING_DONE_DETAIL" = "檢查您可以自訂app顏色主題的設定及其他相關設定。您可以現在增加事項及計畫您的一天!";
+"ONBOARDING_DONE_ACTION" = "開始";
 
-//Language options
-"English" = "英文";
-"Romanian" = "羅馬尼亞文";
-"Traditional Chinese" = "繁體中文";
+// Language options (used in config)
+"LANGUAGE_OPTION_1" = "英文";
+"LANGUAGE_OPTION_2" = "羅馬尼亞文";
+"LANGUAGE_OPTION_3" = "繁體中文";

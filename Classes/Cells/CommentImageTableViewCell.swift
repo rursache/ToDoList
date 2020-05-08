@@ -13,16 +13,6 @@ class CommentImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var commentImageView: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     class func getIdentifier() -> String {
         return "commentImageCell"

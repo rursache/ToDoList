@@ -29,5 +29,4 @@ class ThemeTableViewCell: UITableViewCell {
 
         self.checkmarkView.isHidden = !self.isSelected
     }
-
 }

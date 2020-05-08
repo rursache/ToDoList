@@ -115,19 +115,19 @@
 "EDIT" = "Edit";
 "SAVE" = "Save";
 
-// OnboardingDataSource
-"Welcome to" = "Welcome to";
-"Let's start with a quick onboarding" = "Let's start with a quick onboarding";
-"Continue" = "Continue";
-"Push Notifications" = "Push Notifications";
-"Receive push notifications for reminders" = "Receive push notifications for reminders";
-"Activate" = "Activate";
-"Not now" = "Not now";
-"Onboarding done" = "Onboarding done";
-"Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!" = "Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!";
-"Get started" = "Get started";
+// Onboarding
+"ONBOARDING_WELCOME" = "Welcome to\n";
+"ONBOARDING_START" = "Let's start with a quick onboarding";
+"ONBOARDING_CONTINUE" = "Continue";
+"ONBOARDING_PUSH_NOTIFICATIONS" = "Push Notifications";
+"ONBOARDING_RECEIVE_PUSH_NOTIFICATIONS" = "Receive push notifications for reminders";
+"ONBOARDING_ACTIVATE" = "Activate";
+"ONBOARDING_NOT_NOW" = "Not now";
+"ONBOARDING_DONE" = "Onboarding done";
+"ONBOARDING_DONE_DETAIL" = "Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!";
+"ONBOARDING_DONE_ACTION" = "Get started";
 
-//Language options
-"English" = "English";
-"Romanian" = "Romanian";
-"Traditional Chinese" = "Traditional Chinese";
+// Language options (used in config)
+"LANGUAGE_OPTION_1" = "English";
+"LANGUAGE_OPTION_2" = "Romanian";
+"LANGUAGE_OPTION_3" = "Traditional Chinese";

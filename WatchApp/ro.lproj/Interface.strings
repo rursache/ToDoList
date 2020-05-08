@@ -1,0 +1,12 @@
+
+/* Class = "WKInterfaceLabel"; text = "No tasks for today"; ObjectID = "FWd-Yq-H4B"; */
+"FWd-Yq-H4B.text" = "Nu există sarcini astăzi";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "Label"; ObjectID = "JBj-o1-oqJ"; */
+"JBj-o1-oqJ.text" = "Label";
+
+/* Class = "WKInterfaceMenuItem"; title = "Refresh"; ObjectID = "VCc-Af-mep"; */
+"VCc-Af-mep.title" = "Reîmprospătare";

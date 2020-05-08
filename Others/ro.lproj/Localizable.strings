@@ -115,19 +115,19 @@
 "EDIT" = "Editare";
 "SAVE" = "Salvați";
 
-// OnboardingDataSource
-"Welcome to" = "Welcome to";
-"Let's start with a quick onboarding" = "Let's start with a quick onboarding";
-"Continue" = "Continue";
-"Push Notifications" = "Push Notifications";
-"Receive push notifications for reminders" = "Receive push notifications for reminders";
-"Activate" = "Activate";
-"Not now" = "Not now";
-"Onboarding done" = "Onboarding done";
-"Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!" = "Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!";
-"Get started" = "Get started";
+// Onboarding
+"ONBOARDING_WELCOME" = "Bun venit la\n";
+"ONBOARDING_START" = "Să începem cu o mică introducere";
+"ONBOARDING_CONTINUE" = "Continuă";
+"ONBOARDING_PUSH_NOTIFICATIONS" = "Push Notifications";
+"ONBOARDING_RECEIVE_PUSH_NOTIFICATIONS" = "Primește notificări push pentru memento-uri";
+"ONBOARDING_ACTIVATE" = "Activează";
+"ONBOARDING_NOT_NOW" = "Nu acum";
+"ONBOARDING_DONE" = "Setări inițiale finalizate";
+"ONBOARDING_DONE_DETAIL" = "Verifică și ecranul de setări de unde poți modifica tema de culoare și altele! Acum poți începe să adaugi sarcini!";
+"ONBOARDING_DONE_ACTION" = "Să începem";
 
-//Language options
-"English" = "English";
-"Romanian" = "Romanian";
-"Traditional Chinese" = "Traditional Chinese";
+// Language options (used in config)
+"LANGUAGE_OPTION_1" = "Engleză";
+"LANGUAGE_OPTION_2" = "Română";
+"LANGUAGE_OPTION_3" = "Chineză";

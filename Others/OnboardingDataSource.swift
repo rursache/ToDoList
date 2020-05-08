@@ -61,13 +61,13 @@ enum OnboardingDataSource {
     }
 	
     static func makeIntroPage() -> FeedbackPageBLTNItem {
-		let page = FeedbackPageBLTNItem(title: "Welcome to\n".localized() + Config.General.appName)
+		let page = FeedbackPageBLTNItem(title: "ONBOARDING_WELCOME".localized() + Config.General.appName)
         page.image = UIImage(named: "roundedIcon")
 	
 		page.appearance = self.getAppearance()
 
-        page.descriptionText = "Let's start with a quick onboarding".localized()
-        page.actionButtonTitle = "Continue".localized()
+        page.descriptionText = "ONBOARDING_START".localized()
+        page.actionButtonTitle = "ONBOARDING_CONTINUE".localized()
 
         page.isDismissable = false
 
@@ -87,14 +87,14 @@ enum OnboardingDataSource {
     }
 
     static func makeNotitificationsPage() -> FeedbackPageBLTNItem {
-        let page = FeedbackPageBLTNItem(title: "Push Notifications".localized())
+        let page = FeedbackPageBLTNItem(title: "ONBOARDING_PUSH_NOTIFICATIONS".localized())
         page.image = UIImage(named: "NotificationPrompt")
 		
 		page.appearance = self.getAppearance()
 
-        page.descriptionText = "Receive push notifications for reminders".localized()
-        page.actionButtonTitle = "Activate".localized()
-        page.alternativeButtonTitle = "Not now".localized()
+        page.descriptionText = "ONBOARDING_RECEIVE_PUSH_NOTIFICATIONS".localized()
+        page.actionButtonTitle = "ONBOARDING_ACTIVATE".localized()
+        page.alternativeButtonTitle = "ONBOARDING_NOT_NOW".localized()
 
         page.isDismissable = false
 
@@ -113,7 +113,7 @@ enum OnboardingDataSource {
     }
 
     static func makeCompletionPage() -> BLTNPageItem {
-        let page = BLTNPageItem(title: "Onboarding done".localized())
+        let page = BLTNPageItem(title: "ONBOARDING_DONE".localized())
         page.image = UIImage(named: "IntroCompletion")
 		
 		page.appearance = self.getAppearance()
@@ -129,8 +129,8 @@ enum OnboardingDataSource {
 
         page.appearance.actionButtonTitleColor = .white
 
-        page.descriptionText = "Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!".localized()
-        page.actionButtonTitle = "Get started".localized()
+        page.descriptionText = "ONBOARDING_DONE_DETAIL".localized()
+        page.actionButtonTitle = "ONBOARDING_DONE_ACTION".localized()
 
         page.isDismissable = true
 

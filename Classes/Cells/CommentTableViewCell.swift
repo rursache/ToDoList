@@ -23,12 +23,6 @@ class CommentTableViewCell: UITableViewCell {
         self.contentLabel.urlMaximumLength = 25
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     class func getIdentifier() -> String {
         return "commentCell"
     }
