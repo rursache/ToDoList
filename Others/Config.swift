@@ -46,7 +46,7 @@ class Config: NSObject {
                              ThemeModel(name: "Midnight Black", color: Colors.black, appIcon: "IconBlack")]//,
 //                             ThemeModel(name: "True Black", color: Colors.night, appIcon: "IconNight")]
         
-        static let languages = [LanguageModel(name: "English", code: "en_US"), LanguageModel(name: "Romanian", code: "ro_RO")]
+        static let languages = [LanguageModel(name: "English".localized(), code: "en_US"), LanguageModel(name: "Romanian".localized(), code: "ro_RO"), LanguageModel(name: "Traditional Chinese".localized(), code: "zh_TW")]
         
         static let linksOptions = ["CONFIG_LINK_PREF1".localized(), "CONFIG_LINK_PREF2".localized()]
         static let startPageTitles = ["CONFIG_OPTIONS_PREF1".localized(), "CONFIG_OPTIONS_PREF2".localized(), "CONFIG_OPTIONS_PREF3".localized(), "CONFIG_OPTIONS_PREF4".localized(), "CONFIG_OPTIONS_PREF5".localized(), "CONFIG_OPTIONS_PREF6".localized(), "CONFIG_OPTIONS_PREF7".localized()]

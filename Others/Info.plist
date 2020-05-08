@@ -133,7 +133,7 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeDate</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Tomorrow</string>
+			<string>UIAPPLICATION_SHORTCUT_ITEM_TITLE_TOMORROW</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ro.randusoft.RSToDoList.shortcuts.tomorrow</string>
 		</dict>
@@ -141,7 +141,7 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeDate</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Today</string>
+			<string>UIAPPLICATION_SHORTCUT_ITEM_TITLE_TODAY</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ro.randusoft.RSToDoList.shortcuts.today</string>
 		</dict>
@@ -149,7 +149,7 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeDate</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>All Tasks</string>
+			<string>UIAPPLICATION_SHORTCUT_ITEM_TITLE_ALL_TASKS</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ro.randusoft.RSToDoList.shortcuts.alltasks</string>
 		</dict>
@@ -157,7 +157,7 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeAdd</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>New Task</string>
+			<string>UIAPPLICATION_SHORTCUT_ITEM_TITLE_NEW_TASK</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ro.randusoft.RSToDoList.shortcuts.newTask</string>
 		</dict>

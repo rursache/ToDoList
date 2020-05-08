@@ -1,0 +1,133 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Radu Ursache on 24/10/2019.
+  Copyright © 2019 Radu Ursache. All rights reserved.
+*/
+
+// config
+"CONFIG_LINK_PREF1" = "App內";
+"CONFIG_LINK_PREF2" = "Safari";
+"CONFIG_PRIORITY_PREF1" = "最高";
+"CONFIG_PRIORITY_PREF2" = "高";
+"CONFIG_PRIORITY_PREF3" = "正常";
+"CONFIG_PRIORITY_PREF4" = "低";
+"CONFIG_PRIORITY_PREF5" = "無";
+"CONFIG_SORT_PREF1" = "日期 (遞增)";
+"CONFIG_SORT_PREF2" = "日期 (遞減)";
+"CONFIG_SORT_PREF3" = "優先程度 (遞增)";
+"CONFIG_SORT_PREF4" = "優先程度 (遞減)";
+"CONFIG_OPTIONS_PREF1" = "概覽";
+"CONFIG_OPTIONS_PREF2" = "所有事項";
+"CONFIG_OPTIONS_PREF3" = "今天";
+"CONFIG_OPTIONS_PREF4" = "明天";
+"CONFIG_OPTIONS_PREF5" = "接下來 7 天";
+"CONFIG_OPTIONS_PREF6" = "自訂區間";
+"CONFIG_OPTIONS_PREF7" = "已完成";
+
+// home
+"HOME_SYNC_NOT_AVAILABLE" = "您尚未登入iCloud。 您的事項不會同步！";
+"HOME_SYNC_SUCCESS" = "iCloud同步成功！";
+"HOME_SELECT_TIME_INTERVAL" = "選擇日期區間";
+
+// settings
+"SETTINGS_LOGGED_IN_AS" = "登入為: ";
+"SETTINGS_NOT_LOGGED_IN" = "您沒有登入iCloud，事項不會同步!";
+"SETTINGS_ITEM_ENTRY_START_PAGE" = "開始頁面";
+"SETTINGS_ITEM_ENTRY_THEME" = "佈景主題";
+"SETTINGS_ITEM_ENTRY_THEMES" = "佈景主題";
+"SETTINGS_ITEM_ENTRY_LANGUAGE" = "語言";
+"SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS" = "開啟網路連結";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS" = "自動通知";
+"SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC" = "事項開始前30分鐘通知";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS" = "有用的提示";
+"SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS_DESC" = "我們會幫助您習慣使用此app";
+"SETTINGS_ITEM_ENTRY_MANUAL_SYNC" = "手動iCloud同步";
+"SETTINGS_ITEM_ENTRY_FEEDBACK" = "回饋";
+"SETTINGS_ITEM_ENTRY_ACKNOW" = "致謝";
+"SETTINGS_ITEM_ENTRY_ABOUT" = "關於";
+"SETTINGS_SYNC_START" = "同步開始，請稍等...";
+"SETTINGS_SYNC_END" = "同步完成";
+"SETTINGS_SYNC_FAILED" = "同步失敗，檢查您的iCloud帳號或是稍後再重試。";
+"SETTINGS_NO_EMAIL_FAILED" = "無任何電子郵件帳號設定在您的裝置。";
+"SETTINGS_ABOUT_TEXT" = "A simple open source To-do list app written in Swift. Based on Todoist UI/UX\nRadu Ursache - RanduSoft\n\n";
+"SETTINGS_CONFIRMATION_START_PAGE" = "開始頁面已更新";
+"SETTINGS_CONFIRMATION_THEME" = "佈景主題已更新！";
+"SETTINGS_CONFIRMATION_LANGUAGE" = "語言已更新。請重啟app！";
+"SETTINGS_CONFIRMATION_LINKS" = "連結現在將開啟 {replace}！";
+
+// tasks
+"TASKS_SORT_TASKS" = "排序事項";
+"TASKS_TASK_OPTIONS" = "事項選項";
+"TASKS_COMPLETE" = "完成";
+"TASKS_MOVE_TO_INBOX" = "移到收件匣";
+"TASKS_CONFIRMATION_TASK_COMPLETE" = "事項完成！";
+"TASKS_COMPLETED" = "已完成";
+"TASKS_DATE_LABEL_TODAY" = "今天";
+"TASKS_DATE_LABEL_ON" = "在 ";
+"TASKS_SEARCH_PLACEHOLDER" = "搜尋";
+"TASKS_NO_TASKS_LABEL" = "無事項";
+
+// edit tasks
+"EDIT_TASKS_EDIT_TASK" = "編輯事項";
+"EDIT_TASKS_ADD_TASK" = "新增事項";
+"EDIT_TASKS_TASK_CONTENT" = "事項內容";
+"EDIT_TASKS_DATE_TIME" = "日期 & 時間";
+"EDIT_TASKS_NO_DATE" = "沒有日期";
+"EDIT_TASKS_TASK_PRIORITY" = "事項優先度";
+"EDIT_TASKS_PRIORITY" = "優先度";
+"EDIT_TASKS_NO_TASK_NAME_ERROR" = "您必須先命名您的事項來儲存它。";
+"EDIT_TASKS_UPDATED" = "已更新";
+"EDIT_TASKS_ADDED" = "已新增";
+"EDIT_TASKS_CHANGED_ERROR" = "您的事項已經 {replace} 但是您目前在以日期為基礎的事項清單畫面。 要查看您的事項，回上一頁然後選擇'所有事項' 或是 新增一個日期給這個事項。";
+
+// comments
+"COMMENTS_TITLE" = "註解";
+"COMMENTS_ADD_COMMENT" = "新增一個註解";
+"COMMENTS_ADD_IMAGE_TITLE" = "選擇圖片來源";
+"COMMENTS_SOURCE_CAMERA" = "相機";
+"COMMENTS_SOURCE_GALLERY" = "相簿";
+
+// reminders
+"REMINDERS_TITLE" = "通知";
+"REMINDERS_SELECT_DATE_TIME" = "選擇日期跟時間";
+
+// watch
+"WATCH_TITLE" = "今天事項";
+"WATCH_TITLE_COUNT" = "今天事項 ({count})";
+
+// others
+"OK" = "OK";
+"NOTIFICATION" = "通知";
+"WARNING" = "警告";
+"ERROR" = "錯誤";
+"DONE" = "完成";
+"CANCEL" = "取消";
+"CLOSE" = "關閉";
+"ADD" = "新增";
+"UPDATE" = "更新";
+"DELETE" = "刪除";
+"TODAY" = "今天";
+"TOMORROW" = "明天";
+"TOMORROW_SHORT" = "Tom.";
+"SUCCESS" = "成功";
+"EDIT" = "編輯";
+"SAVE" = "存檔";
+
+// OnboardingDataSource
+"Welcome to\n" = "歡迎使用";
+"Let's start with a quick onboarding" = "讓我們從快速入門開始";
+"Continue" = "繼續";
+"Push Notifications" = "通知";
+"Receive push notifications for reminders" = "接收提醒的通知";
+"Activate" = "啟用";
+"Not now" = "不是現在";
+"Onboarding done" = "快速入門完成";
+"Check out settings where you can customize the color theme for the app and other relevat preferences. You can now add tasks and plan your day!" = "檢查您可以自訂app顏色主題的設定及其他相關設定。您可以現在增加事項及計畫您的一天！";
+"Get started" = "開始";
+
+//Language options
+"English" = "英文";
+"Romanian" = "羅馬尼亞文";
+"Traditional Chinese" = "繁體中文";
