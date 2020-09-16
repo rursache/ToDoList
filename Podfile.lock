@@ -2,26 +2,22 @@ PODS:
   - AcknowList (1.9.4)
   - ActionSheetPicker-3.0 (2.3.1)
   - ActiveLabel (1.1.0)
-  - BulletinBoard (4.1.0)
+  - BulletinBoard (4.1.2)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
   - IceCream (1.13.0):
     - RealmSwift
-  - ImageViewer.swift (3.0.12):
-    - SDWebImage
+  - ImageViewer.swift (3.3.2)
   - LKAlertController (1.12.2)
   - Loaf (0.5.0)
-  - Realm (4.4.1):
-    - Realm/Headers (= 4.4.1)
-  - Realm/Headers (4.4.1)
-  - RealmSwift (4.4.1):
-    - Realm (= 4.4.1)
+  - Realm (5.4.0):
+    - Realm/Headers (= 5.4.0)
+  - Realm/Headers (5.4.0)
+  - RealmSwift (5.4.0):
+    - Realm (= 5.4.0)
   - Robin (0.1.1)
   - RSTextViewMaster (2.1.2)
-  - SDWebImage (5.7.4):
-    - SDWebImage/Core (= 5.7.4)
-  - SDWebImage/Core (5.7.4)
   - UnderKeyboard (13.0.2)
 
 DEPENDENCIES:
@@ -55,7 +51,6 @@ SPEC REPOS:
     - RealmSwift
     - Robin
     - RSTextViewMaster
-    - SDWebImage
     - UnderKeyboard
 
 EXTERNAL SOURCES:
@@ -76,20 +71,19 @@ SPEC CHECKSUMS:
   AcknowList: a236060b8c33141d7756814fd21d5dab477fc193
   ActionSheetPicker-3.0: e011a1ab5c4db15eae954582c5a5a7d959be1dac
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
-  BulletinBoard: c774340545b5cfd05a96a89f63b105ecc95c86f9
+  BulletinBoard: 1c0cb191b6c6245d08f51bd2445f1e36414ec0ed
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IceCream: 1689e1952bd526922293c283a5938e8183e9e177
-  ImageViewer.swift: d4769c57ff8aef6da7e01bb9283f8554469b2498
+  ImageViewer.swift: 497d1201dd29ef96d8095d115911e0813fa3363e
   LKAlertController: 10c7e8627e5d4757d03b4f53469f35ded14c378f
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
-  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
-  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
+  Realm: 8949757d76e2451a53d727954c607e49c2542b77
+  RealmSwift: 0b7d7121e842724188123c6086831ae6d2952050
   Robin: 59dacf9ece2546b76a93967a4e0c6cbd55db2939
   RSTextViewMaster: 21b31d2c702b062cfcc4ead4fca0643e9d4a638f
-  SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
   UnderKeyboard: 79ea6feb497af99c1856aaae0ab8ded3c739f745
 
 PODFILE CHECKSUM: 3bf2cf4dabac8cbd717132525efef77a1e217f2e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
