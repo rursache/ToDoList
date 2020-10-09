@@ -12,8 +12,6 @@ import CloudKit
 import Robin
 import UserNotifications
 import LKAlertController
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -42,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func setupSDKs() {
-        Fabric.with([Crashlytics.self])
-        
-		_ = RealmManager()
+        _ = RealmManager()
         
         self.syncEngine = SyncEngine(objects: [
             SyncObject<TaskModel>(realmConfiguration: RealmManager.sharedInstance.getConfig()),

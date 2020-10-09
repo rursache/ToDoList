@@ -65,6 +65,7 @@ class RemindersViewController: BaseViewController {
 		}, origin: self.view)
         
 		if #available(iOS 13.0, *) {
+//			datePicker?.
 			datePicker?.pickerBackgroundColor = .systemBackground
 			datePicker?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
 		}

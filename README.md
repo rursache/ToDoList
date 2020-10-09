@@ -53,6 +53,9 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions if initially declined 
 
+### Known issues
+- [ ] Currently Realm does not support arm64 architecture and might not compile. This must be fixed by Realm - [Issue #6684](https://github.com/realm/realm-cocoa/issues/6684)
+
 ## Communication
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).
 - If you **have a feature request**, open an [issue](https://github.com/rursache/ToDoList/issues).
@@ -74,7 +77,6 @@ RSToDoList is currently using:
  - [Loaf)](https://github.com/schmidyy/Loaf)
  - [Robin](https://github.com/ahmedabadie/Robin)
  - [BulletinBoard](https://github.com/alexaubry/BulletinBoard)
- - [Fabric & Crashlytics](https://fabric.io/home)
 
 All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com).
 Colors for themes and app icon are picked from [FlatUIColors.com](https://flatuicolors.com).

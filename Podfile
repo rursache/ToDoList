@@ -6,7 +6,7 @@ target 'ToDoList' do
   platform :ios, '11.0'
 
   pod 'LKAlertController'
-  pod 'ActionSheetPicker-3.0', :git => 'https://github.com/rursache/ActionSheetPicker-3.0'
+  pod 'ActionSheetPicker-3.0', :git => 'https://github.com/skywinder/ActionSheetPicker-3.0'
   pod 'IceCream', :git => 'https://github.com/rursache/IceCream.git'
   pod 'UnderKeyboard'
   pod 'ActiveLabel'
@@ -16,8 +16,6 @@ target 'ToDoList' do
   pod 'AcknowList'
   pod 'Loaf'
   pod 'Robin'
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'ImageViewer.swift'
   pod 'BulletinBoard'
 
