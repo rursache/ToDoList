@@ -37,8 +37,7 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 
 ## Live demo
 
-1. [AppStore](https://apps.apple.com/us/app/todolist-task-manager/id1454122524?ls=1)
-2. [TestFlight](https://itunes.apple.com/us/app/testflight/id899247664?mt=8) - Use this [invitation link](http://l0ng.in/todolist) to test the latest build.
+[ToDoList - Task Manager by RanduSoft - AppStore](https://apps.apple.com/us/app/todolist-task-manager/id1454122524?ls=1)
 
 ## Roadmap
 
