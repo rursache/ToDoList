@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/radu/Library/Mobile Documents/com~apple~CloudDocs/Xcode Projects/ToDoList/ToDoList.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -115,12 +115,13 @@ class Utils: NSObject {
         let realmNotification = NotificationModel(text: text ?? task.content, date: date)
         realmNotification.setTask(task: task)
         
-        let notification = RobinNotification(identifier: realmNotification.identifier, body: realmNotification.text, date: date)
+		
+		let notification = RobinNotification(identifier: realmNotification.identifier, body: realmNotification.text, trigger: .date(date, repeats: .none))
         notification.badge = 1
         notification.setUserInfo(value: task.content, forKey: "taskName")
         notification.setUserInfo(value: task.id, forKey: "taskId")
-        
-        if let _ = Robin.shared.schedule(notification: notification) {
+		
+        if let _ = Robin.scheduler.schedule(notification: notification) {
             if saveInRealm {
                 RealmManager.sharedInstance.addNotification(notification: realmNotification)
             }
@@ -128,8 +129,8 @@ class Utils: NSObject {
             print("notification added - \(realmNotification.identifier) - \(Config.General.dateFormatter().string(from: date))")
         } else {
             print("failed to add notification")
-            Robin.shared.printScheduled()
-            print(Robin.shared.scheduledCount())
+			Robin.scheduler.printScheduled()
+            print(Robin.scheduler.scheduledCount())
         }
     }
     
@@ -142,13 +143,13 @@ class Utils: NSObject {
     }
     
     func removeNotification(notification: NotificationModel) {
-        Robin.shared.cancel(withIdentifier: notification.identifier)
+        Robin.scheduler.cancel(withIdentifier: notification.identifier)
         RealmManager.sharedInstance.deleteNotification(notification: notification)
         print("notification removed - \(notification.identifier)")
     }
     
     private func removeAllNotifications() {
-        Robin.shared.cancelAll()
+		Robin.scheduler.cancelAll()
     }
     
     func removeAllNotificationsForTask(task: TaskModel) {

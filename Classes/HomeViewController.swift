@@ -9,7 +9,7 @@
 import UIKit
 import IceCream
 import CloudKit
-import ActionSheetPicker_3_0
+import CoreActionSheetPicker
 import BLTNBoard
 
 class HomeViewController: BaseViewController {
@@ -78,7 +78,7 @@ class HomeViewController: BaseViewController {
         self.tableView.dataSource = self
         
 		NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitNewData.name, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived(_:)), name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.threeDTouchShortcutAction(_:)), name: Config.Notifications.threeDTouchShortcut, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(self.completeTask), name: Config.Notifications.completeTask, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: UIApplication.didBecomeActiveNotification, object: nil)

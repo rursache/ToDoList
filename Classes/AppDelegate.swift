@@ -41,20 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func setupSDKs() {
         _ = RealmManager()
-        
+		
         self.syncEngine = SyncEngine(objects: [
-            SyncObject<TaskModel>(realmConfiguration: RealmManager.sharedInstance.getConfig()),
-            SyncObject<CommentModel>(realmConfiguration: RealmManager.sharedInstance.getConfig()),
-            SyncObject<NotificationModel>(realmConfiguration: RealmManager.sharedInstance.getConfig())
+			SyncObject(type: TaskModel.self),
+			SyncObject(type: CommentModel.self),
+			SyncObject(type: NotificationModel.self)
             ], databaseScope: .private)
     }
 	
-	func requestPushNotificationsPerms() {
-		Robin.shared.requestAuthorization()
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-        self.currentApplication?.registerForRemoteNotifications()
+	func requestPushNotificationsPerms(handler: (() -> Void)? = nil) {
+		Robin.settings.requestAuthorization(forOptions: [.alert, .badge, .sound]) { _, _ in
+			handler?()
+		}
 	}
     
     func setupDefaults() {

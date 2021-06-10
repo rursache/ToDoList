@@ -86,7 +86,7 @@ class TasksViewController: BaseViewController {
         self.searchController.searchResultsUpdater = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReloadDataNotification), name: Config.Notifications.shouldReloadData, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitNewData.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.newCloudDataReceived), name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil)
     }
     
     func loadData() {

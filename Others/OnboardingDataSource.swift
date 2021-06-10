@@ -99,8 +99,9 @@ enum OnboardingDataSource {
         page.isDismissable = false
 
         page.actionHandler = { item in
-			(UIApplication.shared.delegate as! AppDelegate).requestPushNotificationsPerms()
-            item.manager?.displayNextItem()
+			(UIApplication.shared.delegate as! AppDelegate).requestPushNotificationsPerms {
+				item.manager?.displayNextItem()
+			}
         }
 
         page.alternativeHandler = { item in

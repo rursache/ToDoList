@@ -30,10 +30,8 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 ## How to run
 
 1. Clone the repo
-2. Run ```pod install``` in terminal to install required pods. Make sure you have [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) installed.
-3. Turn on iCloud option in ```Signing & Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` + ```Remote notification```.
-4. Make sure to update your app group config (```Signing & Capabilities```, ```App Groups```) and id string in ```RealmManager.swift```.
-5. (Optional) You might want to update or remove [Fabric](https://fabric.io/home) script located ```Build Phases```.
+2. Turn on iCloud option in ```Signing & Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` + ```Remote notification```.
+3. Make sure to update your app group config (```Signing & Capabilities```, ```App Groups```) and id string in ```RealmManager.swift```.
 
 ## Live demo
 
@@ -46,9 +44,10 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 - [ ] Lockdown with FaceID/TouchID or passcode (using [BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
 - [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
 - [ ] Rearrange tasks manually
-- [ ] Marzipan support for macOS
+- [ ] Catalyst support for macOS
  
 ### Improvements/To Do
+- [ ] iOS 14 Widget
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions if initially declined 
 
@@ -64,9 +63,9 @@ An extensive list of acknowledgements for each external framework used for RSToD
 RSToDoList is currently using:
 
  - [LKAlertController](https://github.com/lightningkite/LKAlertController)
- - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
- - [IceCream (own fork)](https://github.com/rursache/IceCream)
- - [UnderKeyboard](https://github.com/evgenyneu/UnderKeyboard)
+ - [ActionSheetPicker-3.0](https://github.com/rursache/ActionSheetPicker-3.0)
+ - [IceCream](https://github.com/rursache/IceCream)
+ - [UnderKeyboard](https://github.com/rursache/UnderKeyboard)
  - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
  - [Realm & RealmSwift](https://realm.io/products/realm-database)
  - [RSTextViewMaster](https://github.com/rursache/RSTextViewMaster)

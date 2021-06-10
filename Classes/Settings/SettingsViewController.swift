@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AcknowList
 import MessageUI
 import LKAlertController
 
@@ -83,19 +82,18 @@ class SettingsViewController: BaseViewController {
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_THEME".localized(), icon: "settings_theme", subtitle: nil, rightTitle: themeOption),
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_LANGUAGE".localized(), icon: "settings_language", subtitle: nil, rightTitle: languageOption),
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_OPEN_WEB_LINKS".localized(), icon: "settings_openurl", subtitle: nil, rightTitle: openLinksOption)
-                                                        ])
+        ])
         
         let togglesSection = SettingsItemSection(items: [
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS".localized(), icon: "settings_auto_reminders", subtitle: "SETTINGS_ITEM_ENTRY_AUTOMATIC_REMINDERS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: !disableAutoReminders),
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS".localized(), icon: "settings_help", subtitle: "SETTINGS_ITEM_ENTRY_HELPFUL_PROMPTS_DESC".localized(), rightTitle: nil, showSwitch: true, switchIsOn: helpPrompts)
-                                                        ])
+        ])
         
         let aboutSection = SettingsItemSection(items: [
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_MANUAL_SYNC".localized(), icon: "settings_sync", subtitle: nil, rightTitle: nil),
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_FEEDBACK".localized(), icon: "settings_feedback", subtitle: nil, rightTitle: nil),
-            SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_ACKNOW".localized(), icon: "settings_acknowledgments", subtitle: nil, rightTitle: nil),
             SettingsItemModel(title: "SETTINGS_ITEM_ENTRY_ABOUT".localized(), icon: "settings_about", subtitle: nil, rightTitle: nil)
-                                                        ])
+        ])
         
         self.dataSource = [mainSection, togglesSection, aboutSection]
         
@@ -152,10 +150,6 @@ class SettingsViewController: BaseViewController {
                 }
                 
             } else if row == 3 {
-                // acknowledgments
-                self.navigationController?.pushViewController(AcknowListViewController(), animated: true)
-                
-            } else if row == 4 {
                 // about
 				Utils().showAbout()
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170DEDFE2672916600024B70 /* IceCream in Frameworks */ = {isa = PBXBuildFile; productRef = 170DEDFD2672916600024B70 /* IceCream */; };
 		1710DD2923CF5C46000E64F4 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1710DD2823CF5C46000E64F4 /* Main-iPad.storyboard */; };
 		1718BE4523CCBB19009D591A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1718BE4423CCBB19009D591A /* NotificationCenter.framework */; };
 		1718BE4823CCBB19009D591A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718BE4723CCBB19009D591A /* TodayViewController.swift */; };
@@ -46,7 +47,6 @@
 		172CCD832224189200240725 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CCD822224189200240725 /* SettingsViewController.swift */; };
 		172CCD8622241A3600240725 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CCD8522241A3600240725 /* SettingsTableViewCell.swift */; };
 		172CCD8822241AAD00240725 /* SettingsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CCD8722241AAD00240725 /* SettingsItemModel.swift */; };
-		172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */; };
 		172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8D22253CC700240725 /* IconGreen@2x.png */; };
 		172CCD9A22253CC800240725 /* IconBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8E22253CC700240725 /* IconBlue@3x.png */; };
 		172CCD9B22253CC800240725 /* IconGreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172CCD8F22253CC700240725 /* IconGreen@3x.png */; };
@@ -86,6 +86,28 @@
 		17D18D55221D5F0D005C647B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D18D54221D5F0D005C647B /* Utils.swift */; };
 		17D62B6022247C390085D628 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B5F22247C390085D628 /* ThemeModel.swift */; };
 		17D62B622224813A0085D628 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D62B612224813A0085D628 /* LanguageModel.swift */; };
+		17E5CE742672872D0096F9FB /* LKAlertController in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE732672872D0096F9FB /* LKAlertController */; };
+		17E5CE772672873E0096F9FB /* RSTextViewMaster in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE762672873E0096F9FB /* RSTextViewMaster */; };
+		17E5CE7A2672874B0096F9FB /* ActiveLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE792672874B0096F9FB /* ActiveLabel */; };
+		17E5CE80267287AD0096F9FB /* ActionSheetPicker-3.0 in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE7F267287AD0096F9FB /* ActionSheetPicker-3.0 */; };
+		17E5CE89267287DF0096F9FB /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE88267287DF0096F9FB /* Loaf */; };
+		17E5CE8C267288620096F9FB /* Robin in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE8B267288620096F9FB /* Robin */; };
+		17E5CE8F267288780096F9FB /* ImageViewer_swift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE8E267288780096F9FB /* ImageViewer_swift */; };
+		17E5CE92267288850096F9FB /* BLTNBoard in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE91267288850096F9FB /* BLTNBoard */; };
+		17E5CE95267288FB0096F9FB /* UnderKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE94267288FB0096F9FB /* UnderKeyboard */; };
+		17E5CE9826728A110096F9FB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE9726728A110096F9FB /* Realm */; };
+		17E5CE9A26728A110096F9FB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE9926728A110096F9FB /* RealmSwift */; };
+		17E5CE9D26728A1E0096F9FB /* IceCream in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CE9C26728A1E0096F9FB /* IceCream */; };
+		17E5CEA326728A2C0096F9FB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEA226728A2C0096F9FB /* Realm */; };
+		17E5CEA526728A2C0096F9FB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEA426728A2C0096F9FB /* RealmSwift */; };
+		17E5CEA726728AD50096F9FB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEA626728AD50096F9FB /* Realm */; };
+		17E5CEA926728AD50096F9FB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEA826728AD50096F9FB /* RealmSwift */; };
+		17E5CEAB26728B540096F9FB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEAA26728B540096F9FB /* Realm */; };
+		17E5CEAD26728B540096F9FB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEAC26728B540096F9FB /* RealmSwift */; };
+		17E5CEAF26728B8A0096F9FB /* ImageViewer_swift in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEAE26728B8A0096F9FB /* ImageViewer_swift */; };
+		17E5CEB126728C430096F9FB /* Robin in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEB026728C430096F9FB /* Robin */; };
+		17E5CEB326728C4B0096F9FB /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEB226728C4B0096F9FB /* Loaf */; };
+		17E5CEB526728C740096F9FB /* LKAlertController in Frameworks */ = {isa = PBXBuildFile; productRef = 17E5CEB426728C740096F9FB /* LKAlertController */; };
 		17EBE584221EB370005A9253 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE583221EB370005A9253 /* BaseViewController.swift */; };
 		17EBE587221EC954005A9253 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE586221EC954005A9253 /* TaskModel.swift */; };
 		17EBE589221EC963005A9253 /* HomeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EBE588221EC963005A9253 /* HomeItemModel.swift */; };
@@ -98,9 +120,6 @@
 		17F03A2523CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		17F03A2623CF4ED600E01D84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 172F557B2361A04D00B2B8BB /* Localizable.strings */; };
 		386A95912461386B00EFA592 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 386A95932461386B00EFA592 /* InfoPlist.strings */; };
-		62037A555E643865DCCD3F33 /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EC7B181B2DC875AF97CD49 /* Pods_ToDoList.framework */; platformFilter = ios; };
-		86336197EBFD98B1AAC5CD91 /* Pods_ToDoListWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */; };
-		E5C09EA00C6E3B05D401FC83 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3044EF5F72611B448293FA7 /* Pods_WatchApp_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +183,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		170DEDFC267290D000024B70 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1710DD2823CF5C46000E64F4 /* Main-iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		1718BE4323CCBB19009D591A /* ToDoListWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ToDoListWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1718BE4423CCBB19009D591A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -200,7 +220,6 @@
 		172CCD822224189200240725 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		172CCD8522241A3600240725 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		172CCD8722241AAD00240725 /* SettingsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemModel.swift; sourceTree = "<group>"; };
-		172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-ToDoList-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		172CCD8D22253CC700240725 /* IconGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconGreen@2x.png"; sourceTree = "<group>"; };
 		172CCD8E22253CC700240725 /* IconBlue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBlue@3x.png"; sourceTree = "<group>"; };
 		172CCD8F22253CC700240725 /* IconGreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconGreen@3x.png"; sourceTree = "<group>"; };
@@ -248,7 +267,6 @@
 		17EBE58F221ED8B1005A9253 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		17EBE592221EE584005A9253 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		17EBE594221EE588005A9253 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
-		185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListWidget.debug.xcconfig"; path = "Target Support Files/Pods-ToDoListWidget/Pods-ToDoListWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		386A95882460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		386A958A2460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		386A958B2460047F00EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -256,14 +274,6 @@
 		386A95922461386B00EFA592 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		386A95942461387200EFA592 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		386A95952461387300EFA592 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4B170989CA81B0562AA81630 /* Pods-WatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchApp Extension.debug.xcconfig"; path = "Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListWidget.release.xcconfig"; path = "Target Support Files/Pods-ToDoListWidget/Pods-ToDoListWidget.release.xcconfig"; sourceTree = "<group>"; };
-		A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoListWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7EC7B181B2DC875AF97CD49 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3044EF5F72611B448293FA7 /* Pods_WatchApp_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchApp_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3840C0A8BA3A8F26133DFB3 /* Pods-WatchApp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchApp Extension.release.xcconfig"; path = "Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension.release.xcconfig"; sourceTree = "<group>"; };
-		C5098FCE09B9426066B9A29C /* Pods-ToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.release.xcconfig"; path = "Target Support Files/Pods-ToDoList/Pods-ToDoList.release.xcconfig"; sourceTree = "<group>"; };
-		DAFA8D0746D54D0F29A8E5EC /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,8 +281,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E5CEA926728AD50096F9FB /* RealmSwift in Frameworks */,
+				170DEDFE2672916600024B70 /* IceCream in Frameworks */,
+				17E5CEB126728C430096F9FB /* Robin in Frameworks */,
+				17E5CEB326728C4B0096F9FB /* Loaf in Frameworks */,
+				17E5CEB526728C740096F9FB /* LKAlertController in Frameworks */,
+				17E5CEA726728AD50096F9FB /* Realm in Frameworks */,
+				17E5CEAF26728B8A0096F9FB /* ImageViewer_swift in Frameworks */,
 				1718BE4523CCBB19009D591A /* NotificationCenter.framework in Frameworks */,
-				86336197EBFD98B1AAC5CD91 /* Pods_ToDoListWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +296,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5C09EA00C6E3B05D401FC83 /* Pods_WatchApp_Extension.framework in Frameworks */,
+				17E5CEA526728A2C0096F9FB /* RealmSwift in Frameworks */,
+				17E5CEA326728A2C0096F9FB /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,8 +305,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E5CE742672872D0096F9FB /* LKAlertController in Frameworks */,
+				17E5CE92267288850096F9FB /* BLTNBoard in Frameworks */,
+				17E5CE8C267288620096F9FB /* Robin in Frameworks */,
+				17E5CE9D26728A1E0096F9FB /* IceCream in Frameworks */,
+				17E5CE9A26728A110096F9FB /* RealmSwift in Frameworks */,
+				17E5CE95267288FB0096F9FB /* UnderKeyboard in Frameworks */,
+				17E5CE8F267288780096F9FB /* ImageViewer_swift in Frameworks */,
+				17E5CE9826728A110096F9FB /* Realm in Frameworks */,
+				17E5CE7A2672874B0096F9FB /* ActiveLabel in Frameworks */,
+				17E5CE772672873E0096F9FB /* RSTextViewMaster in Frameworks */,
+				17E5CE80267287AD0096F9FB /* ActionSheetPicker-3.0 in Frameworks */,
 				172CCD812221C82E00240725 /* CloudKit.framework in Frameworks */,
-				62037A555E643865DCCD3F33 /* Pods_ToDoList.framework in Frameworks */,
+				17E5CE89267287DF0096F9FB /* Loaf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +325,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E5CEAD26728B540096F9FB /* RealmSwift in Frameworks */,
+				17E5CEAB26728B540096F9FB /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,10 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				172CCD802221C82E00240725 /* CloudKit.framework */,
-				B7EC7B181B2DC875AF97CD49 /* Pods_ToDoList.framework */,
 				1718BE4423CCBB19009D591A /* NotificationCenter.framework */,
-				A0E3FD3FFB4BD0B30642179D /* Pods_ToDoListWidget.framework */,
-				C3044EF5F72611B448293FA7 /* Pods_WatchApp_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -391,6 +418,7 @@
 		17D18D32221D56C4005C647B = {
 			isa = PBXGroup;
 			children = (
+				170DEDFC267290D000024B70 /* README.md */,
 				174F9ED0221D8E7D00D9C139 /* ToDoList.entitlements */,
 				17D18D45221D56C5005C647B /* Assets.xcassets */,
 				17D18D3D221D56C4005C647B /* Classes */,
@@ -401,7 +429,6 @@
 				17278CD423CE05890014B8B2 /* WatchApp Extension */,
 				17D18D3C221D56C4005C647B /* Products */,
 				174F9ED1221D8E7F00D9C139 /* Frameworks */,
-				67EE540747170322C21ED198 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,7 +479,6 @@
 				17C1776D222EB2FE00B2E84F /* Extensions.swift */,
 				17D18D4A221D56C5005C647B /* Info.plist */,
 				386A95932461386B00EFA592 /* InfoPlist.strings */,
-				172CCD8A22242A2800240725 /* Pods-ToDoList-acknowledgements.plist */,
 				172F557B2361A04D00B2B8BB /* Localizable.strings */,
 			);
 			path = Others;
@@ -497,19 +523,6 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		67EE540747170322C21ED198 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DAFA8D0746D54D0F29A8E5EC /* Pods-ToDoList.debug.xcconfig */,
-				C5098FCE09B9426066B9A29C /* Pods-ToDoList.release.xcconfig */,
-				185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */,
-				62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */,
-				4B170989CA81B0562AA81630 /* Pods-WatchApp Extension.debug.xcconfig */,
-				C3840C0A8BA3A8F26133DFB3 /* Pods-WatchApp Extension.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -517,7 +530,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1718BE5323CCBB19009D591A /* Build configuration list for PBXNativeTarget "ToDoListWidget" */;
 			buildPhases = (
-				1BF607087AE207E3FF8284EC /* [CP] Check Pods Manifest.lock */,
 				1718BE3F23CCBB19009D591A /* Sources */,
 				1718BE4023CCBB19009D591A /* Frameworks */,
 				1718BE4123CCBB19009D591A /* Resources */,
@@ -527,6 +539,15 @@
 			dependencies = (
 			);
 			name = ToDoListWidget;
+			packageProductDependencies = (
+				17E5CEA626728AD50096F9FB /* Realm */,
+				17E5CEA826728AD50096F9FB /* RealmSwift */,
+				17E5CEAE26728B8A0096F9FB /* ImageViewer_swift */,
+				17E5CEB026728C430096F9FB /* Robin */,
+				17E5CEB226728C4B0096F9FB /* Loaf */,
+				17E5CEB426728C740096F9FB /* LKAlertController */,
+				170DEDFD2672916600024B70 /* IceCream */,
+			);
 			productName = ToDoListWidget;
 			productReference = 1718BE4323CCBB19009D591A /* ToDoListWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -545,6 +566,10 @@
 				17278CD323CE05890014B8B2 /* PBXTargetDependency */,
 			);
 			name = WatchApp;
+			packageProductDependencies = (
+				17E5CEAA26728B540096F9FB /* Realm */,
+				17E5CEAC26728B540096F9FB /* RealmSwift */,
+			);
 			productName = WatchApp;
 			productReference = 17278CC423CE05880014B8B2 /* WatchApp.app */;
 			productType = "com.apple.product-type.application.watchapp2";
@@ -553,17 +578,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17278CEA23CE058A0014B8B2 /* Build configuration list for PBXNativeTarget "WatchApp Extension" */;
 			buildPhases = (
-				A0C794B194F4935B9A160DA4 /* [CP] Check Pods Manifest.lock */,
 				17278CCC23CE05890014B8B2 /* Sources */,
 				17278CCD23CE05890014B8B2 /* Frameworks */,
 				17278CCE23CE05890014B8B2 /* Resources */,
-				3AA13F1FA255C41A12FEB43C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				17E5CE9F26728A260096F9FB /* PBXTargetDependency */,
+				17E5CEA126728A260096F9FB /* PBXTargetDependency */,
 			);
 			name = "WatchApp Extension";
+			packageProductDependencies = (
+				17E5CEA226728A2C0096F9FB /* Realm */,
+				17E5CEA426728A2C0096F9FB /* RealmSwift */,
+			);
 			productName = "WatchApp Extension";
 			productReference = 17278CD023CE05890014B8B2 /* WatchApp Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -572,11 +601,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17D18D4D221D56C5005C647B /* Build configuration list for PBXNativeTarget "ToDoList" */;
 			buildPhases = (
-				EED07FF7136371229F1E9F5B /* [CP] Check Pods Manifest.lock */,
 				17D18D37221D56C4005C647B /* Sources */,
 				17D18D38221D56C4005C647B /* Frameworks */,
 				17D18D39221D56C4005C647B /* Resources */,
-				8A01BEFB3ADECC2B23A4998C /* [CP] Embed Pods Frameworks */,
 				1718BE5023CCBB19009D591A /* Embed App Extensions */,
 				17278CE423CE058A0014B8B2 /* Embed Watch Content */,
 			);
@@ -587,6 +614,20 @@
 				17278CE223CE05890014B8B2 /* PBXTargetDependency */,
 			);
 			name = ToDoList;
+			packageProductDependencies = (
+				17E5CE732672872D0096F9FB /* LKAlertController */,
+				17E5CE762672873E0096F9FB /* RSTextViewMaster */,
+				17E5CE792672874B0096F9FB /* ActiveLabel */,
+				17E5CE7F267287AD0096F9FB /* ActionSheetPicker-3.0 */,
+				17E5CE88267287DF0096F9FB /* Loaf */,
+				17E5CE8B267288620096F9FB /* Robin */,
+				17E5CE8E267288780096F9FB /* ImageViewer_swift */,
+				17E5CE91267288850096F9FB /* BLTNBoard */,
+				17E5CE94267288FB0096F9FB /* UnderKeyboard */,
+				17E5CE9726728A110096F9FB /* Realm */,
+				17E5CE9926728A110096F9FB /* RealmSwift */,
+				17E5CE9C26728A1E0096F9FB /* IceCream */,
+			);
 			productName = RSToDoList;
 			productReference = 17D18D3B221D56C4005C647B /* ToDoList.app */;
 			productType = "com.apple.product-type.application";
@@ -639,6 +680,19 @@
 				"zh-Hant",
 			);
 			mainGroup = 17D18D32221D56C4005C647B;
+			packageReferences = (
+				17E5CE722672872D0096F9FB /* XCRemoteSwiftPackageReference "LKAlertController" */,
+				17E5CE752672873E0096F9FB /* XCRemoteSwiftPackageReference "RSTextViewMaster" */,
+				17E5CE782672874B0096F9FB /* XCRemoteSwiftPackageReference "ActiveLabel" */,
+				17E5CE7E267287AD0096F9FB /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */,
+				17E5CE87267287DF0096F9FB /* XCRemoteSwiftPackageReference "Loaf" */,
+				17E5CE8A267288620096F9FB /* XCRemoteSwiftPackageReference "Robin" */,
+				17E5CE8D267288780096F9FB /* XCRemoteSwiftPackageReference "ImageViewer" */,
+				17E5CE90267288850096F9FB /* XCRemoteSwiftPackageReference "BulletinBoard" */,
+				17E5CE93267288FB0096F9FB /* XCRemoteSwiftPackageReference "UnderKeyboard" */,
+				17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				17E5CE9B26728A1E0096F9FB /* XCRemoteSwiftPackageReference "IceCream" */,
+			);
 			productRefGroup = 17D18D3C221D56C4005C647B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -700,7 +754,6 @@
 				172F55792361A04D00B2B8BB /* Localizable.strings in Resources */,
 				172CCD9D22253CC800240725 /* IconYellow@3x.png in Resources */,
 				172CCD9922253CC800240725 /* IconGreen@2x.png in Resources */,
-				172CCD8B22242A2800240725 /* Pods-ToDoList-acknowledgements.plist in Resources */,
 				172CCDA722253FB700240725 /* IconPink@2x.png in Resources */,
 				17D18D46221D56C5005C647B /* Assets.xcassets in Resources */,
 				172CCDA422253CC800240725 /* IconRed(Alt)@3x.png in Resources */,
@@ -714,109 +767,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1BF607087AE207E3FF8284EC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToDoListWidget-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3AA13F1FA255C41A12FEB43C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8A01BEFB3ADECC2B23A4998C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ToDoList/Pods-ToDoList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ToDoList/Pods-ToDoList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ToDoList/Pods-ToDoList-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0C794B194F4935B9A160DA4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WatchApp Extension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EED07FF7136371229F1E9F5B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToDoList-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1718BE3F23CCBB19009D591A /* Sources */ = {
@@ -913,6 +863,14 @@
 			target = 17278CC323CE05880014B8B2 /* WatchApp */;
 			targetProxy = 17278CE123CE05890014B8B2 /* PBXContainerItemProxy */;
 		};
+		17E5CE9F26728A260096F9FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 17E5CE9E26728A260096F9FB /* Realm */;
+		};
+		17E5CEA126728A260096F9FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 17E5CEA026728A260096F9FB /* RealmSwift */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -980,21 +938,20 @@
 /* Begin XCBuildConfiguration section */
 		1718BE5123CCBB19009D591A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 185537DE7CD05172D2533463 /* Pods-ToDoListWidget.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.ToDoListWidget;
 				PRODUCT_NAME = ToDoListWidget;
 				SKIP_INSTALL = YES;
@@ -1006,21 +963,20 @@
 		};
 		1718BE5223CCBB19009D591A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62D53258F6033C8101BF0FE6 /* Pods-ToDoListWidget.release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = Widget/ToDoList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.ToDoListWidget;
 				PRODUCT_NAME = ToDoListWidget;
 				SKIP_INSTALL = YES;
@@ -1046,7 +1002,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1074,7 +1030,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1087,7 +1043,6 @@
 		};
 		17278CE823CE058A0014B8B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B170989CA81B0562AA81630 /* Pods-WatchApp Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
@@ -1099,7 +1054,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1112,7 +1067,6 @@
 		};
 		17278CE923CE058A0014B8B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3840C0A8BA3A8F26133DFB3 /* Pods-WatchApp Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
@@ -1124,7 +1078,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1257,7 +1211,6 @@
 		};
 		17D18D4E221D56C5005C647B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAFA8D0746D54D0F29A8E5EC /* Pods-ToDoList.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1267,12 +1220,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "-D COCOAPODS -D realApp";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1284,7 +1237,6 @@
 		};
 		17D18D4F221D56C5005C647B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5098FCE09B9426066B9A29C /* Pods-ToDoList.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1294,12 +1246,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3999533L99;
 				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "-D COCOAPODS -D realApp";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1358,6 +1310,225 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17E5CE722672872D0096F9FB /* XCRemoteSwiftPackageReference "LKAlertController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/LKAlertController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.13.0;
+			};
+		};
+		17E5CE752672873E0096F9FB /* XCRemoteSwiftPackageReference "RSTextViewMaster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/RSTextViewMaster";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		17E5CE782672874B0096F9FB /* XCRemoteSwiftPackageReference "ActiveLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/optonaut/ActiveLabel.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
+			};
+		};
+		17E5CE7E267287AD0096F9FB /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/ActionSheetPicker-3.0";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		17E5CE87267287DF0096F9FB /* XCRemoteSwiftPackageReference "Loaf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/schmidyy/Loaf";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.0;
+			};
+		};
+		17E5CE8A267288620096F9FB /* XCRemoteSwiftPackageReference "Robin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ahmdx/Robin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.98.0;
+			};
+		};
+		17E5CE8D267288780096F9FB /* XCRemoteSwiftPackageReference "ImageViewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/michaelhenry/ImageViewer.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.4;
+			};
+		};
+		17E5CE90267288850096F9FB /* XCRemoteSwiftPackageReference "BulletinBoard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexisakers/BulletinBoard";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		17E5CE93267288FB0096F9FB /* XCRemoteSwiftPackageReference "UnderKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/UnderKeyboard";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.1.0;
+			};
+		};
+		17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.7;
+			};
+		};
+		17E5CE9B26728A1E0096F9FB /* XCRemoteSwiftPackageReference "IceCream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/IceCream";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		170DEDFD2672916600024B70 /* IceCream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9B26728A1E0096F9FB /* XCRemoteSwiftPackageReference "IceCream" */;
+			productName = IceCream;
+		};
+		17E5CE732672872D0096F9FB /* LKAlertController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE722672872D0096F9FB /* XCRemoteSwiftPackageReference "LKAlertController" */;
+			productName = LKAlertController;
+		};
+		17E5CE762672873E0096F9FB /* RSTextViewMaster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE752672873E0096F9FB /* XCRemoteSwiftPackageReference "RSTextViewMaster" */;
+			productName = RSTextViewMaster;
+		};
+		17E5CE792672874B0096F9FB /* ActiveLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE782672874B0096F9FB /* XCRemoteSwiftPackageReference "ActiveLabel" */;
+			productName = ActiveLabel;
+		};
+		17E5CE7F267287AD0096F9FB /* ActionSheetPicker-3.0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE7E267287AD0096F9FB /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */;
+			productName = "ActionSheetPicker-3.0";
+		};
+		17E5CE88267287DF0096F9FB /* Loaf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE87267287DF0096F9FB /* XCRemoteSwiftPackageReference "Loaf" */;
+			productName = Loaf;
+		};
+		17E5CE8B267288620096F9FB /* Robin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE8A267288620096F9FB /* XCRemoteSwiftPackageReference "Robin" */;
+			productName = Robin;
+		};
+		17E5CE8E267288780096F9FB /* ImageViewer_swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE8D267288780096F9FB /* XCRemoteSwiftPackageReference "ImageViewer" */;
+			productName = ImageViewer_swift;
+		};
+		17E5CE91267288850096F9FB /* BLTNBoard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE90267288850096F9FB /* XCRemoteSwiftPackageReference "BulletinBoard" */;
+			productName = BLTNBoard;
+		};
+		17E5CE94267288FB0096F9FB /* UnderKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE93267288FB0096F9FB /* XCRemoteSwiftPackageReference "UnderKeyboard" */;
+			productName = UnderKeyboard;
+		};
+		17E5CE9726728A110096F9FB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		17E5CE9926728A110096F9FB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		17E5CE9C26728A1E0096F9FB /* IceCream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9B26728A1E0096F9FB /* XCRemoteSwiftPackageReference "IceCream" */;
+			productName = IceCream;
+		};
+		17E5CE9E26728A260096F9FB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		17E5CEA026728A260096F9FB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		17E5CEA226728A2C0096F9FB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		17E5CEA426728A2C0096F9FB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		17E5CEA626728AD50096F9FB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		17E5CEA826728AD50096F9FB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		17E5CEAA26728B540096F9FB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		17E5CEAC26728B540096F9FB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE9626728A110096F9FB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		17E5CEAE26728B8A0096F9FB /* ImageViewer_swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE8D267288780096F9FB /* XCRemoteSwiftPackageReference "ImageViewer" */;
+			productName = ImageViewer_swift;
+		};
+		17E5CEB026728C430096F9FB /* Robin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE8A267288620096F9FB /* XCRemoteSwiftPackageReference "Robin" */;
+			productName = Robin;
+		};
+		17E5CEB226728C4B0096F9FB /* Loaf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE87267287DF0096F9FB /* XCRemoteSwiftPackageReference "Loaf" */;
+			productName = Loaf;
+		};
+		17E5CEB426728C740096F9FB /* LKAlertController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E5CE722672872D0096F9FB /* XCRemoteSwiftPackageReference "LKAlertController" */;
+			productName = LKAlertController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 17D18D33221D56C4005C647B /* Project object */;
 }
