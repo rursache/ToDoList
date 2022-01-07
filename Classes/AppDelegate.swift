@@ -51,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 	
 	func requestPushNotificationsPerms(handler: (() -> Void)? = nil) {
 		Robin.settings.requestAuthorization(forOptions: [.alert, .badge, .sound]) { _, _ in
-			handler?()
+			DispatchQueue.main.async {
+				handler?()
+			}
 		}
 	}
     
