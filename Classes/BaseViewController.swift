@@ -29,7 +29,16 @@ class BaseViewController: UIViewController {
     
     func setupNavigationBar() {
         self.navigationController?.navigationBar.barStyle = .black;
-        self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
+//        self.navigationController?.navigationBar.barTintColor = Utils().getCurrentThemeColor()
+//        self.navigationController?.view.backgroundColor = Utils().getCurrentThemeColor()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Utils().getCurrentThemeColor()
+        self.navigationController?.navigationBar.standardAppearance = appearance;
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.isTranslucent = false
