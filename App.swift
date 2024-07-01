@@ -10,23 +10,17 @@ import SwiftData
 
 @main
 struct ToDoListApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    private let sharedModelContainer: ModelContainer
+    
+    init() {
+        self.sharedModelContainer = DatabaseManager.defaultModelContainer
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
-        .modelContainer(sharedModelContainer)
+            TaskView()
+        }.modelContainer(sharedModelContainer)
     }
 }
