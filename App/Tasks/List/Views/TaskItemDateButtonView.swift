@@ -10,39 +10,62 @@ import SwiftUI
 
 struct TaskItemDateButtonView: View {
     @State var task: TaskModel
+    @State private var datePickerVisible: Bool = false
     
     var body: some View {
-        if let taskDate = task.date {
-            Button {
-                
-            } label: {
-                Label(formatDate(taskDate), systemImage: "calendar")
-                    .font(.caption)
-                    .foregroundStyle(.secondaryAccent)
-                    .labelStyle(.titleAndIcon)
+        Button {
+            datePickerVisible.toggle()
+        } label: {
+            Label(formatDate(task.date, time: task.time), systemImage: "calendar")
+                .font(.caption)
+                .foregroundStyle(.secondaryAccent)
+                .labelStyle(.titleAndIcon)
+        }.if(UIDevice.current.userInterfaceIdiom == .phone, transform: { button in
+            button.sheet(isPresented: $datePickerVisible, content: {
+                TaskItemDatePickerView(date: task.date, time: task.time, pickerUpdated: { date, time in
+                    task.date = date
+                    task.time = time
+                }).presentationDragIndicator(.visible).presentationDetents([.height(TaskItemDatePickerView.height)])
+            })
+        }).if(UIDevice.current.userInterfaceIdiom == .pad, transform: { button in
+            button.popover(isPresented: $datePickerVisible) {
+                TaskItemDatePickerView(date: task.date, time: task.time, pickerUpdated: { date, time in
+                    task.date = date
+                    task.time = time
+                })
             }
-        } else {
-            EmptyView()
-        }
+        }).buttonStyle(.plain)
     }
     
-    private func formatDate(_ date: Date) -> String {
+    private func formatDate(_ date: Date?, time: Date?) -> String {
+        guard let date else {
+            fatalError("Date is missing")
+        }
+        
         let calendar = Calendar.current
         let now = Date()
         
         let isToday = calendar.isDateInToday(date)
         let isThisWeek = calendar.isDate(date, equalTo: now, toGranularity: .weekOfYear)
         
-        let formatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         
         if isToday {
-            formatter.dateFormat = "HH:mm"
+            dateFormatter.dateFormat = "Today"
         } else if isThisWeek {
-            formatter.dateFormat = "EEEE"
+            dateFormatter.dateFormat = "EEEE"
         } else {
-            formatter.dateFormat = "d MMMM"
+            dateFormatter.dateFormat = "d MMM"
         }
         
-        return formatter.string(from: date)
+        var result = dateFormatter.string(from: date)
+        
+        if let time {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            result += " @ " + timeFormatter.string(from: time)
+        }
+        
+        return result
     }
 }

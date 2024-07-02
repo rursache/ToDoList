@@ -23,13 +23,22 @@ struct TaskItemView: View {
             VStack(spacing: 12) {
                 TaskItemTitleDetailView(task: task)
                 
-                HStack(spacing: 20) {
-                    TaskItemDateButtonView(task: task)
-                    
-                    TaskItemPriorityButtonView(task: task)
+                if let _ = task.date {
+                    HStack(spacing: 20) {
+                        TaskItemDateButtonView(task: task)
                         
-                    Spacer()
-                }.frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        
+                        TaskItemPriorityButtonView(task: task)
+                            .padding(.trailing, 12)
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    HStack {
+                        TaskItemPriorityButtonView(task: task)
+                        
+                        Spacer()
+                    }
+                }
             }
         }.padding(.horizontal, -6)
     }

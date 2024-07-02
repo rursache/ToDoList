@@ -67,7 +67,7 @@ extension DatabaseManager {
         do {
             let defaultContainer = try ModelContainer(for: DatabaseManager.defaultSchema, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
             
-//            DatabaseManager.shared.insertMockData(defaultContainer)
+            DatabaseManager.shared.insertMockData(defaultContainer)
             
             return defaultContainer
         } catch {

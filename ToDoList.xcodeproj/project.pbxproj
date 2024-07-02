@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171C2C012C33FD1F00FF41E5 /* TaskItemDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C2C002C33FD1F00FF41E5 /* TaskItemDatePickerView.swift */; };
+		171C2C032C34010400FF41E5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C2C022C34010400FF41E5 /* Extensions.swift */; };
 		176612462C32F86E00B6E78E /* ToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659E02C32E44100C7066C /* ToDoListUITests.swift */; };
 		176612482C330C2100B6E78E /* DatabaseActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612472C330C2100B6E78E /* DatabaseActor.swift */; };
 		1766124A2C33132000B6E78E /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612492C33132000B6E78E /* DatabaseError.swift */; };
@@ -17,6 +19,9 @@
 		176612572C3324EC00B6E78E /* TaskItemDateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612562C3324EC00B6E78E /* TaskItemDateButtonView.swift */; };
 		176612592C3324FE00B6E78E /* TaskItemPriorityButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612582C3324FE00B6E78E /* TaskItemPriorityButtonView.swift */; };
 		1766125B2C33255200B6E78E /* TaskItemTitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1766125A2C33255200B6E78E /* TaskItemTitleDetailView.swift */; };
+		176612622C332F2500B6E78E /* RoundPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612612C332F2500B6E78E /* RoundPlusButtonView.swift */; };
+		176612652C3330D600B6E78E /* RSQueryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612642C3330D600B6E78E /* RSQueryView.swift */; };
+		176612672C33334D00B6E78E /* TaskItemEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176612662C33334D00B6E78E /* TaskItemEmptyStateView.swift */; };
 		17E659C32C32E44000C7066C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659C22C32E44000C7066C /* App.swift */; };
 		17E659C52C32E44000C7066C /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659C42C32E44000C7066C /* TaskView.swift */; };
 		17E659C72C32E44000C7066C /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659C62C32E44000C7066C /* ItemModel.swift */; };
@@ -44,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171C2C002C33FD1F00FF41E5 /* TaskItemDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemDatePickerView.swift; sourceTree = "<group>"; };
+		171C2C022C34010400FF41E5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		176612472C330C2100B6E78E /* DatabaseActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseActor.swift; sourceTree = "<group>"; };
 		176612492C33132000B6E78E /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		1766124C2C3316E700B6E78E /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +60,9 @@
 		176612562C3324EC00B6E78E /* TaskItemDateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemDateButtonView.swift; sourceTree = "<group>"; };
 		176612582C3324FE00B6E78E /* TaskItemPriorityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemPriorityButtonView.swift; sourceTree = "<group>"; };
 		1766125A2C33255200B6E78E /* TaskItemTitleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemTitleDetailView.swift; sourceTree = "<group>"; };
+		176612612C332F2500B6E78E /* RoundPlusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPlusButtonView.swift; sourceTree = "<group>"; };
+		176612642C3330D600B6E78E /* RSQueryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSQueryView.swift; sourceTree = "<group>"; };
+		176612662C33334D00B6E78E /* TaskItemEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemEmptyStateView.swift; sourceTree = "<group>"; };
 		17E659BF2C32E44000C7066C /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E659C22C32E44000C7066C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		17E659C42C32E44000C7066C /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
@@ -126,6 +136,8 @@
 				1766125A2C33255200B6E78E /* TaskItemTitleDetailView.swift */,
 				176612562C3324EC00B6E78E /* TaskItemDateButtonView.swift */,
 				176612582C3324FE00B6E78E /* TaskItemPriorityButtonView.swift */,
+				176612662C33334D00B6E78E /* TaskItemEmptyStateView.swift */,
+				171C2C002C33FD1F00FF41E5 /* TaskItemDatePickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +168,23 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		176612602C332F1B00B6E78E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				176612612C332F2500B6E78E /* RoundPlusButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		176612632C3330C900B6E78E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				176612642C3330D600B6E78E /* RSQueryView.swift */,
+				171C2C022C34010400FF41E5 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		17E659B62C32E44000C7066C = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +194,9 @@
 				176612522C3320D000B6E78E /* Shared */,
 				17E659C12C32E44000C7066C /* App */,
 				17E659F12C32E85000C7066C /* Database */,
+				176612602C332F1B00B6E78E /* Views */,
 				1766124B2C3316D900B6E78E /* Models */,
+				176612632C3330C900B6E78E /* Helpers */,
 				17E659EF2C32E45700C7066C /* Supportive Files */,
 				17E659D52C32E44100C7066C /* Tests */,
 				17E659DF2C32E44100C7066C /* UITests */,
@@ -359,17 +390,22 @@
 			files = (
 				176612512C331DB300B6E78E /* TaskItemView.swift in Sources */,
 				1766124A2C33132000B6E78E /* DatabaseError.swift in Sources */,
+				176612652C3330D600B6E78E /* RSQueryView.swift in Sources */,
 				176612482C330C2100B6E78E /* DatabaseActor.swift in Sources */,
 				17E659F32C32E95200C7066C /* DatabaseManager.swift in Sources */,
 				1766124D2C3316E700B6E78E /* TaskViewModel.swift in Sources */,
 				17E659C52C32E44000C7066C /* TaskView.swift in Sources */,
+				171C2C032C34010400FF41E5 /* Extensions.swift in Sources */,
 				176612572C3324EC00B6E78E /* TaskItemDateButtonView.swift in Sources */,
 				17E659C72C32E44000C7066C /* ItemModel.swift in Sources */,
 				176612552C3320E100B6E78E /* CheckButtonView.swift in Sources */,
+				171C2C012C33FD1F00FF41E5 /* TaskItemDatePickerView.swift in Sources */,
 				17E659F52C32EE9400C7066C /* AppDelegate.swift in Sources */,
+				176612622C332F2500B6E78E /* RoundPlusButtonView.swift in Sources */,
 				1766125B2C33255200B6E78E /* TaskItemTitleDetailView.swift in Sources */,
 				176612592C3324FE00B6E78E /* TaskItemPriorityButtonView.swift in Sources */,
 				1766124F2C331AED00B6E78E /* TaskModel.swift in Sources */,
+				176612672C33334D00B6E78E /* TaskItemEmptyStateView.swift in Sources */,
 				17E659C32C32E44000C7066C /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,8 +650,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.ToDoListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -625,7 +661,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.1;
 			};
 			name = Debug;
 		};
@@ -637,8 +673,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.ToDoListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -648,7 +684,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.1;
 			};
 			name = Release;
 		};
@@ -659,8 +695,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.ToDoListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -670,7 +706,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = ToDoList;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.1;
 			};
 			name = Debug;
 		};
@@ -681,8 +717,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3999533L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.ToDoListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -692,7 +728,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = ToDoList;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 1.1;
 			};
 			name = Release;
 		};
