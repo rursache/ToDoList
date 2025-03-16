@@ -6,6 +6,9 @@
 
 A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 11+, watchOS 6+)
 
+> [!WARNING]
+> Unmaintained and EoL since 2022
+
 ## Main features
 - [x] Persistent task lists using Realm
 - [x] iCloud Kit support for syncing
@@ -47,7 +50,7 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 - [ ] Catalyst support for macOS
  
 ### Improvements/To Do
-- [ ] iOS 14 Widget
+- [ ] Modern Widgets
 - [ ] watchOS complications + sync improvements
 - [ ] Reload notifications after user gave push permissions if initially declined 
 

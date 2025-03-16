@@ -67,16 +67,18 @@ class TasksViewController: BaseViewController {
 			}
 		}
 		self.searchController.searchBar.tintColor = UIColor.white
-//        self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
-//        self.navigationController?.view.backgroundColor = Utils().getCurrentThemeColor()
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = Utils().getCurrentThemeColor()
-        self.navigationController?.navigationBar.standardAppearance = appearance;
-        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-
-
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = Utils().getCurrentThemeColor()
+            self.navigationController?.navigationBar.standardAppearance = appearance;
+            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+        } else {
+            self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
+            self.navigationController?.view.backgroundColor = Utils().getCurrentThemeColor()
+        }
+        
         self.definesPresentationContext = true
         
         self.tableView.estimatedRowHeight = 60

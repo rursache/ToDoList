@@ -1,124 +1,123 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "ActionSheetPicker-3.0",
-        "repositoryURL": "https://github.com/rursache/ActionSheetPicker-3.0",
-        "state": {
-          "branch": null,
-          "revision": "44584f26afd5c6f03cf243abeb9173467b62d622",
-          "version": "3.0.0"
-        }
-      },
-      {
-        "package": "ActiveLabel",
-        "repositoryURL": "https://github.com/optonaut/ActiveLabel.swift",
-        "state": {
-          "branch": null,
-          "revision": "36949c1a69ef8b40574da20c9e24b115f387b1cf",
-          "version": "1.1.5"
-        }
-      },
-      {
-        "package": "BLTNBoard",
-        "repositoryURL": "https://github.com/alexisakers/BulletinBoard",
-        "state": {
-          "branch": null,
-          "revision": "e8ba81d25e41e5d24d6a4f404ed28443d728723b",
-          "version": "5.0.0"
-        }
-      },
-      {
-        "package": "IceCream",
-        "repositoryURL": "https://github.com/rursache/IceCream",
-        "state": {
-          "branch": null,
-          "revision": "b8f8630270c455936d04209d58ed6da6722726af",
-          "version": "2.0.3"
-        }
-      },
-      {
-        "package": "ImageViewer_swift",
-        "repositoryURL": "https://github.com/michaelhenry/ImageViewer.swift",
-        "state": {
-          "branch": null,
-          "revision": "8488fc23d82ea16db9ca80a12881e836e4a9360c",
-          "version": "3.3.4"
-        }
-      },
-      {
-        "package": "LKAlertController",
-        "repositoryURL": "https://github.com/rursache/LKAlertController",
-        "state": {
-          "branch": null,
-          "revision": "108a4402bd62f485d5080c93c11317dfb026004a",
-          "version": "1.13.0"
-        }
-      },
-      {
-        "package": "Loaf",
-        "repositoryURL": "https://github.com/schmidyy/Loaf",
-        "state": {
-          "branch": null,
-          "revision": "5f78a659666fd1025579ded60960452a4c60eda6",
-          "version": "0.7.0"
-        }
-      },
-      {
-        "package": "Realm",
-        "repositoryURL": "https://github.com/realm/realm-cocoa",
-        "state": {
-          "branch": null,
-          "revision": "d6f68b8f613dca3b13430da5e0be5d27b500f486",
-          "version": "10.7.7"
-        }
-      },
-      {
-        "package": "RealmDatabase",
-        "repositoryURL": "https://github.com/realm/realm-core",
-        "state": {
-          "branch": null,
-          "revision": "018adb3469c2882904febca251778129ef4a9b70",
-          "version": "10.7.2"
-        }
-      },
-      {
-        "package": "Robin",
-        "repositoryURL": "https://github.com/ahmdx/Robin",
-        "state": {
-          "branch": null,
-          "revision": "3805e9862b981f7127eaa30cabb6ea1186e586be",
-          "version": "0.98.0"
-        }
-      },
-      {
-        "package": "RSTextViewMaster",
-        "repositoryURL": "https://github.com/rursache/RSTextViewMaster",
-        "state": {
-          "branch": null,
-          "revision": "43c0ae067f9ab08c91b6fe4c0becd1be84baa008",
-          "version": "2.2.0"
-        }
-      },
-      {
-        "package": "SDWebImage",
-        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
-        "state": {
-          "branch": null,
-          "revision": "0fff0d7505b5306348263ea64fcc561253bbeb21",
-          "version": "5.12.2"
-        }
-      },
-      {
-        "package": "UnderKeyboard",
-        "repositoryURL": "https://github.com/rursache/UnderKeyboard",
-        "state": {
-          "branch": null,
-          "revision": "30523d0c585deb682da8ac7040af604c431da66b",
-          "version": "13.1.0"
-        }
+  "originHash" : "1c32f0528c82943caa29d43badff6a00b2012c588f406dade928f3a7ff5f13a7",
+  "pins" : [
+    {
+      "identity" : "actionsheetpicker-3.0",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rursache/ActionSheetPicker-3.0",
+      "state" : {
+        "revision" : "44584f26afd5c6f03cf243abeb9173467b62d622",
+        "version" : "3.0.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "activelabel.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/optonaut/ActiveLabel.swift",
+      "state" : {
+        "revision" : "36949c1a69ef8b40574da20c9e24b115f387b1cf",
+        "version" : "1.1.5"
+      }
+    },
+    {
+      "identity" : "bulletinboard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alexisakers/BulletinBoard",
+      "state" : {
+        "revision" : "e8ba81d25e41e5d24d6a4f404ed28443d728723b",
+        "version" : "5.0.0"
+      }
+    },
+    {
+      "identity" : "icecream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rursache/IceCream",
+      "state" : {
+        "revision" : "b8f8630270c455936d04209d58ed6da6722726af",
+        "version" : "2.0.3"
+      }
+    },
+    {
+      "identity" : "imageviewer.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/michaelhenry/ImageViewer.swift",
+      "state" : {
+        "revision" : "3274b5f549b9e4cc8ab9f3e9734ee9fc6109e8e8",
+        "version" : "3.3.8"
+      }
+    },
+    {
+      "identity" : "lkalertcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rursache/LKAlertController",
+      "state" : {
+        "revision" : "108a4402bd62f485d5080c93c11317dfb026004a",
+        "version" : "1.13.0"
+      }
+    },
+    {
+      "identity" : "loaf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/schmidyy/Loaf",
+      "state" : {
+        "revision" : "5f78a659666fd1025579ded60960452a4c60eda6",
+        "version" : "0.7.0"
+      }
+    },
+    {
+      "identity" : "realm-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-cocoa",
+      "state" : {
+        "revision" : "d6f68b8f613dca3b13430da5e0be5d27b500f486",
+        "version" : "10.7.7"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core",
+      "state" : {
+        "revision" : "018adb3469c2882904febca251778129ef4a9b70",
+        "version" : "10.7.2"
+      }
+    },
+    {
+      "identity" : "robin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ahmdx/Robin",
+      "state" : {
+        "revision" : "3805e9862b981f7127eaa30cabb6ea1186e586be",
+        "version" : "0.98.0"
+      }
+    },
+    {
+      "identity" : "rstextviewmaster",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RanduSoft/RSTextViewMaster",
+      "state" : {
+        "revision" : "43c0ae067f9ab08c91b6fe4c0becd1be84baa008",
+        "version" : "2.2.0"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage",
+      "state" : {
+        "revision" : "0fff0d7505b5306348263ea64fcc561253bbeb21",
+        "version" : "5.12.2"
+      }
+    },
+    {
+      "identity" : "underkeyboard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rursache/UnderKeyboard",
+      "state" : {
+        "revision" : "30523d0c585deb682da8ac7040af604c431da66b",
+        "version" : "13.1.0"
+      }
+    }
+  ],
+  "version" : 3
 }
