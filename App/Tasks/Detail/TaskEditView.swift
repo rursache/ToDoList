@@ -143,6 +143,7 @@ struct TaskEditView: View {
                     }
                 }
             }
+            .defaultFocus($isContentFocused, true)
             .onAppear {
                 if let task {
                     content = task.content
@@ -150,7 +151,6 @@ struct TaskEditView: View {
                     date = task.date
                     priority = task.taskPriority
                 }
-                isContentFocused = true
             }
             .sheet(isPresented: $showComments) {
                 if let task {
