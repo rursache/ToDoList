@@ -119,7 +119,7 @@ struct TaskEditView: View {
                     } label: {
                         Image(systemName: priority.systemImage)
                             .foregroundStyle(priority == .none ? .secondary : priority.color)
-                            .font(.body)
+                            .font(.subheadline)
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
@@ -143,7 +143,6 @@ struct TaskEditView: View {
                     }
                 }
             }
-            .defaultFocus($isContentFocused, true)
             .onAppear {
                 if let task {
                     content = task.content
@@ -151,6 +150,10 @@ struct TaskEditView: View {
                     date = task.date
                     priority = task.taskPriority
                 }
+            }
+            .task {
+                try? await Task.sleep(for: .milliseconds(100))
+                isContentFocused = true
             }
             .sheet(isPresented: $showComments) {
                 if let task {
