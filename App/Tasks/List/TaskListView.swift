@@ -43,23 +43,23 @@ struct TaskListView: View {
     }
 
     var body: some View {
-        List {
-            ForEach(filteredTasks) { task in
-                TaskRowView(task: task)
-            }
-            .onDelete(perform: deleteTasks)
-        }
-        .contentMargins(.top, 6, for: .scrollContent)
-        .navigationTitle(filter.displayName)
-        .toolbarTitleDisplayMode(.inlineLarge)
-        .overlay {
+        Group {
             if filteredTasks.isEmpty {
                 ContentUnavailableView(
                     String(localized: "noTasks", defaultValue: "No tasks"),
                     systemImage: "checklist"
                 )
+            } else {
+                List {
+                    ForEach(filteredTasks) {
+                        TaskRowView(task: $0)
+                    }.onDelete(perform: deleteTasks)
+                }
             }
         }
+        .contentMargins(.top, 6, for: .scrollContent)
+        .navigationTitle(filter.displayName)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
@@ -75,9 +75,8 @@ struct TaskListView: View {
                         }
                     }
                 } label: {
-                    Label(String(localized: "sort", defaultValue: "Sort"), systemImage: "arrow.up.arrow.down")
-                        .font(.subheadline)
-                        .imageScale(.small)
+                    Image(systemName: "arrow.up.arrow.down")
+                        .imageScale(.medium)
                 }
             }
 
