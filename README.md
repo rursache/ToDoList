@@ -1,7 +1,7 @@
 # ToDoList
 
 <p align="left">
-  <img width="150" height="150" src="Resources/Icon.jpg" />
+  <img width="150" height="150" src="https://i.imgur.com/gfXtj2j.png" />
 </p>
 
 A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iPad. Featuring SwiftData with iCloud sync, iOS 26 Liquid Glass design, and Swift 6 strict concurrency.
