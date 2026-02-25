@@ -16,6 +16,7 @@ struct TaskEditView: View {
     var task: TaskModel?
 
     @State private var content: String = ""
+    @State private var taskDescription: String = ""
     @State private var date: Date?
     @State private var showDatePicker = false
     @State private var priority: TaskPriority = .none
@@ -24,23 +25,36 @@ struct TaskEditView: View {
     @State private var showReminders = false
     @FocusState private var isContentFocused: Bool
 
-    private static let compactDetent: PresentationDetent = .height(280)
+    private static let compactDetent: PresentationDetent = .height(300)
     private var isNewTask: Bool { task == nil }
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 12) {
+                // Title
                 TextField(
-                    String(localized: "taskContentPlaceholder", defaultValue: "What do you need to do?"),
+                    String(localized: "taskContentPlaceholder", defaultValue: "Task name"),
                     text: $content,
                     axis: .vertical
                 )
                 .font(.body)
                 .lineLimit(1...5)
                 .focused($isContentFocused)
-                .submitLabel(.done)
-                .onSubmit { save() }
+                .submitLabel(.next)
 
+                // Description
+                TextField(
+                    String(localized: "taskDescriptionPlaceholder", defaultValue: "Description"),
+                    text: $taskDescription,
+                    axis: .vertical
+                )
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(1...3)
+
+                Spacer().frame(height: 4)
+
+                // Due date chips
                 dueDateChips
 
                 if showDatePicker {
@@ -57,7 +71,44 @@ struct TaskEditView: View {
 
                 Divider()
 
-                bottomActionRow
+                // Comments & Reminders (edit mode only)
+                if let task {
+                    HStack(spacing: 8) {
+                        Button {
+                            showComments = true
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "bubble.left")
+                                let count = task.activeComments.count
+                                if count > 0 {
+                                    Text("\(count)")
+                                }
+                            }
+                            .font(.subheadline)
+                        }
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.capsule)
+                        .tint(.secondary)
+
+                        Button {
+                            showReminders = true
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "bell")
+                                let count = task.activeReminders.count
+                                if count > 0 {
+                                    Text("\(count)")
+                                }
+                            }
+                            .font(.subheadline)
+                        }
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.capsule)
+                        .tint(.secondary)
+
+                        Spacer()
+                    }
+                }
 
                 Spacer()
             }
@@ -67,8 +118,12 @@ struct TaskEditView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "cancel", defaultValue: "Cancel")) {
-                        dismiss()
+                    Button {
+                        showPriorityPicker = true
+                    } label: {
+                        Image(systemName: priority.systemImage)
+                            .foregroundStyle(priority == .none ? .secondary : priority.color)
+                            .font(.title3)
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
@@ -95,6 +150,7 @@ struct TaskEditView: View {
             .onAppear {
                 if let task {
                     content = task.content
+                    taskDescription = task.taskDescription
                     date = task.date
                     priority = task.taskPriority
                 }
@@ -173,63 +229,6 @@ struct TaskEditView: View {
         }
     }
 
-    // MARK: - Bottom Action Row
-
-    private var bottomActionRow: some View {
-        HStack(spacing: 8) {
-            Button {
-                showPriorityPicker = true
-            } label: {
-                Label(
-                    priority == .none
-                        ? String(localized: "priority", defaultValue: "Priority")
-                        : priority.displayName,
-                    systemImage: priority.systemImage
-                )
-                .font(.subheadline)
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.capsule)
-            .tint(priority == .none ? .secondary : priority.color)
-
-            if let task {
-                Button {
-                    showComments = true
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "bubble.left")
-                        let count = task.activeComments.count
-                        if count > 0 {
-                            Text("\(count)")
-                        }
-                    }
-                    .font(.subheadline)
-                }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
-                .tint(.secondary)
-
-                Button {
-                    showReminders = true
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "bell")
-                        let count = task.activeReminders.count
-                        if count > 0 {
-                            Text("\(count)")
-                        }
-                    }
-                    .font(.subheadline)
-                }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
-                .tint(.secondary)
-            }
-
-            Spacer()
-        }
-    }
-
     // MARK: - Helpers
 
     private func quickDateChip(
@@ -275,12 +274,15 @@ struct TaskEditView: View {
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
+        let trimmedDescription = taskDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+
         if let task {
             task.content = trimmed
+            task.taskDescription = trimmedDescription
             task.date = date
             task.taskPriority = priority
         } else {
-            let newTask = TaskModel(content: trimmed, date: date, priority: priority.rawValue)
+            let newTask = TaskModel(content: trimmed, taskDescription: trimmedDescription, date: date, priority: priority.rawValue)
             modelContext.insert(newTask)
 
             if !appSettings.disableAutoReminders, let taskDate = date, taskDate > Date() {

@@ -13,6 +13,7 @@ import SwiftData
 final class TaskModel {
     var id: UUID = UUID()
     var content: String = ""
+    var taskDescription: String = ""
     var date: Date?
     var completedDate: Date?
     var priority: Int = 0
@@ -28,8 +29,9 @@ final class TaskModel {
 
     init() {}
 
-    init(content: String, date: Date? = nil, priority: Int = 0) {
+    init(content: String, taskDescription: String = "", date: Date? = nil, priority: Int = 0) {
         self.content = content
+        self.taskDescription = taskDescription
         self.date = date
         self.priority = priority
     }

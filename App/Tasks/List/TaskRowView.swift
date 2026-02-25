@@ -23,6 +23,13 @@ struct TaskRowView: View {
                     .strikethrough(task.isCompleted)
                     .foregroundStyle(task.isCompleted ? .secondary : .primary)
 
+                if !task.taskDescription.isEmpty {
+                    Text(task.taskDescription)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
+
                 HStack(spacing: 8) {
                     if let date = task.date {
                         Label(date.formatted(style: .taskRow), systemImage: "calendar")
