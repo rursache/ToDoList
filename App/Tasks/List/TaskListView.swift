@@ -76,6 +76,8 @@ struct TaskListView: View {
                     }
                 } label: {
                     Label(String(localized: "sort", defaultValue: "Sort"), systemImage: "arrow.up.arrow.down")
+                        .font(.subheadline)
+                        .imageScale(.small)
                 }
             }
 
@@ -95,7 +97,7 @@ struct TaskListView: View {
             }
         }
         .sheet(isPresented: $showingAddTask) {
-            TaskEditView()
+            TaskEditView(defaultDate: filter == TaskFilter.today ? Date() : nil)
         }
     }
 

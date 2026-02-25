@@ -18,7 +18,7 @@ struct TaskRowView: View {
                     task.completedDate = newValue ? Date() : nil
                 }
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(task.content)
                     .strikethrough(task.isCompleted)
                     .foregroundStyle(task.isCompleted ? .secondary : .primary)
@@ -30,32 +30,43 @@ struct TaskRowView: View {
                         .lineLimit(2)
                 }
 
-                HStack(spacing: 8) {
-                    if let date = task.date {
-                        Label(date.formatted(style: .taskRow), systemImage: "calendar")
-                            .font(.caption)
-                            .foregroundStyle(date.isPast && !task.isCompleted ? .red : .secondary)
-                    }
+                if hasMetadata {
+                    HStack(spacing: 6) {
+                        if let date = task.date {
+                            metadataTag(
+                                systemImage: "calendar",
+                                text: date.formatted(style: .taskRow),
+                                color: date.isPast && !task.isCompleted ? .red : .secondary
+                            )
+                        }
 
-                    if task.taskPriority != .none {
-                        Label(task.taskPriority.displayName, systemImage: task.taskPriority.systemImage)
-                            .font(.caption)
-                            .foregroundStyle(task.taskPriority.color)
-                    }
+                        if task.taskPriority != .none {
+                            metadataTag(
+                                systemImage: task.taskPriority.systemImage,
+                                text: task.taskPriority.displayName,
+                                color: task.taskPriority.color
+                            )
+                        }
 
-                    let commentCount = task.activeComments.count
-                    if commentCount > 0 {
-                        Label("\(commentCount)", systemImage: "bubble.left")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                        let commentCount = task.activeComments.count
+                        if commentCount > 0 {
+                            metadataTag(
+                                systemImage: "bubble.left",
+                                text: "\(commentCount)",
+                                color: .secondary
+                            )
+                        }
 
-                    let reminderCount = task.activeReminders.count
-                    if reminderCount > 0 {
-                        Label("\(reminderCount)", systemImage: "bell")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        let reminderCount = task.activeReminders.count
+                        if reminderCount > 0 {
+                            metadataTag(
+                                systemImage: "bell",
+                                text: "\(reminderCount)",
+                                color: .secondary
+                            )
+                        }
                     }
+                    .padding(.top, 1)
                 }
             }
 
@@ -93,5 +104,18 @@ struct TaskRowView: View {
                 Label(String(localized: "delete", defaultValue: "Delete"), systemImage: "trash")
             }
         }
+    }
+
+    private var hasMetadata: Bool {
+        task.date != nil || task.taskPriority != .none || task.activeComments.count > 0 || task.activeReminders.count > 0
+    }
+
+    private func metadataTag(systemImage: String, text: String, color: Color) -> some View {
+        HStack(spacing: 2) {
+            Image(systemName: systemImage)
+            Text(text)
+        }
+        .font(.caption)
+        .foregroundStyle(color)
     }
 }

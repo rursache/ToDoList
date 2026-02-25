@@ -14,6 +14,7 @@ struct TaskEditView: View {
     @Environment(AppSettings.self) private var appSettings
 
     var task: TaskModel?
+    var defaultDate: Date?
 
     @State private var content: String = ""
     @State private var taskDescription: String = ""
@@ -152,6 +153,8 @@ struct TaskEditView: View {
                     taskDescription = task.taskDescription
                     date = task.date
                     priority = task.taskPriority
+                } else if let defaultDate {
+                    date = quickDate(for: defaultDate)
                 }
             }
             .task {
