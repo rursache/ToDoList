@@ -25,7 +25,7 @@ struct TaskEditView: View {
     @State private var showReminders = false
     @FocusState private var isContentFocused: Bool
 
-    private static let compactDetent: PresentationDetent = .height(300)
+    private static let compactDetent: PresentationDetent = .height(210)
     private var isNewTask: Bool { task == nil }
 
     var body: some View {
@@ -69,8 +69,6 @@ struct TaskEditView: View {
                     .datePickerStyle(.graphical)
                 }
 
-                Divider()
-
                 // Comments & Reminders (edit mode only)
                 if let task {
                     HStack(spacing: 8) {
@@ -109,8 +107,6 @@ struct TaskEditView: View {
                         Spacer()
                     }
                 }
-
-                Spacer()
             }
             .padding(.horizontal)
             .padding(.top, 8)
@@ -123,7 +119,7 @@ struct TaskEditView: View {
                     } label: {
                         Image(systemName: priority.systemImage)
                             .foregroundStyle(priority == .none ? .secondary : priority.color)
-                            .font(.title3)
+                            .font(.body)
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
