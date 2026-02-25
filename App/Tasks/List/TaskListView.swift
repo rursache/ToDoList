@@ -49,6 +49,7 @@ struct TaskListView: View {
             }
             .onDelete(perform: deleteTasks)
         }
+        .contentMargins(.top, 6, for: .scrollContent)
         .navigationTitle(filter.displayName)
         .toolbarTitleDisplayMode(.inlineLarge)
         .overlay {
