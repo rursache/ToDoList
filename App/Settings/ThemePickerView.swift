@@ -34,6 +34,7 @@ struct ThemePickerView: View {
             }
         }
         .navigationTitle(String(localized: "theme", defaultValue: "Theme"))
+        .toolbarVisibility(.hidden, for: .tabBar)
     }
 
     private func applyTheme(_ theme: AppTheme) {
