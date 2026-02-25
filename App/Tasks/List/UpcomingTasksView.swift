@@ -59,5 +59,6 @@ struct UpcomingTasksView: View {
             }
         }
         .navigationTitle(String(localized: "tabUpcoming", defaultValue: "Upcoming"))
+        .toolbarTitleDisplayMode(.inlineLarge)
     }
 }

@@ -83,6 +83,7 @@ struct SettingsView: View {
             }
         }
         .navigationTitle(String(localized: "tabSettings", defaultValue: "Settings"))
+        .toolbarTitleDisplayMode(.inlineLarge)
         .sheet(isPresented: $showingFeedback) {
             FeedbackMailView()
         }
