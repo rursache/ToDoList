@@ -52,6 +52,8 @@ struct TaskEditView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .lineLimit(1...3)
+                .contentShape(.rect)
+                .padding(.bottom, 8)
 
                 Spacer().frame(height: 4)
 
@@ -110,7 +112,7 @@ struct TaskEditView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.top, 4)
+            .padding(.top, 0)
             .navigationTitle(isNewTask ? String(localized: "newTask", defaultValue: "New Task") : String(localized: "editTask", defaultValue: "Edit Task"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
