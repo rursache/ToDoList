@@ -15,6 +15,7 @@ final class TaskModel {
     var content: String = ""
     var taskDescription: String = ""
     var date: Date?
+    var hasTime: Bool = false
     var completedDate: Date?
     var priority: Int = 0
     var isCompleted: Bool = false

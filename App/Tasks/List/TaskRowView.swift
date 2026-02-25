@@ -33,10 +33,11 @@ struct TaskRowView: View {
                 if hasMetadata {
                     HStack(spacing: 6) {
                         if let date = task.date {
+                            let isOverdue = task.hasTime ? date.isPast : date.isPastDay
                             metadataTag(
                                 systemImage: "calendar",
-                                text: date.formatted(style: .taskRow),
-                                color: date.isPast && !task.isCompleted ? .red : .secondary
+                                text: date.formatted(style: .taskRow, hasTime: task.hasTime),
+                                color: isOverdue && !task.isCompleted ? .red : .secondary
                             )
                         }
 

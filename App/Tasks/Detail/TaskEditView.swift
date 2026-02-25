@@ -19,6 +19,7 @@ struct TaskEditView: View {
     @State private var content: String = ""
     @State private var taskDescription: String = ""
     @State private var date: Date?
+    @State private var hasTime: Bool = false
     @State private var showDatePicker = false
     @State private var priority: TaskPriority = .none
     @State private var showPriorityPicker = false
@@ -26,7 +27,8 @@ struct TaskEditView: View {
     @State private var showReminders = false
     @FocusState private var isContentFocused: Bool
 
-    private static let compactDetent: PresentationDetent = .height(210)
+    private static let newTaskDetent: PresentationDetent = .height(210)
+    private static let editTaskDetent: PresentationDetent = .height(260)
     private var isNewTask: Bool { task == nil }
 
     var body: some View {
@@ -61,30 +63,17 @@ struct TaskEditView: View {
                 // Due date chips
                 dueDateChips
 
-                if showDatePicker {
-                    DatePicker(
-                        "",
-                        selection: Binding(
-                            get: { date ?? Date() },
-                            set: { date = $0 }
-                        ),
-                        displayedComponents: [.date, .hourAndMinute]
-                    )
-                    .datePickerStyle(.graphical)
-                }
-
                 // Comments & Reminders (edit mode only)
                 if let task {
                     HStack(spacing: 8) {
+                        Spacer()
+
                         Button {
                             showComments = true
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "bubble.left")
-                                let count = task.activeComments.count
-                                if count > 0 {
-                                    Text("\(count)")
-                                }
+                                Text(commentsLabel)
                             }
                             .font(.subheadline)
                         }
@@ -97,10 +86,7 @@ struct TaskEditView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "bell")
-                                let count = task.activeReminders.count
-                                if count > 0 {
-                                    Text("\(count)")
-                                }
+                                Text(remindersLabel)
                             }
                             .font(.subheadline)
                         }
@@ -152,9 +138,11 @@ struct TaskEditView: View {
                     content = task.content
                     taskDescription = task.taskDescription
                     date = task.date
+                    hasTime = task.hasTime
                     priority = task.taskPriority
                 } else if let defaultDate {
-                    date = quickDate(for: defaultDate)
+                    date = defaultDate.startOfDay
+                    hasTime = false
                 }
             }
             .task {
@@ -172,8 +160,11 @@ struct TaskEditView: View {
                 }
             }
         }
-        .presentationDetents(showDatePicker ? [.large] : [Self.compactDetent])
+        .presentationDetents([isNewTask ? Self.newTaskDetent : Self.editTaskDetent])
         .presentationDragIndicator(.visible)
+        .sheet(isPresented: $showDatePicker) {
+            DatePickerSheet(date: $date, hasTime: $hasTime)
+        }
     }
 
     // MARK: - Due Date Chips
@@ -187,7 +178,8 @@ struct TaskEditView: View {
                     isSelected: date?.isToday == true,
                     tintColor: .green
                 ) {
-                    date = quickDate(for: Date())
+                    date = Date().startOfDay
+                    hasTime = false
                     showDatePicker = false
                 }
 
@@ -197,7 +189,8 @@ struct TaskEditView: View {
                     isSelected: date?.isTomorrow == true,
                     tintColor: .orange
                 ) {
-                    date = quickDate(for: .tomorrow)
+                    date = Date.tomorrow.startOfDay
+                    hasTime = false
                     showDatePicker = false
                 }
 
@@ -207,17 +200,19 @@ struct TaskEditView: View {
                     isSelected: isDateNextWeek,
                     tintColor: .purple
                 ) {
-                    date = quickDate(for: .nextWeek)
+                    date = Date.nextWeek.startOfDay
+                    hasTime = false
                     showDatePicker = false
                 }
 
                 quickDateChip(
                     customDateLabel,
                     systemImage: "calendar.badge.clock",
-                    isSelected: showDatePicker || isCustomDate,
+                    isSelected: isCustomDate,
                     tintColor: .blue
                 ) {
-                    showDatePicker.toggle()
+                    isContentFocused = false
+                    showDatePicker = true
                 }
 
                 if date != nil {
@@ -252,10 +247,6 @@ struct TaskEditView: View {
         .tint(isSelected ? tintColor : .secondary)
     }
 
-    private func quickDate(for day: Date) -> Date {
-        Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: day) ?? day
-    }
-
     private var isDateNextWeek: Bool {
         guard let date else { return false }
         return Calendar.current.isDate(date, inSameDayAs: Date.nextWeek)
@@ -266,9 +257,21 @@ struct TaskEditView: View {
         return !date.isToday && !date.isTomorrow && !isDateNextWeek
     }
 
+    private var commentsLabel: String {
+        let count = task?.activeComments.count ?? 0
+        let base = String(localized: "comments", defaultValue: "Comments")
+        return count > 0 ? "\(base) (\(count))" : base
+    }
+
+    private var remindersLabel: String {
+        let count = task?.activeReminders.count ?? 0
+        let base = String(localized: "reminders", defaultValue: "Reminders")
+        return count > 0 ? "\(base) (\(count))" : base
+    }
+
     private var customDateLabel: String {
         if isCustomDate, let date {
-            return date.formatted(style: .taskRow)
+            return date.formatted(style: .taskRow, hasTime: hasTime)
         }
         return String(localized: "pickDate", defaultValue: "Pick Date")
     }
@@ -285,9 +288,11 @@ struct TaskEditView: View {
             task.content = trimmed
             task.taskDescription = trimmedDescription
             task.date = date
+            task.hasTime = hasTime
             task.taskPriority = priority
         } else {
             let newTask = TaskModel(content: trimmed, taskDescription: trimmedDescription, date: date, priority: priority.rawValue)
+            newTask.hasTime = hasTime
             modelContext.insert(newTask)
 
             if !appSettings.disableAutoReminders, let taskDate = date, taskDate > Date() {
@@ -306,5 +311,65 @@ struct TaskEditView: View {
         }
 
         dismiss()
+    }
+}
+
+// MARK: - Date Picker Sheet
+
+private struct DatePickerSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var date: Date?
+    @Binding var hasTime: Bool
+
+    @State private var selectedDate: Date = Date()
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 16) {
+                DatePicker(
+                    "",
+                    selection: $selectedDate,
+                    displayedComponents: hasTime ? [.date, .hourAndMinute] : [.date]
+                )
+                .datePickerStyle(.graphical)
+
+                Toggle(isOn: $hasTime) {
+                    Label(
+                        String(localized: "addTime", defaultValue: "Time"),
+                        systemImage: "clock"
+                    )
+                    .font(.subheadline)
+                }
+                .tint(.blue)
+                .padding(.horizontal)
+                .onChange(of: hasTime) { _, newValue in
+                    if !newValue {
+                        selectedDate = selectedDate.startOfDay
+                    }
+                }
+
+                Spacer()
+            }
+            .navigationTitle(String(localized: "pickDate", defaultValue: "Pick Date"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(String(localized: "cancel", defaultValue: "Cancel")) {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(String(localized: "done", defaultValue: "Done")) {
+                        date = selectedDate
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            selectedDate = date ?? Date()
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 }

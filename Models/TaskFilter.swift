@@ -32,4 +32,31 @@ enum TaskFilter: Int, CaseIterable, Identifiable {
         case .completed: "checkmark.circle"
         }
     }
+
+    var emptyTitle: String {
+        switch self {
+        case .inbox: String(localized: "emptyInboxTitle", defaultValue: "Inbox is empty")
+        case .today: String(localized: "emptyTodayTitle", defaultValue: "Nothing due today")
+        case .upcoming: String(localized: "emptyUpcomingTitle", defaultValue: "All clear ahead")
+        case .completed: String(localized: "emptyCompletedTitle", defaultValue: "No completed tasks")
+        }
+    }
+
+    var emptyDescription: String {
+        switch self {
+        case .inbox: String(localized: "emptyInboxDescription", defaultValue: "Tasks you add will appear here.")
+        case .today: String(localized: "emptyTodayDescription", defaultValue: "Enjoy your free day or plan something new.")
+        case .upcoming: String(localized: "emptyUpcomingDescription", defaultValue: "No upcoming tasks scheduled yet.")
+        case .completed: String(localized: "emptyCompletedDescription", defaultValue: "Completed tasks will show up here.")
+        }
+    }
+
+    var emptySystemImage: String {
+        switch self {
+        case .inbox: "tray"
+        case .today: "sun.max.fill"
+        case .upcoming: "calendar.badge.checkmark"
+        case .completed: "party.popper"
+        }
+    }
 }

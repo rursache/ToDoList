@@ -45,10 +45,7 @@ struct TaskListView: View {
     var body: some View {
         Group {
             if filteredTasks.isEmpty {
-                ContentUnavailableView(
-                    String(localized: "noTasks", defaultValue: "No tasks"),
-                    systemImage: "checklist"
-                )
+                emptyStateView
             } else {
                 List {
                     ForEach(filteredTasks) {
@@ -97,6 +94,14 @@ struct TaskListView: View {
         }
         .sheet(isPresented: $showingAddTask) {
             TaskEditView(defaultDate: filter == TaskFilter.today ? Date() : nil)
+        }
+    }
+
+    private var emptyStateView: some View {
+        ContentUnavailableView {
+            Label(filter.emptyTitle, systemImage: filter.emptySystemImage)
+        } description: {
+            Text(filter.emptyDescription)
         }
     }
 

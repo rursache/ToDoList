@@ -47,10 +47,14 @@ extension Date {
         self < Date()
     }
 
-    func formatted(style: DateFormattingStyle) -> String {
+    var isPastDay: Bool {
+        endOfDay < Date()
+    }
+
+    func formatted(style: DateFormattingStyle, hasTime: Bool = true) -> String {
         switch style {
         case .taskRow:
-            return taskRowFormatted
+            return taskRowFormatted(hasTime: hasTime)
         case .reminder:
             return reminderFormatted
         case .comment:
@@ -58,21 +62,26 @@ extension Date {
         }
     }
 
-    private var taskRowFormatted: String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
-        let timeString = timeFormatter.string(from: self)
+    private func taskRowFormatted(hasTime: Bool) -> String {
+        let timeSuffix: String
+        if hasTime {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            timeSuffix = ", \(timeFormatter.string(from: self))"
+        } else {
+            timeSuffix = ""
+        }
 
         if isToday {
-            return String(localized: "dateToday", defaultValue: "Today") + ", \(timeString)"
+            return String(localized: "dateToday", defaultValue: "Today") + timeSuffix
         } else if isTomorrow {
-            return String(localized: "dateTomorrow", defaultValue: "Tomorrow") + ", \(timeString)"
+            return String(localized: "dateTomorrow", defaultValue: "Tomorrow") + timeSuffix
         } else if isYesterday {
-            return String(localized: "dateYesterday", defaultValue: "Yesterday") + ", \(timeString)"
+            return String(localized: "dateYesterday", defaultValue: "Yesterday") + timeSuffix
         } else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d MMM"
-            return dateFormatter.string(from: self) + ", \(timeString)"
+            return dateFormatter.string(from: self) + timeSuffix
         }
     }
 
