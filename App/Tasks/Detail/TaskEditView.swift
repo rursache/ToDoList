@@ -64,7 +64,7 @@ struct TaskEditView: View {
                 dueDateChips
 
                 // Comments & Reminders (edit mode only)
-                if let task {
+                if let _ = task {
                     HStack(spacing: 8) {
                         Spacer()
 

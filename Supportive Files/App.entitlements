@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.ro.randusoft.todolist</string>
+		<string>iCloud.ro.randusoft.RSToDoList</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -14,7 +14,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.ro.randusoft.todolist</string>
+		<string>group.ro.randusoft.RSToDoList</string>
 	</array>
 </dict>
 </plist>
