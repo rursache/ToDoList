@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AdaptiveNavigationView: View {
-    @State private var selectedFilter: TaskFilter? = .today
+    @State private var selectedFilter: TaskFilter? = .inbox
 
     var body: some View {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -19,11 +19,7 @@ struct AdaptiveNavigationView: View {
                 .navigationTitle("ToDoList")
             } detail: {
                 if let filter = selectedFilter {
-                    if filter == .tomorrow || filter == .week || filter == .custom {
-                        UpcomingTasksView()
-                    } else {
-                        TaskListView(filter: filter)
-                    }
+                    TaskListView(filter: filter)
                 } else {
                     ContentUnavailableView(
                         String(localized: "selectCategory", defaultValue: "Select a category"),
@@ -37,7 +33,7 @@ struct AdaptiveNavigationView: View {
     }
 
     private var sidebarFilters: [TaskFilter] {
-        [.today, .all, .tomorrow, .week, .completed]
+        [.inbox, .today, .upcoming, .completed]
     }
 }
 

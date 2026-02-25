@@ -19,10 +19,9 @@ struct SettingsView: View {
         Form {
             Section(String(localized: "settingsPreferences", defaultValue: "Preferences")) {
                 Picker(selection: $settings.startPage) {
-                    Text(String(localized: "filterToday", defaultValue: "Today")).tag(0)
-                    Text(String(localized: "filterAll", defaultValue: "All Tasks")).tag(1)
-                    Text(String(localized: "filterTomorrow", defaultValue: "Tomorrow")).tag(2)
-                    Text(String(localized: "filterWeek", defaultValue: "Next 7 Days")).tag(3)
+                    Text(String(localized: "filterInbox", defaultValue: "Inbox")).tag(0)
+                    Text(String(localized: "filterToday", defaultValue: "Today")).tag(1)
+                    Text(String(localized: "filterUpcoming", defaultValue: "Upcoming")).tag(2)
                 } label: {
                     Label(String(localized: "startPage", defaultValue: "Start Page"), systemImage: "star")
                 }

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @State private var selectedFilter: TaskFilter? = .today
+    @State private var selectedFilter: TaskFilter? = .inbox
 
     private var sidebarFilters: [TaskFilter] {
-        [.today, .all, .tomorrow, .week, .completed]
+        [.inbox, .today, .upcoming, .completed]
     }
 
     var body: some View {

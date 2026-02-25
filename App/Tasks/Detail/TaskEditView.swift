@@ -22,7 +22,8 @@ struct TaskEditView: View {
     @State private var showPriorityPicker = false
     @State private var showComments = false
     @State private var showReminders = false
-    @State private var currentDetent: PresentationDetent = .medium
+    private static let compactDetent: PresentationDetent = .height(280)
+    @State private var currentDetent: PresentationDetent = TaskEditView.compactDetent
     @FocusState private var isContentFocused: Bool
 
     private var isNewTask: Bool { task == nil }
@@ -58,6 +59,8 @@ struct TaskEditView: View {
                 Divider()
 
                 bottomActionRow
+
+                Spacer()
             }
             .padding(.horizontal)
             .padding(.top, 8)
@@ -93,7 +96,7 @@ struct TaskEditView: View {
             }
             .onChange(of: showDatePicker) { _, showing in
                 withAnimation {
-                    currentDetent = showing ? .large : .medium
+                    currentDetent = showing ? .large : Self.compactDetent
                 }
             }
             .sheet(isPresented: $showComments) {
@@ -107,7 +110,7 @@ struct TaskEditView: View {
                 }
             }
         }
-        .presentationDetents([.medium, .large], selection: $currentDetent)
+        .presentationDetents([Self.compactDetent, .large], selection: $currentDetent)
         .presentationDragIndicator(.visible)
     }
 

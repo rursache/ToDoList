@@ -10,19 +10,15 @@ import SwiftData
 
 struct TaskListView: View {
     let filter: TaskFilter
-    var customStartDate: Date
-    var customEndDate: Date
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppSettings.self) private var appSettings
     @Query private var allTasks: [TaskModel]
-    @State private var searchText = ""
     @State private var currentSort: TaskSort = .dateAscending
     @State private var showingAddTask = false
 
-    init(filter: TaskFilter, customStartDate: Date = Date(), customEndDate: Date = Date().addingTimeInterval(86400 * 14)) {
+    init(filter: TaskFilter) {
         self.filter = filter
-        self.customStartDate = customStartDate
-        self.customEndDate = customEndDate
         _allTasks = Query(sort: [SortDescriptor(\TaskModel.date, order: .forward), SortDescriptor(\TaskModel.createdDate, order: .forward)])
     }
 
@@ -30,30 +26,17 @@ struct TaskListView: View {
         var tasks = allTasks.filter { !$0.isDeleted }
 
         switch filter {
-        case .all:
+        case .inbox:
             tasks = tasks.filter { !$0.isCompleted }
         case .today:
             let start = Date().startOfDay
             let end = Date().endOfDay
             tasks = tasks.filter { !$0.isCompleted && $0.date != nil && $0.date! >= start && $0.date! <= end }
-        case .tomorrow:
-            let start = Date.tomorrow.startOfDay
-            let end = Date.tomorrow.endOfDay
-            tasks = tasks.filter { !$0.isCompleted && $0.date != nil && $0.date! >= start && $0.date! <= end }
-        case .week:
+        case .upcoming:
             let start = Date().startOfDay
-            let end = Date.nextWeek.endOfDay
-            tasks = tasks.filter { !$0.isCompleted && $0.date != nil && $0.date! >= start && $0.date! <= end }
-        case .custom:
-            let start = customStartDate.startOfDay
-            let end = customEndDate.endOfDay
-            tasks = tasks.filter { !$0.isCompleted && $0.date != nil && $0.date! >= start && $0.date! <= end }
+            tasks = tasks.filter { !$0.isCompleted && $0.date != nil && $0.date! >= start }
         case .completed:
             tasks = tasks.filter { $0.isCompleted }
-        }
-
-        if !searchText.isEmpty {
-            tasks = tasks.filter { $0.content.localizedCaseInsensitiveContains(searchText) }
         }
 
         return tasks.sorted(using: currentSort)
@@ -66,14 +49,13 @@ struct TaskListView: View {
             }
             .onDelete(perform: deleteTasks)
         }
-        .searchable(text: $searchText, prompt: String(localized: "searchPlaceholder", defaultValue: "Search"))
         .navigationTitle(filter.displayName)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .overlay {
             if filteredTasks.isEmpty {
                 ContentUnavailableView(
-                    searchText.isEmpty ? String(localized: "noTasks", defaultValue: "No tasks") : String(localized: "noSearchResults", defaultValue: "No results"),
-                    systemImage: searchText.isEmpty ? "checklist" : "magnifyingglass",
-                    description: Text(searchText.isEmpty ? "" : String(localized: "tryDifferentSearch", defaultValue: "Try a different search term"))
+                    String(localized: "noTasks", defaultValue: "No tasks"),
+                    systemImage: "checklist"
                 )
             }
         }
@@ -95,18 +77,20 @@ struct TaskListView: View {
                     Label(String(localized: "sort", defaultValue: "Sort"), systemImage: "arrow.up.arrow.down")
                 }
             }
-        }
-        .safeAreaInset(edge: .bottom, alignment: .trailing) {
+
             if filter != .completed {
-                Button {
-                    showingAddTask = true
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.title2.bold())
-                        .frame(width: 56, height: 56)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingAddTask = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundStyle(.white.opacity(0.8))
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                    }
+                    .glassEffect(.clear.tint(appSettings.theme.color).interactive(), in: .circle)
+                    .scaleEffect(1.2)
                 }
-                .glassEffect(.regular.interactive())
-                .padding()
             }
         }
         .sheet(isPresented: $showingAddTask) {
@@ -124,7 +108,7 @@ struct TaskListView: View {
 
 #Preview {
     NavigationStack {
-        TaskListView(filter: .all)
+        TaskListView(filter: .inbox)
     }
     .modelContainer(DatabaseConfiguration.makePreviewContainer())
 }

@@ -9,44 +9,57 @@ import SwiftUI
 import SwiftData
 
 struct ContentTabView: View {
+    enum TabSelection: Int {
+        case inbox
+        case today
+        case upcoming
+        case settings
+        case search
+    }
+
     @Environment(AppSettings.self) private var appSettings
+    @State private var selectedTab: TabSelection
+
+    init() {
+        let page = AppSettings.shared.startPage
+        switch page {
+        case 1: _selectedTab = State(initialValue: .today)
+        case 2: _selectedTab = State(initialValue: .upcoming)
+        default: _selectedTab = State(initialValue: .inbox)
+        }
+    }
 
     var body: some View {
-        TabView {
-            Tab(String(localized: "tabToday", defaultValue: "Today"), systemImage: "sun.max") {
+        TabView(selection: $selectedTab) {
+            Tab(String(localized: "tabInbox", defaultValue: "Inbox"), systemImage: "tray", value: .inbox) {
+                NavigationStack {
+                    TaskListView(filter: .inbox)
+                }
+            }
+
+            Tab(String(localized: "tabToday", defaultValue: "Today"), systemImage: "sun.max", value: .today) {
                 NavigationStack {
                     TaskListView(filter: .today)
                 }
             }
 
-            Tab(String(localized: "tabAll", defaultValue: "All"), systemImage: "tray") {
+            Tab(String(localized: "tabUpcoming", defaultValue: "Upcoming"), systemImage: "calendar", value: .upcoming) {
                 NavigationStack {
-                    TaskListView(filter: .all)
+                    TaskListView(filter: .upcoming)
                 }
             }
 
-            Tab(String(localized: "tabUpcoming", defaultValue: "Upcoming"), systemImage: "calendar") {
-                NavigationStack {
-                    UpcomingTasksView()
-                }
-            }
-
-            Tab(String(localized: "tabCompleted", defaultValue: "Completed"), systemImage: "checkmark.circle") {
-                NavigationStack {
-                    TaskListView(filter: .completed)
-                }
-            }
-
-            Tab(String(localized: "tabSettings", defaultValue: "Settings"), systemImage: "gear") {
+            Tab(String(localized: "tabSettings", defaultValue: "Settings"), systemImage: "gearshape", value: .settings) {
                 NavigationStack {
                     SettingsView()
                 }
             }
-        }
-    }
 
-    @ViewBuilder
-    static var defaultDetailView: some View {
-        TaskListView(filter: .today)
+            Tab(value: TabSelection.search, role: .search) {
+                NavigationStack {
+                    SearchView()
+                }
+            }
+        }
     }
 }
