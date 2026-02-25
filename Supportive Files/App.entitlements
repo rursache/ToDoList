@@ -5,12 +5,16 @@
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
-	<array/>
+	<array>
+		<string>iCloud.ro.randusoft.todolist</string>
+	</array>
 	<key>com.apple.developer.icloud-services</key>
-	<array/>
-	<key>com.apple.security.app-sandbox</key>
-	<true/>
-	<key>com.apple.security.files.user-selected.read-only</key>
-	<true/>
+	<array>
+		<string>CloudKit</string>
+	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.ro.randusoft.todolist</string>
+	</array>
 </dict>
 </plist>

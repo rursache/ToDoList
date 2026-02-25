@@ -9,7 +9,8 @@
 import Foundation
 import SwiftUI
 
-public func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+@MainActor
+public func ?? <T>(lhs: Binding<T?>, rhs: T) -> Binding<T> {
     Binding(
         get: { lhs.wrappedValue ?? rhs },
         set: { lhs.wrappedValue = $0 }
@@ -17,12 +18,8 @@ public func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
 }
 
 extension View {
-    /// Applies the given transform if the given condition evaluates to `true`.
-    /// - Parameters:
-    ///   - condition: The condition to evaluate.
-    ///   - transform: The transform to apply to the source `View`.
-    /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
-    @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
         if condition() {
             transform(self)
         } else {
