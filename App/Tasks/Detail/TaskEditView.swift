@@ -41,6 +41,7 @@ struct TaskEditView: View {
                 .lineLimit(1...5)
                 .focused($isContentFocused)
                 .submitLabel(.next)
+                .padding(.bottom, 2)
 
                 // Description
                 TextField(
@@ -109,8 +110,8 @@ struct TaskEditView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.top, 8)
-            .navigationTitle(isNewTask ? "" : String(localized: "editTask", defaultValue: "Edit Task"))
+            .padding(.top, 4)
+            .navigationTitle(isNewTask ? String(localized: "newTask", defaultValue: "New Task") : String(localized: "editTask", defaultValue: "Edit Task"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
