@@ -45,7 +45,9 @@ final class AppSettings: Sendable {
         AppTheme(rawValue: selectedTheme) ?? .red
     }
 
-    private init() {}
+    private init() {
+        UserDefaults.standard.register(defaults: ["startPage": 1])
+    }
 }
 
 enum AppTheme: Int, CaseIterable, Identifiable {

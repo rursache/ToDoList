@@ -23,9 +23,9 @@ struct ContentTabView: View {
     init() {
         let page = AppSettings.shared.startPage
         switch page {
-        case 1: _selectedTab = State(initialValue: .today)
+        case 0: _selectedTab = State(initialValue: .inbox)
         case 2: _selectedTab = State(initialValue: .upcoming)
-        default: _selectedTab = State(initialValue: .inbox)
+        default: _selectedTab = State(initialValue: .today)
         }
     }
 
@@ -56,9 +56,7 @@ struct ContentTabView: View {
             }
 
             Tab(value: TabSelection.search, role: .search) {
-                NavigationStack {
-                    SearchView()
-                }
+                SearchView()
             }
         }
     }

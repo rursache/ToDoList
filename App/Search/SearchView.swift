@@ -21,40 +21,43 @@ struct SearchView: View {
     }
 
     var body: some View {
-        Group {
-            if searchText.isEmpty {
-                ContentUnavailableView(
-                    String(localized: "searchTasks", defaultValue: "Search Tasks"),
-                    systemImage: "magnifyingglass",
-                    description: Text(String(localized: "searchDescription", defaultValue: "Search across all your tasks"))
-                )
-            } else if filteredTasks.isEmpty {
-                ContentUnavailableView(
-                    String(localized: "noSearchResults", defaultValue: "No Results"),
-                    systemImage: "magnifyingglass",
-                    description: Text(String(localized: "noSearchResultsDescription", defaultValue: "No tasks match \"\(searchText)\""))
-                )
-            } else {
-                List {
-                    ForEach(filteredTasks) { task in
-                        TaskRowView(task: task)
+        NavigationStack {
+            Group {
+                if searchText.isEmpty {
+                    ContentUnavailableView(
+                        String(localized: "searchTasks", defaultValue: "Search Tasks"),
+                        systemImage: "magnifyingglass",
+                        description: Text(String(localized: "searchDescription", defaultValue: "Search across all your tasks"))
+                    )
+                } else if filteredTasks.isEmpty {
+                    ContentUnavailableView(
+                        String(localized: "noSearchResults", defaultValue: "No Results"),
+                        systemImage: "magnifyingglass",
+                        description: Text(String(localized: "noSearchResultsDescription", defaultValue: "No tasks match \"\(searchText)\""))
+                    )
+                } else {
+                    List {
+                        ForEach(filteredTasks) { task in
+                            TaskRowView(task: task)
+                        }
                     }
                 }
             }
-        }
-        .toolbarTitleDisplayMode(.inlineLarge)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Text(String(localized: "search", defaultValue: "Search"))
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .fixedSize()
+            .background(Color(.systemGroupedBackground))
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text(String(localized: "search", defaultValue: "Search"))
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .fixedSize()
+                }.sharedBackgroundVisibility(.hidden)
             }
+            .searchable(text: $searchText, prompt: String(localized: "searchPlaceholder", defaultValue: "Search tasks..."))
+            .searchFocused($isSearchFocused)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
         }
-        .searchable(text: $searchText, prompt: String(localized: "searchPlaceholder", defaultValue: "Search tasks..."))
-        .searchFocused($isSearchFocused)
-        .searchPresentationToolbarBehavior(.avoidHidingContent)
         .onAppear {
             isSearchFocused = true
         }

@@ -90,7 +90,7 @@ struct TaskListView: View {
                     }
                     .glassEffect(.clear.tint(appSettings.theme.color).interactive(), in: .circle)
                     .scaleEffect(1.2)
-                }
+                }.sharedBackgroundVisibility(.hidden)
             }
         }
         .sheet(isPresented: $showingAddTask) {
