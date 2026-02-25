@@ -22,10 +22,9 @@ struct TaskEditView: View {
     @State private var showPriorityPicker = false
     @State private var showComments = false
     @State private var showReminders = false
-    private static let compactDetent: PresentationDetent = .height(280)
-    @State private var currentDetent: PresentationDetent = TaskEditView.compactDetent
     @FocusState private var isContentFocused: Bool
 
+    private static let compactDetent: PresentationDetent = .height(280)
     private var isNewTask: Bool { task == nil }
 
     var body: some View {
@@ -72,6 +71,15 @@ struct TaskEditView: View {
                         dismiss()
                     }
                 }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        save()
+                    } label: {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .font(.title2)
+                    }
+                    .disabled(content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                }
             }
             .confirmationDialog(
                 String(localized: "selectPriority", defaultValue: "Select Priority"),
@@ -90,14 +98,7 @@ struct TaskEditView: View {
                     date = task.date
                     priority = task.taskPriority
                 }
-                if isNewTask {
-                    isContentFocused = true
-                }
-            }
-            .onChange(of: showDatePicker) { _, showing in
-                withAnimation {
-                    currentDetent = showing ? .large : Self.compactDetent
-                }
+                isContentFocused = true
             }
             .sheet(isPresented: $showComments) {
                 if let task {
@@ -110,7 +111,7 @@ struct TaskEditView: View {
                 }
             }
         }
-        .presentationDetents([Self.compactDetent, .large], selection: $currentDetent)
+        .presentationDetents(showDatePicker ? [.large] : [Self.compactDetent])
         .presentationDragIndicator(.visible)
     }
 
@@ -226,14 +227,6 @@ struct TaskEditView: View {
             }
 
             Spacer()
-
-            Button {
-                save()
-            } label: {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.title2)
-            }
-            .disabled(content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
     }
 
