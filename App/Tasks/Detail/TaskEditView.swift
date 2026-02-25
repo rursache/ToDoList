@@ -37,7 +37,7 @@ struct TaskEditView: View {
                     text: $content,
                     axis: .vertical
                 )
-                .font(.body)
+                .font(.title3)
                 .lineLimit(1...5)
                 .focused($isContentFocused)
                 .submitLabel(.next)
@@ -48,7 +48,7 @@ struct TaskEditView: View {
                     text: $taskDescription,
                     axis: .vertical
                 )
-                .font(.subheadline)
+                .font(.body)
                 .foregroundStyle(.secondary)
                 .lineLimit(1...3)
 
