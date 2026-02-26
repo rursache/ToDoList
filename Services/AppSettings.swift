@@ -15,7 +15,12 @@ final class AppSettings: Sendable {
 
     var selectedTheme: Int {
         get { access(keyPath: \.selectedTheme); return UserDefaults.standard.integer(forKey: "selectedTheme") }
-        set { withMutation(keyPath: \.selectedTheme) { UserDefaults.standard.set(newValue, forKey: "selectedTheme") } }
+        set {
+            withMutation(keyPath: \.selectedTheme) {
+                UserDefaults.standard.set(newValue, forKey: "selectedTheme")
+                UserDefaults(suiteName: DatabaseConfiguration.appGroupId)?.set(newValue, forKey: "selectedTheme")
+            }
+        }
     }
 
     var startPage: Int {
@@ -44,5 +49,9 @@ final class AppSettings: Sendable {
 
     private init() {
         UserDefaults.standard.register(defaults: ["startPage": 1, "autoReminderMinutes": 10])
+        UserDefaults(suiteName: DatabaseConfiguration.appGroupId)?.set(
+            UserDefaults.standard.integer(forKey: "selectedTheme"),
+            forKey: "selectedTheme"
+        )
     }
 }

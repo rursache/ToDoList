@@ -9,6 +9,8 @@ import Foundation
 import SwiftData
 
 struct DatabaseConfiguration {
+    static let appGroupId = "group.ro.randusoft.RSToDoList"
+
     static let schema = Schema([
         TaskModel.self,
         CommentModel.self,
@@ -18,13 +20,13 @@ struct DatabaseConfiguration {
     @MainActor
     static func makeContainer() -> ModelContainer {
         let bundleId = Bundle.main.bundleIdentifier!
-        
+
         let configuration = ModelConfiguration(
             "ToDoList",
             schema: schema,
             isStoredInMemoryOnly: false,
             allowsSave: true,
-            groupContainer: .identifier("group.\(bundleId)"),
+            groupContainer: .identifier(appGroupId),
             cloudKitDatabase: .private("iCloud.\(bundleId)")
         )
 
@@ -32,6 +34,23 @@ struct DatabaseConfiguration {
             return try ModelContainer(for: schema, configurations: [configuration])
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
+        }
+    }
+
+    static func makeWidgetContainer() -> ModelContainer {
+        let configuration = ModelConfiguration(
+            "ToDoList",
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            allowsSave: false,
+            groupContainer: .identifier(appGroupId),
+            cloudKitDatabase: .none
+        )
+
+        do {
+            return try ModelContainer(for: schema, configurations: [configuration])
+        } catch {
+            fatalError("Failed to create widget ModelContainer: \(error)")
         }
     }
 

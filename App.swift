@@ -8,10 +8,12 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 @main
 struct ToDoListApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.scenePhase) var scenePhase
 
     private let modelContainer: ModelContainer
     private let appSettings = AppSettings.shared
@@ -33,5 +35,10 @@ struct ToDoListApp: App {
             .environment(appSettings)
         }
         .modelContainer(modelContainer)
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
     }
 }

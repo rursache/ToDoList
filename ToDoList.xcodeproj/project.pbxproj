@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		1709B6252F4F333800155886 /* Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1709B6242F4F333800155886 /* Icon.icon */; };
+		1709B6A72F50513600155886 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709B6A62F50513600155886 /* WidgetKit.framework */; };
+		1709B6A92F50513600155886 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709B6A82F50513600155886 /* SwiftUI.framework */; };
+		1709B6B42F50513700155886 /* Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1709B6A42F50513600155886 /* Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		17E659C32C32E44000C7066C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659C22C32E44000C7066C /* App.swift */; };
 		17E659C92C32E44100C7066C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E659C82C32E44100C7066C /* Assets.xcassets */; };
 		17E659F52C32EE9400C7066C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E659F42C32EE9400C7066C /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1709B6B22F50513700155886 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17E659B72C32E44000C7066C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1709B6A32F50513600155886;
+			remoteInfo = WidgetsExtension;
+		};
 		17E659D32C32E44100C7066C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 17E659B72C32E44000C7066C /* Project object */;
@@ -23,8 +33,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1709B6B92F50513700155886 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1709B6B42F50513700155886 /* Widgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1709B6242F4F333800155886 /* Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon.icon; sourceTree = "<group>"; };
+		1709B6A42F50513600155886 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1709B6A62F50513600155886 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1709B6A82F50513600155886 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		17E659BF2C32E44000C7066C /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E659C22C32E44000C7066C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		17E659C82C32E44100C7066C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,20 +67,62 @@
 			);
 			target = 17E659BE2C32E44000C7066C /* ToDoList */;
 		};
+		1709B6B82F50513700155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1709B6A32F50513600155886 /* Widgets */;
+		};
+		1709B6C02F50534000155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/Date+Extensions.swift",
+			);
+			target = 1709B6A32F50513600155886 /* Widgets */;
+		};
+		1709B6C12F50534000155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppTheme.swift,
+				CommentModel.swift,
+				ReminderModel.swift,
+				TaskModel.swift,
+				TaskPriority.swift,
+			);
+			target = 1709B6A32F50513600155886 /* Widgets */;
+		};
+		1709B6C32F5053ED00155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DatabaseConfiguration.swift,
+			);
+			target = 1709B6A32F50513600155886 /* Widgets */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1709B5CE2F4F32BB00155886 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
-		1709B5D22F4F32C300155886 /* Database */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Database; sourceTree = "<group>"; };
-		1709B5DA2F4F32C500155886 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		1709B5CE2F4F32BB00155886 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6C02F50534000155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
+		1709B5D22F4F32C300155886 /* Database */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6C32F5053ED00155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Database; sourceTree = "<group>"; };
+		1709B5DA2F4F32C500155886 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6C12F50534000155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		1709B5E32F4F32C700155886 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 		1709B5E72F4F32C900155886 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		1709B5EB2F4F32CC00155886 /* Supportive Files */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B69D2F504B9600155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Supportive Files"; sourceTree = "<group>"; };
 		1709B5ED2F4F32DD00155886 /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
 		1709B6162F4F331D00155886 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = App; sourceTree = "<group>"; };
+		1709B6AA2F50513600155886 /* Widgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6B82F50513700155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Widgets; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1709B6A12F50513600155886 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1709B6A92F50513600155886 /* SwiftUI.framework in Frameworks */,
+				1709B6A72F50513600155886 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17E659BC2C32E44000C7066C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +140,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1709B6A52F50513600155886 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1709B6A62F50513600155886 /* WidgetKit.framework */,
+				1709B6A82F50513600155886 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		17E659B62C32E44000C7066C = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +162,10 @@
 				1709B5DA2F4F32C500155886 /* Models */,
 				1709B5E32F4F32C700155886 /* Services */,
 				1709B5E72F4F32C900155886 /* Helpers */,
+				1709B6AA2F50513600155886 /* Widgets */,
 				1709B5EB2F4F32CC00155886 /* Supportive Files */,
 				1709B5ED2F4F32DD00155886 /* Tests */,
+				1709B6A52F50513600155886 /* Frameworks */,
 				17E659C02C32E44000C7066C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +175,7 @@
 			children = (
 				17E659BF2C32E44000C7066C /* ToDoList.app */,
 				17E659D22C32E44100C7066C /* Tests.xctest */,
+				1709B6A42F50513600155886 /* Widgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +183,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1709B6A32F50513600155886 /* Widgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1709B6B52F50513700155886 /* Build configuration list for PBXNativeTarget "Widgets" */;
+			buildPhases = (
+				1709B6A02F50513600155886 /* Sources */,
+				1709B6A12F50513600155886 /* Frameworks */,
+				1709B6A22F50513600155886 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1709B6AA2F50513600155886 /* Widgets */,
+			);
+			name = Widgets;
+			packageProductDependencies = (
+			);
+			productName = WidgetsExtension;
+			productReference = 1709B6A42F50513600155886 /* Widgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		17E659BE2C32E44000C7066C /* ToDoList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17E659E62C32E44100C7066C /* Build configuration list for PBXNativeTarget "ToDoList" */;
@@ -109,10 +212,12 @@
 				17E659BB2C32E44000C7066C /* Sources */,
 				17E659BC2C32E44000C7066C /* Frameworks */,
 				17E659BD2C32E44000C7066C /* Resources */,
+				1709B6B92F50513700155886 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1709B6B32F50513700155886 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1709B5CE2F4F32BB00155886 /* Shared */,
@@ -155,10 +260,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = RanduSoft;
 				TargetAttributes = {
+					1709B6A32F50513600155886 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 					17E659BE2C32E44000C7066C = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -184,11 +292,19 @@
 			targets = (
 				17E659BE2C32E44000C7066C /* ToDoList */,
 				17E659D12C32E44100C7066C /* Tests */,
+				1709B6A32F50513600155886 /* Widgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1709B6A22F50513600155886 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17E659BD2C32E44000C7066C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +324,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1709B6A02F50513600155886 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17E659BB2C32E44000C7066C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +350,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1709B6B32F50513700155886 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1709B6A32F50513600155886 /* Widgets */;
+			targetProxy = 1709B6B22F50513700155886 /* PBXContainerItemProxy */;
+		};
 		17E659D42C32E44100C7066C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 17E659BE2C32E44000C7066C /* ToDoList */;
@@ -235,6 +363,71 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1709B6B62F50513700155886 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = Widgets/Widgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 RanduSoft. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1709B6B72F50513700155886 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = Widgets/Widgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 RanduSoft. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.RSToDoList.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		17E659E42C32E44100C7066C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -480,6 +673,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1709B6B52F50513700155886 /* Build configuration list for PBXNativeTarget "Widgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1709B6B62F50513700155886 /* Debug */,
+				1709B6B72F50513700155886 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		17E659BA2C32E44000C7066C /* Build configuration list for PBXProject "ToDoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
