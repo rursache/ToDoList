@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import MessageUI
+import MessageUI // Required for MFMailComposeViewController.canSendMail()
 
 struct SettingsView: View {
     @Environment(AppSettings.self) private var appSettings
@@ -99,33 +99,9 @@ struct SettingsView: View {
     }
 }
 
-struct FeedbackMailView: UIViewControllerRepresentable {
-    @Environment(\.dismiss) private var dismiss
-
-    func makeUIViewController(context: Context) -> MFMailComposeViewController {
-        let vc = MFMailComposeViewController()
-        vc.mailComposeDelegate = context.coordinator
-        vc.setToRecipients(["contact@randusoft.ro"])
-        vc.setSubject("ToDoList Feedback")
-
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-        let device = UIDevice.current.model
-        let ios = UIDevice.current.systemVersion
-        vc.setMessageBody("\n\n---\nApp: ToDoList v\(version)\nDevice: \(device)\niOS: \(ios)", isHTML: false)
-
-        return vc
+#Preview {
+    NavigationStack {
+        SettingsView()
     }
-
-    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator { Coordinator(dismiss: dismiss) }
-
-    class Coordinator: NSObject, @preconcurrency MFMailComposeViewControllerDelegate {
-        let dismiss: DismissAction
-        init(dismiss: DismissAction) { self.dismiss = dismiss }
-
-        @MainActor func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-            dismiss()
-        }
-    }
+    .environment(AppSettings.shared)
 }

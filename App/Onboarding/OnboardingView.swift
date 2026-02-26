@@ -109,3 +109,8 @@ struct OnboardingPageView: View {
         .padding()
     }
 }
+
+#Preview {
+    OnboardingView()
+        .environment(AppSettings.shared)
+}

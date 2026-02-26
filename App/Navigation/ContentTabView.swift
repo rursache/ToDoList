@@ -61,3 +61,9 @@ struct ContentTabView: View {
         }
     }
 }
+
+#Preview {
+    ContentTabView()
+        .modelContainer(DatabaseConfiguration.makePreviewContainer())
+        .environment(AppSettings.shared)
+}

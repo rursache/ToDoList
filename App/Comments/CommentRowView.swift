@@ -37,22 +37,8 @@ struct CommentRowView: View {
     }
 }
 
-struct FullImageView: View {
-    let image: UIImage
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        NavigationStack {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button(String(localized: "done", defaultValue: "Done")) {
-                            dismiss()
-                        }
-                    }
-                }
-        }
+#Preview {
+    List {
+        CommentRowView(comment: CommentModel(content: "This is a sample comment"))
     }
 }

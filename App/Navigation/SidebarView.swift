@@ -23,3 +23,9 @@ struct SidebarView: View {
         .navigationTitle("ToDoList")
     }
 }
+
+#Preview {
+    NavigationStack {
+        SidebarView()
+    }
+}

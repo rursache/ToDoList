@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct CheckButtonView: View {
+    @Environment(AppSettings.self) private var appSettings
     @Binding var checked: Bool
-    
+
     var body: some View {
         VStack {
             Button {
@@ -22,7 +23,7 @@ struct CheckButtonView: View {
                     .font(.title)
             }
             .buttonStyle(.plain)
-            .foregroundStyle(.accent)
+            .foregroundStyle(appSettings.theme.color)
             .aspectRatio(1, contentMode: .fit)
             .sensoryFeedback(.success, trigger: checked)
         }.frame(maxWidth: 34)
@@ -34,4 +35,5 @@ struct CheckButtonView: View {
         CheckButtonView(checked: .constant(true))
         CheckButtonView(checked: .constant(false))
     }
+    .environment(AppSettings.shared)
 }

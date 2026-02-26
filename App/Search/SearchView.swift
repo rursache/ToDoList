@@ -63,3 +63,9 @@ struct SearchView: View {
         }
     }
 }
+
+#Preview {
+    SearchView()
+        .modelContainer(DatabaseConfiguration.makePreviewContainer())
+        .environment(AppSettings.shared)
+}

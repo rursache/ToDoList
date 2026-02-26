@@ -120,3 +120,11 @@ struct TaskRowView: View {
         .foregroundStyle(color)
     }
 }
+
+#Preview {
+    List {
+        TaskRowView(task: TaskModel.sampleTasks.first!)
+    }
+    .modelContainer(DatabaseConfiguration.makePreviewContainer())
+    .environment(AppSettings.shared)
+}

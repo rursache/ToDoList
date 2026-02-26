@@ -91,56 +91,7 @@ struct RemindersView: View {
     }
 }
 
-struct ReminderRowView: View {
-    let reminder: ReminderModel
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(reminder.date.formatted(style: .reminder))
-                .font(.body)
-            if !reminder.text.isEmpty {
-                Text(reminder.text)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .padding(.vertical, 2)
-    }
-}
-
-struct AddReminderSheet: View {
-    @Binding var date: Date
-    @Binding var text: String
-    var onSave: () -> Void
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                TextField(String(localized: "reminderNote", defaultValue: "Note (optional)"), text: $text)
-
-                DatePicker(
-                    String(localized: "reminderDate", defaultValue: "Date & Time"),
-                    selection: $date,
-                    in: Date()...,
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-            }
-            .navigationTitle(String(localized: "addReminder", defaultValue: "Add Reminder"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(String(localized: "cancel", defaultValue: "Cancel")) {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "save", defaultValue: "Save")) {
-                        onSave()
-                        dismiss()
-                    }
-                }
-            }
-        }
-    }
+#Preview {
+    RemindersView(task: TaskModel.sampleTasks.first!)
+        .modelContainer(DatabaseConfiguration.makePreviewContainer())
 }

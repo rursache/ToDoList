@@ -133,3 +133,8 @@ struct CommentsView: View {
         }
     }
 }
+
+#Preview {
+    CommentsView(task: TaskModel.sampleTasks.first!)
+        .modelContainer(DatabaseConfiguration.makePreviewContainer())
+}

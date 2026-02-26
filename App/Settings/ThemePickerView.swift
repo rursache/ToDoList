@@ -42,3 +42,10 @@ struct ThemePickerView: View {
         UIApplication.shared.setAlternateIconName(theme.alternateIconName)
     }
 }
+
+#Preview {
+    NavigationStack {
+        ThemePickerView()
+    }
+    .environment(AppSettings.shared)
+}
