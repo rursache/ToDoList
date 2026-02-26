@@ -40,6 +40,7 @@ private struct WidgetHeader: View {
             Image(systemName: filter.systemImage)
                 .font(.headline)
                 .foregroundStyle(themeColor)
+                .accessibilityHidden(true)
             Text(filter.displayName)
                 .font(.headline)
                 .fontWeight(.bold)
@@ -48,6 +49,8 @@ private struct WidgetHeader: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(filter.displayName), \(taskCount) \(String(localized: "widgetTasksCount", defaultValue: "tasks"))")
     }
 }
 
@@ -61,11 +64,14 @@ private struct TaskRowCompact: View {
             Circle()
                 .fill(task.priorityColor)
                 .frame(width: 8, height: 8)
+                .accessibilityHidden(true)
             Text(task.content)
                 .font(.caption)
                 .lineLimit(1)
             Spacer()
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.content), \(task.priorityName) \(String(localized: "widgetPriority", defaultValue: "priority"))")
     }
 }
 
@@ -77,6 +83,7 @@ private struct TaskRowMedium: View {
             Circle()
                 .fill(task.priorityColor)
                 .frame(width: 8, height: 8)
+                .accessibilityHidden(true)
             Text(task.content)
                 .font(.caption)
                 .lineLimit(1)
@@ -87,6 +94,9 @@ private struct TaskRowMedium: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.content), \(task.priorityName) \(String(localized: "widgetPriority", defaultValue: "priority"))")
+        .accessibilityValue(task.dateString)
     }
 }
 
@@ -98,6 +108,7 @@ private struct TaskRowLarge: View {
             Circle()
                 .fill(task.priorityColor)
                 .frame(width: 8, height: 8)
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 1) {
                 Text(task.content)
                     .font(.caption)
@@ -116,6 +127,9 @@ private struct TaskRowLarge: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(task.content), \(task.priorityName) \(String(localized: "widgetPriority", defaultValue: "priority"))")
+        .accessibilityValue([task.taskDescription, task.dateString].filter { !$0.isEmpty }.joined(separator: ", "))
     }
 }
 
@@ -129,7 +143,7 @@ private struct EmptyStateView: View {
             Image(systemName: "checkmark.circle")
                 .font(.title2)
                 .foregroundStyle(.secondary)
-            Text("No \(filter.displayName.lowercased()) tasks")
+            Text(filter.emptyText)
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -256,9 +270,9 @@ struct ExtraLargeWidgetView: View {
     TaskWidget()
 } timeline: {
     TaskWidgetEntry(date: .now, tasks: [
-        TaskWidgetItem(id: UUID(), content: "Buy groceries", taskDescription: "", priorityColor: .orange, dateString: "10:00 AM", isCompleted: false),
-        TaskWidgetItem(id: UUID(), content: "Review PR", taskDescription: "", priorityColor: .red, dateString: "2:00 PM", isCompleted: false),
-        TaskWidgetItem(id: UUID(), content: "Call dentist", taskDescription: "", priorityColor: .yellow, dateString: "4:00 PM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Buy groceries", taskDescription: "", priorityColor: .orange, priorityName: "High", dateString: "10:00 AM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Review PR", taskDescription: "", priorityColor: .red, priorityName: "Highest", dateString: "2:00 PM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Call dentist", taskDescription: "", priorityColor: .yellow, priorityName: "Normal", dateString: "4:00 PM", isCompleted: false),
     ], filter: .today, themeColor: AppTheme.red.color)
 }
 
@@ -266,10 +280,10 @@ struct ExtraLargeWidgetView: View {
     TaskWidget()
 } timeline: {
     TaskWidgetEntry(date: .now, tasks: [
-        TaskWidgetItem(id: UUID(), content: "Buy groceries", taskDescription: "", priorityColor: .orange, dateString: "10:00 AM", isCompleted: false),
-        TaskWidgetItem(id: UUID(), content: "Review PR", taskDescription: "Check the new auth module", priorityColor: .red, dateString: "2:00 PM", isCompleted: false),
-        TaskWidgetItem(id: UUID(), content: "Call dentist", taskDescription: "", priorityColor: .yellow, dateString: "4:00 PM", isCompleted: false),
-        TaskWidgetItem(id: UUID(), content: "Plan weekend trip", taskDescription: "", priorityColor: .green, dateString: "Tomorrow", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Buy groceries", taskDescription: "", priorityColor: .orange, priorityName: "High", dateString: "10:00 AM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Review PR", taskDescription: "Check the new auth module", priorityColor: .red, priorityName: "Highest", dateString: "2:00 PM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Call dentist", taskDescription: "", priorityColor: .yellow, priorityName: "Normal", dateString: "4:00 PM", isCompleted: false),
+        TaskWidgetItem(id: UUID(), content: "Plan weekend trip", taskDescription: "", priorityColor: .green, priorityName: "Low", dateString: "Tomorrow", isCompleted: false),
     ], filter: .upcoming, themeColor: AppTheme.blue.color)
 }
 

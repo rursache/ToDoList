@@ -21,6 +21,7 @@ struct ReminderRowView: View {
             }
         }
         .padding(.vertical, 2)
+        .accessibilityElement(children: .combine)
     }
 }
 

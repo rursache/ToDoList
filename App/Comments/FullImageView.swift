@@ -16,6 +16,7 @@ struct FullImageView: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
+                .accessibilityLabel("Full size comment image")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(String(localized: "done", defaultValue: "Done")) {

@@ -1,6 +1,78 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@, %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ %3$@"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "%@, %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld %3$@"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$lld %3$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "Add new task" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adaugă sarcină nouă"
+          }
+        }
+      }
+    },
+    "Add photo" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adaugă fotografie"
+          }
+        }
+      }
+    },
+    "Add reminder" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adaugă reminder"
+          }
+        }
+      }
+    },
     "addComment" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -171,6 +243,16 @@
         }
       }
     },
+    "Comment image" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comentează imaginea"
+          }
+        }
+      }
+    },
     "comments" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -201,6 +283,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marcați ca Completat"
+          }
+        }
+      }
+    },
+    "Completed" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finalizat"
           }
         }
       }
@@ -320,6 +412,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gata"
+          }
+        }
+      }
+    },
+    "Double tap to toggle" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atingeți de două ori pentru a comuta"
+          }
+        }
+      }
+    },
+    "Double tap to view full size" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atinge de două ori pentru a vedea dimensiunea completă"
           }
         }
       }
@@ -613,6 +725,16 @@
         }
       }
     },
+    "Full size comment image" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagine comentariu la dimensiune completă"
+          }
+        }
+      }
+    },
     "getStarted" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -728,6 +850,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nicio sarcină nu se potrivește cu \"%@"
+          }
+        }
+      }
+    },
+    "Not completed" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necompletat"
           }
         }
       }
@@ -902,6 +1034,16 @@
         }
       }
     },
+    "Priority" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prioritate"
+          }
+        }
+      }
+    },
     "priorityHigh" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1021,23 +1163,6 @@
         }
       }
     },
-    "reminder10min" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "10 minutes before"
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10 minute înainte"
-          }
-        }
-      }
-    },
     "reminder1h" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1051,6 +1176,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1 oră înainte"
+          }
+        }
+      }
+    },
+    "reminder10min" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10 minutes before"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 minute înainte"
           }
         }
       }
@@ -1157,6 +1299,16 @@
         }
       }
     },
+    "Save task" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvează sarcina"
+          }
+        }
+      }
+    },
     "search" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1242,6 +1394,34 @@
         }
       }
     },
+    "selectDate" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Date"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selectați Data"
+          }
+        }
+      }
+    },
+    "Selected" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selectat"
+          }
+        }
+      }
+    },
     "selectPriority" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1259,6 +1439,16 @@
         }
       }
     },
+    "Send comment" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trimite comentariu"
+          }
+        }
+      }
+    },
     "skip" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1272,6 +1462,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omite"
+          }
+        }
+      }
+    },
+    "Sort" : {
+      "localizations" : {
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortare"
           }
         }
       }
@@ -1544,6 +1744,159 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fără titlu"
+          }
+        }
+      }
+    },
+    "widgetDescription" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View your today or upcoming tasks."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vizualizați sarcinile de astazi sau următoarele."
+          }
+        }
+      }
+    },
+    "widgetFilter" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Filter"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtru"
+          }
+        }
+      }
+    },
+    "widgetNoTodayTasks" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No today tasks"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicio sarcină pentru astazi"
+          }
+        }
+      }
+    },
+    "widgetNoUpcomingTasks" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No upcoming tasks"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicio sarcină în viitor"
+          }
+        }
+      }
+    },
+    "widgetPriority" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "priority"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "prioritate"
+          }
+        }
+      }
+    },
+    "widgetTaskFilter" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Task Filter"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtru de sarcini"
+          }
+        }
+      }
+    },
+    "widgetTaskFilterDescription" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose which tasks to display"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alegeți care sarcini să se afișeze"
+          }
+        }
+      }
+    },
+    "widgetTasks" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tasks"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sarcini"
+          }
+        }
+      }
+    },
+    "widgetTasksCount" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "tasks"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sarcini"
           }
         }
       }

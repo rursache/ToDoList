@@ -60,6 +60,7 @@ struct CommentsView: View {
                         Image(systemName: "photo")
                             .font(.title3)
                     }
+                    .accessibilityLabel("Add photo")
 
                     TextField(String(localized: "addComment", defaultValue: "Add comment..."), text: $newCommentText)
                         .textFieldStyle(.roundedBorder)
@@ -71,6 +72,7 @@ struct CommentsView: View {
                         Image(systemName: "arrow.up.circle.fill")
                             .font(.title2)
                     }
+                    .accessibilityLabel("Send comment")
                     .disabled(newCommentText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
                 .padding()

@@ -99,6 +99,13 @@
 			);
 			target = 1709B6A32F50513600155886 /* Widgets */;
 		};
+		1709B7982F50588300155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Localizable.xcstrings,
+			);
+			target = 1709B6A32F50513600155886 /* Widgets */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -107,7 +114,7 @@
 		1709B5DA2F4F32C500155886 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6C12F50534000155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		1709B5E32F4F32C700155886 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 		1709B5E72F4F32C900155886 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
-		1709B5EB2F4F32CC00155886 /* Supportive Files */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B69D2F504B9600155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Supportive Files"; sourceTree = "<group>"; };
+		1709B5EB2F4F32CC00155886 /* Supportive Files */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B69D2F504B9600155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 1709B7982F50588300155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Supportive Files"; sourceTree = "<group>"; };
 		1709B5ED2F4F32DD00155886 /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
 		1709B6162F4F331D00155886 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = App; sourceTree = "<group>"; };
 		1709B6AA2F50513600155886 /* Widgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1709B6B82F50513700155886 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Widgets; sourceTree = "<group>"; };

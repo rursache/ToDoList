@@ -32,6 +32,9 @@ struct ThemePickerView: View {
                     }
                 }
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(theme.displayName)
+            .accessibilityAddTraits(theme == appSettings.theme ? .isSelected : [])
         }
         .navigationTitle(String(localized: "theme", defaultValue: "Theme"))
         .toolbarVisibility(.hidden, for: .tabBar)

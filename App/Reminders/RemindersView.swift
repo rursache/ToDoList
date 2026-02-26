@@ -60,6 +60,7 @@ struct RemindersView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .accessibilityLabel("Add reminder")
                 }
             }
             .sheet(isPresented: $showingAddReminder) {

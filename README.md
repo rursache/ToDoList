@@ -33,6 +33,7 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 - [x] Soft-delete pattern for CloudKit compatibility
 - [x] Context menus on task rows (Edit, Complete, Delete)
 - [x] Widgets (Today and Upcoming in all size classes)
+- [x] Full VoiceOver and accessibility support
 - [x] Zero third-party dependencies
 
 ## Requirements

@@ -112,6 +112,8 @@ struct TaskEditView: View {
                             .foregroundStyle(priority == .none ? .secondary : priority.color)
                             .font(.subheadline)
                     }
+                    .accessibilityLabel("Priority")
+                    .accessibilityValue(priority.displayName)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
@@ -120,6 +122,7 @@ struct TaskEditView: View {
                         Image(systemName: "arrow.up.circle.fill")
                             .font(.title2)
                     }
+                    .accessibilityLabel("Save task")
                     .disabled(content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
@@ -258,6 +261,7 @@ struct TaskEditView: View {
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
         .tint(isSelected ? tintColor : .secondary)
+        .accessibilityValue(isSelected ? "Selected" : String(""))
     }
 
     private var isDateNextWeek: Bool {

@@ -39,7 +39,7 @@ struct DatePickerSheet: View {
 
                 Section {
                     DatePicker(
-                        String(""),
+                        String(localized: "selectDate", defaultValue: "Select Date"),
                         selection: $selectedDate,
                         displayedComponents: selectedHasTime ? [.date, .hourAndMinute] : [.date]
                     )

@@ -36,6 +36,7 @@ struct SettingsView: View {
                         Circle()
                             .fill(appSettings.theme.color)
                             .frame(width: 20, height: 20)
+                            .accessibilityHidden(true)
                     }
                 }
 

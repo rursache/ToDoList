@@ -26,6 +26,8 @@ struct CheckButtonView: View {
             .foregroundStyle(appSettings.theme.color)
             .aspectRatio(1, contentMode: .fit)
             .sensoryFeedback(.success, trigger: checked)
+            .accessibilityLabel(checked ? "Completed" : "Not completed")
+            .accessibilityHint("Double tap to toggle")
         }.frame(maxWidth: 34)
     }
 }

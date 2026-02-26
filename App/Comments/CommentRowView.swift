@@ -23,6 +23,9 @@ struct CommentRowView: View {
                     .scaledToFit()
                     .frame(maxHeight: 200)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .accessibilityLabel("Comment image")
+                    .accessibilityHint("Double tap to view full size")
+                    .accessibilityAddTraits(.isButton)
                     .onTapGesture {
                         showFullImage = true
                     }

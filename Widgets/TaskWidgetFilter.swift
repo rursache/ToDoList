@@ -13,20 +13,27 @@ enum TaskWidgetFilter: String, CaseIterable, AppEnum {
     case upcoming
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation {
-        "Filter"
+        TypeDisplayRepresentation(name: LocalizedStringResource("widgetFilter", defaultValue: "Filter"))
     }
 
     static var caseDisplayRepresentations: [TaskWidgetFilter: DisplayRepresentation] {
         [
-            .today: "Today",
-            .upcoming: "Upcoming"
+            .today: DisplayRepresentation(title: LocalizedStringResource("filterToday", defaultValue: "Today")),
+            .upcoming: DisplayRepresentation(title: LocalizedStringResource("filterUpcoming", defaultValue: "Upcoming"))
         ]
     }
 
     var displayName: String {
         switch self {
-        case .today: "Today"
-        case .upcoming: "Upcoming"
+        case .today: String(localized: "filterToday", defaultValue: "Today")
+        case .upcoming: String(localized: "filterUpcoming", defaultValue: "Upcoming")
+        }
+    }
+
+    var emptyText: String {
+        switch self {
+        case .today: String(localized: "widgetNoTodayTasks", defaultValue: "No today tasks")
+        case .upcoming: String(localized: "widgetNoUpcomingTasks", defaultValue: "No upcoming tasks")
         }
     }
 
@@ -39,9 +46,9 @@ enum TaskWidgetFilter: String, CaseIterable, AppEnum {
 }
 
 struct TaskWidgetIntent: WidgetConfigurationIntent {
-    static let title: LocalizedStringResource = "Task Filter"
-    static let description: IntentDescription = "Choose which tasks to display"
+    static let title: LocalizedStringResource = LocalizedStringResource("widgetTaskFilter", defaultValue: "Task Filter")
+    static let description: IntentDescription = IntentDescription(LocalizedStringResource("widgetTaskFilterDescription", defaultValue: "Choose which tasks to display"))
 
-    @Parameter(title: "Filter", default: .today)
+    @Parameter(title: LocalizedStringResource("widgetFilter", defaultValue: "Filter"), default: .today)
     var filter: TaskWidgetFilter
 }

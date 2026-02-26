@@ -75,6 +75,7 @@ struct OnboardingPageView: View {
             Image(systemName: systemImage)
                 .font(.system(size: 80))
                 .foregroundStyle(.tint)
+                .accessibilityHidden(true)
 
             VStack(spacing: 12) {
                 Text(title)

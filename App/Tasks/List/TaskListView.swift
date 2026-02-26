@@ -92,6 +92,8 @@ struct TaskListView: View {
                     Image(systemName: "arrow.up.arrow.down")
                         .imageScale(.medium)
                 }
+                .accessibilityLabel("Sort")
+                .accessibilityValue(currentSort.displayName)
             }
 
             if filter != .completed {
@@ -104,6 +106,7 @@ struct TaskListView: View {
                             .font(.callout)
                             .fontWeight(.semibold)
                     }
+                    .accessibilityLabel("Add new task")
                     .glassEffect(.clear.tint(appSettings.theme.color).interactive(), in: .circle)
                     .scaleEffect(1.2)
                 }.sharedBackgroundVisibility(.hidden)

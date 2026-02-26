@@ -14,6 +14,7 @@ struct TaskWidgetItem {
     let content: String
     let taskDescription: String
     let priorityColor: Color
+    let priorityName: String
     let dateString: String
     let isCompleted: Bool
 }
@@ -30,8 +31,8 @@ struct TaskWidgetProvider: AppIntentTimelineProvider {
         TaskWidgetEntry(
             date: .now,
             tasks: [
-                TaskWidgetItem(id: UUID(), content: "Sample task", taskDescription: "", priorityColor: .orange, dateString: "10:00 AM", isCompleted: false),
-                TaskWidgetItem(id: UUID(), content: "Another task", taskDescription: "", priorityColor: .red, dateString: "2:00 PM", isCompleted: false)
+                TaskWidgetItem(id: UUID(), content: "Sample task", taskDescription: "", priorityColor: .orange, priorityName: "High", dateString: "10:00 AM", isCompleted: false),
+                TaskWidgetItem(id: UUID(), content: "Another task", taskDescription: "", priorityColor: .red, priorityName: "Highest", dateString: "2:00 PM", isCompleted: false)
             ],
             filter: .today,
             themeColor: Self.readThemeColor()
@@ -103,10 +104,12 @@ struct TaskWidgetProvider: AppIntentTimelineProvider {
                 let priority = TaskPriority(rawValue: task.priority) ?? .none
                 let dateStr: String
                 if let date = task.date {
+                    let todayStr = String(localized: "dateToday", defaultValue: "Today")
+                    let tomorrowStr = String(localized: "dateTomorrow", defaultValue: "Tomorrow")
                     if calendar.isDateInToday(date) {
-                        dateStr = task.hasTime ? timeFormatter.string(from: date) : "Today"
+                        dateStr = task.hasTime ? timeFormatter.string(from: date) : todayStr
                     } else if calendar.isDateInTomorrow(date) {
-                        dateStr = task.hasTime ? "Tomorrow, \(timeFormatter.string(from: date))" : "Tomorrow"
+                        dateStr = task.hasTime ? "\(tomorrowStr), \(timeFormatter.string(from: date))" : tomorrowStr
                     } else {
                         dateStr = task.hasTime ? dateTimeFormatter.string(from: date) : dateOnlyFormatter.string(from: date)
                     }
@@ -119,6 +122,7 @@ struct TaskWidgetProvider: AppIntentTimelineProvider {
                     content: task.content,
                     taskDescription: task.taskDescription,
                     priorityColor: priority.color,
+                    priorityName: priority.displayName,
                     dateString: dateStr,
                     isCompleted: task.isCompleted
                 )
@@ -154,8 +158,8 @@ struct TaskWidget: Widget {
             TaskWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("Tasks")
-        .description("View your today or upcoming tasks.")
+        .configurationDisplayName(Text(LocalizedStringResource("widgetTasks", defaultValue: "Tasks")))
+        .description(Text(LocalizedStringResource("widgetDescription", defaultValue: "View your today or upcoming tasks.")))
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
     }
 }

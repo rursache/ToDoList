@@ -114,10 +114,12 @@ struct TaskRowView: View {
     private func metadataTag(systemImage: String, text: String, color: Color) -> some View {
         HStack(spacing: 2) {
             Image(systemName: systemImage)
+                .accessibilityHidden(true)
             Text(text)
         }
         .font(.caption)
         .foregroundStyle(color)
+        .accessibilityElement(children: .combine)
     }
 }
 
