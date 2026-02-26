@@ -25,7 +25,7 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 - [x] Search across all task lists
 - [x] Filter views: Inbox, Today, Upcoming, Completed
 - [x] Upcoming tasks grouped by day sections
-- [x] iPad support with `NavigationSplitView` sidebar
+- [x] iPad support with adaptive `TabView` navigation
 - [x] 7 color themes
 - [x] 3-page onboarding with notification permission flow
 - [x] Localization support (English, Romanian)

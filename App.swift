@@ -20,6 +20,11 @@ struct ToDoListApp: App {
 
     init() {
         self.modelContainer = DatabaseConfiguration.makeContainer()
+
+        if AppSettings.demoMode {
+            DatabaseConfiguration.seedDemoData(into: modelContainer.mainContext)
+            appSettings.launchedBefore = true
+        }
     }
 
     var body: some Scene {

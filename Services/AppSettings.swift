@@ -13,6 +13,8 @@ final class AppSettings: Sendable {
 
     static let appName = "ToDoList"
 
+    static let demoMode = false
+
     var selectedTheme: Int {
         get { access(keyPath: \.selectedTheme); return UserDefaults.standard.integer(forKey: "selectedTheme") }
         set {

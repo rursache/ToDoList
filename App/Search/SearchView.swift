@@ -43,6 +43,7 @@ struct SearchView: View {
                     }
                 }
             }
+            .contentMargins(.top, 6, for: .scrollContent)
             .background(Color(.systemGroupedBackground))
             .toolbarTitleDisplayMode(.inlineLarge)
             .toolbar {
