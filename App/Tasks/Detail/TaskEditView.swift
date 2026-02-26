@@ -146,8 +146,10 @@ struct TaskEditView: View {
                 }
             }
             .task {
-                try? await Task.sleep(for: .milliseconds(100))
-                isContentFocused = true
+                if isNewTask {
+                    try? await Task.sleep(for: .milliseconds(100))
+                    isContentFocused = true
+                }
             }
             .sheet(isPresented: $showComments) {
                 if let task {
@@ -164,6 +166,14 @@ struct TaskEditView: View {
         .presentationDragIndicator(.visible)
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(date: $date, hasTime: $hasTime)
+        }
+        .onDisappear {
+            guard let task else { return }
+            task.content = content.trimmingCharacters(in: .whitespacesAndNewlines)
+            task.taskDescription = taskDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+            task.date = date
+            task.hasTime = hasTime
+            task.taskPriority = priority
         }
     }
 
@@ -216,13 +226,15 @@ struct TaskEditView: View {
                 }
 
                 if date != nil {
-                    Button {
+                    quickDateChip(
+                        String(localized: "clearDate", defaultValue: "Clear"),
+                        systemImage: "xmark",
+                        isSelected: true,
+                        tintColor: .red
+                    ) {
                         date = nil
+                        hasTime = false
                         showDatePicker = false
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.secondary)
-                            .font(.subheadline)
                     }
                 }
             }
@@ -295,10 +307,11 @@ struct TaskEditView: View {
             newTask.hasTime = hasTime
             modelContext.insert(newTask)
 
-            if !appSettings.disableAutoReminders, let taskDate = date, taskDate > Date() {
+            let reminderMinutes = appSettings.autoReminderMinutes
+            if reminderMinutes > 0, hasTime, let taskDate = date, taskDate > Date() {
                 let reminder = ReminderModel()
                 reminder.text = String(localized: "autoReminder", defaultValue: "Task reminder")
-                reminder.date = taskDate.addingTimeInterval(-30 * 60)
+                reminder.date = taskDate.addingTimeInterval(-Double(reminderMinutes) * 60)
                 reminder.task = newTask
                 modelContext.insert(reminder)
 

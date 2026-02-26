@@ -78,7 +78,7 @@ struct CommentsView: View {
             .navigationTitle(String(localized: "comments", defaultValue: "Comments"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "done", defaultValue: "Done")) {
                         dismiss()
                     }

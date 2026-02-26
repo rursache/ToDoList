@@ -21,14 +21,9 @@ final class AppSettings: Sendable {
         set { withMutation(keyPath: \.startPage) { UserDefaults.standard.set(newValue, forKey: "startPage") } }
     }
 
-    var disableAutoReminders: Bool {
-        get { access(keyPath: \.disableAutoReminders); return UserDefaults.standard.bool(forKey: "disableAutoReminders") }
-        set { withMutation(keyPath: \.disableAutoReminders) { UserDefaults.standard.set(newValue, forKey: "disableAutoReminders") } }
-    }
-
-    var helpPrompts: Bool {
-        get { access(keyPath: \.helpPrompts); return UserDefaults.standard.bool(forKey: "helpPrompts") }
-        set { withMutation(keyPath: \.helpPrompts) { UserDefaults.standard.set(newValue, forKey: "helpPrompts") } }
+    var autoReminderMinutes: Int {
+        get { access(keyPath: \.autoReminderMinutes); return UserDefaults.standard.integer(forKey: "autoReminderMinutes") }
+        set { withMutation(keyPath: \.autoReminderMinutes) { UserDefaults.standard.set(newValue, forKey: "autoReminderMinutes") } }
     }
 
     var openLinksInApp: Bool {
@@ -46,7 +41,25 @@ final class AppSettings: Sendable {
     }
 
     private init() {
-        UserDefaults.standard.register(defaults: ["startPage": 1])
+        UserDefaults.standard.register(defaults: ["startPage": 1, "autoReminderMinutes": 10])
+    }
+}
+
+enum AutoReminderInterval: Int, CaseIterable, Identifiable {
+    case none = 0
+    case tenMinutes = 10
+    case thirtyMinutes = 30
+    case oneHour = 60
+
+    var id: Int { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .none: String(localized: "reminderNone", defaultValue: "None")
+        case .tenMinutes: String(localized: "reminder10min", defaultValue: "10 minutes before")
+        case .thirtyMinutes: String(localized: "reminder30min", defaultValue: "30 minutes before")
+        case .oneHour: String(localized: "reminder1h", defaultValue: "1 hour before")
+        }
     }
 }
 

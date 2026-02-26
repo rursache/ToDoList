@@ -17,13 +17,15 @@ struct DatabaseConfiguration {
 
     @MainActor
     static func makeContainer() -> ModelContainer {
+        let bundleId = Bundle.main.bundleIdentifier!
+        
         let configuration = ModelConfiguration(
             "ToDoList",
             schema: schema,
             isStoredInMemoryOnly: false,
             allowsSave: true,
-            groupContainer: .identifier("group.ro.randusoft.todolist"),
-            cloudKitDatabase: .private("iCloud.ro.randusoft.todolist")
+            groupContainer: .identifier("group.\(bundleId)"),
+            cloudKitDatabase: .private("iCloud.\(bundleId)")
         )
 
         do {

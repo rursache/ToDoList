@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Environment(AppSettings.self) private var appSettings
+    @Environment(\.dismiss) private var dismiss
     @State private var currentPage = 0
 
     var body: some View {
@@ -49,6 +50,7 @@ struct OnboardingView: View {
                 buttonTitle: String(localized: "getStarted", defaultValue: "Get Started")
             ) {
                 appSettings.launchedBefore = true
+                dismiss()
             }
             .tag(2)
         }

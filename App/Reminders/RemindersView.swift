@@ -47,7 +47,7 @@ struct RemindersView: View {
             .navigationTitle(String(localized: "reminders", defaultValue: "Reminders"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "done", defaultValue: "Done")) {
                         dismiss()
                     }
