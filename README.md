@@ -56,9 +56,7 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 ## Roadmap
 
 - [ ] Smart date parsing ("Buy groceries tomorrow at 10am")
-- [ ] Biometric lock (Face ID / Touch ID)
 - [ ] Manual task reordering
-- [ ] Accessibility audit
 
 ## Communication
 
