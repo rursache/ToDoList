@@ -33,6 +33,7 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 - [x] Soft-delete pattern for CloudKit compatibility
 - [x] Context menus on task rows (Edit, Complete, Delete)
 - [x] Widgets (Today and Upcoming in all size classes)
+- [x] Smart date parsing — type "Buy groceries tomorrow at 10am" and the date is auto-detected
 - [x] Full VoiceOver and accessibility support
 - [x] Zero third-party dependencies
 
@@ -55,7 +56,6 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 
 ## Roadmap
 
-- [ ] Smart date parsing ("Buy groceries tomorrow at 10am")
 - [ ] Manual task reordering
 
 ## Communication

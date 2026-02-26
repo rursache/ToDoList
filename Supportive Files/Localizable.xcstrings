@@ -43,6 +43,9 @@
         }
       }
     },
+    "Accept detected date" : {
+
+    },
     "Add new task" : {
       "localizations" : {
         "ro" : {
@@ -398,6 +401,9 @@
           }
         }
       }
+    },
+    "Dismiss detected date" : {
+
     },
     "done" : {
       "extractionState" : "extracted_with_value",

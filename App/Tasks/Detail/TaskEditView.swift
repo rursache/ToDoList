@@ -26,9 +26,13 @@ struct TaskEditView: View {
     @State private var showComments = false
     @State private var showReminders = false
     @State private var savedTask: TaskModel?
+    @State private var detectedDateResult: SmartDateParser.Result?
+    @State private var userManuallySetDate: Bool = false
     @FocusState private var isContentFocused: Bool
 
-    private static let detent: PresentationDetent = .height(260)
+    private let smartDateParser = SmartDateParser()
+
+    private static let detent: PresentationDetent = .height(295)
     private var isNewTask: Bool { task == nil && savedTask == nil }
     private var currentTask: TaskModel? { task ?? savedTask }
 
@@ -46,6 +50,15 @@ struct TaskEditView: View {
                 .focused($isContentFocused)
                 .submitLabel(.next)
                 .padding(.bottom, 2)
+                .onChange(of: content) { _, newValue in
+                    guard !userManuallySetDate else { return }
+                    detectedDateResult = smartDateParser.parse(newValue)
+                }
+
+                // Smart date suggestion
+                if let result = detectedDateResult {
+                    detectedDateChip(result)
+                }
 
                 // Description
                 TextField(
@@ -144,6 +157,9 @@ struct TaskEditView: View {
                     date = task.date
                     hasTime = task.hasTime
                     priority = task.taskPriority
+                    if task.date != nil {
+                        userManuallySetDate = true
+                    }
                 } else if let defaultDate {
                     date = defaultDate.startOfDay
                     hasTime = false
@@ -195,6 +211,8 @@ struct TaskEditView: View {
                     date = Date().startOfDay
                     hasTime = false
                     showDatePicker = false
+                    userManuallySetDate = true
+                    detectedDateResult = nil
                 }
 
                 quickDateChip(
@@ -206,6 +224,8 @@ struct TaskEditView: View {
                     date = Date.tomorrow.startOfDay
                     hasTime = false
                     showDatePicker = false
+                    userManuallySetDate = true
+                    detectedDateResult = nil
                 }
 
                 quickDateChip(
@@ -217,6 +237,8 @@ struct TaskEditView: View {
                     date = Date.nextWeek.startOfDay
                     hasTime = false
                     showDatePicker = false
+                    userManuallySetDate = true
+                    detectedDateResult = nil
                 }
 
                 quickDateChip(
@@ -227,6 +249,8 @@ struct TaskEditView: View {
                 ) {
                     isContentFocused = false
                     showDatePicker = true
+                    userManuallySetDate = true
+                    detectedDateResult = nil
                 }
 
                 if date != nil {
@@ -239,10 +263,55 @@ struct TaskEditView: View {
                         date = nil
                         hasTime = false
                         showDatePicker = false
+                        userManuallySetDate = false
+                        detectedDateResult = smartDateParser.parse(content)
                     }
                 }
             }
         }
+    }
+
+    // MARK: - Smart Date Chip
+
+    private func detectedDateChip(_ result: SmartDateParser.Result) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: "sparkles")
+                .foregroundStyle(.purple)
+                .font(.subheadline)
+
+            Text(result.date.formatted(style: .taskRow, hasTime: result.hasTime))
+                .font(.subheadline)
+                .foregroundStyle(.primary)
+
+            Spacer()
+
+            Button {
+                content = result.cleanedContent
+                date = result.date
+                hasTime = result.hasTime
+                detectedDateResult = nil
+                userManuallySetDate = true
+            } label: {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Accept detected date")
+
+            Button {
+                detectedDateResult = nil
+                userManuallySetDate = true
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.secondary)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Dismiss detected date")
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(.purple.opacity(0.1), in: Capsule())
+
     }
 
     // MARK: - Helpers
@@ -295,8 +364,18 @@ struct TaskEditView: View {
 
     // MARK: - Save
 
+    private func applyDetectedDateIfNeeded() {
+        guard !userManuallySetDate, let result = detectedDateResult else { return }
+        content = result.cleanedContent
+        date = result.date
+        hasTime = result.hasTime
+        detectedDateResult = nil
+        userManuallySetDate = true
+    }
+
     private func ensureTaskSaved() {
         guard currentTask == nil else { return }
+        applyDetectedDateIfNeeded()
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         let name = trimmed.isEmpty ? String(localized: "untitledTask", defaultValue: "Untitled") : trimmed
         let newTask = TaskModel(content: name, taskDescription: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines), date: date, priority: priority.rawValue)
@@ -306,6 +385,7 @@ struct TaskEditView: View {
     }
 
     private func save() {
+        applyDetectedDateIfNeeded()
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
