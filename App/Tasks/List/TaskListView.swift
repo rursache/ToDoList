@@ -46,6 +46,23 @@ struct TaskListView: View {
         Group {
             if filteredTasks.isEmpty {
                 emptyStateView
+            } else if filter == .upcoming {
+                List {
+                    ForEach(groupedByDay, id: \.0) { day, tasks in
+                        Section {
+                            ForEach(tasks) { task in
+                                TaskRowView(task: task)
+                            }
+                            .onDelete { offsets in
+                                for index in offsets {
+                                    tasks[index].isDeleted = true
+                                }
+                            }
+                        } header: {
+                            Text(day.formatted(style: .sectionHeader))
+                        }
+                    }
+                }
             } else {
                 List {
                     ForEach(filteredTasks) {
@@ -95,6 +112,13 @@ struct TaskListView: View {
         .sheet(isPresented: $showingAddTask) {
             TaskEditView(defaultDate: filter == TaskFilter.today ? Date() : nil)
         }
+    }
+
+    private var groupedByDay: [(Date, [TaskModel])] {
+        let grouped = Dictionary(grouping: filteredTasks) { task in
+            (task.date ?? task.createdDate).startOfDay
+        }
+        return grouped.sorted { $0.key < $1.key }
     }
 
     private var emptyStateView: some View {

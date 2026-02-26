@@ -25,11 +25,12 @@ struct TaskEditView: View {
     @State private var showPriorityPicker = false
     @State private var showComments = false
     @State private var showReminders = false
+    @State private var savedTask: TaskModel?
     @FocusState private var isContentFocused: Bool
 
-    private static let newTaskDetent: PresentationDetent = .height(210)
-    private static let editTaskDetent: PresentationDetent = .height(260)
-    private var isNewTask: Bool { task == nil }
+    private static let detent: PresentationDetent = .height(260)
+    private var isNewTask: Bool { task == nil && savedTask == nil }
+    private var currentTask: TaskModel? { task ?? savedTask }
 
     var body: some View {
         NavigationStack {
@@ -63,39 +64,39 @@ struct TaskEditView: View {
                 // Due date chips
                 dueDateChips
 
-                // Comments & Reminders (edit mode only)
-                if let _ = task {
-                    HStack(spacing: 8) {
-                        Spacer()
+                // Comments & Reminders
+                HStack(spacing: 8) {
+                    Spacer()
 
-                        Button {
-                            showComments = true
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "bubble.left")
-                                Text(commentsLabel)
-                            }
-                            .font(.subheadline)
+                    Button {
+                        ensureTaskSaved()
+                        showComments = true
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "bubble.left")
+                            Text(commentsLabel)
                         }
-                        .buttonStyle(.bordered)
-                        .buttonBorderShape(.capsule)
-                        .tint(.secondary)
-
-                        Button {
-                            showReminders = true
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "bell")
-                                Text(remindersLabel)
-                            }
-                            .font(.subheadline)
-                        }
-                        .buttonStyle(.bordered)
-                        .buttonBorderShape(.capsule)
-                        .tint(.secondary)
-
-                        Spacer()
+                        .font(.subheadline)
                     }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    .tint(.secondary)
+
+                    Button {
+                        ensureTaskSaved()
+                        showReminders = true
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "bell")
+                            Text(remindersLabel)
+                        }
+                        .font(.subheadline)
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    .tint(.secondary)
+
+                    Spacer()
                 }
             }
             .padding(.horizontal)
@@ -152,23 +153,23 @@ struct TaskEditView: View {
                 }
             }
             .sheet(isPresented: $showComments) {
-                if let task {
-                    CommentsView(task: task)
+                if let currentTask {
+                    CommentsView(task: currentTask)
                 }
             }
             .sheet(isPresented: $showReminders) {
-                if let task {
-                    RemindersView(task: task)
+                if let currentTask {
+                    RemindersView(task: currentTask)
                 }
             }
         }
-        .presentationDetents([isNewTask ? Self.newTaskDetent : Self.editTaskDetent])
+        .presentationDetents([Self.detent])
         .presentationDragIndicator(.visible)
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(date: $date, hasTime: $hasTime)
         }
         .onDisappear {
-            guard let task else { return }
+            guard let task = currentTask else { return }
             task.content = content.trimmingCharacters(in: .whitespacesAndNewlines)
             task.taskDescription = taskDescription.trimmingCharacters(in: .whitespacesAndNewlines)
             task.date = date
@@ -270,13 +271,13 @@ struct TaskEditView: View {
     }
 
     private var commentsLabel: String {
-        let count = task?.activeComments.count ?? 0
+        let count = currentTask?.activeComments.count ?? 0
         let base = String(localized: "comments", defaultValue: "Comments")
         return count > 0 ? "\(base) (\(count))" : base
     }
 
     private var remindersLabel: String {
-        let count = task?.activeReminders.count ?? 0
+        let count = currentTask?.activeReminders.count ?? 0
         let base = String(localized: "reminders", defaultValue: "Reminders")
         return count > 0 ? "\(base) (\(count))" : base
     }
@@ -290,40 +291,53 @@ struct TaskEditView: View {
 
     // MARK: - Save
 
+    private func ensureTaskSaved() {
+        guard currentTask == nil else { return }
+        let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = trimmed.isEmpty ? String(localized: "untitledTask", defaultValue: "Untitled") : trimmed
+        let newTask = TaskModel(content: name, taskDescription: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines), date: date, priority: priority.rawValue)
+        newTask.hasTime = hasTime
+        modelContext.insert(newTask)
+        savedTask = newTask
+    }
+
     private func save() {
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
         let trimmedDescription = taskDescription.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if let task {
-            task.content = trimmed
-            task.taskDescription = trimmedDescription
-            task.date = date
-            task.hasTime = hasTime
-            task.taskPriority = priority
+        if let existingTask = currentTask {
+            existingTask.content = trimmed
+            existingTask.taskDescription = trimmedDescription
+            existingTask.date = date
+            existingTask.hasTime = hasTime
+            existingTask.taskPriority = priority
         } else {
             let newTask = TaskModel(content: trimmed, taskDescription: trimmedDescription, date: date, priority: priority.rawValue)
             newTask.hasTime = hasTime
             modelContext.insert(newTask)
-
-            let reminderMinutes = appSettings.autoReminderMinutes
-            if reminderMinutes > 0, hasTime, let taskDate = date, taskDate > Date() {
-                let reminder = ReminderModel()
-                reminder.text = String(localized: "autoReminder", defaultValue: "Task reminder")
-                reminder.date = taskDate.addingTimeInterval(-Double(reminderMinutes) * 60)
-                reminder.task = newTask
-                modelContext.insert(reminder)
-
-                let capturedTask = newTask
-                let capturedReminder = reminder
-                Task {
-                    try? await NotificationManager.shared.scheduleReminder(for: capturedTask, reminder: capturedReminder)
-                }
-            }
+            scheduleAutoReminder(for: newTask)
         }
 
         dismiss()
+    }
+
+    private func scheduleAutoReminder(for task: TaskModel) {
+        let reminderMinutes = appSettings.autoReminderMinutes
+        guard reminderMinutes > 0, hasTime, let taskDate = date, taskDate > Date() else { return }
+
+        let reminder = ReminderModel()
+        reminder.text = String(localized: "autoReminder", defaultValue: "Task reminder")
+        reminder.date = taskDate.addingTimeInterval(-Double(reminderMinutes) * 60)
+        reminder.task = task
+        modelContext.insert(reminder)
+
+        let capturedTask = task
+        let capturedReminder = reminder
+        Task {
+            try? await NotificationManager.shared.scheduleReminder(for: capturedTask, reminder: capturedReminder)
+        }
     }
 }
 
@@ -335,33 +349,40 @@ private struct DatePickerSheet: View {
     @Binding var hasTime: Bool
 
     @State private var selectedDate: Date = Date()
+    @State private var selectedHasTime: Bool = false
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
-                DatePicker(
-                    "",
-                    selection: $selectedDate,
-                    displayedComponents: hasTime ? [.date, .hourAndMinute] : [.date]
-                )
-                .datePickerStyle(.graphical)
-
-                Toggle(isOn: $hasTime) {
-                    Label(
-                        String(localized: "addTime", defaultValue: "Time"),
-                        systemImage: "clock"
-                    )
-                    .font(.subheadline)
-                }
-                .tint(.blue)
-                .padding(.horizontal)
-                .onChange(of: hasTime) { _, newValue in
-                    if !newValue {
-                        selectedDate = selectedDate.startOfDay
+            Form {
+                Section {
+                    Toggle(isOn: $selectedHasTime) {
+                        Label(
+                            String(localized: "addTime", defaultValue: "Time"),
+                            systemImage: "clock"
+                        )
+                    }
+                    .tint(.blue)
+                    .onChange(of: selectedHasTime) { _, newValue in
+                        if newValue {
+                            let calendar = Calendar.current
+                            let nextHour = calendar.date(bySettingHour: calendar.component(.hour, from: Date()) + 1, minute: 0, second: 0, of: selectedDate) ?? selectedDate
+                            selectedDate = nextHour
+                        } else {
+                            selectedDate = selectedDate.startOfDay
+                        }
                     }
                 }
 
-                Spacer()
+                Section {
+                    DatePicker(
+                        "",
+                        selection: $selectedDate,
+                        displayedComponents: selectedHasTime ? [.date, .hourAndMinute] : [.date]
+                    )
+                    .datePickerStyle(.graphical)
+                    .listRowInsets(EdgeInsets(top: -12, leading: 12, bottom: 4, trailing: 12))
+                    .animation(.spring(), value: selectedHasTime)
+                }
             }
             .navigationTitle(String(localized: "pickDate", defaultValue: "Pick Date"))
             .navigationBarTitleDisplayMode(.inline)
@@ -374,6 +395,7 @@ private struct DatePickerSheet: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(String(localized: "done", defaultValue: "Done")) {
                         date = selectedDate
+                        hasTime = selectedHasTime
                         dismiss()
                     }
                 }
@@ -381,8 +403,9 @@ private struct DatePickerSheet: View {
         }
         .onAppear {
             selectedDate = date ?? Date()
+            selectedHasTime = hasTime
         }
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
         .presentationDragIndicator(.visible)
     }
 }

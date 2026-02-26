@@ -55,6 +55,8 @@ extension Date {
         switch style {
         case .taskRow:
             return taskRowFormatted(hasTime: hasTime)
+        case .sectionHeader:
+            return sectionHeaderFormatted
         case .reminder:
             return reminderFormatted
         case .comment:
@@ -85,6 +87,22 @@ extension Date {
         }
     }
 
+    private var sectionHeaderFormatted: String {
+        if isToday {
+            return String(localized: "dateToday", defaultValue: "Today")
+        } else if isTomorrow {
+            return String(localized: "dateTomorrow", defaultValue: "Tomorrow")
+        } else if isYesterday {
+            return String(localized: "dateYesterday", defaultValue: "Yesterday")
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateFormat = Calendar.current.isDate(self, equalTo: Date(), toGranularity: .year)
+                ? "EEEE, d MMM"
+                : "EEEE, d MMM yyyy"
+            return formatter.string(from: self)
+        }
+    }
+
     private var reminderFormatted: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMM, HH:mm"
@@ -100,6 +118,7 @@ extension Date {
 
 enum DateFormattingStyle {
     case taskRow
+    case sectionHeader
     case reminder
     case comment
 }
