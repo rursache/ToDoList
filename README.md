@@ -1,84 +1,65 @@
-# RSToDoList
+# ToDoList
 
 <p align="left">
-  <img width="150" height="150" src="https://github.com/rursache/ToDoList/blob/master/WatchApp/Assets.xcassets/watchlogo.imageset/watchlogo.png" />
+  <img width="150" height="150" src="https://i.imgur.com/gfXtj2j.png" />
 </p>
 
-A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 11+, watchOS 6+)
+A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iPad. Featuring SwiftData with iCloud sync, iOS 26 Liquid Glass design, and Swift 6 strict concurrency.
 
-> [!WARNING]
-> Unmaintained and EoL since 2022
+> [!NOTE]
+> This is a complete rewrite of the [original ToDoList](https://github.com/rursache/ToDoList/tree/v1.5.2) — from UIKit/Storyboards/Realm to a modern SwiftUI stack with zero third-party dependencies.
 
-## Main features
-- [x] Persistent task lists using Realm
-- [x] iCloud Kit support for syncing
-- [x] Push notifications for reminders (Synced between devices)
-- [x] Add/delete/edit/complete tasks
-- [x] Set task Date & Time + custom reminders and comments (images too)
-- [x] Sort/Filter/Prioritise tasks
-- [x] iPad app
-- [x] Watch app
-- [x] Widget for Today tasks
-- [x] Theme support with custom App Icons
-- [x] Multi-Language support
-- [x] 3D Touch shortcuts
-- [x] Dark mode
-- [x] Onboarding/tutorial
+## Features
+
+- [x] **SwiftData** persistence with **CloudKit** sync across devices
+- [x] **iOS 26 Liquid Glass** design language throughout
+- [x] Add, edit, complete, and delete tasks
+- [x] Task descriptions
+- [x] Set due date & time with graphical date picker
+- [x] Date-only tasks (no specific time) or date + time
+- [x] Task priorities (Highest, High, Normal, Low)
+- [x] Comments on tasks (text and images via PhotosPicker)
+- [x] Reminders with local push notifications
+- [x] Configurable automatic reminders (None / 10min / 30min / 1h before due)
+- [x] Sort tasks by date, priority, or manual drag & drop reordering
+- [x] Search across all task lists
+- [x] Filter views: Inbox, Today, Upcoming, Completed
+- [x] Upcoming tasks grouped by day sections
+- [x] iPad support with `NavigationSplitView` sidebar
+- [x] 7 color themes
+- [x] 3-page onboarding with notification permission flow
+- [x] Localization support (English, Romanian)
+- [x] Settings: start page, theme, auto-reminders, feedback email
+- [x] Soft-delete pattern for CloudKit compatibility
+- [x] Context menus on task rows (Edit, Complete, Delete)
+- [x] Widgets (Today and Upcoming in all size classes)
+- [x] Smart date parsing — type "Buy groceries tomorrow at 10am" and the date is auto-detected
+- [x] Full VoiceOver and accessibility support
+- [x] Zero third-party dependencies
 
 ## Requirements
- - iOS 11.0+
- - Xcode 11.0+
- - Swift 5.0+
+
+- iOS 26.0+
+- Xcode 26+
+- Swift 6.0
 
 ## How to run
 
 1. Clone the repo
-2. Turn on iCloud option in ```Signing & Capabilities``` and check ```CloudKit```. Turn on ```Background Modes``` and check ```Background fetch``` + ```Remote notification```.
-3. Make sure to update your app group config (```Signing & Capabilities```, ```App Groups```) and id string in ```RealmManager.swift```.
-
-## Live demo
-
-[ToDoList - Task Manager by RanduSoft - AppStore](https://apps.apple.com/us/app/todolist-task-manager/id1454122524?ls=1)
-
-## Roadmap
-
-### Features
-
-- [ ] Lockdown with FaceID/TouchID or passcode (using [BiometricAuthentication](https://github.com/rursache/BiometricAuthentication))
-- [ ] Smart dates (transform "'task name' today at 10:00" into a task with a date/time of today @ 10:00)
-- [ ] Rearrange tasks manually
-- [ ] Catalyst support for macOS
- 
-### Improvements/To Do
-- [ ] Modern Widgets
-- [ ] watchOS complications + sync improvements
-- [ ] Reload notifications after user gave push permissions if initially declined 
+2. Open `ToDoList.xcodeproj` in Xcode
+3. In **Signing & Capabilities**:
+   - Set your development team and bundle identifier
+   - Enable **iCloud** with **CloudKit** using your own CloudKit container
+   - Enable **App Groups** with your own app group identifier
+   - Enable **Push Notifications**
+4. Build and run on a simulator or device
 
 ## Communication
+
 - If you **found a bug**, open an [issue](https://github.com/rursache/ToDoList/issues).
 - If you **have a feature request**, open an [issue](https://github.com/rursache/ToDoList/issues).
-- If you **want to contribute**, submit a [pull request]().
-
-## Acknowledgements & Frameworks used
-
-An extensive list of acknowledgements for each external framework used for RSToDoList is also available in app by accessing the settings screen.
-
-RSToDoList is currently using:
-
- - [LKAlertController](https://github.com/lightningkite/LKAlertController)
- - [ActionSheetPicker-3.0](https://github.com/rursache/ActionSheetPicker-3.0)
- - [IceCream](https://github.com/rursache/IceCream)
- - [UnderKeyboard](https://github.com/rursache/UnderKeyboard)
- - [ActiveLabel](https://github.com/optonaut/ActiveLabel.swift)
- - [Realm & RealmSwift](https://realm.io/products/realm-database)
- - [RSTextViewMaster](https://github.com/rursache/RSTextViewMaster)
- - [Loaf](https://github.com/schmidyy/Loaf)
- - [Robin](https://github.com/ahmedabadie/Robin)
- - [BulletinBoard](https://github.com/alexaubry/BulletinBoard)
-
-All icons used in RSToDoList are designed by Icons8.com and available [here](http://icons8.com).
-Colors for themes and app icon are picked from [FlatUIColors.com](https://flatuicolors.com).
+- If you **want to contribute**, submit a [pull request](https://github.com/rursache/ToDoList/pulls).
 
 ## License
 
-RSToDoList is available under the GNU license. See the [LICENSE](https://github.com/rursache/ToDoList/blob/master/LICENSE) file for more info.
+ToDoList is available under the GNU license. See the [LICENSE](https://github.com/rursache/ToDoList/blob/master/LICENSE) file for more info.
