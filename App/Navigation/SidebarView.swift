@@ -20,7 +20,7 @@ struct SidebarView: View {
                 Label(filter.displayName, systemImage: filter.systemImage)
             }
         }
-        .navigationTitle("ToDoList")
+        .navigationTitle(AppSettings.appName)
     }
 }
 

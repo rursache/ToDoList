@@ -11,6 +11,8 @@ import SwiftUI
 final class AppSettings: Sendable {
     static let shared = AppSettings()
 
+    static let appName = "ToDoList"
+
     var selectedTheme: Int {
         get { access(keyPath: \.selectedTheme); return UserDefaults.standard.integer(forKey: "selectedTheme") }
         set { withMutation(keyPath: \.selectedTheme) { UserDefaults.standard.set(newValue, forKey: "selectedTheme") } }

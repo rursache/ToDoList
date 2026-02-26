@@ -15,12 +15,12 @@ struct FeedbackMailView: UIViewControllerRepresentable {
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = context.coordinator
         vc.setToRecipients(["contact@randusoft.ro"])
-        vc.setSubject("ToDoList Feedback")
+        vc.setSubject("\(AppSettings.appName) Feedback")
 
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
         let device = UIDevice.current.model
         let ios = UIDevice.current.systemVersion
-        vc.setMessageBody("\n\n---\nApp: ToDoList v\(version)\nDevice: \(device)\niOS: \(ios)", isHTML: false)
+        vc.setMessageBody("\n\n---\nApp: \(AppSettings.appName) v\(version)\nDevice: \(device)\niOS: \(ios)", isHTML: false)
 
         return vc
     }

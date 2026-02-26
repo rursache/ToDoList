@@ -11,14 +11,14 @@ import MessageUI // Required for MFMailComposeViewController.canSendMail()
 struct SettingsView: View {
     @Environment(AppSettings.self) private var appSettings
     @State private var showingFeedback = false
-    @State private var showingAbout = false
     @State private var showingOnboarding = false
+    @State private var safariURL: URL?
 
     var body: some View {
         @Bindable var settings = appSettings
 
         Form {
-            Section(String(localized: "settingsPreferences", defaultValue: "Preferences")) {
+            Section {
                 Picker(selection: $settings.startPage) {
                     Text(String(localized: "filterInbox", defaultValue: "Inbox")).tag(0)
                     Text(String(localized: "filterToday", defaultValue: "Today")).tag(1)
@@ -44,7 +44,7 @@ struct SettingsView: View {
                 }
             }
 
-            Section(String(localized: "settingsToggles", defaultValue: "Features")) {
+            Section {
                 Picker(selection: $settings.autoReminderMinutes) {
                     ForEach(AutoReminderInterval.allCases) { interval in
                         Text(interval.displayName).tag(interval.rawValue)
@@ -52,10 +52,9 @@ struct SettingsView: View {
                 } label: {
                     Label(String(localized: "autoReminders", defaultValue: "Automatic\nReminders"), systemImage: "bell.badge")
                 }
-
             }
 
-            Section(String(localized: "settingsActions", defaultValue: "Other")) {
+            Section {
                 if MFMailComposeViewController.canSendMail() {
                     Button {
                         showingFeedback = true
@@ -73,11 +72,31 @@ struct SettingsView: View {
                 .tint(.primary)
 
                 Button {
-                    showingAbout = true
+                    safariURL = URL(string: "https://randusoft.ro/tos.html")
                 } label: {
-                    Label(String(localized: "about", defaultValue: "About"), systemImage: "info.circle")
+                    Label(String(localized: "termsOfService", defaultValue: "Terms of Service"), systemImage: "doc.text")
                 }
                 .tint(.primary)
+
+                Button {
+                    safariURL = URL(string: "https://randusoft.ro/pp.html")
+                } label: {
+                    Label(String(localized: "privacyPolicy", defaultValue: "Privacy Policy"), systemImage: "lock.shield")
+                }
+                .tint(.primary)
+
+                Button {
+                    safariURL = URL(string: "https://github.com/rursache/ToDoList")
+                } label: {
+                    Label(String(localized: "sourceCode", defaultValue: "Source Code"), systemImage: "curlybraces")
+                }
+                .tint(.primary)
+            } footer: {
+                let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+                let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+                Text(verbatim: "\(AppSettings.appName) v\(version) (\(build))")
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 16)
             }
         }
         .navigationTitle(String(localized: "tabSettings", defaultValue: "Settings"))
@@ -85,16 +104,13 @@ struct SettingsView: View {
         .sheet(isPresented: $showingFeedback) {
             FeedbackMailView()
         }
+        .sheet(item: $safariURL) { url in
+            SFSafariView(url: url)
+                .ignoresSafeArea()
+        }
         .fullScreenCover(isPresented: $showingOnboarding) {
             OnboardingView()
                 .environment(appSettings)
-        }
-        .alert(String(localized: "about", defaultValue: "About"), isPresented: $showingAbout) {
-            Button(String(localized: "ok", defaultValue: "OK")) {}
-        } message: {
-            let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
-            Text("ToDoList v\(version) (\(build))\n\nMade with love by RanduSoft")
         }
     }
 }

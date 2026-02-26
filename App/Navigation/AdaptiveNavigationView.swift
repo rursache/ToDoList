@@ -16,7 +16,7 @@ struct AdaptiveNavigationView: View {
                 List(sidebarFilters, selection: $selectedFilter) { filter in
                     Label(filter.displayName, systemImage: filter.systemImage)
                 }
-                .navigationTitle("ToDoList")
+                .navigationTitle(AppSettings.appName)
             } detail: {
                 if let filter = selectedFilter {
                     TaskListView(filter: filter)
