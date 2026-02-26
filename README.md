@@ -46,9 +46,9 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 1. Clone the repo
 2. Open `ToDoList.xcodeproj` in Xcode
 3. In **Signing & Capabilities**:
-   - Set your development team
-   - Enable **iCloud** with **CloudKit** (container: `iCloud.ro.randusoft.todolist`)
-   - Enable **App Groups** (`group.ro.randusoft.todolist`)
+   - Set your development team and bundle identifier
+   - Enable **iCloud** with **CloudKit** using your own CloudKit container
+   - Enable **App Groups** with your own app group identifier
    - Enable **Push Notifications**
 4. Build and run on a simulator or device
 

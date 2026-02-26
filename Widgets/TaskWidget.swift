@@ -91,9 +91,13 @@ struct TaskWidgetProvider: AppIntentTimelineProvider {
             timeFormatter.dateStyle = .none
             timeFormatter.timeStyle = .short
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
+            let dateTimeFormatter = DateFormatter()
+            dateTimeFormatter.dateStyle = .short
+            dateTimeFormatter.timeStyle = .short
+
+            let dateOnlyFormatter = DateFormatter()
+            dateOnlyFormatter.dateStyle = .short
+            dateOnlyFormatter.timeStyle = .none
 
             let items = limitedTasks.map { task in
                 let priority = TaskPriority(rawValue: task.priority) ?? .none
@@ -104,7 +108,7 @@ struct TaskWidgetProvider: AppIntentTimelineProvider {
                     } else if calendar.isDateInTomorrow(date) {
                         dateStr = task.hasTime ? "Tomorrow, \(timeFormatter.string(from: date))" : "Tomorrow"
                     } else {
-                        dateStr = dateFormatter.string(from: date)
+                        dateStr = task.hasTime ? dateTimeFormatter.string(from: date) : dateOnlyFormatter.string(from: date)
                     }
                 } else {
                     dateStr = ""
