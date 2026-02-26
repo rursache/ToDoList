@@ -14,20 +14,25 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 - [x] **SwiftData** persistence with **CloudKit** sync across devices
 - [x] **iOS 26 Liquid Glass** design language throughout
 - [x] Add, edit, complete, and delete tasks
+- [x] Task descriptions
 - [x] Set due date & time with graphical date picker
+- [x] Date-only tasks (no specific time) or date + time
 - [x] Task priorities (Highest, High, Normal, Low)
 - [x] Comments on tasks (text and images via PhotosPicker)
 - [x] Reminders with local push notifications
-- [x] Automatic reminders (30 min before due date)
+- [x] Configurable automatic reminders (None / 10min / 30min / 1h before due)
 - [x] Sort tasks by date or priority
 - [x] Search across all task lists
-- [x] Filter views: Today, All, Upcoming (Tomorrow / Week / Custom interval), Completed
+- [x] Filter views: Inbox, Today, Upcoming, Completed
+- [x] Upcoming tasks grouped by day sections
 - [x] iPad support with `NavigationSplitView` sidebar
 - [x] 7 color themes
 - [x] 3-page onboarding with notification permission flow
-- [x] Settings: start page, theme, language, auto-reminders, feedback email
+- [x] Localization support (English, Romanian)
+- [x] Settings: start page, theme, auto-reminders, feedback email
 - [x] Soft-delete pattern for CloudKit compatibility
 - [x] Context menus on task rows (Edit, Complete, Delete)
+- [x] Widgets (Today and Upcoming in all size classes)
 - [x] Zero third-party dependencies
 
 ## Requirements
@@ -47,33 +52,8 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
    - Enable **Push Notifications**
 4. Build and run on a simulator or device
 
-## Architecture
-
-```
-App.swift                          # App entry point, ModelContainer, theming
-AppDelegate.swift                  # UNUserNotificationCenter delegate
-
-App/
-├── Navigation/                    # AdaptiveNavigationView, TabView, Sidebar
-├── Tasks/
-│   ├── List/                      # TaskListView, TaskRowView, UpcomingTasksView
-│   └── Detail/                    # TaskEditView (create/edit sheet)
-├── Comments/                      # CommentsView, CommentRowView
-├── Reminders/                     # RemindersView, AddReminderSheet
-├── Settings/                      # SettingsView, ThemePickerView
-└── Onboarding/                    # OnboardingView
-
-Models/                            # SwiftData models (Task, Comment, Reminder)
-Database/                          # DatabaseConfiguration (ModelContainer factory)
-Services/                          # AppSettings, NotificationManager
-Shared/                            # CheckButtonView, Date+Extensions
-Helpers/                           # Binding extensions
-```
-
 ## Roadmap
 
-- [ ] WidgetKit widget for Today tasks
-- [ ] Localization (English, Romanian, Traditional Chinese — ported from v1)
 - [ ] Smart date parsing ("Buy groceries tomorrow at 10am")
 - [ ] Biometric lock (Face ID / Touch ID)
 - [ ] Manual task reordering
