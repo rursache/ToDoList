@@ -21,6 +21,7 @@ final class TaskModel {
     var isCompleted: Bool = false
     var isDeleted: Bool = false
     var createdDate: Date = Date()
+    var sortOrder: Int = 0
 
     @Relationship(deleteRule: .cascade, inverse: \CommentModel.task)
     var comments: [CommentModel]? = []

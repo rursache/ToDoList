@@ -1516,6 +1516,17 @@
         }
       }
     },
+    "sortManual" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Manual"
+          }
+        }
+      }
+    },
     "sortPriorityAsc" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {

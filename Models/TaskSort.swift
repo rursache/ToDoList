@@ -13,6 +13,7 @@ enum TaskSort: Int, CaseIterable, Identifiable {
     case dateDescending
     case priorityAscending
     case priorityDescending
+    case manual
 
     var id: Int { rawValue }
 
@@ -22,6 +23,7 @@ enum TaskSort: Int, CaseIterable, Identifiable {
         case .dateDescending: String(localized: "sortDateDesc", defaultValue: "Date (Desc)")
         case .priorityAscending: String(localized: "sortPriorityAsc", defaultValue: "Priority (Asc)")
         case .priorityDescending: String(localized: "sortPriorityDesc", defaultValue: "Priority (Desc)")
+        case .manual: String(localized: "sortManual", defaultValue: "Manual")
         }
     }
 
@@ -35,6 +37,8 @@ enum TaskSort: Int, CaseIterable, Identifiable {
             [SortDescriptor(\.priority, order: .forward), SortDescriptor(\.createdDate, order: .forward)]
         case .priorityDescending:
             [SortDescriptor(\.priority, order: .reverse), SortDescriptor(\.createdDate, order: .reverse)]
+        case .manual:
+            [SortDescriptor(\.sortOrder, order: .forward), SortDescriptor(\.createdDate, order: .reverse)]
         }
     }
 }
@@ -50,6 +54,8 @@ extension Array where Element == TaskModel {
             sorted { $0.priority < $1.priority }
         case .priorityDescending:
             sorted { $0.priority > $1.priority }
+        case .manual:
+            sorted { $0.sortOrder < $1.sortOrder }
         }
     }
 }

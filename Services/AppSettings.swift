@@ -38,6 +38,11 @@ final class AppSettings: Sendable {
         set { withMutation(keyPath: \.openLinksInApp) { UserDefaults.standard.set(newValue, forKey: "openLinksInApp") } }
     }
 
+    var taskSort: Int {
+        get { access(keyPath: \.taskSort); return UserDefaults.standard.integer(forKey: "taskSort") }
+        set { withMutation(keyPath: \.taskSort) { UserDefaults.standard.set(newValue, forKey: "taskSort") } }
+    }
+
     var launchedBefore: Bool {
         get { access(keyPath: \.launchedBefore); return UserDefaults.standard.bool(forKey: "launchedBefore") }
         set { withMutation(keyPath: \.launchedBefore) { UserDefaults.standard.set(newValue, forKey: "launchedBefore") } }

@@ -364,6 +364,15 @@ struct TaskEditView: View {
 
     // MARK: - Save
 
+    private var minSortOrder: Int {
+        let descriptor = FetchDescriptor<TaskModel>(
+            predicate: #Predicate { !$0.isDeleted },
+            sortBy: [SortDescriptor(\.sortOrder, order: .forward)]
+        )
+        let tasks = try? modelContext.fetch(descriptor)
+        return tasks?.first?.sortOrder ?? 0
+    }
+
     private func applyDetectedDateIfNeeded() {
         guard !userManuallySetDate, let result = detectedDateResult else { return }
         content = result.cleanedContent
@@ -380,6 +389,7 @@ struct TaskEditView: View {
         let name = trimmed.isEmpty ? String(localized: "untitledTask", defaultValue: "Untitled") : trimmed
         let newTask = TaskModel(content: name, taskDescription: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines), date: date, priority: priority.rawValue)
         newTask.hasTime = hasTime
+        newTask.sortOrder = minSortOrder - 1
         modelContext.insert(newTask)
         savedTask = newTask
     }
@@ -400,6 +410,7 @@ struct TaskEditView: View {
         } else {
             let newTask = TaskModel(content: trimmed, taskDescription: trimmedDescription, date: date, priority: priority.rawValue)
             newTask.hasTime = hasTime
+            newTask.sortOrder = minSortOrder - 1
             modelContext.insert(newTask)
             scheduleAutoReminder(for: newTask)
         }

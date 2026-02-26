@@ -21,7 +21,7 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
 - [x] Comments on tasks (text and images via PhotosPicker)
 - [x] Reminders with local push notifications
 - [x] Configurable automatic reminders (None / 10min / 30min / 1h before due)
-- [x] Sort tasks by date or priority
+- [x] Sort tasks by date, priority, or manual drag & drop reordering
 - [x] Search across all task lists
 - [x] Filter views: Inbox, Today, Upcoming, Completed
 - [x] Upcoming tasks grouped by day sections
@@ -53,10 +53,6 @@ A modern, open-source To-Do list app built entirely in SwiftUI for iPhone and iP
    - Enable **App Groups** with your own app group identifier
    - Enable **Push Notifications**
 4. Build and run on a simulator or device
-
-## Roadmap
-
-- [ ] Manual task reordering
 
 ## Communication
 
