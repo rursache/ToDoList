@@ -55,10 +55,16 @@ struct ContentTabView: View {
                 }
             }
 
-            Tab(value: TabSelection.search, role: .search) {
+            Tab(
+                String(localized: "search", defaultValue: "Search"),
+                systemImage: "magnifyingglass",
+                value: .search,
+                role: .search
+            ) {
                 SearchView()
             }
         }
+        .tabViewSearchActivation(.searchTabSelection)
     }
 }
 

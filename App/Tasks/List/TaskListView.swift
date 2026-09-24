@@ -53,7 +53,7 @@ struct TaskListView: View {
             .toolbar(filter == .completed ? .hidden : .automatic, for: .tabBar)
             .toolbar {
                 if filter != .completed {
-                    ToolbarItem(placement: .topBarLeading) {
+                    ToolbarItem(placement: .topBarTrailing) {
                         NavigationLink {
                             TaskListView(filter: .completed)
                         } label: {
@@ -65,12 +65,12 @@ struct TaskListView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     sortMenu
                 }
-            }
-            .toolbar {
                 if filter != .completed {
+                    ToolbarSpacer(.fixed, placement: .topBarTrailing)
                     ToolbarItem(placement: .topBarTrailing) {
                         addTaskButton
-                    }.sharedBackgroundVisibility(.hidden)
+                    }
+                    .sharedBackgroundVisibility(.hidden)
                 }
             }
             .sheet(isPresented: $showingAddTask) {
