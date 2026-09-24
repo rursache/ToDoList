@@ -17,7 +17,10 @@ struct SearchView: View {
         guard !searchText.isEmpty else { return [] }
         return allTasks
             .filter { !$0.isDeleted }
-            .filter { $0.content.localizedCaseInsensitiveContains(searchText) }
+            .filter {
+                $0.content.localizedCaseInsensitiveContains(searchText)
+                    || $0.taskDescription.localizedCaseInsensitiveContains(searchText)
+            }
     }
 
     var body: some View {
