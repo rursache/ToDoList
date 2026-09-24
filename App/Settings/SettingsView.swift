@@ -73,21 +73,21 @@ struct SettingsView: View {
                 .tint(.primary)
 
                 Button {
-                    safariURL = URL(string: "https://randusoft.ro/tos.html")
+                    openLink(URL(string: "https://randusoft.ro/tos.html"))
                 } label: {
                     Label(String(localized: "termsOfService", defaultValue: "Terms of Service"), systemImage: "doc.text")
                 }
                 .tint(.primary)
 
                 Button {
-                    safariURL = URL(string: "https://randusoft.ro/pp.html")
+                    openLink(URL(string: "https://randusoft.ro/pp.html"))
                 } label: {
                     Label(String(localized: "privacyPolicy", defaultValue: "Privacy Policy"), systemImage: "lock.shield")
                 }
                 .tint(.primary)
 
                 Button {
-                    safariURL = URL(string: "https://github.com/rursache/ToDoList")
+                    openLink(URL(string: "https://github.com/rursache/ToDoList"))
                 } label: {
                     Label(String(localized: "sourceCode", defaultValue: "Source Code"), systemImage: "curlybraces")
                 }
@@ -112,6 +112,15 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $showingOnboarding) {
             OnboardingView()
                 .environment(appSettings)
+        }
+    }
+
+    private func openLink(_ url: URL?) {
+        guard let url else { return }
+        if appSettings.openLinksInApp {
+            safariURL = url
+        } else {
+            UIApplication.shared.open(url)
         }
     }
 }
