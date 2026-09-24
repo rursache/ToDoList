@@ -9,6 +9,7 @@ import Foundation
 import UserNotifications
 import SwiftData
 
+@MainActor
 @Observable
 final class NotificationManager: @unchecked Sendable {
     static let shared = NotificationManager()
