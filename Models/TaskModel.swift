@@ -43,6 +43,16 @@ final class TaskModel {
         set { priority = newValue.rawValue }
     }
 
+    var prioritySortRank: Int {
+        switch taskPriority {
+        case .none: 0
+        case .low: 1
+        case .normal: 2
+        case .high: 3
+        case .highest: 4
+        }
+    }
+
     var activeComments: [CommentModel] {
         (comments ?? []).filter { !$0.isDeleted }
     }

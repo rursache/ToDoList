@@ -51,9 +51,9 @@ extension Array where Element == TaskModel {
         case .dateDescending:
             sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
         case .priorityAscending:
-            sorted { $0.priority < $1.priority }
+            sorted { $0.prioritySortRank < $1.prioritySortRank }
         case .priorityDescending:
-            sorted { $0.priority > $1.priority }
+            sorted { $0.prioritySortRank > $1.prioritySortRank }
         case .manual:
             sorted { $0.sortOrder < $1.sortOrder }
         }
