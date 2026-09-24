@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1709B6252F4F333800155886 /* Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1709B6242F4F333800155886 /* Icon.icon */; };
+		AB01B6252F4F333800155002 /* IconBlue.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F333800155001 /* IconBlue.icon */; };
+		AB01B6252F4F333800155004 /* IconGreen.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F333800155003 /* IconGreen.icon */; };
+		AB01B6252F4F333800155006 /* IconYellow.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F333800155005 /* IconYellow.icon */; };
+		AB01B6252F4F333800155008 /* IconOrange.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F333800155007 /* IconOrange.icon */; };
+		AB01B6252F4F33380015500A /* IconPinkAlt.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F333800155009 /* IconPinkAlt.icon */; };
+		AB01B6252F4F33380015500C /* IconBlack.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB01B6252F4F33380015500B /* IconBlack.icon */; };
 		1709B6A72F50513600155886 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709B6A62F50513600155886 /* WidgetKit.framework */; };
 		1709B6A92F50513600155886 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709B6A82F50513600155886 /* SwiftUI.framework */; };
 		1709B6B42F50513700155886 /* Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1709B6A42F50513600155886 /* Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -49,6 +55,12 @@
 
 /* Begin PBXFileReference section */
 		1709B6242F4F333800155886 /* Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon.icon; sourceTree = "<group>"; };
+		AB01B6252F4F333800155001 /* IconBlue.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconBlue.icon; sourceTree = "<group>"; };
+		AB01B6252F4F333800155003 /* IconGreen.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconGreen.icon; sourceTree = "<group>"; };
+		AB01B6252F4F333800155005 /* IconYellow.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconYellow.icon; sourceTree = "<group>"; };
+		AB01B6252F4F333800155007 /* IconOrange.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconOrange.icon; sourceTree = "<group>"; };
+		AB01B6252F4F333800155009 /* IconPinkAlt.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconPinkAlt.icon; sourceTree = "<group>"; };
+		AB01B6252F4F33380015500B /* IconBlack.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = IconBlack.icon; sourceTree = "<group>"; };
 		1709B6A42F50513600155886 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1709B6A62F50513600155886 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1709B6A82F50513600155886 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -160,6 +172,12 @@
 			isa = PBXGroup;
 			children = (
 				1709B6242F4F333800155886 /* Icon.icon */,
+				AB01B6252F4F333800155001 /* IconBlue.icon */,
+				AB01B6252F4F333800155003 /* IconGreen.icon */,
+				AB01B6252F4F333800155005 /* IconYellow.icon */,
+				AB01B6252F4F333800155007 /* IconOrange.icon */,
+				AB01B6252F4F333800155009 /* IconPinkAlt.icon */,
+				AB01B6252F4F33380015500B /* IconBlack.icon */,
 				17E659C82C32E44100C7066C /* Assets.xcassets */,
 				17E659C22C32E44000C7066C /* App.swift */,
 				17E659F42C32EE9400C7066C /* AppDelegate.swift */,
@@ -318,6 +336,12 @@
 			files = (
 				17E659C92C32E44100C7066C /* Assets.xcassets in Resources */,
 				1709B6252F4F333800155886 /* Icon.icon in Resources */,
+				AB01B6252F4F333800155002 /* IconBlue.icon in Resources */,
+				AB01B6252F4F333800155004 /* IconGreen.icon in Resources */,
+				AB01B6252F4F333800155006 /* IconYellow.icon in Resources */,
+				AB01B6252F4F333800155008 /* IconOrange.icon in Resources */,
+				AB01B6252F4F33380015500A /* IconPinkAlt.icon in Resources */,
+				AB01B6252F4F33380015500C /* IconBlack.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +590,7 @@
 		17E659E72C32E44100C7066C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "IconBlue IconGreen IconYellow IconOrange IconPinkAlt IconBlack";
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -605,6 +630,7 @@
 		17E659E82C32E44100C7066C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "IconBlue IconGreen IconYellow IconOrange IconPinkAlt IconBlack";
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
