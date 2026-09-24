@@ -14,13 +14,15 @@ struct TaskListView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppSettings.self) private var appSettings
     @Query private var allTasks: [TaskModel]
-    @State private var currentSort: TaskSort = .dateAscending
     @State private var showingAddTask = false
 
     init(filter: TaskFilter) {
         self.filter = filter
-        _currentSort = State(initialValue: TaskSort(rawValue: UserDefaults.standard.integer(forKey: "taskSort")) ?? .dateAscending)
         _allTasks = Query(sort: [SortDescriptor(\TaskModel.date, order: .forward), SortDescriptor(\TaskModel.createdDate, order: .forward)])
+    }
+
+    private var currentSort: TaskSort {
+        TaskSort(rawValue: appSettings.taskSort) ?? .dateAscending
     }
 
     private var filteredTasks: [TaskModel] {
@@ -48,7 +50,18 @@ struct TaskListView: View {
             .contentMargins(.top, 6, for: .scrollContent)
             .navigationTitle(filter.displayName)
             .toolbarTitleDisplayMode(.inlineLarge)
+            .toolbar(filter == .completed ? .hidden : .automatic, for: .tabBar)
             .toolbar {
+                if filter != .completed {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationLink {
+                            TaskListView(filter: .completed)
+                        } label: {
+                            Image(systemName: "checkmark.circle")
+                        }
+                        .accessibilityLabel(TaskFilter.completed.displayName)
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     sortMenu
                 }
@@ -102,7 +115,6 @@ struct TaskListView: View {
         Menu {
             ForEach(TaskSort.allCases) { sort in
                 Button {
-                    currentSort = sort
                     appSettings.taskSort = sort.rawValue
                 } label: {
                     if sort == currentSort {
