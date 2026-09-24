@@ -32,12 +32,12 @@ struct TaskEditView: View {
 
     private let smartDateParser = SmartDateParser()
 
-    private static let detent: PresentationDetent = .height(295)
     private var isNewTask: Bool { task == nil && savedTask == nil }
     private var currentTask: TaskModel? { task ?? savedTask }
 
     var body: some View {
         NavigationStack {
+            ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 // Title
                 TextField(
@@ -114,6 +114,7 @@ struct TaskEditView: View {
             }
             .padding(.horizontal)
             .padding(.top, 0)
+            }
             .navigationTitle(isNewTask ? String(localized: "newTask", defaultValue: "New Task") : String(localized: "editTask", defaultValue: "Edit Task"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -182,14 +183,21 @@ struct TaskEditView: View {
                 }
             }
         }
-        .presentationDetents([Self.detent])
+        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(date: $date, hasTime: $hasTime)
         }
         .onDisappear {
             guard let task = currentTask else { return }
-            task.content = content.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
+            if trimmed.isEmpty, savedTask != nil, task.activeComments.isEmpty, task.activeReminders.isEmpty {
+                modelContext.delete(task)
+                return
+            }
+            if !trimmed.isEmpty {
+                task.content = trimmed
+            }
             task.taskDescription = taskDescription.trimmingCharacters(in: .whitespacesAndNewlines)
             task.date = date
             task.hasTime = hasTime
@@ -373,18 +381,8 @@ struct TaskEditView: View {
         return tasks?.first?.sortOrder ?? 0
     }
 
-    private func applyDetectedDateIfNeeded() {
-        guard !userManuallySetDate, let result = detectedDateResult else { return }
-        content = result.cleanedContent
-        date = result.date
-        hasTime = result.hasTime
-        detectedDateResult = nil
-        userManuallySetDate = true
-    }
-
     private func ensureTaskSaved() {
         guard currentTask == nil else { return }
-        applyDetectedDateIfNeeded()
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         let name = trimmed.isEmpty ? String(localized: "untitledTask", defaultValue: "Untitled") : trimmed
         let newTask = TaskModel(content: name, taskDescription: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines), date: date, priority: priority.rawValue)
@@ -395,7 +393,6 @@ struct TaskEditView: View {
     }
 
     private func save() {
-        applyDetectedDateIfNeeded()
         let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
