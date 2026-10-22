@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SearchView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Query private var allTasks: [TaskModel]
     @State private var searchText = ""
     @FocusState private var isSearchFocused: Bool
@@ -38,6 +39,20 @@ struct SearchView: View {
                         systemImage: "magnifyingglass",
                         description: Text(String(localized: "noSearchResultsDescription", defaultValue: "No tasks match \"\(searchText)\""))
                     )
+                } else if #available(iOS 27, *), horizontalSizeClass == .regular {
+                    let tasks = filteredTasks
+                    let positions = Dictionary(uniqueKeysWithValues: tasks.enumerated().map { ($1.id, $0) })
+                    ScrollView {
+                        ColumnsLayout {
+                            ForEach(tasks) { task in
+                                TaskRowView(task: task, insets: .columnCell)
+                                    .columnCell(position: positions[task.id] ?? 0, count: tasks.count, separatorLeading: 66)
+                            }
+                        }
+                        .columnsPanel()
+                        .padding(.bottom, 20)
+                    }
+                    .columnsScrollMargins()
                 } else {
                     List {
                         ForEach(filteredTasks) { task in

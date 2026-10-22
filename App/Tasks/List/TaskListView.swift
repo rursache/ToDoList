@@ -13,6 +13,7 @@ struct TaskListView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(AppSettings.self) private var appSettings
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Query private var allTasks: [TaskModel]
     @State private var showingAddTask = false
 
@@ -82,6 +83,8 @@ struct TaskListView: View {
     private var taskListContent: some View {
         if filteredTasks.isEmpty {
             emptyStateView
+        } else if #available(iOS 27, *), horizontalSizeClass == .regular {
+            taskColumnsContent
         } else if filter == .upcoming {
             List {
                 ForEach(groupedByDay, id: \.0) { day, tasks in
@@ -108,6 +111,83 @@ struct TaskListView: View {
                 .onMove(perform: moveTasks)
                 .moveDisabled(currentSort != .manual)
             }
+        }
+    }
+
+    @available(iOS 27, *)
+    private var taskColumnsContent: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 17) {
+                if filter == .upcoming {
+                    ForEach(groupedByDay, id: \.0) { day, tasks in
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(day.formatted(style: .sectionHeader))
+                                .font(.headline)
+                                .foregroundStyle(.secondary)
+                                .padding(.horizontal, EdgeInsets.columnCell.leading)
+                                .padding(.vertical, 10)
+                            taskColumns(tasks)
+                        }
+                    }
+                } else {
+                    taskColumns(filteredTasks)
+                }
+            }
+            .padding(.bottom, 20)
+        }
+        .columnsScrollMargins()
+        .swipeActionsContainer()
+        .background(Color(.systemGroupedBackground))
+    }
+
+    @available(iOS 27, *)
+    @ViewBuilder
+    private func taskColumns(_ tasks: [TaskModel]) -> some View {
+        let positions = Dictionary(uniqueKeysWithValues: tasks.enumerated().map { ($1.id, $0) })
+        if filter != .upcoming && currentSort == .manual {
+            ColumnsLayout {
+                ForEach(tasks) { taskCell($0, position: positions[$0.id] ?? 0, count: tasks.count) }
+                    .reorderable()
+            }
+            .reorderContainer(for: TaskModel.self) { reorderTasks($0) }
+            .columnsPanel()
+        } else {
+            ColumnsLayout {
+                ForEach(tasks) { taskCell($0, position: positions[$0.id] ?? 0, count: tasks.count) }
+            }
+            .columnsPanel()
+        }
+    }
+
+    @available(iOS 27, *)
+    private func taskCell(_ task: TaskModel, position: Int, count: Int) -> some View {
+        TaskRowView(task: task, insets: .columnCell)
+            .columnCell(position: position, count: count, separatorLeading: 66)
+            .swipeActions {
+                Button(role: .destructive) {
+                    task.isDeleted = true
+                } label: {
+                    Label(String(localized: "delete", defaultValue: "Delete"), systemImage: "trash")
+                }
+            }
+            .clipped()
+    }
+
+    @available(iOS 27, *)
+    private func reorderTasks(_ difference: ReorderDifference<TaskModel.ID, ReorderableSingleCollectionIdentifier>) {
+        let moving = Set(difference.sources)
+        var tasks = filteredTasks.filter { !moving.contains($0.id) }
+        let moved = filteredTasks.filter { moving.contains($0.id) }
+
+        switch difference.destination.position {
+        case .before(let id):
+            tasks.insert(contentsOf: moved, at: tasks.firstIndex { $0.id == id } ?? tasks.endIndex)
+        case .end:
+            tasks.append(contentsOf: moved)
+        }
+
+        for (index, task) in tasks.enumerated() {
+            task.sortOrder = index
         }
     }
 

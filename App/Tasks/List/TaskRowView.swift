@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskRowView: View {
     @Bindable var task: TaskModel
+    var insets = EdgeInsets()
     @State private var showingEdit = false
 
     var body: some View {
@@ -73,6 +74,8 @@ struct TaskRowView: View {
 
             Spacer()
         }
+        .padding(insets)
+        .frame(maxHeight: .infinity, alignment: .top)
         .contentShape(Rectangle())
         .onTapGesture {
             showingEdit = true

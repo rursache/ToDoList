@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-import MessageUI // Required for MFMailComposeViewController.canSendMail()
+import MessageUI
 
 struct SettingsView: View {
     @Environment(AppSettings.self) private var appSettings
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var showingFeedback = false
     @State private var showingOnboarding = false
     @State private var safariURL: URL?
@@ -51,7 +52,7 @@ struct SettingsView: View {
                         Text(interval.displayName).tag(interval.rawValue)
                     }
                 } label: {
-                    Label(String(localized: "autoReminders", defaultValue: "Automatic\nReminders"), systemImage: "bell.badge")
+                    Label(autoRemindersTitle, systemImage: "bell.badge")
                 }
             }
 
@@ -113,6 +114,11 @@ struct SettingsView: View {
             OnboardingView()
                 .environment(appSettings)
         }
+    }
+
+    private var autoRemindersTitle: String {
+        let title = String(localized: "autoReminders", defaultValue: "Automatic\nReminders")
+        return horizontalSizeClass == .regular ? title.replacingOccurrences(of: "\n", with: " ") : title
     }
 
     private func openLink(_ url: URL?) {

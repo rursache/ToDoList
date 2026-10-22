@@ -14,7 +14,6 @@ struct OnboardingView: View {
 
     var body: some View {
         TabView(selection: $currentPage) {
-            // Welcome page
             OnboardingPageView(
                 systemImage: "checklist",
                 title: String(localized: "onboardingWelcomeTitle", defaultValue: "Welcome to ToDoList"),
@@ -25,7 +24,6 @@ struct OnboardingView: View {
             }
             .tag(0)
 
-            // Notifications page
             OnboardingPageView(
                 systemImage: "bell.badge",
                 title: String(localized: "onboardingNotificationsTitle", defaultValue: "Stay on Track"),
@@ -42,7 +40,6 @@ struct OnboardingView: View {
             }
             .tag(1)
 
-            // Completion page
             OnboardingPageView(
                 systemImage: "checkmark.circle",
                 title: String(localized: "onboardingCompleteTitle", defaultValue: "You're All Set!"),
@@ -88,6 +85,7 @@ struct OnboardingPageView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
             }
+            .frame(maxWidth: 480)
 
             Spacer()
 
